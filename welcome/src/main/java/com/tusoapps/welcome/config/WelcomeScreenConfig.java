@@ -5,9 +5,8 @@ import android.support.annotation.DrawableRes;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 
-import com.tusoapps.welcome.ui.WelcomeFragmentBasic;
-
-import java.util.Arrays;
+import com.tusoapps.welcome.ui.BasicWelcomeFragment;
+import com.tusoapps.welcome.ui.PreferenceWelcomeFragment;
 
 /**
  * Created by stephentuso on 11/15/15.
@@ -22,7 +21,12 @@ public class WelcomeScreenConfig {
     }
 
     public WelcomeScreenConfig basicPage(@DrawableRes int drawableId, String title, String description, @Nullable @ColorInt Integer backgroundColor) {
-        mPages.add(new WelcomeScreenPage(WelcomeFragmentBasic.newInstance(drawableId, title, description), new BackgroundColor(backgroundColor)));
+        mPages.add(new WelcomeScreenPage(BasicWelcomeFragment.newInstance(drawableId, title, description), new BackgroundColor(backgroundColor)));
+        return this;
+    }
+
+    public WelcomeScreenConfig preferencePage(int preferencesResId, @Nullable @ColorInt Integer backgroundColor) {
+        mPages.add(new WelcomeScreenPage(PreferenceWelcomeFragment.newInstance(preferencesResId), new BackgroundColor(backgroundColor)));
         return this;
     }
 

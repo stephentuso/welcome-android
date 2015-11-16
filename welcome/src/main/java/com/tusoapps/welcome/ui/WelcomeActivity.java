@@ -10,6 +10,7 @@ import android.view.View;
 
 import com.tusoapps.welcome.R;
 import com.tusoapps.welcome.config.WelcomeScreenConfig;
+import com.tusoapps.welcome.ui.widget.SimpleViewPagerIndicator;
 import com.tusoapps.welcome.util.SharedPreferencesHelper;
 
 public abstract class WelcomeActivity extends AppCompatActivity {
@@ -57,8 +58,11 @@ public abstract class WelcomeActivity extends AppCompatActivity {
             }
         });
 
+        SimpleViewPagerIndicator indicator = (SimpleViewPagerIndicator) findViewById(R.id.pager_indicator);
+        indicator.setViewPager(mViewPager);
+
         buttonManager = new ButtonManager(mViewPager, new ButtonSet(skip, next, done));
-       buttonManager.onPageSelected(mViewPager.getCurrentItem());
+        buttonManager.onPageSelected(mViewPager.getCurrentItem());
     }
 
     private void nextPage() {
