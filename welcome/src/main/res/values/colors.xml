@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="text_primary_theme_dark">#fff</color>
+    <color name="text_primary_theme_light">#000</color>
+    <color name="divider_color_theme_dark">#33ffffff</color>
+    <color name="divider_color_theme_light">#22000000</color>
+</resources>
