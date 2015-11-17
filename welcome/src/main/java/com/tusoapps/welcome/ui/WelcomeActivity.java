@@ -10,8 +10,10 @@ import android.view.View;
 
 import com.tusoapps.welcome.R;
 import com.tusoapps.welcome.config.WelcomeScreenConfig;
-import com.tusoapps.welcome.ui.widget.SimpleViewPagerIndicator;
+import com.tusoapps.welcome.ui.view.WelcomeScreenBackgroundView;
+import com.tusoapps.welcome.ui.view.WelcomeScreenViewPagerIndicator;
 import com.tusoapps.welcome.util.SharedPreferencesHelper;
+import com.tusoapps.welcome.util.WelcomeScreenHider;
 
 public abstract class WelcomeActivity extends AppCompatActivity {
 
@@ -19,15 +21,14 @@ public abstract class WelcomeActivity extends AppCompatActivity {
     WelcomeFragmentPagerAdapter mAdapter;
     WelcomeScreenConfig mConfiguration;
 
-    ButtonManager buttonManager;
+    WelcomeScreenItemList mItems = new WelcomeScreenItemList();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        super.setTheme(R.style.WelcomeScreenTheme);
+        mConfiguration = configuration();
+        super.setTheme(mConfiguration.getThemeResId());
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_welcome);
-
-        mConfiguration = configuration();
 
         mAdapter = new WelcomeFragmentPagerAdapter(getSupportFragmentManager());
 
@@ -38,7 +39,7 @@ public abstract class WelcomeActivity extends AppCompatActivity {
         skip.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                welcomed();
+                finishWelcomeScreen();
             }
         });
 
@@ -54,30 +55,59 @@ public abstract class WelcomeActivity extends AppCompatActivity {
         done.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                welcomed();
+                finishWelcomeScreen();
             }
         });
 
-        SimpleViewPagerIndicator indicator = (SimpleViewPagerIndicator) findViewById(R.id.pager_indicator);
-        indicator.setViewPager(mViewPager);
+        WelcomeScreenViewPagerIndicator indicator = (WelcomeScreenViewPagerIndicator) findViewById(R.id.pager_indicator);
+        WelcomeScreenBackgroundView background = (WelcomeScreenBackgroundView) findViewById(R.id.background_view);
 
-        buttonManager = new ButtonManager(mViewPager, new ButtonSet(skip, next, done));
-        buttonManager.onPageSelected(mViewPager.getCurrentItem());
+        WelcomeScreenHider hider = new WelcomeScreenHider(findViewById(R.id.root));
+        hider.setOnViewHiddenListener(new WelcomeScreenHider.OnViewHiddenListener() {
+            @Override
+            public void onViewHidden() {
+                finishWelcomeScreen();
+            }
+        });
+
+        mItems = new WelcomeScreenItemList(background, indicator, skip, next, done, hider);
+        mViewPager.addOnPageChangeListener(mItems);
+        mViewPager.setCurrentItem(mConfiguration.firstPageIndex());
+        mItems.setup(mConfiguration);
+        mItems.onPageSelected(mViewPager.getCurrentItem());
     }
 
-    private void nextPage() {
-        mViewPager.setCurrentItem(mViewPager.getCurrentItem() + 1);
+    private boolean nextPage() {
+        int difference = mConfiguration.isRtl() ? -1 : 1;
+        int pageToScrollTo = mViewPager.getCurrentItem() + difference;
+        if (pageToScrollTo > mConfiguration.lastViewablePageIndex())
+            return false;
+        mViewPager.setCurrentItem(pageToScrollTo);
+        return true;
     }
 
-    private void welcomed() {
+    private boolean previousPage() {
+        int difference = mConfiguration.isRtl() ? 1 : -1;
+        int pageToScrollTo = mViewPager.getCurrentItem() + difference;
+        if (pageToScrollTo < mConfiguration.firstPageIndex())
+            return false;
+        mViewPager.setCurrentItem(pageToScrollTo);
+        return true;
+    }
+
+    private void finishWelcomeScreen() {
         SharedPreferencesHelper.storeWelcomeCompleted(this);
         super.finish();
     }
 
     @Override
     public void onBackPressed() {
-        if (mConfiguration.getCanSkip())
-            welcomed();
+        if (mConfiguration.getCanSkip()) {
+            finishWelcomeScreen();
+        } else if (!previousPage()){
+            //TODO: Figure out a way to leave app
+        }
+
     }
 
     protected abstract WelcomeScreenConfig configuration();

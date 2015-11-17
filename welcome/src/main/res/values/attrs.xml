@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+   <declare-styleable name="SimpleViewPagerIndicator">
+       <attr name="currentPageColor" format="color"/>
+       <attr name="indicatorColor" format="color"/>
+       <attr name="animated" format="boolean"/>
+   </declare-styleable>
+
+    <declare-styleable name="Theme">
+        <attr name="buttonNextStyle" format="reference"/>
+        <attr name="flatButtonBackground" format="reference"/>
+        <attr name="indicatorStyle" format="reference"/>
+        <attr name="dividerColor" format="color"/>
+        <attr name="dividerHeight" format="dimension"/>
+        <attr name="dividerHorizontalMargin" format="dimension"/>
+    </declare-styleable>
+    
+</resources>

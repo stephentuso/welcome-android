@@ -8,4 +8,13 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="CustomWelcomeScreenTheme" parent="WelcomeScreenTheme.Light">
+        <item name="dividerColor">#00000000</item>
+        <item name="indicatorStyle">@style/CustomWelcomeScreenIndicator</item>
+    </style>
+
+    <style name="CustomWelcomeScreenIndicator" parent="SimpleViewPagerIndicator.Light">
+        <item name="animated">true</item>
+    </style>
+
 </resources>

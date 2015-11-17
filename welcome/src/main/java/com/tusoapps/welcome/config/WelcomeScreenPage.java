@@ -22,8 +22,8 @@ public class WelcomeScreenPage {
         return fragment;
     }
 
-    public int getBackgroundColorValue() {
-        return backgroundColor.value();
+    public BackgroundColor getBackgroundColor() {
+        return backgroundColor;
     }
 
 }

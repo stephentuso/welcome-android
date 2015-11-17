@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="ButtonNext.Dark">
+        <item name="android:src">@drawable/ic_chevron_left_white_24dp</item>
+    </style>
+
+    <style name="ButtonNext.Light">
+        <item name="android:src">@drawable/ic_chevron_left_black_24dp</item>
+    </style>
+
+</resources>

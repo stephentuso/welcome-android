@@ -1,12 +1,11 @@
 package com.tusoapps.welcome.ui;
 
 import android.view.View;
-import android.widget.Button;
 
 /**
  * Created by stephentuso on 11/15/15.
  */
-public class SkipButton extends WelcomeScreenButton{
+public class SkipButton extends WelcomeScreenViewWrapper {
 
     private boolean enabled = true;
 
@@ -18,8 +17,8 @@ public class SkipButton extends WelcomeScreenButton{
     }
 
     @Override
-    public void onPageSelected(int pageIndex, int maxPageIndex) {
-        setVisibility(enabled && pageIndex != maxPageIndex);
+    public void onPageSelected(int pageIndex, int lastPageIndex) {
+        setVisibility(enabled && pageIndex != lastPageIndex);
     }
 
 }

@@ -1,19 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <style name="WelcomeScreenBaseTheme" parent="Theme.AppCompat.Light.NoActionBar">
+    <style name="WelcomeScreenBaseTheme" parent="Theme.AppCompat.Dialog">
 
     </style>
 
     <style name="WelcomeScreenTheme" parent="WelcomeScreenBaseTheme">
         <item name="windowNoTitle">true</item>
         <item name="windowActionBar">false</item>
+        <item name="dividerHeight">1dp</item>
+        <item name="dividerHorizontalMargin">0dp</item>
         <item name="preferenceTheme">@style/PreferenceThemeOverlay</item>
+        <item name="android:textColorPrimary">@color/text_primary_theme_dark</item>
+        <item name="android:textColorSecondary">@color/text_primary_theme_dark</item>
+        <item name="buttonNextStyle">@style/ButtonNext.Dark</item>
+        <item name="flatButtonBackground">@drawable/button_borderless_background</item>
+        <item name="indicatorStyle">@style/SimpleViewPagerIndicator</item>
+        <item name="dividerColor">@color/divider_color_theme_dark</item>
+    </style>
+
+    <style name="WelcomeScreenTheme.Light">
+        <item name="android:textColorPrimary">@color/text_primary_theme_light</item>
+        <item name="android:textColorSecondary">@color/text_primary_theme_light</item>
+        <item name="buttonNextStyle">@style/ButtonNext.Light</item>
+        <item name="indicatorStyle">@style/SimpleViewPagerIndicator.Light</item>
+        <item name="dividerColor">@color/divider_color_theme_light</item>
+        <item name="flatButtonBackground">@drawable/button_borderless_background_theme_light</item>
     </style>
 
     <style name="WelcomeScreenText">
         <item name="android:textSize">16sp</item>
-        <item name="android:textColor">@color/text_primary_theme_dark</item>
+        <item name="android:textColor">?android:attr/textColorSecondary</item>
         <item name="android:layout_marginRight">@dimen/text_horizontal_margin</item>
         <item name="android:layout_marginLeft">@dimen/text_horizontal_margin</item>
         <item name="android:layout_marginBottom">16dp</item>
@@ -21,6 +38,7 @@
 
     <style name="WelcomeScreenText.Large">
         <item name="android:textSize">24sp</item>
+        <item name="android:textColor">?android:attr/textColorPrimary</item>
         <item name="android:layout_marginBottom">@dimen/title_bottom_margin</item>
     </style>
 
@@ -30,17 +48,38 @@
         <item name="android:layout_marginTop">@dimen/flat_button_vertical_margin</item>
         <item name="android:layout_marginRight">@dimen/flat_button_horizontal_margin</item>
         <item name="android:layout_marginBottom">@dimen/flat_button_vertical_margin</item>
+        <item name="android:textColor">?android:attr/textColorPrimary</item>
+        <item name="android:background">?attr/flatButtonBackground</item>
         <item name="android:padding">4dp</item>
     </style>
 
-    <style name="FlatButton.Dark">
-        <item name="android:textColor">@color/abc_primary_text_material_dark</item>
-        <item name="android:background">@drawable/button_borderless_background</item>
+    <style name="ButtonNext" parent="FlatButton">
+        <item name="android:src">@drawable/ic_chevron_right_white_24dp</item>
+    </style>
+
+    <style name="ButtonNext.Dark">
+        <item name="android:src">@drawable/ic_chevron_right_white_24dp</item>
+    </style>
+
+    <style name="ButtonNext.Light">
+        <item name="android:src">@drawable/ic_chevron_right_black_24dp</item>
     </style>
 
     <style name="TextContainer">
         <item name="android:paddingTop">@dimen/text_vertical_padding</item>
         <item name="android:paddingBottom">@dimen/text_vertical_padding</item>
+        <item name="android:fitsSystemWindows">true</item>
+    </style>
+
+    <style name="SimpleViewPagerIndicator">
+        <item name="indicatorColor">@color/indicator_color_secondary_theme_dark</item>
+        <item name="currentPageColor">@color/indicator_color_primary_theme_dark</item>
+        <item name="animated">false</item>
+    </style>
+
+    <style name="SimpleViewPagerIndicator.Light">
+        <item name="indicatorColor">@color/indicator_color_secondary_theme_light</item>
+        <item name="currentPageColor">@color/indicator_color_primary_theme_light</item>
     </style>
 
 </resources>

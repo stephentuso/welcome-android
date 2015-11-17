@@ -5,14 +5,14 @@ package com.tusoapps.welcome.ui;
  */
 public class ButtonSet {
 
-    private WelcomeScreenButton[] mButtons;
+    private WelcomeScreenViewWrapper[] mButtons;
 
-    public ButtonSet(WelcomeScreenButton... buttons) {
+    public ButtonSet(WelcomeScreenViewWrapper... buttons) {
         mButtons = buttons;
     }
 
     public void onPageSelected(int pageIndex, int maxPageIndex) {
-        for (WelcomeScreenButton button : mButtons) {
+        for (WelcomeScreenViewWrapper button : mButtons) {
             button.onPageSelected(pageIndex, maxPageIndex);
         }
     }

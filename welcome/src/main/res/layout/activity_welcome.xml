@@ -1,13 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout
+    android:id="@+id/root"
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:custom="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="com.tusoapps.welcome.ui.WelcomeActivity"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="false">
 
-    <View
+    <com.tusoapps.welcome.ui.view.WelcomeScreenBackgroundView
         android:id="@+id/background_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -27,8 +29,10 @@
 
         <View
             android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="@color/divider_color_theme_dark"/>
+            android:layout_height="?attr/dividerHeight"
+            android:background="?attr/dividerColor"
+            android:layout_marginRight="?attr/dividerHorizontalMargin"
+            android:layout_marginLeft="?attr/dividerHorizontalMargin"/>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -37,38 +41,37 @@
             android:gravity="center">
 
             <Button
-                style="@style/FlatButton.Dark"
+                style="@style/FlatButton"
                 android:id="@+id/button_skip"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/skip"/>
 
-            <com.tusoapps.welcome.ui.widget.SimpleViewPagerIndicator
+            <com.tusoapps.welcome.ui.view.WelcomeScreenViewPagerIndicator
                 android:id="@+id/pager_indicator"
                 android:layout_width="0dp"
-                android:layout_height="10dp"
-                android:layout_weight="1"/>
+                android:layout_height="20dp"
+                android:layout_weight="1"
+                style="?attr/indicatorStyle"/>
 
             <FrameLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content">
 
                 <Button
-                    style="@style/FlatButton.Dark"
+                    style="@style/FlatButton"
                     android:id="@+id/button_done"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/done"/>
 
                 <ImageButton
-                    style="@style/FlatButton.Dark"
+                    style="?attr/buttonNextStyle"
                     android:id="@+id/button_next"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/ic_navigate_next_white_24dp"/>
+                    android:layout_height="wrap_content"/>
+
             </FrameLayout>
-
-
 
         </LinearLayout>
 

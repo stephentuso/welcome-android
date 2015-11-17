@@ -28,6 +28,10 @@ public class Welcomer {
             startActivity();
     }
 
+    public void forceShow() {
+        startActivity();
+    }
+
     private void startActivity() {
         Intent intent = new Intent(mContext, mActivityClass);
         mContext.startActivity(intent);

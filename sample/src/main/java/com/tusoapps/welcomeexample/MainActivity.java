@@ -12,6 +12,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        new Welcomer(this, MyWelcomeActivity.class).show();
+        new Welcomer(this, MyWelcomeActivity.class).forceShow();
     }
 }
