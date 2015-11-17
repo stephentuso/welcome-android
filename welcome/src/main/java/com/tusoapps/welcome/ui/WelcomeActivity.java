@@ -77,7 +77,7 @@ public abstract class WelcomeActivity extends AppCompatActivity {
         mItems.onPageSelected(mViewPager.getCurrentItem());
     }
 
-    private boolean nextPage() {
+    private boolean nextPage() { //TODO: Fix this for RTL
         int difference = mConfiguration.isRtl() ? -1 : 1;
         int pageToScrollTo = mViewPager.getCurrentItem() + difference;
         if (pageToScrollTo > mConfiguration.lastViewablePageIndex())
@@ -86,7 +86,7 @@ public abstract class WelcomeActivity extends AppCompatActivity {
         return true;
     }
 
-    private boolean previousPage() {
+    private boolean previousPage() { //TODO: Fix this for RTL
         int difference = mConfiguration.isRtl() ? 1 : -1;
         int pageToScrollTo = mViewPager.getCurrentItem() + difference;
         if (pageToScrollTo < mConfiguration.firstPageIndex())
