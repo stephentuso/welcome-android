@@ -13,6 +13,7 @@ public class WelcomeScreenHider implements OnWelcomeScreenPageChangeListener {
     private View mView;
     private Integer mLastPage = null;
     private OnViewHiddenListener mListener = null;
+    private boolean enabled = false;
 
     public WelcomeScreenHider(View viewToHide) {
         mView = viewToHide;
@@ -28,11 +29,16 @@ public class WelcomeScreenHider implements OnWelcomeScreenPageChangeListener {
 
     @Override
     public void setup(WelcomeScreenConfig config) {
+        enabled = config.getSwipeToDismiss();
         mLastPage = config.lastPageIndex();
     }
 
     @Override
     public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+        if (!enabled)
+            return;
+
         if (position == mLastPage - 1) {
             mView.setAlpha(1-positionOffset);
         }

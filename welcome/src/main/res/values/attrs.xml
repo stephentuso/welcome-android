@@ -11,9 +11,12 @@
         <attr name="buttonNextStyle" format="reference"/>
         <attr name="flatButtonBackground" format="reference"/>
         <attr name="indicatorStyle" format="reference"/>
-        <attr name="dividerColor" format="color"/>
-        <attr name="dividerHeight" format="dimension"/>
+        <attr name="welcomeDividerStyle" format="reference"/>
+        <attr name="welcomeDividerHeight" format="dimension"/>
         <attr name="dividerHorizontalMargin" format="dimension"/>
+        <attr name="welcomeNormalTextStyle" format="reference"/>
+        <attr name="welcomeLargeTextStyle" format="reference"/>
+        <attr name="welcomeTitleTextStyle" format="reference"/>
     </declare-styleable>
     
 </resources>

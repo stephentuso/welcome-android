@@ -85,6 +85,11 @@ public class WelcomeScreenBuilder {
         return this;
     }
 
+    public WelcomeScreenBuilder backButtonSkips(boolean backButtonSkips) {
+        mConfig.setBackButtonSkips(backButtonSkips);
+        return this;
+    }
+
     public WelcomeScreenConfig build() {
         mConfig.finish();
         return mConfig;

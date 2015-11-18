@@ -17,13 +17,13 @@
         style="@style/TextContainer">
 
         <TextView
-            style="@style/WelcomeScreenText.Large"
+            style="?attr/welcomeLargeTextStyle"
             android:id="@+id/title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
 
         <TextView
-            style="@style/WelcomeScreenText"
+            style="?attr/welcomeNormalTextStyle"
             android:id="@+id/description"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>

@@ -1,14 +1,17 @@
 package com.tusoapps.welcome.ui;
 
+import android.content.Intent;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 
 import com.tusoapps.welcome.R;
+import com.tusoapps.welcome.Welcomer;
 import com.tusoapps.welcome.config.WelcomeScreenConfig;
 import com.tusoapps.welcome.ui.view.WelcomeScreenBackgroundView;
 import com.tusoapps.welcome.ui.view.WelcomeScreenViewPagerIndicator;
@@ -47,7 +50,7 @@ public abstract class WelcomeActivity extends AppCompatActivity {
         next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                nextPage();
+                scrollToNextPage();
             }
         });
 
@@ -77,35 +80,61 @@ public abstract class WelcomeActivity extends AppCompatActivity {
         mItems.onPageSelected(mViewPager.getCurrentItem());
     }
 
-    private boolean nextPage() { //TODO: Fix this for RTL
-        int difference = mConfiguration.isRtl() ? -1 : 1;
-        int pageToScrollTo = mViewPager.getCurrentItem() + difference;
-        if (pageToScrollTo > mConfiguration.lastViewablePageIndex())
+    private boolean scrollToNextPage() { //TODO: Fix this for RTL
+        Log.i("tag", ""+canScrollToNextPage());
+        if (!canScrollToNextPage())
             return false;
-        mViewPager.setCurrentItem(pageToScrollTo);
+        Log.i("Tag", mViewPager.getCurrentItem() + ", " + getNextPageIndex());
+        mViewPager.setCurrentItem(getNextPageIndex());
         return true;
     }
 
-    private boolean previousPage() { //TODO: Fix this for RTL
-        int difference = mConfiguration.isRtl() ? 1 : -1;
-        int pageToScrollTo = mViewPager.getCurrentItem() + difference;
-        if (pageToScrollTo < mConfiguration.firstPageIndex())
+    private boolean scrollToPreviousPage() { //TODO: Fix this for RTL
+        if (!canScrollToPreviousPage())
             return false;
-        mViewPager.setCurrentItem(pageToScrollTo);
+        mViewPager.setCurrentItem(getPreviousPageIndex());
         return true;
+    }
+
+    private int getNextPageIndex() {
+        return mViewPager.getCurrentItem() + (mConfiguration.isRtl() ? -1 : 1);
+    }
+
+    private int getPreviousPageIndex() {
+        return mViewPager.getCurrentItem() + (mConfiguration.isRtl() ? 1 : -1);
+    }
+
+    private boolean canScrollToNextPage() {
+        return mConfiguration.isRtl() ? getNextPageIndex() >= mConfiguration.lastViewablePageIndex() : getNextPageIndex() <= mConfiguration.lastViewablePageIndex();
+    }
+
+    private boolean canScrollToPreviousPage() {
+        return mConfiguration.isRtl() ? getPreviousPageIndex() <= mConfiguration.firstPageIndex() : getPreviousPageIndex() >= mConfiguration.firstPageIndex();
     }
 
     private void finishWelcomeScreen() {
         SharedPreferencesHelper.storeWelcomeCompleted(this);
+        sendBroadcast(Welcomer.ACTION_WELCOME_COMPLETED);
         super.finish();
+    }
+
+    private void sendBroadcast(String action) {
+        Intent broadcastIntent = new Intent();
+        broadcastIntent.setAction(action);
+        sendBroadcast(broadcastIntent);
     }
 
     @Override
     public void onBackPressed() {
-        if (mConfiguration.getCanSkip()) {
+
+        if (mConfiguration.getCanSkip() && mConfiguration.getBackButtonSkips()) {
             finishWelcomeScreen();
-        } else if (!previousPage()){
-            //TODO: Figure out a way to leave app
+            return;
+        }
+
+        if (!scrollToPreviousPage()){
+            sendBroadcast(Welcomer.ACTION_WELCOME_FAILED);
+            finish();
         }
 
     }

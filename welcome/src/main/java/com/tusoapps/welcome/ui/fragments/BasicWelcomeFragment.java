@@ -42,7 +42,7 @@ public class BasicWelcomeFragment extends Fragment {
             return view;
 
         ImageView imageView = (ImageView) view.findViewById(R.id.image);
-        //imageView.setImageResource(args.getInt(KEY_DRAWABLE_ID));
+        imageView.setImageResource(args.getInt(KEY_DRAWABLE_ID));
 
         TextView title = (TextView) view.findViewById(R.id.title);
         if (args.getString(KEY_TITLE) != null)

@@ -28,9 +28,9 @@
             android:layout_weight="1"/>
 
         <View
+            style="?attr/welcomeDividerStyle"
             android:layout_width="match_parent"
-            android:layout_height="?attr/dividerHeight"
-            android:background="?attr/dividerColor"
+            android:layout_height="?attr/welcomeDividerHeight"
             android:layout_marginRight="?attr/dividerHorizontalMargin"
             android:layout_marginLeft="?attr/dividerHorizontalMargin"/>
 

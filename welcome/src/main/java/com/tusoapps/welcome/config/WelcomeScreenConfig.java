@@ -26,12 +26,12 @@ public class WelcomeScreenConfig {
     }
 
     private WelcomeScreenPageList mPages = new WelcomeScreenPageList();
-    private boolean mCanSkip;
+    private boolean mCanSkip = true;
+    private boolean mBackButtonSkips = true;
     private BackgroundColor mDefaultBackgroundColor;
     private Context mContext;
     private int mThemeResId = Theme.DARK.resId;
     private boolean mSwipeToDismiss = false;
-    private boolean isFinished = false;
 
     public WelcomeScreenConfig(Context context) {
         mContext = context;
@@ -47,23 +47,19 @@ public class WelcomeScreenConfig {
     }
 
     public void setTheme(Theme theme) {
-        if (!isFinished)
-            mThemeResId = theme.resId;
+        mThemeResId = theme.resId;
     }
 
     public void setThemeResId(int resId) {
-        if (!isFinished)
-            mThemeResId = resId;
+        mThemeResId = resId;
     }
 
     public void setDefaultBackgroundColor(@ColorRes int resId) {
-        if (!isFinished)
-            ColorHelper.getColor(mContext, resId);
+        ColorHelper.getColor(mContext, resId);
     }
 
     public void setDefaultBackgroundColor(BackgroundColor color) {
-        if (!isFinished)
-            mDefaultBackgroundColor = color;
+        mDefaultBackgroundColor = color;
     }
 
     public void add(Fragment fragment, @ColorRes int resId) {
@@ -98,6 +94,14 @@ public class WelcomeScreenConfig {
         mCanSkip = canSkip;
     }
 
+    public void setBackButtonSkips(boolean backSkips) {
+        mBackButtonSkips = backSkips;
+    }
+
+    public boolean getBackButtonSkips() {
+        return mBackButtonSkips;
+    }
+
     public boolean getCanSkip() {
         return mCanSkip;
     }
@@ -110,6 +114,10 @@ public class WelcomeScreenConfig {
 
     public void setSwipeToDismiss(boolean swipe) {
         mSwipeToDismiss = swipe;
+    }
+
+    public boolean getSwipeToDismiss() {
+        return mSwipeToDismiss;
     }
 
     public boolean isRtl() {
