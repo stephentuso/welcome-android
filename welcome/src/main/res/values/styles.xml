@@ -8,7 +8,6 @@
     <style name="WelcomeScreenTheme" parent="WelcomeScreenBaseTheme">
         <item name="windowNoTitle">true</item>
         <item name="windowActionBar">false</item>
-        <item name="dividerHorizontalMargin">0dp</item>
         <item name="preferenceTheme">@style/PreferenceThemeOverlay</item>
         <item name="android:textColorPrimary">@color/text_primary_theme_dark</item>
         <item name="android:textColorSecondary">@color/text_primary_theme_dark</item>

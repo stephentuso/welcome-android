@@ -2,6 +2,7 @@ package com.tusoapps.welcome.config;
 
 import android.content.Context;
 import android.os.Build;
+import android.support.annotation.AnimRes;
 import android.support.annotation.ColorRes;
 import android.support.v4.app.Fragment;
 
@@ -32,6 +33,7 @@ public class WelcomeScreenConfig {
     private Context mContext;
     private int mThemeResId = Theme.DARK.resId;
     private boolean mSwipeToDismiss = false;
+    private int mExitAnimationResId = R.anim.fade_out;
 
     public WelcomeScreenConfig(Context context) {
         mContext = context;
@@ -138,6 +140,14 @@ public class WelcomeScreenConfig {
 
     public int getThemeResId() {
         return mThemeResId;
+    }
+
+    public void setExitAnimation(@AnimRes int resId) {
+        mExitAnimationResId = resId;
+    }
+
+    public int getExitAnimation() {
+        return mExitAnimationResId;
     }
 
     public void finish() {

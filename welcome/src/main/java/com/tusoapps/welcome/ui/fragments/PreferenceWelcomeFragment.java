@@ -1,4 +1,4 @@
-package com.tusoapps.welcome.ui;
+package com.tusoapps.welcome.ui.fragments;
 
 import android.os.Bundle;
 import android.support.v7.preference.PreferenceFragmentCompat;

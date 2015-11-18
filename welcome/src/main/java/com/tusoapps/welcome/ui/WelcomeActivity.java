@@ -29,6 +29,7 @@ public abstract class WelcomeActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         mConfiguration = configuration();
+        //overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
         super.setTheme(mConfiguration.getThemeResId());
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_welcome);
@@ -116,6 +117,7 @@ public abstract class WelcomeActivity extends AppCompatActivity {
         SharedPreferencesHelper.storeWelcomeCompleted(this);
         sendBroadcast(Welcomer.ACTION_WELCOME_COMPLETED);
         super.finish();
+        overridePendingTransition(R.anim.none, R.anim.fade_out);
     }
 
     private void sendBroadcast(String action) {

@@ -8,7 +8,7 @@ import android.support.v4.app.Fragment;
 import com.tusoapps.welcome.config.BackgroundColor;
 import com.tusoapps.welcome.config.WelcomeScreenConfig;
 import com.tusoapps.welcome.ui.fragments.BasicWelcomeFragment;
-import com.tusoapps.welcome.ui.PreferenceWelcomeFragment;
+import com.tusoapps.welcome.ui.fragments.PreferenceWelcomeFragment;
 import com.tusoapps.welcome.ui.fragments.TitleFragment;
 
 /**
