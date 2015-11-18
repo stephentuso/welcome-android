@@ -117,7 +117,7 @@ public abstract class WelcomeActivity extends AppCompatActivity {
         SharedPreferencesHelper.storeWelcomeCompleted(this);
         sendBroadcast(Welcomer.ACTION_WELCOME_COMPLETED);
         super.finish();
-        overridePendingTransition(R.anim.none, R.anim.fade_out);
+        overridePendingTransition(R.anim.none, mConfiguration.getExitAnimation());
     }
 
     private void sendBroadcast(String action) {
