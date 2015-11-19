@@ -1,6 +1,6 @@
 package com.tusoapps.welcome.ui;
 
-import com.tusoapps.welcome.config.WelcomeScreenConfig;
+import com.tusoapps.welcome.config.WelcomeScreenConfiguration;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -38,7 +38,7 @@ public class WelcomeScreenItemList implements OnWelcomeScreenPageChangeListener 
     }
 
     @Override
-    public void setup(WelcomeScreenConfig config) {
+    public void setup(WelcomeScreenConfiguration config) {
         for (OnWelcomeScreenPageChangeListener changeListener : mItems) {
             changeListener.setup(config);
         }

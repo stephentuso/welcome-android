@@ -2,7 +2,7 @@ package com.tusoapps.welcome.util;
 
 import android.view.View;
 
-import com.tusoapps.welcome.config.WelcomeScreenConfig;
+import com.tusoapps.welcome.config.WelcomeScreenConfiguration;
 import com.tusoapps.welcome.ui.OnWelcomeScreenPageChangeListener;
 
 /**
@@ -28,7 +28,7 @@ public class WelcomeScreenHider implements OnWelcomeScreenPageChangeListener {
     }
 
     @Override
-    public void setup(WelcomeScreenConfig config) {
+    public void setup(WelcomeScreenConfiguration config) {
         enabled = config.getSwipeToDismiss();
         mLastPage = config.lastPageIndex();
     }

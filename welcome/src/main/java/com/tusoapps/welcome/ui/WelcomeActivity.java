@@ -12,7 +12,7 @@ import android.view.View;
 
 import com.tusoapps.welcome.R;
 import com.tusoapps.welcome.Welcomer;
-import com.tusoapps.welcome.config.WelcomeScreenConfig;
+import com.tusoapps.welcome.config.WelcomeScreenConfiguration;
 import com.tusoapps.welcome.ui.view.WelcomeScreenBackgroundView;
 import com.tusoapps.welcome.ui.view.WelcomeScreenViewPagerIndicator;
 import com.tusoapps.welcome.util.SharedPreferencesHelper;
@@ -22,7 +22,7 @@ public abstract class WelcomeActivity extends AppCompatActivity {
 
     ViewPager mViewPager;
     WelcomeFragmentPagerAdapter mAdapter;
-    WelcomeScreenConfig mConfiguration;
+    WelcomeScreenConfiguration mConfiguration;
 
     WelcomeScreenItemList mItems = new WelcomeScreenItemList();
 
@@ -141,7 +141,7 @@ public abstract class WelcomeActivity extends AppCompatActivity {
 
     }
 
-    protected abstract WelcomeScreenConfig configuration();
+    protected abstract WelcomeScreenConfiguration configuration();
 
     private class WelcomeFragmentPagerAdapter extends FragmentPagerAdapter {
 

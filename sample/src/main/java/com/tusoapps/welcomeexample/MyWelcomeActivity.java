@@ -1,11 +1,10 @@
 package com.tusoapps.welcomeexample;
 
-import android.content.res.Configuration;
 import android.graphics.Color;
 
 import com.tusoapps.welcome.WelcomeScreenBuilder;
 import com.tusoapps.welcome.config.BackgroundColor;
-import com.tusoapps.welcome.config.WelcomeScreenConfig;
+import com.tusoapps.welcome.config.WelcomeScreenConfiguration;
 import com.tusoapps.welcome.ui.WelcomeActivity;
 
 /**
@@ -13,7 +12,7 @@ import com.tusoapps.welcome.ui.WelcomeActivity;
  */
 public class MyWelcomeActivity extends WelcomeActivity{
     @Override
-    protected WelcomeScreenConfig configuration() {
+    protected WelcomeScreenConfiguration configuration() {
         return new WelcomeScreenBuilder(this)
                 .theme(R.style.CustomWelcomeScreenTheme)
                 .defaultBackgroundColor(new BackgroundColor(Color.WHITE))

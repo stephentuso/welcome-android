@@ -6,7 +6,7 @@ import android.support.annotation.DrawableRes;
 import android.support.v4.app.Fragment;
 
 import com.tusoapps.welcome.config.BackgroundColor;
-import com.tusoapps.welcome.config.WelcomeScreenConfig;
+import com.tusoapps.welcome.config.WelcomeScreenConfiguration;
 import com.tusoapps.welcome.ui.fragments.BasicWelcomeFragment;
 import com.tusoapps.welcome.ui.fragments.PreferenceWelcomeFragment;
 import com.tusoapps.welcome.ui.fragments.TitleFragment;
@@ -16,34 +16,34 @@ import com.tusoapps.welcome.ui.fragments.TitleFragment;
  */
 public class WelcomeScreenBuilder {
 
-    private WelcomeScreenConfig mConfig;
+    private WelcomeScreenConfiguration.Parameters mConfigParams;
 
     public WelcomeScreenBuilder(Context context) {
-        mConfig = new WelcomeScreenConfig(context);
+        mConfigParams = new WelcomeScreenConfiguration.Parameters(context);
     }
 
     public WelcomeScreenBuilder swipeToDismiss(boolean swipeToDismiss) {
-        mConfig.setSwipeToDismiss(swipeToDismiss);
+        mConfigParams.setSwipeToDismiss(swipeToDismiss);
         return this;
     }
 
-    public WelcomeScreenBuilder theme(WelcomeScreenConfig.Theme theme) {
-        mConfig.setTheme(theme);
+    public WelcomeScreenBuilder theme(WelcomeScreenConfiguration.Theme theme) {
+        mConfigParams.setTheme(theme);
         return this;
     }
 
     public WelcomeScreenBuilder theme(int resId) {
-        mConfig.setThemeResId(resId);
+        mConfigParams.setThemeResId(resId);
         return this;
     }
 
     public WelcomeScreenBuilder defaultBackgroundColor(@ColorRes int resId) {
-        mConfig.setDefaultBackgroundColor(resId);
+        mConfigParams.setDefaultBackgroundColor(resId);
         return this;
     }
 
     public WelcomeScreenBuilder defaultBackgroundColor(BackgroundColor backgroundColor) {
-        mConfig.setDefaultBackgroundColor(backgroundColor);
+        mConfigParams.setDefaultBackgroundColor(backgroundColor);
         return this;
     }
 
@@ -52,12 +52,12 @@ public class WelcomeScreenBuilder {
     }
 
     public WelcomeScreenBuilder basicPage(@DrawableRes int drawableId, String title, String description, @ColorRes int colorResId) {
-        mConfig.add(BasicWelcomeFragment.newInstance(drawableId, title, description), colorResId);
+        mConfigParams.add(BasicWelcomeFragment.newInstance(drawableId, title, description), colorResId);
         return this;
     }
 
     public WelcomeScreenBuilder preferencePage(int preferencesResId, @ColorRes int colorResId) {
-        mConfig.add(PreferenceWelcomeFragment.newInstance(preferencesResId), colorResId);
+        mConfigParams.add(PreferenceWelcomeFragment.newInstance(preferencesResId), colorResId);
         return this;
     }
 
@@ -66,7 +66,7 @@ public class WelcomeScreenBuilder {
     }
 
     public WelcomeScreenBuilder titlePage(@DrawableRes int resId, String title, @ColorRes int colorResId) {
-        mConfig.add(TitleFragment.newInstance(resId, title), colorResId);
+        mConfigParams.add(TitleFragment.newInstance(resId, title), colorResId);
         return this;
     }
 
@@ -76,23 +76,22 @@ public class WelcomeScreenBuilder {
     }
 
     public WelcomeScreenBuilder page(Fragment fragment, @ColorRes int colorResId) {
-        mConfig.add(fragment, colorResId);
+        mConfigParams.add(fragment, colorResId);
         return this;
     }
 
     public WelcomeScreenBuilder canSkip(boolean canSkip) {
-        mConfig.setCanSkip(canSkip);
+        mConfigParams.setCanSkip(canSkip);
         return this;
     }
 
     public WelcomeScreenBuilder backButtonSkips(boolean backButtonSkips) {
-        mConfig.setBackButtonSkips(backButtonSkips);
+        mConfigParams.setBackButtonSkips(backButtonSkips);
         return this;
     }
 
-    public WelcomeScreenConfig build() {
-        mConfig.finish();
-        return mConfig;
+    public WelcomeScreenConfiguration build() {
+        return new WelcomeScreenConfiguration(mConfigParams);
     }
 
 }

@@ -2,7 +2,7 @@ package com.tusoapps.welcome.ui;
 
 import android.view.View;
 
-import com.tusoapps.welcome.config.WelcomeScreenConfig;
+import com.tusoapps.welcome.config.WelcomeScreenConfiguration;
 
 /**
  * Created by stephentuso on 11/15/15.
@@ -30,7 +30,7 @@ public abstract class WelcomeScreenViewWrapper implements OnWelcomeScreenPageCha
     public void onPageScrollStateChanged(int state) {}
 
     @Override
-    public void setup(WelcomeScreenConfig config) {
+    public void setup(WelcomeScreenConfiguration config) {
         mLastPageIndex = config.lastViewablePageIndex();
     }
 

@@ -3,7 +3,7 @@ package com.tusoapps.welcome.ui.view;
 import android.content.Context;
 import android.util.AttributeSet;
 
-import com.tusoapps.welcome.config.WelcomeScreenConfig;
+import com.tusoapps.welcome.config.WelcomeScreenConfiguration;
 import com.tusoapps.welcome.ui.OnWelcomeScreenPageChangeListener;
 
 /**
@@ -24,7 +24,7 @@ public class WelcomeScreenViewPagerIndicator extends SimpleViewPagerIndicator im
     }
 
     @Override
-    public void setup(WelcomeScreenConfig config) {
+    public void setup(WelcomeScreenConfiguration config) {
         setTotalPages(config.viewablePageCount());
     }
 }
