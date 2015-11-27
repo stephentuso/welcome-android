@@ -14,6 +14,9 @@ import com.tusoapps.welcome.util.ColorHelper;
  */
 public class WelcomeScreenConfiguration {
 
+    public static final int NO_ANIMATION = -1;
+    public static final String NO_TYPEFACE = "";
+
     public enum Theme {
         DARK(R.style.WelcomeScreenTheme),
         LIGHT(R.style.WelcomeScreenTheme_Light);
@@ -23,89 +26,6 @@ public class WelcomeScreenConfiguration {
         Theme(int resId) {
             this.resId = resId;
         }
-
-    }
-
-    public static class Parameters {
-
-        private WelcomeScreenPageList mPages = new WelcomeScreenPageList();
-        private boolean mCanSkip = true;
-        private boolean mBackButtonSkips = true;
-        private BackgroundColor mDefaultBackgroundColor;
-        private Context mContext;
-        private int mThemeResId = Theme.DARK.resId;
-        private boolean mSwipeToDismiss = false;
-        private int mExitAnimationResId = R.anim.fade_out;
-
-        public Parameters(Context context) {
-            mContext = context;
-            setDefaultBackgroundColor(mContext);
-        }
-
-        private void setDefaultBackgroundColor(Context context) {
-            final int standardBackgroundColor = ColorHelper.getColor(context, R.color.default_background_color);
-            int defaultBackgroundColor = ColorHelper.resolveColorAttribute(context, R.attr.colorPrimary, standardBackgroundColor);
-            if (defaultBackgroundColor == standardBackgroundColor && Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP)
-                defaultBackgroundColor = ColorHelper.resolveColorAttribute(context, android.R.attr.colorPrimary, defaultBackgroundColor);
-            mDefaultBackgroundColor = new BackgroundColor(defaultBackgroundColor, standardBackgroundColor);
-        }
-
-        public void setTheme(Theme theme) {
-            mThemeResId = theme.resId;
-        }
-
-        public void setThemeResId(int resId) {
-            mThemeResId = resId;
-        }
-
-
-        public void setDefaultBackgroundColor(@ColorRes int resId) {
-            ColorHelper.getColor(mContext, resId);
-        }
-
-        public void setDefaultBackgroundColor(BackgroundColor color) {
-            mDefaultBackgroundColor = color;
-        }
-
-
-        public void setCanSkip(boolean canSkip) {
-            mCanSkip = canSkip;
-        }
-
-        public void setBackButtonSkips(boolean backSkips) {
-            mBackButtonSkips = backSkips;
-        }
-
-        public void add(Fragment fragment, @ColorRes int resId) {
-            addPage(new WelcomeScreenPage(fragment, new BackgroundColor(getColor(resId), mDefaultBackgroundColor.value())));
-        }
-
-        public void setExitAnimation(@AnimRes int resId) {
-            mExitAnimationResId = resId;
-        }
-
-        public void addPage(WelcomeScreenPage page) {
-            if (isRtl()) {
-                mPages.add(0, page);
-            } else {
-                mPages.add(page);
-            }
-        }
-
-        public boolean isRtl() {
-            return mContext.getResources().getBoolean(R.bool.isRtl);
-        }
-
-        public void setSwipeToDismiss(boolean swipe) {
-            mSwipeToDismiss = swipe;
-        }
-
-        private Integer getColor(@ColorRes int resId) {
-            if (resId == 0)
-                return null;
-            return ColorHelper.getColor(mContext, resId);
-        }
-
     }
 
     private Parameters mParameters;
@@ -140,6 +60,10 @@ public class WelcomeScreenConfiguration {
         return mParameters.mBackButtonSkips;
     }
 
+    public String getButtonTypefacePath() {
+        return mParameters.mButtonTypefacePath;
+    }
+
     public boolean getCanSkip() {
         return mParameters.mCanSkip;
     }
@@ -172,7 +96,89 @@ public class WelcomeScreenConfiguration {
         return mParameters.mExitAnimationResId;
     }
 
-    public void finish() {
+
+    public static class Parameters {
+
+        private WelcomeScreenPageList mPages = new WelcomeScreenPageList();
+        private boolean mCanSkip = true;
+        private boolean mBackButtonSkips = true;
+        private BackgroundColor mDefaultBackgroundColor;
+        private Context mContext;
+        private int mThemeResId = Theme.DARK.resId;
+        private boolean mSwipeToDismiss = false;
+        private int mExitAnimationResId = NO_ANIMATION;
+        private String mButtonTypefacePath = NO_TYPEFACE;
+
+        public Parameters(Context context) {
+            mContext = context;
+            setDefaultBackgroundColor(mContext);
+        }
+
+        private void setDefaultBackgroundColor(Context context) {
+            final int standardBackgroundColor = ColorHelper.getColor(context, R.color.default_background_color);
+            int defaultBackgroundColor = ColorHelper.resolveColorAttribute(context, R.attr.colorPrimary, standardBackgroundColor);
+            if (defaultBackgroundColor == standardBackgroundColor && Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP)
+                defaultBackgroundColor = ColorHelper.resolveColorAttribute(context, android.R.attr.colorPrimary, defaultBackgroundColor);
+            mDefaultBackgroundColor = new BackgroundColor(defaultBackgroundColor, standardBackgroundColor);
+        }
+
+        public void setTheme(Theme theme) {
+            mThemeResId = theme.resId;
+        }
+
+        public void setThemeResId(int resId) {
+            mThemeResId = resId;
+        }
+
+        public void setButtonTypefacePath(String typefacePath) {
+            mButtonTypefacePath = typefacePath;
+        }
+
+        public void setDefaultBackgroundColor(@ColorRes int resId) {
+            ColorHelper.getColor(mContext, resId);
+        }
+
+        public void setDefaultBackgroundColor(BackgroundColor color) {
+            mDefaultBackgroundColor = color;
+        }
+
+        public void setCanSkip(boolean canSkip) {
+            mCanSkip = canSkip;
+        }
+
+        public void setBackButtonSkips(boolean backSkips) {
+            mBackButtonSkips = backSkips;
+        }
+
+        public void add(Fragment fragment, @ColorRes int resId) {
+            addPage(new WelcomeScreenPage(fragment, new BackgroundColor(getColor(resId), mDefaultBackgroundColor.value())));
+        }
+
+        public void setExitAnimation(@AnimRes int resId) {
+            mExitAnimationResId = resId;
+        }
+
+        public void addPage(WelcomeScreenPage page) {
+            if (isRtl()) {
+                mPages.add(0, page);
+            } else {
+                mPages.add(page);
+            }
+        }
+
+        private boolean isRtl() {
+            return mContext.getResources().getBoolean(R.bool.isRtl);
+        }
+
+        public void setSwipeToDismiss(boolean swipe) {
+            mSwipeToDismiss = swipe;
+        }
+
+        private Integer getColor(@ColorRes int resId) {
+            if (resId == 0)
+                return null;
+            return ColorHelper.getColor(mContext, resId);
+        }
 
     }
 
