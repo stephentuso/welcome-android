@@ -7,7 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
 
-import com.tusoapps.welcome.Welcomer;
+import com.tusoapps.welcome.WelcomeScreenShower;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -18,7 +18,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        welcomeScreenBroadcastReceiver = Welcomer.registerReceiver(this, new Welcomer.WelcomeActionListener() {
+        welcomeScreenBroadcastReceiver = WelcomeScreenShower.registerReceiver(this, new WelcomeScreenShower.WelcomeActionListener() {
             @Override
             public void welcomeCompleted() {
                 Toast.makeText(getApplicationContext(), "Completed", Toast.LENGTH_LONG).show();
@@ -35,16 +35,16 @@ public class MainActivity extends AppCompatActivity {
         findViewById(R.id.button_show).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                new Welcomer(activity, MyWelcomeActivity.class).forceShow();
+                new WelcomeScreenShower(activity, MyWelcomeActivity.class).forceShow();
             }
         });
 
-        new Welcomer(this, MyWelcomeActivity.class).show();
+        new WelcomeScreenShower(this, MyWelcomeActivity.class).show();
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        Welcomer.unregisterReceiver(this, welcomeScreenBroadcastReceiver);
+        WelcomeScreenShower.unregisterReceiver(this, welcomeScreenBroadcastReceiver);
     }
 }
