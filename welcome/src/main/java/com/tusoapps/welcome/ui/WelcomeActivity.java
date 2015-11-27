@@ -7,11 +7,10 @@ import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 
 import com.tusoapps.welcome.R;
-import com.tusoapps.welcome.Welcomer;
+import com.tusoapps.welcome.WelcomeScreenShower;
 import com.tusoapps.welcome.config.WelcomeScreenConfiguration;
 import com.tusoapps.welcome.ui.view.WelcomeScreenBackgroundView;
 import com.tusoapps.welcome.ui.view.WelcomeScreenViewPagerIndicator;
@@ -81,16 +80,14 @@ public abstract class WelcomeActivity extends AppCompatActivity {
         mItems.onPageSelected(mViewPager.getCurrentItem());
     }
 
-    private boolean scrollToNextPage() { //TODO: Fix this for RTL
-        Log.i("tag", ""+canScrollToNextPage());
+    private boolean scrollToNextPage() {
         if (!canScrollToNextPage())
             return false;
-        Log.i("Tag", mViewPager.getCurrentItem() + ", " + getNextPageIndex());
         mViewPager.setCurrentItem(getNextPageIndex());
         return true;
     }
 
-    private boolean scrollToPreviousPage() { //TODO: Fix this for RTL
+    private boolean scrollToPreviousPage() {
         if (!canScrollToPreviousPage())
             return false;
         mViewPager.setCurrentItem(getPreviousPageIndex());
@@ -115,7 +112,7 @@ public abstract class WelcomeActivity extends AppCompatActivity {
 
     private void finishWelcomeScreen() {
         SharedPreferencesHelper.storeWelcomeCompleted(this);
-        sendBroadcast(Welcomer.ACTION_WELCOME_COMPLETED);
+        sendBroadcast(WelcomeScreenShower.ACTION_WELCOME_COMPLETED);
         super.finish();
         overridePendingTransition(R.anim.none, mConfiguration.getExitAnimation());
     }
@@ -135,7 +132,7 @@ public abstract class WelcomeActivity extends AppCompatActivity {
         }
 
         if (!scrollToPreviousPage()){
-            sendBroadcast(Welcomer.ACTION_WELCOME_FAILED);
+            sendBroadcast(WelcomeScreenShower.ACTION_WELCOME_FAILED);
             finish();
         }
 
