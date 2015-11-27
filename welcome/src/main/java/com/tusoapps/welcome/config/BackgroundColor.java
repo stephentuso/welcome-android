@@ -6,6 +6,8 @@ import android.support.annotation.Nullable;
 
 /**
  * Created by stephentuso on 11/15/15.
+ *
+ * Wrapper for a color int
  */
 public class BackgroundColor {
 
