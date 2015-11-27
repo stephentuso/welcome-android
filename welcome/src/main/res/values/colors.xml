@@ -4,7 +4,7 @@
     <color name="text_primary_theme_light">#000</color>
     <color name="divider_color_theme_dark">#33ffffff</color>
     <color name="divider_color_theme_light">#22000000</color>
-    <color name="default_background_color">#1c81d9</color>
+    <color name="default_background_color">#1E88E5</color>
     <color name="indicator_color_primary_theme_dark">#99ffffff</color>
     <color name="indicator_color_secondary_theme_dark">#22000000</color>
     <color name="indicator_color_primary_theme_light">#99000000</color>
