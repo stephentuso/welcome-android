@@ -18,7 +18,7 @@ repositories {
 }
 
 dependencies {
-    compile 'compile 'com.stephentuso:welcome:0.1.0'
+    compile 'com.stephentuso:welcome:0.1.0'
 }
 
 ```
