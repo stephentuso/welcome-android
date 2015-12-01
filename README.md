@@ -5,6 +5,8 @@ WIP
 
 An easy to use and customizable welcome screen.
 
+I would not recommend using this in production quite yet, it is early in development and will receive many changes over the next week or two.
+
 Usage
 -----
 
