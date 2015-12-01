@@ -6,7 +6,7 @@ WIP
 An easy to use and customizable welcome screen.
 
 Usage
-=====
+-----
 
 In your `build.gradle`:
 
