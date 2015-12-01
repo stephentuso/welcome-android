@@ -1,0 +1,115 @@
+// Based on https://github.com/msdx/gradle-publish
+group = GROUP
+version = VERSION_NAME
+project.archivesBaseName = LIBRARY_ARTIFACT_ID
+
+apply plugin: 'com.jfrog.bintray'
+apply plugin: "com.jfrog.artifactory"
+apply plugin: 'maven-publish'
+
+task sourcesJar(type: Jar) {
+    from android.sourceSets.main.java.srcDirs
+    classifier = 'sources'
+}
+
+task javadoc(type: Javadoc) {
+    source = android.sourceSets.main.java.srcDirs
+    classpath += configurations.compile
+    classpath += project.files(android.getBootClasspath().join(File.pathSeparator))
+}
+
+task javadocJar(type: Jar, dependsOn: javadoc) {
+    classifier = 'javadoc'
+    from javadoc.destinationDir
+}
+
+javadoc {
+    options{
+        encoding "UTF-8"
+        charSet 'UTF-8'
+        author true
+        version true
+        links "http://docs.oracle.com/javase/7/docs/api"
+        title LIBRARY_ARTIFACT_ID
+    }
+}
+
+
+def pomConfig = {
+    licenses {
+        license {
+            name LIBRARY_LICENSE_NAME
+            url LIBRARY_LICENSE_URL
+            distribution LIBRARY_LICENSE_DIST
+        }
+    }
+    developers {
+        developer {
+            id DEVELOPER_ID
+            name DEVELOPER_NAME
+            email DEVELOPER_EMAIL
+        }
+    }
+}
+
+publishing {
+    publications {
+        mavenJava(MavenPublication) {
+            artifactId LIBRARY_ARTIFACT_ID
+            artifact javadocJar
+            artifact sourcesJar
+
+            pom{
+                packaging 'aar'
+            }
+            pom.withXml {
+                def root = asNode()
+                root.appendNode('description', LIBRARY_DESCRIPTION)
+                root.children().last() + pomConfig
+            }
+        }
+    }
+}
+
+afterEvaluate {
+    publishing.publications.mavenJava.artifact(bundleRelease)
+}
+
+bintray {
+    user = BINTRAY_USER
+    key = BINTRAY_API_KEY
+
+    publications = ['mavenJava']
+    publish = true
+
+    pkg {
+        repo = 'maven'
+        name = LIBRARY_NAME
+        desc = LIBRARY_DESCRIPTION
+        websiteUrl = LIBRARY_URL
+        vcsUrl = LIBRARY_VCS_URL
+        licenses = [BINTRAY_LICENSE]
+        publicDownloadNumbers = true
+    }
+}
+
+artifactory {
+    contextUrl = 'http://oss.jfrog.org/artifactory'
+    resolve {
+        repository {
+            repoKey = 'libs-release'
+        }
+    }
+    publish {
+        repository {
+            repoKey = 'oss-snapshot-local' //The Artifactory repository key to publish to
+            username = bintray.user
+            password = bintray.key
+            maven = true
+        }
+        defaults {
+            publications('mavenJava')
+            publishArtifacts = true
+        }
+    }
+}
