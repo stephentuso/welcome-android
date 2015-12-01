@@ -4,12 +4,12 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:custom="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context="com.tusoapps.welcome.ui.WelcomeActivity"
+    tools:context="com.stephentuso.welcome.ui.WelcomeActivity"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="false">
 
-    <com.tusoapps.welcome.ui.view.WelcomeScreenBackgroundView
+    <com.stephentuso.welcome.ui.view.WelcomeScreenBackgroundView
         android:id="@+id/background_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -45,7 +45,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/skip"/>
 
-            <com.tusoapps.welcome.ui.view.WelcomeScreenViewPagerIndicator
+            <com.stephentuso.welcome.ui.view.WelcomeScreenViewPagerIndicator
                 android:id="@+id/pager_indicator"
                 android:layout_width="0dp"
                 android:layout_height="20dp"
