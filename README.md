@@ -10,15 +10,11 @@ I would not recommend using this in production quite yet, it is early in develop
 Usage
 -----
 
+This library is available through jCenter.
+
 In your `build.gradle`:
 
 ```
-repositories {
-    maven {
-        url 'https://dl.bintray.com/stephentuso/maven'
-    }
-}
-
 dependencies {
     compile 'com.stephentuso:welcome:0.1.0'
 }
