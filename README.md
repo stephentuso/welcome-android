@@ -1,5 +1,5 @@
 Welcome [![GitHub version](https://badge.fury.io/gh/stephentuso%2Fwelcome-android.svg)](https://badge.fury.io/gh/stephentuso%2Fwelcome-android)
-=======
+===============================================================================================================================================
 
 WIP
 
@@ -23,6 +23,11 @@ dependencies {
 ```
 
 More info coming soon, for now look in `sample` to see implementation
+
+Todo
+----
+
+-	Find an alternative to using `BroadcastReceiver` for completed/failed events, otherwise figure out why using `LocalBroadcastManager` wouldn't work
 
 License
 =======
