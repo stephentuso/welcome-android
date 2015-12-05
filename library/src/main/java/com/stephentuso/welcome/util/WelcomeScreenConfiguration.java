@@ -16,7 +16,7 @@ import com.stephentuso.welcome.ui.BackgroundColor;
  */
 public class WelcomeScreenConfiguration {
 
-    public static final int NO_ANIMATION = -1;
+    public static final int NO_ANIMATION_SET = -1;
     public static final String NO_TYPEFACE = "";
 
     public enum Theme {
@@ -108,7 +108,7 @@ public class WelcomeScreenConfiguration {
         private Context mContext;
         private int mThemeResId = Theme.DARK.resId;
         private boolean mSwipeToDismiss = false;
-        private int mExitAnimationResId = NO_ANIMATION;
+        private int mExitAnimationResId = NO_ANIMATION_SET;
         private String mButtonTypefacePath = NO_TYPEFACE;
 
         public Parameters(Context context) {
