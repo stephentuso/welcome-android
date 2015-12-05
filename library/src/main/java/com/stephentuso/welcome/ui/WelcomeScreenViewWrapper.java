@@ -2,7 +2,7 @@ package com.stephentuso.welcome.ui;
 
 import android.view.View;
 
-import com.stephentuso.welcome.config.WelcomeScreenConfiguration;
+import com.stephentuso.welcome.util.WelcomeScreenConfiguration;
 
 /**
  * Created by stephentuso on 11/15/15.

@@ -1,4 +1,4 @@
-package com.stephentuso.welcome.config;
+package com.stephentuso.welcome.ui;
 
 import android.graphics.Color;
 import android.support.annotation.ColorInt;

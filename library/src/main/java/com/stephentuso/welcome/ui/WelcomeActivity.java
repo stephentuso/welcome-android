@@ -11,7 +11,7 @@ import android.view.View;
 
 import com.stephentuso.welcome.R;
 import com.stephentuso.welcome.WelcomeScreenShower;
-import com.stephentuso.welcome.config.WelcomeScreenConfiguration;
+import com.stephentuso.welcome.util.WelcomeScreenConfiguration;
 import com.stephentuso.welcome.ui.view.WelcomeScreenBackgroundView;
 import com.stephentuso.welcome.ui.view.WelcomeScreenViewPagerIndicator;
 import com.stephentuso.welcome.util.SharedPreferencesHelper;

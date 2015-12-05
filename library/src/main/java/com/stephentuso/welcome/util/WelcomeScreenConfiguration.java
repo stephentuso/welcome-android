@@ -1,4 +1,4 @@
-package com.stephentuso.welcome.config;
+package com.stephentuso.welcome.util;
 
 import android.content.Context;
 import android.os.Build;
@@ -7,7 +7,9 @@ import android.support.annotation.ColorRes;
 import android.support.v4.app.Fragment;
 
 import com.stephentuso.welcome.R;
-import com.stephentuso.welcome.util.ColorHelper;
+import com.stephentuso.welcome.ui.WelcomeScreenPage;
+import com.stephentuso.welcome.ui.WelcomeScreenPageList;
+import com.stephentuso.welcome.ui.BackgroundColor;
 
 /**
  * Created by stephentuso on 11/15/15.

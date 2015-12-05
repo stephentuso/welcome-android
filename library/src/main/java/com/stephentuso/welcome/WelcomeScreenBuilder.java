@@ -6,15 +6,15 @@ import android.support.annotation.DrawableRes;
 import android.support.annotation.StyleRes;
 import android.support.v4.app.Fragment;
 
-import com.stephentuso.welcome.config.BackgroundColor;
-import com.stephentuso.welcome.config.WelcomeScreenConfiguration;
+import com.stephentuso.welcome.ui.BackgroundColor;
+import com.stephentuso.welcome.util.WelcomeScreenConfiguration;
 import com.stephentuso.welcome.ui.fragments.BasicWelcomeFragment;
 import com.stephentuso.welcome.ui.fragments.TitleFragment;
 
 /**
  * Created by stephentuso on 11/16/15.
  *
- * Class that wraps a {@link com.stephentuso.welcome.config.WelcomeScreenConfiguration.Parameters WelcomeScreenConfiguration.Parameters}
+ * Class that wraps a {@link WelcomeScreenConfiguration.Parameters WelcomeScreenConfiguration.Parameters}
  * object and provides convenience methods that make it easy to create a WelcomeScreenConfiguration.
  */
 public class WelcomeScreenBuilder {

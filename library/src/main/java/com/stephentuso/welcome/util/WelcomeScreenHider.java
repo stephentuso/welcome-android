@@ -2,7 +2,6 @@ package com.stephentuso.welcome.util;
 
 import android.view.View;
 
-import com.stephentuso.welcome.config.WelcomeScreenConfiguration;
 import com.stephentuso.welcome.ui.OnWelcomeScreenPageChangeListener;
 
 /**

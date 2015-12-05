@@ -1,6 +1,8 @@
-package com.stephentuso.welcome.config;
+package com.stephentuso.welcome.ui;
 
 import android.support.v4.app.Fragment;
+
+import com.stephentuso.welcome.ui.BackgroundColor;
 
 /**
  * Created by stephentuso on 11/15/15.

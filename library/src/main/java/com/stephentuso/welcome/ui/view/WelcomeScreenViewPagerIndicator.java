@@ -3,7 +3,7 @@ package com.stephentuso.welcome.ui.view;
 import android.content.Context;
 import android.util.AttributeSet;
 
-import com.stephentuso.welcome.config.WelcomeScreenConfiguration;
+import com.stephentuso.welcome.util.WelcomeScreenConfiguration;
 import com.stephentuso.welcome.ui.OnWelcomeScreenPageChangeListener;
 
 /**

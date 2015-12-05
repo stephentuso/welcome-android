@@ -1,6 +1,9 @@
-package com.stephentuso.welcome.config;
+package com.stephentuso.welcome.ui;
 
 import android.support.v4.app.Fragment;
+
+import com.stephentuso.welcome.ui.BackgroundColor;
+import com.stephentuso.welcome.ui.WelcomeScreenPage;
 
 import java.util.ArrayList;
 import java.util.Arrays;

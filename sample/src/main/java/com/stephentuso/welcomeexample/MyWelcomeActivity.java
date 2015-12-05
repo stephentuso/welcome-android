@@ -3,8 +3,8 @@ package com.stephentuso.welcomeexample;
 import android.graphics.Color;
 
 import com.stephentuso.welcome.WelcomeScreenBuilder;
-import com.stephentuso.welcome.config.BackgroundColor;
-import com.stephentuso.welcome.config.WelcomeScreenConfiguration;
+import com.stephentuso.welcome.ui.BackgroundColor;
+import com.stephentuso.welcome.util.WelcomeScreenConfiguration;
 import com.stephentuso.welcome.ui.WelcomeActivity;
 
 /**

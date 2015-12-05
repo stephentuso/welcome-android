@@ -1,6 +1,6 @@
 package com.stephentuso.welcome.ui;
 
-import com.stephentuso.welcome.config.WelcomeScreenConfiguration;
+import com.stephentuso.welcome.util.WelcomeScreenConfiguration;
 
 import java.util.ArrayList;
 import java.util.Arrays;

@@ -7,7 +7,7 @@ import android.graphics.Rect;
 import android.util.AttributeSet;
 import android.view.View;
 
-import com.stephentuso.welcome.config.BackgroundColor;
+import com.stephentuso.welcome.ui.BackgroundColor;
 
 /**
  * Created by stephentuso on 11/16/15.
