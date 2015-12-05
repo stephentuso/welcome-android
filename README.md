@@ -28,6 +28,7 @@ Todo
 ----
 
 -	Find an alternative to using `BroadcastReceiver` for completed/failed events, otherwise figure out why using `LocalBroadcastManager` wouldn't work
+-	Make `swipeToDismiss` fade to transparency (showing the activity beneath) rather than white
 
 License
 =======
