@@ -8,11 +8,11 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
-    <style name="CustomWelcomeScreenTheme" parent="WelcomeScreenTheme.Light">
+    <style name="CustomWelcomeScreenTheme" parent="WelcomeScreenTheme">
         <item name="indicatorStyle">@style/CustomWelcomeScreenIndicator</item>
     </style>
 
-    <style name="CustomWelcomeScreenIndicator" parent="WelcomeScreenPageIndicator.Light">
+    <style name="CustomWelcomeScreenIndicator" parent="WelcomeScreenPageIndicator">
         <item name="animated">true</item>
     </style>
 
