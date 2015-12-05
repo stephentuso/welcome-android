@@ -1,4 +1,4 @@
-Welcome
+Welcome [![GitHub version](https://badge.fury.io/gh/stephentuso%2Fwelcome-android.svg)](https://badge.fury.io/gh/stephentuso%2Fwelcome-android)
 =======
 
 WIP
