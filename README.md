@@ -3,7 +3,9 @@ Welcome
 
 WIP
 
-An easy to use and customizable welcome screen.
+Note: Anyone who cloned this will need to make a fresh clone, I used [BFG](https://github.com/rtyley/bfg-repo-cleaner) to remove some unneeded files so all the commits are different from those in the original repository.
+
+An easy to use and customizable welcome screen for Android apps.
 
 I would not recommend using this in production quite yet, it is early in development and will receive many changes over the next week or two.
 
@@ -18,7 +20,6 @@ In your `build.gradle`:
 dependencies {
     compile 'com.stephentuso:welcome:0.1.0'
 }
-
 ```
 
 More info coming soon, for now look in `sample` to see implementation
