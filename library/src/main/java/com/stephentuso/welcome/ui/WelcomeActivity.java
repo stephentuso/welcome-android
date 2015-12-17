@@ -15,7 +15,6 @@ import com.stephentuso.welcome.util.WelcomeScreenConfiguration;
 import com.stephentuso.welcome.ui.view.WelcomeScreenBackgroundView;
 import com.stephentuso.welcome.ui.view.WelcomeScreenViewPagerIndicator;
 import com.stephentuso.welcome.util.SharedPreferencesHelper;
-import com.stephentuso.welcome.util.WelcomeScreenHider;
 import com.stephentuso.welcome.util.WelcomeUtils;
 
 public abstract class WelcomeActivity extends AppCompatActivity {
