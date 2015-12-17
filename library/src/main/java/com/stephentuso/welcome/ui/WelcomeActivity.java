@@ -12,7 +12,7 @@ import android.view.View;
 import com.stephentuso.welcome.R;
 import com.stephentuso.welcome.WelcomeCompletedEvent;
 import com.stephentuso.welcome.WelcomeFailedEvent;
-import com.stephentuso.welcome.WelcomeScreenShower;
+import com.stephentuso.welcome.WelcomeScreenHelper;
 import com.stephentuso.welcome.util.WelcomeScreenConfiguration;
 import com.stephentuso.welcome.ui.view.WelcomeScreenBackgroundView;
 import com.stephentuso.welcome.ui.view.WelcomeScreenViewPagerIndicator;
@@ -116,7 +116,7 @@ public abstract class WelcomeActivity extends AppCompatActivity {
 
     private void completeWelcomeScreen() {
         SharedPreferencesHelper.storeWelcomeCompleted(this, getKey());
-        sendBroadcast(WelcomeScreenShower.ACTION_WELCOME_COMPLETED);
+        sendBroadcast(WelcomeScreenHelper.ACTION_WELCOME_COMPLETED);
         EventBus.getDefault().post(new WelcomeCompletedEvent(getKey()));
         super.finish();
         if (mConfiguration.getExitAnimation() != WelcomeScreenConfiguration.NO_ANIMATION_SET)

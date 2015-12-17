@@ -20,7 +20,7 @@ import de.greenrobot.event.EventBus;
  * Created by stephentuso on 11/15/15.
  *
  */
-public class WelcomeScreenShower {
+public class WelcomeScreenHelper {
 
     public static final String ACTION_WELCOME_COMPLETED = "com.stephentuso.welcome.action_welcome_completed";
     public static final String ACTION_WELCOME_FAILED = "com.stephentuso.welcome.action_welcome_failed";
@@ -44,7 +44,7 @@ public class WelcomeScreenShower {
      * @param context Context
      * @param activityClass Class of an Activity that extends {@link com.stephentuso.welcome.ui.WelcomeActivity WelcomeActivity}
      */
-    public WelcomeScreenShower(Context context, Class<? extends WelcomeActivity> activityClass) {
+    public WelcomeScreenHelper(Context context, Class<? extends WelcomeActivity> activityClass) {
         mContext = context;
         mActivityClass = activityClass;
     }

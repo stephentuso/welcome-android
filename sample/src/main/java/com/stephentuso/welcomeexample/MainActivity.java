@@ -1,6 +1,5 @@
 package com.stephentuso.welcomeexample;
 
-import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -9,7 +8,7 @@ import android.widget.Toast;
 
 import com.stephentuso.welcome.WelcomeCompletedEvent;
 import com.stephentuso.welcome.WelcomeFailedEvent;
-import com.stephentuso.welcome.WelcomeScreenShower;
+import com.stephentuso.welcome.WelcomeScreenHelper;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -18,16 +17,16 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        WelcomeScreenShower.register(this);
+        WelcomeScreenHelper.register(this);
 
-        new WelcomeScreenShower(this, MyWelcomeActivity.class).show();
+        new WelcomeScreenHelper(this, MyWelcomeActivity.class).show();
 
         final Context activity = this;
 
         findViewById(R.id.button_show).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                new WelcomeScreenShower(activity, MyWelcomeActivity.class).forceShow();
+                new WelcomeScreenHelper(activity, MyWelcomeActivity.class).forceShow();
             }
         });
 
@@ -36,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        WelcomeScreenShower.unregister(this);
+        WelcomeScreenHelper.unregister(this);
     }
 
     public void onEvent(WelcomeCompletedEvent event) {
