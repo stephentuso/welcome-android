@@ -16,6 +16,7 @@ import com.stephentuso.welcome.ui.view.WelcomeScreenBackgroundView;
 import com.stephentuso.welcome.ui.view.WelcomeScreenViewPagerIndicator;
 import com.stephentuso.welcome.util.SharedPreferencesHelper;
 import com.stephentuso.welcome.util.WelcomeScreenHider;
+import com.stephentuso.welcome.util.WelcomeUtils;
 
 public abstract class WelcomeActivity extends AppCompatActivity {
 
@@ -111,7 +112,7 @@ public abstract class WelcomeActivity extends AppCompatActivity {
     }
 
     private void finishWelcomeScreen() {
-        SharedPreferencesHelper.storeWelcomeCompleted(this);
+        SharedPreferencesHelper.storeWelcomeCompleted(this, WelcomeUtils.getKey(this.getClass()));
         sendBroadcast(WelcomeScreenShower.ACTION_WELCOME_COMPLETED);
         super.finish();
         if (mConfiguration.getExitAnimation() != WelcomeScreenConfiguration.NO_ANIMATION_SET)

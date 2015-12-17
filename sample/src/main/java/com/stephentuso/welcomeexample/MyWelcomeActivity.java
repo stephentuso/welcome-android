@@ -10,7 +10,8 @@ import com.stephentuso.welcome.ui.WelcomeActivity;
 /**
  * Created by stephentuso on 11/15/15.
  */
-public class MyWelcomeActivity extends WelcomeActivity{
+public class MyWelcomeActivity extends WelcomeActivity {
+
     @Override
     protected WelcomeScreenConfiguration configuration() {
         return new WelcomeScreenBuilder(this)
@@ -23,4 +24,10 @@ public class MyWelcomeActivity extends WelcomeActivity{
                 .swipeToDismiss(true)
                 .build();
     }
+
+
+    public static String welcomeKey() {
+        return "WelcomeScreen";
+    }
+
 }

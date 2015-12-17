@@ -5,9 +5,14 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.util.Log;
 import android.widget.TextView;
 
+import com.stephentuso.welcome.ui.WelcomeActivity;
 import com.stephentuso.welcome.util.SharedPreferencesHelper;
+import com.stephentuso.welcome.util.WelcomeUtils;
+
+import java.io.InvalidClassException;
 
 /**
  * Created by stephentuso on 11/15/15.
@@ -31,20 +36,19 @@ public class WelcomeScreenShower {
     }
 
     Context mContext;
-    Class<?> mActivityClass;
+    Class<? extends WelcomeActivity> mActivityClass;
 
     /**
      * @param context Context
      * @param activityClass Class of an Activity that extends {@link com.stephentuso.welcome.ui.WelcomeActivity WelcomeActivity}
      */
-    public WelcomeScreenShower(Context context, Class<?> activityClass) {
+    public WelcomeScreenShower(Context context, Class<? extends WelcomeActivity> activityClass) {
         mContext = context;
         mActivityClass = activityClass;
-        new TextView(context);
     }
 
     private boolean shouldShow() {
-        return !SharedPreferencesHelper.welcomeScreenCompleted(mContext);
+        return !SharedPreferencesHelper.welcomeScreenCompleted(mContext, WelcomeUtils.getKey(mActivityClass));
     }
 
     /**
