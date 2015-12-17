@@ -7,28 +7,20 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
 
+import com.stephentuso.welcome.WelcomeCompletedEvent;
+import com.stephentuso.welcome.WelcomeFailedEvent;
 import com.stephentuso.welcome.WelcomeScreenShower;
 
 public class MainActivity extends AppCompatActivity {
-
-    BroadcastReceiver welcomeScreenBroadcastReceiver;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        welcomeScreenBroadcastReceiver = WelcomeScreenShower.registerReceiver(this, new WelcomeScreenShower.WelcomeActionListener() {
-            @Override
-            public void welcomeCompleted() {
-                Toast.makeText(getApplicationContext(), "Completed", Toast.LENGTH_LONG).show();
-            }
+        WelcomeScreenShower.register(this);
 
-            @Override
-            public void welcomeFailed() {
-                Toast.makeText(getApplicationContext(), "Failed", Toast.LENGTH_LONG).show();
-            }
-        });
+        new WelcomeScreenShower(this, MyWelcomeActivity.class).show();
 
         final Context activity = this;
 
@@ -39,12 +31,21 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        new WelcomeScreenShower(this, MyWelcomeActivity.class).show();
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        WelcomeScreenShower.unregisterReceiver(this, welcomeScreenBroadcastReceiver);
+        WelcomeScreenShower.unregister(this);
     }
+
+    public void onEvent(WelcomeCompletedEvent event) {
+        Toast.makeText(getApplicationContext(), event.welcomeScreenKey + " completed", Toast.LENGTH_SHORT).show();
+    }
+
+    public void onEvent(WelcomeFailedEvent event) {
+        Toast.makeText(getApplicationContext(), event.welcomeScreenKey + " failed", Toast.LENGTH_SHORT).show();
+    }
+
+
 }

@@ -15,3 +15,11 @@
 #-keepclassmembers class fqcn.of.javascript.interface.for.webview {
 #   public *;
 #}
+
+-keepclassmembers class * extends com.stephentuso.welcome.ui.WelcomeActivity {
+    public static String welcomeKey();
+}
+
+-keepclassmembers class ** {
+    public void onEvent*(***);
+}

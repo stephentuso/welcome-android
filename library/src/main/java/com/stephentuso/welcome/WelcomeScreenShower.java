@@ -14,6 +14,8 @@ import com.stephentuso.welcome.util.WelcomeUtils;
 
 import java.io.InvalidClassException;
 
+import de.greenrobot.event.EventBus;
+
 /**
  * Created by stephentuso on 11/15/15.
  *
@@ -72,12 +74,14 @@ public class WelcomeScreenShower {
     }
 
     /**
+     * @deprecated
      * Register a broadcast receiver in the provided Activity that listens to messages from the welcome screen and
      * calls the corresponding method in the provided listener when it receives one.
      * @param activity
      * @param listener
      * @return
      */
+    @Deprecated
     public static BroadcastReceiver registerReceiver(Activity activity, final WelcomeActionListener listener) {
         IntentFilter filter = new IntentFilter();
         filter.addAction(ACTION_WELCOME_COMPLETED);
@@ -101,13 +105,35 @@ public class WelcomeScreenShower {
     }
 
     /**
+     * @deprecated
      * Unregisters the provided BroadcastReceiver from the provided Activity
      * @param activity Activity to unregister the receiver from
      * @param receiver Receiver to unregister
      */
+    @Deprecated
     public static void unregisterReceiver(Activity activity, BroadcastReceiver receiver) {
         activity.unregisterReceiver(receiver);
         //LocalBroadcastManager.getInstance(activity).unregisterReceiver(receiver);
+    }
+
+    /**
+     * Registers the given object to the event bus.
+     * This should usually be called in an {@link android.app.Activity Activity} or
+     * {@link android.app.Fragment Fragment}'s onCreate method.
+     * @param object The subscriber to register to the event bus.
+     */
+    public static void register(Object object) {
+        EventBus.getDefault().register(object);
+    }
+
+    /**
+     * Unregisters the given object from the event bus.
+     * This should usually be called in an {@link android.app.Activity Activity} or
+     * {@link android.app.Fragment Fragment}'s onDestroy method.
+     * @param object The subscriber to unregister from the event bus.
+     */
+    public static void unregister(Object object) {
+        EventBus.getDefault().unregister(object);
     }
 
 }
