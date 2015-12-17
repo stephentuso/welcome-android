@@ -18,7 +18,7 @@ Gradle:
 Usage
 -----
 
-There are two steps to using this library:
+A basic welcome screen can be added in two steps:
 
 1.	Extend WelcomeActivity and implement `configuration()`
 2.	Start the welcome screen
