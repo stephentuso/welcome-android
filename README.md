@@ -58,7 +58,6 @@ Todo
 
 -	Make `swipeToDismiss` fade to transparency (showing the activity beneath) rather than white
 -	Complete PreferenceWelcomeFragment
--	Add fade animation to button visibility changes (hide/show methods in WelcomeScreenViewWrapper)
 
 License
 -------
