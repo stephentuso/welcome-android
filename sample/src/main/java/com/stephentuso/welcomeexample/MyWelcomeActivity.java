@@ -22,6 +22,7 @@ public class MyWelcomeActivity extends WelcomeActivity {
                 .canSkip(true)
                 .backButtonSkips(false)
                 .swipeToDismiss(true)
+                .exitAnimation(android.R.anim.fade_out)
                 .build();
     }
 
