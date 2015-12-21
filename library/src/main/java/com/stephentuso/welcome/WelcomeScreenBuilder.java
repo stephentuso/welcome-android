@@ -1,6 +1,7 @@
 package com.stephentuso.welcome;
 
 import android.content.Context;
+import android.support.annotation.AnimRes;
 import android.support.annotation.ColorRes;
 import android.support.annotation.DrawableRes;
 import android.support.annotation.StyleRes;
@@ -60,10 +61,20 @@ public class WelcomeScreenBuilder {
     /**
      * Set whether or not the buttons fade out/in when changing visibilty
      * @param animateButtons True to animate buttons, false to not
-     * @return
+     * @return this WelcomeScreenBuilder
      */
     public WelcomeScreenBuilder animateButtons(boolean animateButtons) {
         mConfigParams.setAnimateButtons(animateButtons);
+        return this;
+    }
+
+    /**
+     * Set the animation that is used when the welcome screen closes
+     * @param exitAnimation The animation to use
+     * @return this WelcomeScreenBuilder
+     */
+    public WelcomeScreenBuilder exitAnimation(@AnimRes int exitAnimation) {
+        mConfigParams.setExitAnimation(exitAnimation);
         return this;
     }
 
