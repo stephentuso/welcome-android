@@ -9,6 +9,7 @@ public class DoneButton extends WelcomeScreenViewWrapper {
 
     public DoneButton(View button) {
         super(button);
+        hideImmediately();
     }
 
     @Override

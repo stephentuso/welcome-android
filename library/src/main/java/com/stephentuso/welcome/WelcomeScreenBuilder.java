@@ -58,6 +58,16 @@ public class WelcomeScreenBuilder {
     }
 
     /**
+     * Set whether or not the buttons fade out/in when changing visibilty
+     * @param animateButtons True to animate buttons, false to not
+     * @return
+     */
+    public WelcomeScreenBuilder animateButtons(boolean animateButtons) {
+        mConfigParams.setAnimateButtons(animateButtons);
+        return this;
+    }
+
+    /**
      * Sets the theme of the welcome screen (Default is dark)
      * @param theme The theme to be used
      * @return this WelcomeScreenBuilder

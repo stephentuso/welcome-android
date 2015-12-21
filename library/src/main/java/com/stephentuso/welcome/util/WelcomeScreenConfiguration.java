@@ -20,7 +20,13 @@ public class WelcomeScreenConfiguration {
     public static final String NO_TYPEFACE = "";
 
     public enum Theme {
+        /**
+         * Dark background, light text
+         */
         DARK(R.style.WelcomeScreenTheme),
+        /**
+         * Light background, dark text
+         */
         LIGHT(R.style.WelcomeScreenTheme_Light);
 
         private int resId;
@@ -98,6 +104,9 @@ public class WelcomeScreenConfiguration {
         return mParameters.mExitAnimationResId;
     }
 
+    public boolean getAnimateButtons() {
+        return mParameters.animateButtons;
+    }
 
     public static class Parameters {
 
@@ -110,6 +119,7 @@ public class WelcomeScreenConfiguration {
         private boolean mSwipeToDismiss = false;
         private int mExitAnimationResId = NO_ANIMATION_SET;
         private String mButtonTypefacePath = NO_TYPEFACE;
+        private boolean animateButtons = true;
 
         public Parameters(Context context) {
             mContext = context;
@@ -174,6 +184,10 @@ public class WelcomeScreenConfiguration {
 
         public void setSwipeToDismiss(boolean swipe) {
             mSwipeToDismiss = swipe;
+        }
+
+        public void setAnimateButtons(boolean animateButtons) {
+            this.animateButtons = animateButtons;
         }
 
         private Integer getColor(@ColorRes int resId) {
