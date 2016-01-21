@@ -9,7 +9,7 @@ Some parts of this library are still works in progress.
 
 ![Sample video](https://raw.githubusercontent.com/stephentuso/welcome-android/master/media/sample-video.gif)
 
-*A video of the included sample app.*
+*Look in the [sample](https://github.com/stephentuso/welcome-android/blob/master/sample/src/main/java/com/stephentuso/welcomeexample/MyWelcomeActivity.java) to see how the above welcome screen is defined.*
 
 -	Easily customizable
 -	RTL support
@@ -55,9 +55,9 @@ protected WelcomeScreenConfiguration configuration() {
     return new WelcomeScreenBuilder(this)
             .defaultBackgroundColor(R.color.background)
             .titlePage(R.drawable.logo, "Title")
+            .page(new YourCustomFragmentHere())
             .basicPage(R.drawable.photo1, "Header", "More text.", R.color.red)
             .basicPage(R.drawable.photo2, "Lorem ipsum", "dolor sit amet.")
-            .page(new YourCustomFragmentHere())
             .swipeToDismiss(true)
             .build();
 }
@@ -93,13 +93,19 @@ You can add styles as shown below. Optional items are in square brackets.
 
 ```
 <style name="CustomWelcomeScreenTheme" parent="WelcomeScreenTheme[.Light]">
-        <item name="welcomeIndicatorStyle">@style/MyWelcomeIndicator</item>
-        <item name="welcomeButtonNextStyle">@style/MyButtonNext</item>
-        <item name="welcomeButtonBackground">drawable</item>
-        <item name="welcomeDividerStyle">@style/MyWelcomeScreenDivider</item>
-        <item name="welcomeNormalTextStyle">@style/MyNormalText</item>
-        <item name="welcomeLargeTextStyle">@style/MyLargeText</item>
-        <item name="welcomeTitleTextStyle">@style/MyTitleText</item>
+
+    <!-- Color of button text and titles/headings (in built in fragments) -->
+    <item name="android:textColorPrimary">color</item>
+    <!-- Color of other text -->
+    <item name="android:textColorSecondary">color</item>
+
+    <item name="welcomeIndicatorStyle">@style/MyWelcomeIndicator</item>
+    <item name="welcomeButtonNextStyle">@style/MyButtonNext</item>
+    <item name="welcomeButtonBackground">drawable</item>
+    <item name="welcomeDividerStyle">@style/MyWelcomeScreenDivider</item>
+    <item name="welcomeNormalTextStyle">@style/MyNormalText</item>
+    <item name="welcomeLargeTextStyle">@style/MyLargeText</item>
+    <item name="welcomeTitleTextStyle">@style/MyTitleText</item>
 </style>
 
 <style name="MyWelcomeIndicator" parent="WelcomeScreenPageIndicator[.Light]">
@@ -108,10 +114,12 @@ You can add styles as shown below. Optional items are in square brackets.
     <item name="animated">true|false</item>
 </style>
 
+<!-- Use this to change the image used for the next button. If you want to support RTL, add this in values-ldrtl/styles with a different image -->
 <style name="MyButtonNext" parent="WelcomeScreenNextButton[.Dark|.Light]">
     <item name="android:src">drawable</item>
 </style>
 
+<!-- A divider that is directly above the buttons/indicator. The background color is transparent by default -->
 <style name="MyWelcomeScreenDivider" parent="WelcomeScreenDivider[.Dark|.Light]">
     <item name="android:background">drawable|color</item>
     <item name="android:layout_height">dimen</item>
@@ -125,6 +133,8 @@ You can add styles as shown below. Optional items are in square brackets.
 ```
 
 Apply your theme to a welcome screen in its `configuration()` by calling `WelcomeScreenBuilder.theme(int)`, passing your theme as the parameter.
+
+For now, there isn't a way to change the typefaces in the supplied fragments, you will have to use your own fragments to do that.
 
 #### Events (WIP)
 
@@ -150,11 +160,11 @@ protected void onDestroy() {
 }
 
 public void onEvent(WelcomeCompletedEvent event) {
-    // Code here will run when the welcome screen has completed or has been skipped.
+    // Code here will run when the welcome screen has completed or has been skipped. Access the key of the welcome screen with event.welcomeScreenKey
 }
 
 public void onEvent(WelcomeFailedEvent event) {
-    // Code here will run when the welcome screen can't be skipped and the back button was pressed on the first page.
+    // Code here will run when the welcome screen can't be skipped and the back button was pressed on the first page. Access the key of the welcome screen with event.welcomeScreenKey
 }
 ```
 
