@@ -132,13 +132,9 @@ public abstract class WelcomeActivity extends AppCompatActivity {
     @Override
     public void onBackPressed() {
 
-        if (mConfiguration.getCanSkip() && mConfiguration.getBackButtonSkips()) {
+        if (mConfiguration.getCanSkip() && (mConfiguration.getBackButtonSkips() || !scrollToPreviousPage())) {
             completeWelcomeScreen();
-            return;
-        }
-
-        if (!scrollToPreviousPage()){
-            //sendBroadcast(WelcomeScreenShower.ACTION_WELCOME_FAILED);
+        } else if (!mConfiguration.getCanSkip() && !scrollToPreviousPage()){
             EventBus.getDefault().post(new WelcomeFailedEvent(getKey()));
             finish();
         }
