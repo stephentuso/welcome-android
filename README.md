@@ -12,7 +12,7 @@ This library is available through jCenter.
 Gradle:
 
 ```
-    compile 'com.stephentuso:welcome:0.2.0'
+    compile 'com.stephentuso:welcome:0.2.1'
 ```
 
 Usage
