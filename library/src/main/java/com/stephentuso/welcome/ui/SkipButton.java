@@ -13,7 +13,7 @@ public class SkipButton extends WelcomeScreenViewWrapper {
         super(button);
         this.enabled = enabled;
         if (!enabled)
-            button.setVisibility(View.GONE);
+            button.setVisibility(View.INVISIBLE);
     }
 
     @Override
