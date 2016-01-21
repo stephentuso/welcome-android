@@ -5,8 +5,6 @@ branches:
   only:
     - master
 
-script: "./gradlew clean assembleDebug"
-
 android:
   components:
       - tools
