@@ -89,7 +89,7 @@
 
     <style name="WelcomeScreenDivider">
         <item name="android:background">#00000000</item>
-        <item name="android:height">1dp</item>
+        <item name="android:layout_height">1dp</item>
     </style>
     
     <style name="WelcomeScreenDivider.Light">
