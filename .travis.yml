@@ -5,12 +5,12 @@ branches:
   only:
     - master
 
-script: "./gradlew clean assembleDebug"
-
 android:
   components:
-      - platform-tools
       - tools
+      - platform-tools
       - build-tools-23.0.2
       - android-23
+      - extra-android-support
       - extra-android-m2repository
+      - extra-google-m2repository
