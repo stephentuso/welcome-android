@@ -1,5 +1,6 @@
 package com.stephentuso.welcome.ui;
 
+import android.os.Build;
 import android.view.View;
 
 import com.stephentuso.welcome.ui.OnWelcomeScreenPageChangeListener;
@@ -39,7 +40,7 @@ public class WelcomeScreenHider implements OnWelcomeScreenPageChangeListener {
         if (!enabled)
             return;
 
-        if (position == mLastPage - 1) {
+        if (Build.VERSION.SDK_INT >= 11 && position == mLastPage - 1) {
             mView.setAlpha(1-positionOffset);
         }
 
