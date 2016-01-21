@@ -100,8 +100,8 @@ afterEvaluate {
 }
 
 bintray {
-    user = BINTRAY_USER ?: ""
-    key = BINTRAY_API_KEY ?: ""
+    user = project.hasProperty("BINTRAY_USER") ? BINTRAY_USER : ""
+    key = project.hasProperty("BINTRAY_API_KEY") ? BINTRAY_API_KEY : ""
 
     publications = ['mavenJava']
     publish = true
