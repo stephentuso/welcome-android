@@ -35,7 +35,7 @@ public class SimpleViewPagerIndicator extends View implements ViewPager.OnPageCh
     }
 
     public SimpleViewPagerIndicator(Context context, AttributeSet attrs) {
-        this(context, attrs, R.attr.indicatorStyle);
+        this(context, attrs, R.attr.welcomeIndicatorStyle);
     }
 
     public SimpleViewPagerIndicator(Context context, AttributeSet attrs, int defStyleAttr) {

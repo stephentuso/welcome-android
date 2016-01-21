@@ -8,11 +8,10 @@
    </declare-styleable>
 
     <declare-styleable name="Theme">
-        <attr name="buttonNextStyle" format="reference"/>
-        <attr name="flatButtonBackground" format="reference"/>
-        <attr name="indicatorStyle" format="reference"/>
+        <attr name="welcomeButtonNextStyle" format="reference"/>
+        <attr name="welcomeButtonBackground" format="reference"/>
+        <attr name="welcomeIndicatorStyle" format="reference"/>
         <attr name="welcomeDividerStyle" format="reference"/>
-        <attr name="welcomeDividerHeight" format="dimension"/>
         <attr name="welcomeNormalTextStyle" format="reference"/>
         <attr name="welcomeLargeTextStyle" format="reference"/>
         <attr name="welcomeTitleTextStyle" format="reference"/>

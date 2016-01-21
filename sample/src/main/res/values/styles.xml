@@ -9,11 +9,16 @@
     </style>
 
     <style name="CustomWelcomeScreenTheme" parent="WelcomeScreenTheme">
-        <item name="indicatorStyle">@style/CustomWelcomeScreenIndicator</item>
+        <item name="welcomeIndicatorStyle">@style/CustomWelcomeScreenIndicator</item>
+        <item name="welcomeTitleTextStyle">@style/CustomWelcomeScreenTitle</item>
     </style>
 
     <style name="CustomWelcomeScreenIndicator" parent="WelcomeScreenPageIndicator">
         <item name="animated">true</item>
+    </style>
+
+    <style name="CustomWelcomeScreenTitle" parent="WelcomeScreenText.Large.Title">
+        <item name="android:textSize">30sp</item>
     </style>
 
 </resources>

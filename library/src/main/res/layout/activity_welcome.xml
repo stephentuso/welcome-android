@@ -29,8 +29,7 @@
 
         <View
             style="?attr/welcomeDividerStyle"
-            android:layout_width="match_parent"
-            android:layout_height="?attr/welcomeDividerHeight"/>
+            android:layout_width="match_parent"/>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -39,7 +38,7 @@
             android:gravity="center">
 
             <Button
-                style="@style/FlatButton"
+                style="@style/WelcomeScreenButton"
                 android:id="@+id/button_skip"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -50,21 +49,21 @@
                 android:layout_width="0dp"
                 android:layout_height="20dp"
                 android:layout_weight="1"
-                style="?attr/indicatorStyle"/>
+                style="?attr/welcomeIndicatorStyle"/>
 
             <FrameLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content">
 
                 <Button
-                    style="@style/FlatButton"
+                    style="@style/WelcomeScreenButton"
                     android:id="@+id/button_done"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/done"/>
 
                 <ImageButton
-                    style="?attr/buttonNextStyle"
+                    style="?attr/welcomeButtonNextStyle"
                     android:id="@+id/button_next"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"/>
