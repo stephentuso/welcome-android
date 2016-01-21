@@ -1,29 +1,51 @@
 Welcome
 =======
 
-[![GitHub version](https://badge.fury.io/gh/stephentuso%2Fwelcome-android.svg)](https://badge.fury.io/gh/stephentuso%2Fwelcome-android)
+[![GitHub version](https://badge.fury.io/gh/stephentuso%2Fwelcome-android.svg)](https://badge.fury.io/gh/stephentuso%2Fwelcome-android) [![Build Status](https://travis-ci.org/stephentuso/welcome-android.svg?branch=master)](https://travis-ci.org/stephentuso/welcome-android)
 
 An easy to use and customizable welcome screen for Android apps.
 
-I would not recommend using this in production quite yet, it is early in development and will receive many changes over the next week or two.
+Some parts of this library are still works in progress.
+
+![Sample video](https://raw.githubusercontent.com/stephentuso/welcome-android/master/media/sample-video.gif)
+
+*A video of the included sample app.*
+
+-	Easily customizable
+-	RTL support
+-	Ability to use built in layouts or custom fragments
+
+Adding to your project
+----------------------
 
 This library is available through jCenter.
 
 Gradle:
 
 ```
-    compile 'com.stephentuso:welcome:0.2.2'
+compile 'com.stephentuso:welcome:0.2.3'
+```
+
+If you use proguard, add the following to your proguard rules
+
+```
+-keepclassmembers class * extends com.stephentuso.welcome.ui.WelcomeActivity {
+    public static String welcomeKey();
+}
+
+-keepclassmembers class ** {
+    public void onEvent*(***);
+}
 ```
 
 Usage
 -----
 
+### Basic
+
 A basic welcome screen can be added in two steps:
 
-1.	Extend WelcomeActivity and implement `configuration()`
-2.	Start the welcome screen
-
-### Step 1
+#### Extend WelcomeActivity
 
 To create a welcome screen, add a class to your project that extends `WelcomeActivity` (don't forget to add it to your AndroidManifest), and override the `configuration()` method. You can use `WelcomeScreenBuilder` to easily set it up:
 
@@ -41,7 +63,7 @@ protected WelcomeScreenConfiguration configuration() {
 }
 ```
 
-### Step 2
+#### Show the welcome screen
 
 Welcome screens are started with `WelcomeScreenHelper`. Put the class of your welcome screen in the second argument of the constructor.
 
@@ -51,7 +73,94 @@ new WelcomeScreenHelper(this, MyWelcomeActivity.class).show();
 
 You can call this from your launcher activity's onCreate or onStart. This will only show the welcome screen if the user hasn't completed it yet.
 
-To see a full implementation of this library, look in the sample folder. More documentation will be coming soon.
+### More options
+
+#### Welcome screen keys
+
+You can assign keys (Make sure they are unique!) to welcome screens by adding the following to a class that extends `WelcomeActivity`.
+
+```
+public static String welcomeKey() {
+        return "Your unique key";
+    }
+```
+
+Only change this to a new value if you want everyone who has already used your app to see the welcome screen again! This key is used to determine whether or not to show the welcome screen. This could be useful if you use multiple welcome screens, or if you have updated one and want to show it again.
+
+#### Styling
+
+You can add styles as shown below. Optional items are in square brackets.
+
+```
+<style name="CustomWelcomeScreenTheme" parent="WelcomeScreenTheme[.Light]">
+        <item name="welcomeIndicatorStyle">@style/MyWelcomeIndicator</item>
+        <item name="welcomeButtonNextStyle">@style/MyButtonNext</item>
+        <item name="welcomeButtonBackground">drawable</item>
+        <item name="welcomeDividerStyle">@style/MyWelcomeScreenDivider</item>
+        <item name="welcomeNormalTextStyle">@style/MyNormalText</item>
+        <item name="welcomeLargeTextStyle">@style/MyLargeText</item>
+        <item name="welcomeTitleTextStyle">@style/MyTitleText</item>
+</style>
+
+<style name="MyWelcomeIndicator" parent="WelcomeScreenPageIndicator[.Light]">
+<item name="indicatorColor">color</item>
+    <item name="currentPageColor">color</item>
+    <item name="animated">true|false</item>
+</style>
+
+<style name="MyButtonNext" parent="WelcomeScreenNextButton[.Dark|.Light]">
+    <item name="android:src">drawable</item>
+</style>
+
+<style name="MyWelcomeScreenDivider" parent="WelcomeScreenDivider[.Dark|.Light]">
+    <item name="android:background">drawable|color</item>
+    <item name="android:layout_height">dimen</item>
+</style>
+
+<!-- The following can apply to any of the three text styles -->
+<style name="MyText" parent="WelcomeScreenText[.Large[.Title]]">
+    <!-- Add any properties that can be applied to a TextView -->
+</style>
+
+```
+
+Apply your theme to a welcome screen in its `configuration()` by calling `WelcomeScreenBuilder.theme(int)`, passing your theme as the parameter.
+
+#### Events (WIP)
+
+You can listen for the result of a welcome screen in the activity you start it from.
+
+-	Call `WelcomeScreenHelper.register(this)` in `onCreate`
+-	Call `WelcomeScreenHelper.unregister(this)` in `onDestroy`
+-	Add the two `onEvent` methods as shown below
+
+```
+@Override
+protected void onCreate(Bundle savedInstanceState) {
+    ...
+    WelcomeScreenHelper.register(this);
+    new WelcomeScreenHelper(this, MyWelcomeActivity.class).show();
+    ...
+}
+
+@Override
+protected void onDestroy() {
+    ...
+    WelcomeScreenHelper.unregister(this);
+}
+
+public void onEvent(WelcomeCompletedEvent event) {
+    // Code here will run when the welcome screen has completed or has been skipped.
+}
+
+public void onEvent(WelcomeFailedEvent event) {
+    // Code here will run when the welcome screen can't be skipped and the back button was pressed on the first page.
+}
+```
+
+The failure event is mostly meant to be used when you don't want users to use the app without going through the welcome screen. If you wanted that, you could close the app in the failure method.
+
+Please note that these will not be called if resources are low and the activity they are in gets destroyed in the background.
 
 Todo
 ----
