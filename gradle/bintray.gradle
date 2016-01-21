@@ -100,8 +100,8 @@ afterEvaluate {
 }
 
 bintray {
-    user = BINTRAY_USER
-    key = BINTRAY_API_KEY
+    user = BINTRAY_USER ?: ""
+    key = BINTRAY_API_KEY ?: ""
 
     publications = ['mavenJava']
     publish = true
