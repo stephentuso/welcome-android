@@ -114,12 +114,14 @@ You can add styles as shown below. Optional items are in square brackets.
     <item name="animated">true|false</item>
 </style>
 
-<!-- Use this to change the image used for the next button. If you want to support RTL, add this in values-ldrtl/styles with a different image -->
+<!-- Use this to change the image used for the next button.
+If you want to support RTL, add this in values-ldrtl/styles with a different image -->
 <style name="MyButtonNext" parent="WelcomeScreenNextButton[.Dark|.Light]">
     <item name="android:src">drawable</item>
 </style>
 
-<!-- A divider that is directly above the buttons/indicator. The background color is transparent by default -->
+<!-- A divider that is directly above the buttons/indicator.
+The background color is transparent by default -->
 <style name="MyWelcomeScreenDivider" parent="WelcomeScreenDivider[.Dark|.Light]">
     <item name="android:background">drawable|color</item>
     <item name="android:layout_height">dimen</item>
