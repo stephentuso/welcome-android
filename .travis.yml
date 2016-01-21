@@ -5,6 +5,8 @@ branches:
   only:
     - master
 
+script: "./gradlew build"
+
 android:
   components:
       - tools
