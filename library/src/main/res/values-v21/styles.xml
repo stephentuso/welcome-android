@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <style name="WelcomeScreenBaseTheme" parent="android:Theme.Material.Light.NoActionBar.TranslucentDecor">
+    <style name="WelcomeScreenBaseTheme" parent="android:Theme.Material.NoActionBar.TranslucentDecor">
 
     </style>
 
