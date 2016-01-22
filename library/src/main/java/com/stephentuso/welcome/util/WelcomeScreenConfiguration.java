@@ -7,9 +7,9 @@ import android.support.annotation.ColorRes;
 import android.support.v4.app.Fragment;
 
 import com.stephentuso.welcome.R;
+import com.stephentuso.welcome.ui.BackgroundColor;
 import com.stephentuso.welcome.ui.WelcomeScreenPage;
 import com.stephentuso.welcome.ui.WelcomeScreenPageList;
-import com.stephentuso.welcome.ui.BackgroundColor;
 
 /**
  * Created by stephentuso on 11/15/15.
@@ -105,7 +105,11 @@ public class WelcomeScreenConfiguration {
     }
 
     public boolean getAnimateButtons() {
-        return mParameters.animateButtons;
+        return mParameters.mAnimateButtons;
+    }
+
+    public boolean getUseCustomDoneButton() {
+        return mParameters.mUseCustomDoneButton;
     }
 
     public static class Parameters {
@@ -119,7 +123,8 @@ public class WelcomeScreenConfiguration {
         private boolean mSwipeToDismiss = false;
         private int mExitAnimationResId = NO_ANIMATION_SET;
         private String mButtonTypefacePath = NO_TYPEFACE;
-        private boolean animateButtons = true;
+        private boolean mAnimateButtons = true;
+        private boolean mUseCustomDoneButton = false;
 
         public Parameters(Context context) {
             mContext = context;
@@ -187,7 +192,11 @@ public class WelcomeScreenConfiguration {
         }
 
         public void setAnimateButtons(boolean animateButtons) {
-            this.animateButtons = animateButtons;
+            this.mAnimateButtons = animateButtons;
+        }
+
+        public void setUseCustomDoneButton(boolean useCustomDoneButton) {
+            this.mUseCustomDoneButton = useCustomDoneButton;
         }
 
         private Integer getColor(@ColorRes int resId) {

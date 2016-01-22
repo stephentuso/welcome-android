@@ -8,9 +8,9 @@ import android.support.annotation.StyleRes;
 import android.support.v4.app.Fragment;
 
 import com.stephentuso.welcome.ui.BackgroundColor;
-import com.stephentuso.welcome.util.WelcomeScreenConfiguration;
 import com.stephentuso.welcome.ui.fragments.BasicWelcomeFragment;
 import com.stephentuso.welcome.ui.fragments.TitleFragment;
+import com.stephentuso.welcome.util.WelcomeScreenConfiguration;
 
 /**
  * Created by stephentuso on 11/16/15.
@@ -65,6 +65,18 @@ public class WelcomeScreenBuilder {
      */
     public WelcomeScreenBuilder animateButtons(boolean animateButtons) {
         mConfigParams.setAnimateButtons(animateButtons);
+        return this;
+    }
+
+    /**
+     * Indicate that a done button is going to be provided in a custom fragment.
+     * Use {@link com.stephentuso.welcome.ui.WelcomeScreenFinisher#finish() WelcomeScreenFinisher.finish()} in the done button's onClickListener
+     * to close the welcome screen correctly.
+     * @param useCustomDoneButton
+     * @return
+     */
+    public WelcomeScreenBuilder useCustomDoneButton(boolean useCustomDoneButton) {
+        mConfigParams.setUseCustomDoneButton(useCustomDoneButton);
         return this;
     }
 

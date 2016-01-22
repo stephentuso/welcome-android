@@ -1,22 +1,22 @@
 package com.stephentuso.welcome.ui;
 
 import android.content.Intent;
+import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.view.View;
 
 import com.stephentuso.welcome.R;
 import com.stephentuso.welcome.WelcomeCompletedEvent;
 import com.stephentuso.welcome.WelcomeFailedEvent;
 import com.stephentuso.welcome.WelcomeScreenHelper;
-import com.stephentuso.welcome.util.WelcomeScreenConfiguration;
 import com.stephentuso.welcome.ui.view.WelcomeScreenBackgroundView;
 import com.stephentuso.welcome.ui.view.WelcomeScreenViewPagerIndicator;
 import com.stephentuso.welcome.util.SharedPreferencesHelper;
+import com.stephentuso.welcome.util.WelcomeScreenConfiguration;
 import com.stephentuso.welcome.util.WelcomeUtils;
 
 import de.greenrobot.event.EventBus;
@@ -114,7 +114,7 @@ public abstract class WelcomeActivity extends AppCompatActivity {
         return mConfiguration.isRtl() ? getPreviousPageIndex() <= mConfiguration.firstPageIndex() : getPreviousPageIndex() >= mConfiguration.firstPageIndex();
     }
 
-    private void completeWelcomeScreen() {
+    protected void completeWelcomeScreen() {
         SharedPreferencesHelper.storeWelcomeCompleted(this, getKey());
         sendBroadcast(WelcomeScreenHelper.ACTION_WELCOME_COMPLETED);
         EventBus.getDefault().post(new WelcomeCompletedEvent(getKey()));
