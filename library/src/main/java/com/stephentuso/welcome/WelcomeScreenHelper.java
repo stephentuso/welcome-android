@@ -25,6 +25,10 @@ public class WelcomeScreenHelper {
     public static final String ACTION_WELCOME_COMPLETED = "com.stephentuso.welcome.action_welcome_completed";
     public static final String ACTION_WELCOME_FAILED = "com.stephentuso.welcome.action_welcome_failed";
 
+    /**
+     * @deprecated
+     */
+    @Deprecated
     public interface WelcomeActionListener {
         /**
          * Called when the welcome screen is skipped (if enabled) or completed

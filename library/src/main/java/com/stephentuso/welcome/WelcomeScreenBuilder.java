@@ -15,8 +15,8 @@ import com.stephentuso.welcome.ui.fragments.TitleFragment;
 /**
  * Created by stephentuso on 11/16/15.
  *
- * Class that wraps a {@link WelcomeScreenConfiguration.Parameters WelcomeScreenConfiguration.Parameters}
- * object and provides convenience methods that make it easy to create a WelcomeScreenConfiguration.
+ * Class that wraps a {@link com.stephentuso.welcome.util.WelcomeScreenConfiguration.Parameters WelcomeScreenConfiguration.Parameters}
+ * object and provides a convenient way to create a {@link com.stephentuso.welcome.util.WelcomeScreenConfiguration WelcomeScreenConfiguration}.
  */
 public class WelcomeScreenBuilder {
 
@@ -29,7 +29,7 @@ public class WelcomeScreenBuilder {
     /**
      * Enables or disables swipe to dismiss (disabled by default)
      * @param swipeToDismiss True to enable swipe to dismiss, false to disable it
-     * @return this WelcomeScreenBuilder
+     * @return this WelcomeScreenBuilder object to allow method calls to be chained
      */
     public WelcomeScreenBuilder swipeToDismiss(boolean swipeToDismiss) {
         mConfigParams.setSwipeToDismiss(swipeToDismiss);
@@ -40,7 +40,7 @@ public class WelcomeScreenBuilder {
      * Sets whether or not the welcome screen can be skipped.
      * Skipping is allowed by default
      * @param canSkip True to allow skipping, false to disable it
-     * @return this WelcomeScreenBuilder
+     * @return this WelcomeScreenBuilder object to allow method calls to be chained
      */
     public WelcomeScreenBuilder canSkip(boolean canSkip) {
         mConfigParams.setCanSkip(canSkip);
@@ -51,7 +51,7 @@ public class WelcomeScreenBuilder {
      * Only applies if skipping is allowed. Sets whether or not the back button can skip the welcome screen.
      * This is enabled by default.
      * @param backButtonSkips True to allow the back button to skip the welcome screen, false to disable it
-     * @return this WelcomeScreenBuilder
+     * @return this WelcomeScreenBuilder object to allow method calls to be chained
      */
     public WelcomeScreenBuilder backButtonSkips(boolean backButtonSkips) {
         mConfigParams.setBackButtonSkips(backButtonSkips);
@@ -61,7 +61,7 @@ public class WelcomeScreenBuilder {
     /**
      * Set whether or not the buttons fade out/in when changing visibilty
      * @param animateButtons True to animate buttons, false to not
-     * @return this WelcomeScreenBuilder
+     * @return this WelcomeScreenBuilder object to allow method calls to be chained
      */
     public WelcomeScreenBuilder animateButtons(boolean animateButtons) {
         mConfigParams.setAnimateButtons(animateButtons);
@@ -71,7 +71,7 @@ public class WelcomeScreenBuilder {
     /**
      * Set the animation that is used when the welcome screen closes
      * @param exitAnimation The animation to use
-     * @return this WelcomeScreenBuilder
+     * @return this WelcomeScreenBuilder object to allow method calls to be chained
      */
     public WelcomeScreenBuilder exitAnimation(@AnimRes int exitAnimation) {
         mConfigParams.setExitAnimation(exitAnimation);
@@ -81,7 +81,7 @@ public class WelcomeScreenBuilder {
     /**
      * Sets the theme of the welcome screen (Default is dark)
      * @param theme The theme to be used
-     * @return this WelcomeScreenBuilder
+     * @return this WelcomeScreenBuilder object to allow method calls to be chained
      */
     public WelcomeScreenBuilder theme(WelcomeScreenConfiguration.Theme theme) {
         mConfigParams.setTheme(theme);
@@ -91,7 +91,7 @@ public class WelcomeScreenBuilder {
     /**
      * Sets the resource id of the theme used by the welcome screen
      * @param resId The style resource id of the theme to be used
-     * @return this WelcomeScreenBuilder
+     * @return this WelcomeScreenBuilder object to allow method calls to be chained
      */
     public WelcomeScreenBuilder theme(@StyleRes int resId) {
         mConfigParams.setThemeResId(resId);
@@ -103,7 +103,7 @@ public class WelcomeScreenBuilder {
      * Default is colorPrimary if available (support library or lollipop+), otherwise material blue 600
      *
      * @param resId The color resource id to use as the default background color
-     * @return this WelcomeScreenBuilder
+     * @return this WelcomeScreenBuilder object to allow method calls to be chained
      */
     public WelcomeScreenBuilder defaultBackgroundColor(@ColorRes int resId) {
         mConfigParams.setDefaultBackgroundColor(resId);
@@ -115,7 +115,7 @@ public class WelcomeScreenBuilder {
      * Default is colorPrimary if available (support library or lollipop+), otherwise material blue 600
      *
      * @param backgroundColor BackgroundColor to use as the default background color
-     * @return this WelcomeScreenBuilder
+     * @return this WelcomeScreenBuilder object to allow method calls to be chained
      */
     public WelcomeScreenBuilder defaultBackgroundColor(BackgroundColor backgroundColor) {
         mConfigParams.setDefaultBackgroundColor(backgroundColor);
@@ -127,7 +127,7 @@ public class WelcomeScreenBuilder {
      * @param drawableId The drawable resource id to use for the image
      * @param title Text for the header TextView
      * @param description Text for the description TextView
-     * @return this WelcomeScreenBuilder
+     * @return this WelcomeScreenBuilder object to allow method calls to be chained
      */
     public WelcomeScreenBuilder basicPage(@DrawableRes int drawableId, String title, String description) {
         return basicPage(drawableId, title, description, 0);
@@ -139,7 +139,7 @@ public class WelcomeScreenBuilder {
      * @param title Text for the header TextView
      * @param description Text for the description TextView
      * @param colorResId Ccolor resource id to be used as the background color
-     * @return this WelcomeScreenBuilder
+     * @return this WelcomeScreenBuilder object to allow method calls to be chained
      */
     public WelcomeScreenBuilder basicPage(@DrawableRes int drawableId, String title, String description, @ColorRes int colorResId) {
         mConfigParams.add(BasicWelcomeFragment.newInstance(drawableId, title, description), colorResId);
@@ -156,7 +156,7 @@ public class WelcomeScreenBuilder {
      * Adds a page with a large image and a title, uses the default background color
      * @param resId The drawable resource id of an image
      * @param title Text for the title TextView
-     * @return this WelcomeScreenBuilder
+     * @return this WelcomeScreenBuilder object to allow method calls to be chained
      */
     public WelcomeScreenBuilder titlePage(@DrawableRes int resId, String title) {
         return titlePage(resId, title, 0);
@@ -167,7 +167,7 @@ public class WelcomeScreenBuilder {
      * @param resId The drawable resource id of an image
      * @param title Text for the title TextView
      * @param colorResId Color resource id to be used as the background color
-     * @return this WelcomeScreenBuilder
+     * @return this WelcomeScreenBuilder object to allow method calls to be chained
      */
     public WelcomeScreenBuilder titlePage(@DrawableRes int resId, String title, @ColorRes int colorResId) {
         mConfigParams.add(TitleFragment.newInstance(resId, title), colorResId);
@@ -177,7 +177,7 @@ public class WelcomeScreenBuilder {
     /**
      * Adds a fragment, uses the default background color
      * @param fragment Fragment to add
-     * @return this WelcomeScreenBuilder
+     * @return this WelcomeScreenBuilder object to allow method calls to be chained
      */
     public WelcomeScreenBuilder page(Fragment fragment) {
         page(fragment, 0);
@@ -188,7 +188,7 @@ public class WelcomeScreenBuilder {
      * Adds a fragment
      * @param fragment Fragment to add
      * @param colorResId Color resource id to be used as the background color
-     * @return this WelcomeScreenBuilder
+     * @return this WelcomeScreenBuilder object to allow method calls to be chained
      */
     public WelcomeScreenBuilder page(Fragment fragment, @ColorRes int colorResId) {
         mConfigParams.add(fragment, colorResId);
@@ -196,7 +196,7 @@ public class WelcomeScreenBuilder {
     }
 
     /**
-     * @return A WelcomeScreenConfiguration using the parameters that have been set
+     * @return A {@link com.stephentuso.welcome.util.WelcomeScreenConfiguration WelcomeScreenConfiguration} with the parameters set on this object
      */
     public WelcomeScreenConfiguration build() {
         return new WelcomeScreenConfiguration(mConfigParams);
