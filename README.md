@@ -97,6 +97,10 @@ You can add styles as shown below. Optional items are in square brackets.
     <!-- Color of other text -->
     <item name="android:textColorSecondary">color</item>
 
+    <!-- Strings used for skip/done buttons -->
+    <item name="welcomeSkipButtonText">string</item>
+    <item name="welcomeDoneButtonText">string</item>
+
     <item name="welcomeIndicatorStyle">@style/MyWelcomeIndicator</item>
     <item name="welcomeButtonNextStyle">@style/MyButtonNext</item>
     <item name="welcomeButtonBackground">drawable</item>
