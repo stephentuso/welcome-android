@@ -1,6 +1,7 @@
 
 #!/bin/bash
-
+echo -e "Checking conditions..\n"
+echo "$TRAVIS_REPO_SLUG"
 if [ "$TRAVIS_REPO_SLUG" == "stephentuso/welcome-android" ] && [ "$TRAVIS_PULL_REQUEST" == "false" ] && [ "$TRAVIS_BRANCH" == "master" ]; then
 
   echo -e "Publishing javadoc...\n"
@@ -21,4 +22,6 @@ if [ "$TRAVIS_REPO_SLUG" == "stephentuso/welcome-android" ] && [ "$TRAVIS_PULL_R
 
   echo -e "Pushed javadoc to gh-pages.\n"
 
+else
+    echo -e "Not publishing javadoc.\n"
 fi
