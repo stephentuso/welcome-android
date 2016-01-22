@@ -13,7 +13,7 @@ import android.widget.TextView;
 import com.stephentuso.welcome.R;
 
 /**
- * A simple {@link Fragment} subclass.
+ * A simple fragment that shows an image and a title.
  * Use the {@link TitleFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
@@ -29,7 +29,7 @@ public class TitleFragment extends Fragment {
      * Use this factory method to create a new instance of
      * this fragment using the provided parameters.
      *
-     * @return A new instance of fragment TitleFragment.
+     * @return A new instance of TitleFragment.
      */
     // TODO: Rename and change types and number of parameters
     public static TitleFragment newInstance(@DrawableRes int resId, String title) {
