@@ -7,7 +7,8 @@
     tools:context="com.stephentuso.welcome.ui.WelcomeActivity"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fitsSystemWindows="false">
+    android:fitsSystemWindows="false"
+    android:background="@color/transparent">
 
     <com.stephentuso.welcome.ui.view.WelcomeScreenBackgroundView
         android:id="@+id/background_view"

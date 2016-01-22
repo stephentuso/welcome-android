@@ -15,4 +15,5 @@
     <color name="overscroll_color_theme_light">#33000000</color>
 
     <color name="transparent">#00000000</color>
+    <color name="white">#FFFFFF</color>
 </resources>
