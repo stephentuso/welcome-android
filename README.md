@@ -13,6 +13,8 @@ An easy to use and customizable welcome screen for Android apps.
 -	RTL support
 -	Ability to use built in layouts or custom fragments
 
+[Javadoc](http://stephentuso.github.io/welcome-android/javadoc/)
+
 Adding to your project
 ----------------------
 
