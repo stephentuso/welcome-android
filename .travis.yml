@@ -2,24 +2,28 @@
 language: android
 
 branches:
-  only:
-  - master
+    only:
+        - master
+
+jdk:
+    - oraclejdk7
+    - oraclejdk8
 
 script: "./gradlew build javadoc"
 
 android:
-  components:
-  - tools
-  - platform-tools
-  - build-tools-23.0.2
-  - android-23
-  - extra-android-support
-  - extra-android-m2repository
-  - extra-google-m2repository
+    components:
+        - tools
+        - platform-tools
+        - build-tools-23.0.2
+        - android-23
+        - extra-android-support
+        - extra-android-m2repository
+        - extra-google-m2repository
 
 env:
-  global:
-  - secure: "JOFMjB+yxMqPr//v+CHhY7x3iRP2r6aZOL1v79jwNY2D0kMNyAlNNO/tTH23fTaZZ856YCYXIit8Q0/1jIXudLq8tHH30MhzGFMIrnFIQomL6WnF7gcDefJr+wszSgGeg5tXnz+ihcu3EVJdNW6Z31E3rGiLllr7AmdOHJG0gAPhK3RHeP7gH5qtumPeZU/19i8i00YGQXcj9ExwVd12B0Wnf3U2QKOe8OjOM+saXKvP2u3KtmX23AXnx4ahMOW66MsXLrD5fWv6rFqMuJDiTc3iXAxLS+iZCLRzWmag0a22YETcyBMbQObXRQ7qN+oh+7sYAVzg0t0hX8itm2zzqqgj/UzRIyvu2TPw73XS51msfUY/wvzREavu1RmXlalWiE9doc0y0BRBjvaNfwg0iHsp+TIC8/9+SRMPSctGS4RqwL5oXOz0OYv6bbNN3Yg4NcamvK8gOQfZlFLOwY80bYm+S020FW3tJMiNjbpwRjwIrWEExbFzQ4AXArbdwoUPWCmIJhHiGekekF6cnQJjs3w9HTIv6d1jFM7NLwpelJhe9RoFR6cF401HA6/m27UrJJ0MEfpryakZCATn5S5znObrxVc3ce0tlcjHdTdZOSMRoyQpCTwbhYC61406ddYGMsGOt6vho+pBdL+MAX5oFyElrbF+h7olAfYHnk7nifU="
+    global:
+        - secure: "JOFMjB+yxMqPr//v+CHhY7x3iRP2r6aZOL1v79jwNY2D0kMNyAlNNO/tTH23fTaZZ856YCYXIit8Q0/1jIXudLq8tHH30MhzGFMIrnFIQomL6WnF7gcDefJr+wszSgGeg5tXnz+ihcu3EVJdNW6Z31E3rGiLllr7AmdOHJG0gAPhK3RHeP7gH5qtumPeZU/19i8i00YGQXcj9ExwVd12B0Wnf3U2QKOe8OjOM+saXKvP2u3KtmX23AXnx4ahMOW66MsXLrD5fWv6rFqMuJDiTc3iXAxLS+iZCLRzWmag0a22YETcyBMbQObXRQ7qN+oh+7sYAVzg0t0hX8itm2zzqqgj/UzRIyvu2TPw73XS51msfUY/wvzREavu1RmXlalWiE9doc0y0BRBjvaNfwg0iHsp+TIC8/9+SRMPSctGS4RqwL5oXOz0OYv6bbNN3Yg4NcamvK8gOQfZlFLOwY80bYm+S020FW3tJMiNjbpwRjwIrWEExbFzQ4AXArbdwoUPWCmIJhHiGekekF6cnQJjs3w9HTIv6d1jFM7NLwpelJhe9RoFR6cF401HA6/m27UrJJ0MEfpryakZCATn5S5znObrxVc3ce0tlcjHdTdZOSMRoyQpCTwbhYC61406ddYGMsGOt6vho+pBdL+MAX5oFyElrbF+h7olAfYHnk7nifU="
 
 after_success:
-- .utility/gh-pages-javadoc-push.sh
+    - .utility/gh-pages-javadoc-push.sh

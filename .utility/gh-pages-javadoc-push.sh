@@ -1,7 +1,7 @@
 
 #!/bin/bash
 echo -e "\nChecking conditions.."
-if [ "$TRAVIS_REPO_SLUG" == "stephentuso/welcome-android" ] && [ "$TRAVIS_PULL_REQUEST" == "false" ] && [ "$TRAVIS_BRANCH" == "master" ]; then
+if [ "$TRAVIS_REPO_SLUG" == "stephentuso/welcome-android" ] && [ "$TRAVIS_JDK_VERSION" == "oraclejdk8" ] && [ "$TRAVIS_PULL_REQUEST" == "false" ] && [ "$TRAVIS_BRANCH" == "master" ]; then
 
   echo -e "\nPublishing javadoc..."
 
@@ -17,7 +17,7 @@ if [ "$TRAVIS_REPO_SLUG" == "stephentuso/welcome-android" ] && [ "$TRAVIS_PULL_R
   echo -e "\nReplacing with updated javadoc..."
   cd gh-pages
   git rm -rf .
-  cp -Rf $HOME/javadoc-latest ./javadoc
+  cp -Rf $HOME/javadoc-latest/ ./javadoc
   git add -f .
   git commit -m "Update javadoc (travis build #$TRAVIS_BUILD_NUMBER)"
 
