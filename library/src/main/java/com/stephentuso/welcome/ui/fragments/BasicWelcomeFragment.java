@@ -14,7 +14,7 @@ import com.stephentuso.welcome.R;
 
 /**
  * Created by stephentuso on 11/15/15.
- * A simple fragment that shows an image, a heading, and some text.
+ * A simple fragment that shows an image, a heading, and a description.
  */
 public class BasicWelcomeFragment extends Fragment {
 
