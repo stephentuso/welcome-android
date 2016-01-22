@@ -101,6 +101,9 @@ You can add styles as shown below. Optional items are in square brackets.
     <item name="welcomeSkipButtonText">string</item>
     <item name="welcomeDoneButtonText">string</item>
 
+    <!-- The drawable or color to fade to if swipeToDismiss is enabled -->
+    <item name="android:windowBackground">drawable|color</item>
+
     <item name="welcomeIndicatorStyle">@style/MyWelcomeIndicator</item>
     <item name="welcomeButtonNextStyle">@style/MyButtonNext</item>
     <item name="welcomeButtonBackground">drawable</item>
