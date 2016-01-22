@@ -64,6 +64,10 @@ public class WelcomeScreenConfiguration {
         return mParameters.mSwipeToDismiss ? mParameters.mPages.size() - 1 : mParameters.mPages.size();
     }
 
+    public WelcomeScreenPageList getPages() {
+        return mParameters.mPages;
+    }
+
     public boolean getBackButtonSkips() {
         return mParameters.mBackButtonSkips;
     }
@@ -176,6 +180,7 @@ public class WelcomeScreenConfiguration {
         }
 
         public void addPage(WelcomeScreenPage page) {
+            page.setIndex(mPages.size());
             if (isRtl()) {
                 mPages.add(0, page);
             } else {

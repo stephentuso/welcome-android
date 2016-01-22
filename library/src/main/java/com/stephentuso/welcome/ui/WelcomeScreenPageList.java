@@ -1,9 +1,7 @@
 package com.stephentuso.welcome.ui;
 
 import android.support.v4.app.Fragment;
-
-import com.stephentuso.welcome.ui.BackgroundColor;
-import com.stephentuso.welcome.ui.WelcomeScreenPage;
+import android.support.v4.view.ViewPager;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -12,7 +10,7 @@ import java.util.Collections;
 /**
  * Created by stephentuso on 11/15/15.
  */
-public class WelcomeScreenPageList extends ArrayList<WelcomeScreenPage> {
+public class WelcomeScreenPageList extends ArrayList<WelcomeScreenPage> implements ViewPager.OnPageChangeListener {
 
     public WelcomeScreenPageList(WelcomeScreenPage... pages) {
         super(Arrays.asList(pages));
@@ -38,4 +36,24 @@ public class WelcomeScreenPageList extends ArrayList<WelcomeScreenPage> {
         Collections.reverse(this);
     }
 
+    @Override
+    public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+        for (WelcomeScreenPage page : this) {
+            page.onPageScrolled(position, positionOffset, positionOffsetPixels);
+        }
+    }
+
+    @Override
+    public void onPageSelected(int position) {
+        for (WelcomeScreenPage page : this) {
+            page.onPageSelected(position);
+        }
+    }
+
+    @Override
+    public void onPageScrollStateChanged(int state) {
+        for (WelcomeScreenPage page : this) {
+            page.onPageScrollStateChanged(state);
+        }
+    }
 }

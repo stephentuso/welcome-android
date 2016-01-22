@@ -79,6 +79,7 @@ public abstract class WelcomeActivity extends AppCompatActivity {
 
         mItems = new WelcomeScreenItemList(background, indicator, skip, next, done, hider);
         mViewPager.addOnPageChangeListener(mItems);
+        mViewPager.addOnPageChangeListener(mConfiguration.getPages());
         mViewPager.setCurrentItem(mConfiguration.firstPageIndex());
         mItems.setup(mConfiguration);
         mItems.onPageSelected(mViewPager.getCurrentItem());
