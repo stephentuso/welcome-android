@@ -22,7 +22,7 @@ public class WelcomeScreenPage implements OnWelcomeScreenPageChangeListener {
 
         /**
          * Called when this page is coming into view
-         * @param pageIndex The index in the ViewPager of the fragment that implements this
+         * @param pageIndex The position of this page
          * @param offset The % offset of this page, negative if page is off the screen on the right, positive if off on the left
          * @param offsetPixels The offset of this page in pixels, negative if page is off the screen on the right, positive if off on the left
          */
