@@ -55,7 +55,6 @@ protected WelcomeScreenConfiguration configuration() {
     return new WelcomeScreenBuilder(this)
             .defaultBackgroundColor(R.color.background)
             .titlePage(R.drawable.logo, "Title")
-            .page(new YourCustomFragmentHere())
             .basicPage(R.drawable.photo1, "Header", "More text.", R.color.red)
             .basicPage(R.drawable.photo2, "Lorem ipsum", "dolor sit amet.")
             .swipeToDismiss(true)
@@ -75,14 +74,33 @@ You can call this from your launcher activity's onCreate or onStart. This will o
 
 ### More options
 
+#### Custom pages
+
+You can add your own fragments to the welcome screen with `WelcomeScreenBuilder.page()`:
+
+```
+@Override
+protected WelcomeScreenConfiguration configuration() {
+    return new WelcomeScreenBuilder(this)
+            ...
+            .page(new WelcomeFragmentHolder() {
+                @Override
+                protected Fragment fragment() {
+                    return new YourFragmentHere;
+                }
+            }, R.color.background-color)
+            ...
+}
+```
+
 #### Welcome screen keys
 
 You can assign keys (Make sure they are unique!) to welcome screens by adding the following to a class that extends `WelcomeActivity`.
 
 ```
 public static String welcomeKey() {
-        return "Your unique key";
-    }
+    return "Your unique key";
+}
 ```
 
 Only change this to a new value if you want everyone who has already used your app to see the welcome screen again! This key is used to determine whether or not to show the welcome screen. This could be useful if you use multiple welcome screens, or if you have updated one and want to show it again.
@@ -144,6 +162,19 @@ The background color is transparent by default -->
 Apply your theme to a welcome screen in its `configuration()` by calling `WelcomeScreenBuilder.theme(int)`, passing your theme as the parameter.
 
 For now, there isn't a way to change the typefaces in the supplied fragments, you will have to use your own fragments to do that.
+
+#### Animations
+
+Animations that play as pages are scrolled can be added to your custom fragments by implementing [WelcomeScreenPage.OnChangeListener](http://stephentuso.github.io/welcome-android/javadoc/com/stephentuso/welcome/ui/WelcomeScreenPage.OnChangeListener.html). As an example, the parallax effect from the built in fragments is shown below.
+
+```
+@Override
+public void onScrolled(int pageIndex, float offset, int offsetPixels) {
+    if (Build.VERSION.SDK_INT >= 11 && imageView != null) {
+        imageView.setX(-offsetPixels * 0.8f);
+    }
+}
+```
 
 #### Events (WIP)
 
