@@ -160,7 +160,7 @@ public abstract class WelcomeActivity extends AppCompatActivity {
 
         @Override
         public Fragment getItem(int position) {
-            return mConfiguration.getFragment(position);
+            return mConfiguration.createFragment(position);
         }
 
         @Override

@@ -8,6 +8,7 @@ import android.support.annotation.StyleRes;
 import android.support.v4.app.Fragment;
 
 import com.stephentuso.welcome.ui.BackgroundColor;
+import com.stephentuso.welcome.ui.WelcomeFragmentHolder;
 import com.stephentuso.welcome.ui.fragments.BasicWelcomeFragment;
 import com.stephentuso.welcome.ui.fragments.TitleFragment;
 import com.stephentuso.welcome.util.WelcomeScreenConfiguration;
@@ -153,8 +154,13 @@ public class WelcomeScreenBuilder {
      * @param colorResId Ccolor resource id to be used as the background color
      * @return this WelcomeScreenBuilder object to allow method calls to be chained
      */
-    public WelcomeScreenBuilder basicPage(@DrawableRes int drawableId, String title, String description, @ColorRes int colorResId) {
-        mConfigParams.add(BasicWelcomeFragment.newInstance(drawableId, title, description), colorResId);
+    public WelcomeScreenBuilder basicPage(@DrawableRes final int drawableId, final String title, final String description, @ColorRes int colorResId) {
+        mConfigParams.add(new WelcomeFragmentHolder() {
+            @Override
+            public Fragment fragment() {
+                return BasicWelcomeFragment.newInstance(drawableId, title, description);
+            }
+        }, colorResId);
         return this;
     }
 
@@ -181,29 +187,34 @@ public class WelcomeScreenBuilder {
      * @param colorResId Color resource id to be used as the background color
      * @return this WelcomeScreenBuilder object to allow method calls to be chained
      */
-    public WelcomeScreenBuilder titlePage(@DrawableRes int resId, String title, @ColorRes int colorResId) {
-        mConfigParams.add(TitleFragment.newInstance(resId, title), colorResId);
+    public WelcomeScreenBuilder titlePage(@DrawableRes final int resId, final String title, @ColorRes int colorResId) {
+        mConfigParams.add(new WelcomeFragmentHolder() {
+            @Override
+            public Fragment fragment() {
+                return TitleFragment.newInstance(resId, title);
+            }
+        }, colorResId);
         return this;
     }
 
     /**
      * Adds a fragment, uses the default background color
-     * @param fragment Fragment to add
+     * @param fragmentHolder FragmentHolder that creates the fragment to add
      * @return this WelcomeScreenBuilder object to allow method calls to be chained
      */
-    public WelcomeScreenBuilder page(Fragment fragment) {
-        page(fragment, 0);
+    public WelcomeScreenBuilder page(WelcomeFragmentHolder fragmentHolder) {
+        page(fragmentHolder, 0);
         return this;
     }
 
     /**
      * Adds a fragment
-     * @param fragment Fragment to add
+     * @param fragmentHolder FragmentHolder that creates the fragment to add
      * @param colorResId Color resource id to be used as the background color
      * @return this WelcomeScreenBuilder object to allow method calls to be chained
      */
-    public WelcomeScreenBuilder page(Fragment fragment, @ColorRes int colorResId) {
-        mConfigParams.add(fragment, colorResId);
+    public WelcomeScreenBuilder page(WelcomeFragmentHolder fragmentHolder, @ColorRes int colorResId) {
+        mConfigParams.add(fragmentHolder, colorResId);
         return this;
     }
 

@@ -7,8 +7,17 @@ import android.support.v4.app.Fragment;
  */
 public abstract class WelcomeFragmentHolder {
 
-    private Fragment mFragment;
+    private Fragment mFragment = null;
 
-    public abstract Fragment createFragment();
+    public Fragment createFragment() {
+        mFragment = fragment();
+        return mFragment;
+    }
+
+    protected abstract Fragment fragment();
+
+    public Fragment getFragment() {
+        return mFragment;
+    }
 
 }

@@ -8,6 +8,7 @@ import android.support.v4.app.Fragment;
 
 import com.stephentuso.welcome.R;
 import com.stephentuso.welcome.ui.BackgroundColor;
+import com.stephentuso.welcome.ui.WelcomeFragmentHolder;
 import com.stephentuso.welcome.ui.WelcomeScreenPage;
 import com.stephentuso.welcome.ui.WelcomeScreenPageList;
 
@@ -44,12 +45,21 @@ public class WelcomeScreenConfiguration {
             mParameters.mSwipeToDismiss = false;
 
         if (mParameters.mSwipeToDismiss) {
-            mParameters.addPage(new WelcomeScreenPage(new Fragment(), mParameters.mPages.getBackgroundColor(lastPageIndex())));
+            mParameters.addPage(new WelcomeScreenPage(new WelcomeFragmentHolder() {
+                @Override
+                public Fragment fragment() {
+                    return new Fragment();
+                }
+            }, mParameters.mPages.getBackgroundColor(lastPageIndex())));
         }
     }
 
     public Fragment getFragment(int index) {
         return mParameters.mPages.getFragment(index);
+    }
+
+    public Fragment createFragment(int index) {
+        return mParameters.mPages.get(index).createFragment();
     }
 
     public BackgroundColor[] getBackgroundColors() {
@@ -171,8 +181,8 @@ public class WelcomeScreenConfiguration {
             mBackButtonSkips = backSkips;
         }
 
-        public void add(Fragment fragment, @ColorRes int resId) {
-            addPage(new WelcomeScreenPage(fragment, new BackgroundColor(getColor(resId), mDefaultBackgroundColor.value())));
+        public void add(WelcomeFragmentHolder fragmentHolder, @ColorRes int resId) {
+            addPage(new WelcomeScreenPage(fragmentHolder, new BackgroundColor(getColor(resId), mDefaultBackgroundColor.value())));
         }
 
         public void setExitAnimation(@AnimRes int resId) {

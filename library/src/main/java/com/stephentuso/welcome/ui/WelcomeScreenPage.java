@@ -8,7 +8,7 @@ import android.support.v4.view.ViewPager;
  */
 public class WelcomeScreenPage implements ViewPager.OnPageChangeListener {
 
-    private final Fragment fragment;
+    private final WelcomeFragmentHolder fragmentHolder;
     private final BackgroundColor backgroundColor;
     private int index = -2;
 
@@ -18,8 +18,8 @@ public class WelcomeScreenPage implements ViewPager.OnPageChangeListener {
         void onScrollStateChanged(int state);
     }
 
-    public WelcomeScreenPage(Fragment fragment, BackgroundColor backgroundColor) {
-        this.fragment = fragment;
+    public WelcomeScreenPage(WelcomeFragmentHolder fragmentHolder, BackgroundColor backgroundColor) {
+        this.fragmentHolder = fragmentHolder;
         this.backgroundColor = backgroundColor;
     }
 
@@ -28,7 +28,11 @@ public class WelcomeScreenPage implements ViewPager.OnPageChangeListener {
     }
 
     public Fragment getFragment() {
-        return fragment;
+        return fragmentHolder.getFragment();
+    }
+
+    public Fragment createFragment() {
+        return fragmentHolder.createFragment();
     }
 
     public BackgroundColor getBackgroundColor() {
@@ -37,11 +41,13 @@ public class WelcomeScreenPage implements ViewPager.OnPageChangeListener {
 
     @Override
     public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-        if (fragment instanceof OnChangeListener && index - position <= 1) {
+
+        if (getFragment() != null && getFragment() instanceof OnChangeListener && index - position <= 1) {
+            Fragment fragment = getFragment();
 
             int fragmentWidth = 0;
-            if (this.fragment.getView() != null) {
-                fragmentWidth = this.fragment.getView().getWidth();
+            if (fragment.getView() != null) {
+                fragmentWidth = fragment.getView().getWidth();
             }
 
             boolean lowerPosition = position < index;
@@ -54,15 +60,15 @@ public class WelcomeScreenPage implements ViewPager.OnPageChangeListener {
 
     @Override
     public void onPageSelected(int position) {
-        if (fragment instanceof OnChangeListener && index == position) {
-            ((OnChangeListener) fragment).onSelected(position);
+        if (getFragment() != null && getFragment() instanceof OnChangeListener && index == position) {
+            ((OnChangeListener) getFragment()).onSelected(position);
         }
     }
 
     @Override
     public void onPageScrollStateChanged(int state) {
-        if (fragment instanceof OnChangeListener) {
-            ((OnChangeListener) fragment).onScrollStateChanged(state);
+        if (getFragment() != null && getFragment() instanceof OnChangeListener) {
+            ((OnChangeListener) getFragment()).onScrollStateChanged(state);
         }
     }
 }
