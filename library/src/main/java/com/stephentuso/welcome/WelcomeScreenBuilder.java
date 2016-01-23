@@ -4,12 +4,14 @@ import android.content.Context;
 import android.support.annotation.AnimRes;
 import android.support.annotation.ColorRes;
 import android.support.annotation.DrawableRes;
+import android.support.annotation.LayoutRes;
 import android.support.annotation.StyleRes;
 import android.support.v4.app.Fragment;
 
 import com.stephentuso.welcome.ui.BackgroundColor;
 import com.stephentuso.welcome.ui.WelcomeFragmentHolder;
 import com.stephentuso.welcome.ui.fragments.BasicWelcomeFragment;
+import com.stephentuso.welcome.ui.fragments.ParallaxWelcomeFragment;
 import com.stephentuso.welcome.ui.fragments.TitleFragment;
 import com.stephentuso.welcome.util.WelcomeScreenConfiguration;
 
@@ -217,6 +219,59 @@ public class WelcomeScreenBuilder {
             @Override
             public Fragment fragment() {
                 return TitleFragment.newInstance(resId, title, showParallaxAnim);
+            }
+        }, colorResId);
+        return this;
+    }
+
+    /**
+     * Adds a page that applies a parallax effect to the supplied layout.
+     * The speed at which the children are moved is determined by their location in the layout,
+     * the first will move the slowest and the last will move the fastest.
+     *
+     * @param resId The layout resource id to apply the parallax effect to
+     * @param title Text for the header TextView
+     * @param description Text for the description TextView
+     * @return this WelcomeScreenBuilder object to allow method calls to be chained
+     */
+    public WelcomeScreenBuilder parallaxPage(@LayoutRes final int resId, final String title, final String description) {
+        return parallaxPage(resId, title, description, 0);
+    }
+
+    /**
+     * Adds a page that applies a parallax effect to the supplied layout.
+     * The speed at which the children are moved is determined by their location in the layout,
+     * the first will move the slowest and the last will move the fastest.
+     *
+     * @param resId The layout resource id to apply the parallax effect to
+     * @param title Text for the header TextView
+     * @param description Text for the description TextView
+     * @param colorResId Color resource id to be used as the background color
+     * @return this WelcomeScreenBuilder object to allow method calls to be chained
+     */
+    public WelcomeScreenBuilder parallaxPage(@LayoutRes final int resId, final String title, final String description, @ColorRes int colorResId) {
+        return parallaxPage(resId, title, description, colorResId, 0.1f, 0.3f);
+    }
+
+    /**
+     * Adds a page that applies a parallax effect to the supplied layout.
+     * The speed at which the children are moved is determined by their location in the layout,
+     * the first will move the slowest and the last will move the fastest.
+     *
+     * @param resId The layout resource id to apply the parallax effect to
+     * @param title Text for the header TextView
+     * @param description Text for the description TextView
+     * @param colorResId Color resource id to be used as the background color
+     * @param startParallaxFactor The speed at which the first child should move. Negative values for slower, positive for faster. The default value is 0.1.
+     *                            A child with a factor of -1.0 will stay completely still, a child with a factor of 1.0 will move twice as fast.
+     * @param parallaxInterval The difference in speed between the children. The default value is 0.3.
+     * @return this WelcomeScreenBuilder object to allow method calls to be chained
+     */
+    public WelcomeScreenBuilder parallaxPage(@LayoutRes final int resId, final String title, final String description, @ColorRes int colorResId, final float startParallaxFactor, final float parallaxInterval) {
+        mConfigParams.add(new WelcomeFragmentHolder() {
+            @Override
+            protected Fragment fragment() {
+                return ParallaxWelcomeFragment.newInstance(resId, title, description, startParallaxFactor, parallaxInterval);
             }
         }, colorResId);
         return this;
