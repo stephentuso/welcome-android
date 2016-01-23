@@ -34,7 +34,11 @@ public abstract class WelcomeActivity extends AppCompatActivity {
         mConfiguration = configuration();
         //overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
         super.setTheme(mConfiguration.getThemeResId());
-        super.onCreate(savedInstanceState);
+        /* Passing null for savedInstanceState fixes issue with fragments in list not matching
+           the displayed ones after the screen was rotated. (Parallax animations would stop working)
+           TODO: Look into this more
+         */
+        super.onCreate(null);
         setContentView(R.layout.activity_welcome);
 
         mAdapter = new WelcomeFragmentPagerAdapter(getSupportFragmentManager());
