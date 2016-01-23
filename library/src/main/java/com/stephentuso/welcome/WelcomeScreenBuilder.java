@@ -151,14 +151,27 @@ public class WelcomeScreenBuilder {
      * @param drawableId Drawable resource id to use for the image
      * @param title Text for the header TextView
      * @param description Text for the description TextView
-     * @param colorResId Ccolor resource id to be used as the background color
+     * @param colorResId Color resource id to be used as the background color
      * @return this WelcomeScreenBuilder object to allow method calls to be chained
      */
     public WelcomeScreenBuilder basicPage(@DrawableRes final int drawableId, final String title, final String description, @ColorRes int colorResId) {
+        return basicPage(drawableId, title, description, colorResId, true);
+    }
+
+    /**
+     * Adds a page with a large image, heading, and description
+     * @param drawableId Drawable resource id to use for the image
+     * @param title Text for the header TextView
+     * @param description Text for the description TextView
+     * @param colorResId Color resource id to be used as the background color
+     * @param showParallaxAnim Whether or not to show a parallax animation as the page is scrolled
+     * @return this WelcomeScreenBuilder object to allow method calls to be chained
+     */
+    public WelcomeScreenBuilder basicPage(@DrawableRes final int drawableId, final String title, final String description, @ColorRes int colorResId, final boolean showParallaxAnim) {
         mConfigParams.add(new WelcomeFragmentHolder() {
             @Override
             public Fragment fragment() {
-                return BasicWelcomeFragment.newInstance(drawableId, title, description);
+                return BasicWelcomeFragment.newInstance(drawableId, title, description, showParallaxAnim);
             }
         }, colorResId);
         return this;
@@ -188,10 +201,22 @@ public class WelcomeScreenBuilder {
      * @return this WelcomeScreenBuilder object to allow method calls to be chained
      */
     public WelcomeScreenBuilder titlePage(@DrawableRes final int resId, final String title, @ColorRes int colorResId) {
+        return titlePage(resId, title, colorResId, true);
+    }
+
+    /**
+     * Adds a page with a large image and a title
+     * @param resId The drawable resource id of an image
+     * @param title Text for the title TextView
+     * @param colorResId Color resource id to be used as the background color
+     * @param showParallaxAnim Whether or not to show a parallax animation as the page is scrolled
+     * @return this WelcomeScreenBuilder object to allow method calls to be chained
+     */
+    public WelcomeScreenBuilder titlePage(@DrawableRes final int resId, final String title, @ColorRes int colorResId, final boolean showParallaxAnim) {
         mConfigParams.add(new WelcomeFragmentHolder() {
             @Override
             public Fragment fragment() {
-                return TitleFragment.newInstance(resId, title);
+                return TitleFragment.newInstance(resId, title, showParallaxAnim);
             }
         }, colorResId);
         return this;

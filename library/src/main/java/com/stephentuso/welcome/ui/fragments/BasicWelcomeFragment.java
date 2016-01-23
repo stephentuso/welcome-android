@@ -23,16 +23,19 @@ public class BasicWelcomeFragment extends Fragment implements WelcomeScreenPage.
     public static final String KEY_DRAWABLE_ID = "drawable_id";
     public static final String KEY_DESCRIPTION = "description";
     public static final String KEY_TITLE = "title";
+    public static final String KEY_SHOW_ANIM = "show_anim";
 
     private ImageView imageView = null;
     private TextView titleView = null;
     private TextView descriptionView = null;
+    private boolean showParallaxAnim = true;
 
-    public static BasicWelcomeFragment newInstance(@DrawableRes int drawableId, String title, String description) {
+    public static BasicWelcomeFragment newInstance(@DrawableRes int drawableId, String title, String description, boolean showParallaxAnim) {
         Bundle args = new Bundle();
         args.putInt(KEY_DRAWABLE_ID, drawableId);
         args.putString(KEY_TITLE, title);
         args.putString(KEY_DESCRIPTION, description);
+        args.putBoolean(KEY_SHOW_ANIM, showParallaxAnim);
         BasicWelcomeFragment fragment = new BasicWelcomeFragment();
         fragment.setArguments(args);
         return fragment;
@@ -52,6 +55,8 @@ public class BasicWelcomeFragment extends Fragment implements WelcomeScreenPage.
         if (args == null)
             return view;
 
+        showParallaxAnim = args.getBoolean(KEY_SHOW_ANIM, showParallaxAnim);
+
         imageView.setImageResource(args.getInt(KEY_DRAWABLE_ID));
 
         if (args.getString(KEY_TITLE) != null)
@@ -67,7 +72,7 @@ public class BasicWelcomeFragment extends Fragment implements WelcomeScreenPage.
 
     @Override
     public void onScrolled(int pageIndex, float offset, int offsetPixels) {
-        if (Build.VERSION.SDK_INT >= 11 && imageView != null) {
+        if (showParallaxAnim && Build.VERSION.SDK_INT >= 11 && imageView != null) {
             imageView.setX(-offsetPixels * 0.8f);
         }
     }
