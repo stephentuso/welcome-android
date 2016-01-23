@@ -24,6 +24,9 @@ import com.stephentuso.welcome.util.WelcomeScreenConfiguration;
 public class WelcomeScreenBuilder {
 
     private WelcomeScreenConfiguration.Parameters mConfigParams;
+    private String defaultTitleTypefacePath = "";
+    private String defaultHeaderTypefacePath = "";
+    private String defaultDescriptionTypefacePath = "";
 
     public WelcomeScreenBuilder(Context context) {
         mConfigParams = new WelcomeScreenConfiguration.Parameters(context);
@@ -75,11 +78,41 @@ public class WelcomeScreenBuilder {
      * Indicate that a done button is going to be provided in a custom fragment.
      * Use {@link com.stephentuso.welcome.ui.WelcomeScreenFinisher#finish() WelcomeScreenFinisher.finish()} in the done button's onClickListener
      * to close the welcome screen correctly.
-     * @param useCustomDoneButton
-     * @return
+     * @param useCustomDoneButton Whether or not a done button will be present in the last fragment
+     * @return this WelcomeScreenBuilder object to allow method calls to be chained
      */
     public WelcomeScreenBuilder useCustomDoneButton(boolean useCustomDoneButton) {
         mConfigParams.setUseCustomDoneButton(useCustomDoneButton);
+        return this;
+    }
+
+    /**
+     * Set the path to a typeface (in assets) tp be used by default for titles
+     * @param typefacePath The path to a typeface file in assets folder
+     * @return this WelcomeScreenBuilder object to allow method calls to be chained
+     */
+    public WelcomeScreenBuilder defaultTitleTypefacePath(String typefacePath) {
+        this.defaultTitleTypefacePath = typefacePath;
+        return this;
+    }
+
+    /**
+     * Set the path to a typeface (in assets) tp be used by default for headers
+     * @param typefacePath The path to a typeface file in assets folder
+     * @return this WelcomeScreenBuilder object to allow method calls to be chained
+     */
+    public WelcomeScreenBuilder defaultHeaderTypefacePath(String typefacePath) {
+        this.defaultHeaderTypefacePath = typefacePath;
+        return this;
+    }
+
+    /**
+     * Set the path to a typeface (in assets) tp be used by default for descriptions
+     * @param typefacePath The path to a typeface file in assets folder
+     * @return this WelcomeScreenBuilder object to allow method calls to be chained
+     */
+    public WelcomeScreenBuilder defaultDescriptionTypefacePath(String typefacePath) {
+        this.defaultDescriptionTypefacePath = typefacePath;
         return this;
     }
 
@@ -170,10 +203,24 @@ public class WelcomeScreenBuilder {
      * @return this WelcomeScreenBuilder object to allow method calls to be chained
      */
     public WelcomeScreenBuilder basicPage(@DrawableRes final int drawableId, final String title, final String description, @ColorRes int colorResId, final boolean showParallaxAnim) {
+        return basicPage(drawableId, title, description, colorResId, showParallaxAnim, defaultHeaderTypefacePath, defaultDescriptionTypefacePath);
+    }
+
+    /**
+     * Adds a page with a large image, heading, and description
+     * @param drawableId Drawable resource id to use for the image
+     * @param title Text for the header TextView
+     * @param description Text for the description TextView
+     * @param colorResId Color resource id to be used as the background color
+     * @param showParallaxAnim Whether or not to show a parallax animation as the page is scrolled
+     * @return this WelcomeScreenBuilder object to allow method calls to be chained
+     */
+    public WelcomeScreenBuilder basicPage(@DrawableRes final int drawableId, final String title, final String description, @ColorRes int colorResId,
+                                          final boolean showParallaxAnim, final String headerTypefacePath, final String descriptionTypefacePath) {
         mConfigParams.add(new WelcomeFragmentHolder() {
             @Override
             public Fragment fragment() {
-                return BasicWelcomeFragment.newInstance(drawableId, title, description, showParallaxAnim);
+                return BasicWelcomeFragment.newInstance(drawableId, title, description, showParallaxAnim, headerTypefacePath, descriptionTypefacePath);
             }
         }, colorResId);
         return this;
@@ -215,10 +262,24 @@ public class WelcomeScreenBuilder {
      * @return this WelcomeScreenBuilder object to allow method calls to be chained
      */
     public WelcomeScreenBuilder titlePage(@DrawableRes final int resId, final String title, @ColorRes int colorResId, final boolean showParallaxAnim) {
+        return titlePage(resId, title, colorResId, showParallaxAnim, defaultTitleTypefacePath);
+    }
+
+    /**
+     * Adds a page with a large image and a title
+     * @param resId The drawable resource id of an image
+     * @param title Text for the title TextView
+     * @param colorResId Color resource id to be used as the background color
+     * @param showParallaxAnim Whether or not to show a parallax animation as the page is scrolled
+     * @param titleTypefacePath The path to a typeface in assets to be used for the title
+     * @return this WelcomeScreenBuilder object to allow method calls to be chained
+     */
+    public WelcomeScreenBuilder titlePage(@DrawableRes final int resId, final String title, @ColorRes int colorResId, final boolean showParallaxAnim,
+                                          final String titleTypefacePath) {
         mConfigParams.add(new WelcomeFragmentHolder() {
             @Override
             public Fragment fragment() {
-                return TitleFragment.newInstance(resId, title, showParallaxAnim);
+                return TitleFragment.newInstance(resId, title, showParallaxAnim, titleTypefacePath);
             }
         }, colorResId);
         return this;
@@ -268,10 +329,31 @@ public class WelcomeScreenBuilder {
      * @return this WelcomeScreenBuilder object to allow method calls to be chained
      */
     public WelcomeScreenBuilder parallaxPage(@LayoutRes final int resId, final String title, final String description, @ColorRes int colorResId, final float startParallaxFactor, final float parallaxInterval) {
+        return parallaxPage(resId, title, description, colorResId, startParallaxFactor, parallaxInterval, defaultHeaderTypefacePath, defaultDescriptionTypefacePath);
+    }
+
+    /**
+     * Adds a page that applies a parallax effect to the supplied layout.
+     * The speed at which the children are moved is determined by their location in the layout,
+     * the first will move the slowest and the last will move the fastest.
+     *
+     * @param resId The layout resource id to apply the parallax effect to
+     * @param title Text for the header TextView
+     * @param description Text for the description TextView
+     * @param colorResId Color resource id to be used as the background color
+     * @param startParallaxFactor The speed at which the first child should move. Negative values for slower, positive for faster. The default value is 0.1.
+     *                            A child with a factor of -1.0 will stay completely still, a child with a factor of 1.0 will move twice as fast.
+     * @param parallaxInterval The difference in speed between the children. The default value is 0.3.
+     * @param headerTypefacePath The path to a typeface in assets to be used for the header
+     * @param descriptionTypefacePath The path to a typeface in assets to be used for the description
+     * @return this WelcomeScreenBuilder object to allow method calls to be chained
+     */
+    public WelcomeScreenBuilder parallaxPage(@LayoutRes final int resId, final String title, final String description, @ColorRes int colorResId,
+                                             final float startParallaxFactor, final float parallaxInterval, final String headerTypefacePath, final String descriptionTypefacePath) {
         mConfigParams.add(new WelcomeFragmentHolder() {
             @Override
             protected Fragment fragment() {
-                return ParallaxWelcomeFragment.newInstance(resId, title, description, startParallaxFactor, parallaxInterval);
+                return ParallaxWelcomeFragment.newInstance(resId, title, description, startParallaxFactor, parallaxInterval, headerTypefacePath, descriptionTypefacePath);
             }
         }, colorResId);
         return this;

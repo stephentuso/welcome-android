@@ -14,6 +14,7 @@ import android.widget.TextView;
 
 import com.stephentuso.welcome.R;
 import com.stephentuso.welcome.ui.WelcomeScreenPage;
+import com.stephentuso.welcome.util.WelcomeUtils;
 
 /**
  * Created by stephentuso on 1/23/16.
@@ -25,6 +26,8 @@ public class ParallaxWelcomeFragment extends Fragment implements WelcomeScreenPa
     public static final String KEY_TITLE = "title";
     public static final String KEY_START_FACTOR = "start_factor";
     public static final String KEY_INTERVAL = "parallax_interval";
+    public static final String KEY_HEADER_TYPEFACE_PATH = "header_typeface";
+    public static final String KEY_DESCRIPTION_TYPEFACE_PATH = "description_typeface";
 
     private FrameLayout frameLayout = null;
     private TextView titleView = null;
@@ -33,13 +36,16 @@ public class ParallaxWelcomeFragment extends Fragment implements WelcomeScreenPa
     private float startFactor = 0.1f;
     private float parallaxInterval = 0.3f;
 
-    public static ParallaxWelcomeFragment newInstance(@LayoutRes int layoutId, String title, String description, float startParallaxFactor, float parallaxInterval) {
+    public static ParallaxWelcomeFragment newInstance(@LayoutRes int layoutId, String title, String description, float startParallaxFactor, float parallaxInterval,
+                                                      String headerTypefacePath, String descriptionTypefacePath) {
         Bundle args = new Bundle();
         args.putInt(KEY_LAYOUT_ID, layoutId);
         args.putString(KEY_TITLE, title);
         args.putString(KEY_DESCRIPTION, description);
         args.putFloat(KEY_START_FACTOR, startParallaxFactor);
         args.putFloat(KEY_INTERVAL, parallaxInterval);
+        args.putString(KEY_HEADER_TYPEFACE_PATH, headerTypefacePath);
+        args.putString(KEY_DESCRIPTION_TYPEFACE_PATH, descriptionTypefacePath);
         ParallaxWelcomeFragment fragment = new ParallaxWelcomeFragment();
         fragment.setArguments(args);
         return fragment;
@@ -70,6 +76,8 @@ public class ParallaxWelcomeFragment extends Fragment implements WelcomeScreenPa
         if (args.getString(KEY_DESCRIPTION) != null)
             descriptionView.setText(args.getString(KEY_DESCRIPTION));
 
+        WelcomeUtils.setTypeface(titleView, args.getString(KEY_HEADER_TYPEFACE_PATH), getActivity());
+        WelcomeUtils.setTypeface(descriptionView, args.getString(KEY_DESCRIPTION_TYPEFACE_PATH), getActivity());
 
         return view;
     }

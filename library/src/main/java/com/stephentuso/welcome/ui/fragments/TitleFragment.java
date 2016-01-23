@@ -13,6 +13,7 @@ import android.widget.TextView;
 
 import com.stephentuso.welcome.R;
 import com.stephentuso.welcome.ui.WelcomeScreenPage;
+import com.stephentuso.welcome.util.WelcomeUtils;
 
 /**
  * A simple fragment that shows an image and a title.
@@ -24,6 +25,7 @@ public class TitleFragment extends Fragment implements WelcomeScreenPage.OnChang
     private static final String ARG_DRAWABLE_ID = "drawable_id";
     private static final String ARG_TITLE = "title";
     private static final String ARG_SHOW_ANIM = "show_anim";
+    private static final String ARG_TYPEFACE_PATH = "typeface_path";
 
     private int drawableId;
     private String title = "";
@@ -38,12 +40,13 @@ public class TitleFragment extends Fragment implements WelcomeScreenPage.OnChang
      * @return A new instance of TitleFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static TitleFragment newInstance(@DrawableRes int resId, String title, boolean showParallaxAnim) {
+    public static TitleFragment newInstance(@DrawableRes int resId, String title, boolean showParallaxAnim, String typefacePath) {
         TitleFragment fragment = new TitleFragment();
         Bundle args = new Bundle();
         args.putInt(ARG_DRAWABLE_ID, resId);
         args.putString(ARG_TITLE, title);
         args.putBoolean(ARG_SHOW_ANIM, showParallaxAnim);
+        args.putString(ARG_TYPEFACE_PATH, typefacePath);
         fragment.setArguments(args);
         return fragment;
     }
@@ -63,13 +66,19 @@ public class TitleFragment extends Fragment implements WelcomeScreenPage.OnChang
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        if (getArguments() != null) {
-            drawableId = getArguments().getInt(ARG_DRAWABLE_ID);
-            title = getArguments().getString(ARG_TITLE);
-            imageView.setImageResource(drawableId);
-            titleView.setText(title);
-            showParallaxAnim = getArguments().getBoolean(ARG_SHOW_ANIM, showParallaxAnim);
-        }
+
+        Bundle args = getArguments();
+
+        if (args == null)
+            return;
+
+        drawableId = args.getInt(ARG_DRAWABLE_ID);
+        title = args.getString(ARG_TITLE);
+        imageView.setImageResource(drawableId);
+        titleView.setText(title);
+        showParallaxAnim = args.getBoolean(ARG_SHOW_ANIM, showParallaxAnim);
+
+        WelcomeUtils.setTypeface(titleView, args.getString(ARG_TYPEFACE_PATH), getActivity());
     }
 
     @Override

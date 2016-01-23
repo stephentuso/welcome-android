@@ -13,6 +13,7 @@ import android.widget.TextView;
 
 import com.stephentuso.welcome.R;
 import com.stephentuso.welcome.ui.WelcomeScreenPage;
+import com.stephentuso.welcome.util.WelcomeUtils;
 
 /**
  * Created by stephentuso on 11/15/15.
@@ -24,18 +25,23 @@ public class BasicWelcomeFragment extends Fragment implements WelcomeScreenPage.
     public static final String KEY_DESCRIPTION = "description";
     public static final String KEY_TITLE = "title";
     public static final String KEY_SHOW_ANIM = "show_anim";
+    public static final String KEY_HEADER_TYPEFACE_PATH = "header_typeface";
+    public static final String KEY_DESCRIPTION_TYPEFACE_PATH = "description_typeface";
 
     private ImageView imageView = null;
     private TextView titleView = null;
     private TextView descriptionView = null;
     private boolean showParallaxAnim = true;
 
-    public static BasicWelcomeFragment newInstance(@DrawableRes int drawableId, String title, String description, boolean showParallaxAnim) {
+    public static BasicWelcomeFragment newInstance(@DrawableRes int drawableId, String title, String description, boolean showParallaxAnim,
+                                                   String headerTypefacePath, String descriptionTypefacePath) {
         Bundle args = new Bundle();
         args.putInt(KEY_DRAWABLE_ID, drawableId);
         args.putString(KEY_TITLE, title);
         args.putString(KEY_DESCRIPTION, description);
         args.putBoolean(KEY_SHOW_ANIM, showParallaxAnim);
+        args.putString(KEY_HEADER_TYPEFACE_PATH, headerTypefacePath);
+        args.putString(KEY_DESCRIPTION_TYPEFACE_PATH, descriptionTypefacePath);
         BasicWelcomeFragment fragment = new BasicWelcomeFragment();
         fragment.setArguments(args);
         return fragment;
@@ -65,10 +71,11 @@ public class BasicWelcomeFragment extends Fragment implements WelcomeScreenPage.
         if (args.getString(KEY_DESCRIPTION) != null)
             descriptionView.setText(args.getString(KEY_DESCRIPTION));
 
+        WelcomeUtils.setTypeface(titleView, args.getString(KEY_HEADER_TYPEFACE_PATH), getActivity());
+        WelcomeUtils.setTypeface(descriptionView, args.getString(KEY_DESCRIPTION_TYPEFACE_PATH), getActivity());
 
         return view;
     }
-
 
     @Override
     public void onScrolled(int pageIndex, float offset, int offsetPixels) {
