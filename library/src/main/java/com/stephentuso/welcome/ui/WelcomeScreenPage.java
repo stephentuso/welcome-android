@@ -1,16 +1,19 @@
 package com.stephentuso.welcome.ui;
 
 import android.support.v4.app.Fragment;
-import android.support.v4.view.ViewPager;
+
+import com.stephentuso.welcome.util.WelcomeScreenConfiguration;
 
 /**
  * Created by stephentuso on 11/15/15.
  */
-public class WelcomeScreenPage implements ViewPager.OnPageChangeListener {
+public class WelcomeScreenPage implements OnWelcomeScreenPageChangeListener {
 
     private final WelcomeFragmentHolder fragmentHolder;
     private final BackgroundColor backgroundColor;
     private int index = -2;
+    private boolean isRtl = false;
+    private int totalPages = 0;
 
     /**
      * Interface to be implemented by fragments that are part of a WelcomeActivity
@@ -18,7 +21,6 @@ public class WelcomeScreenPage implements ViewPager.OnPageChangeListener {
     public interface OnChangeListener {
 
         /**
-         * // TODO: Fix this for RTL?
          * Called when this page is coming into view
          * @param pageIndex The index in the ViewPager of the fragment that implements this
          * @param offset The % offset of this page, negative if page is off the screen on the right, positive if off on the left
@@ -60,7 +62,17 @@ public class WelcomeScreenPage implements ViewPager.OnPageChangeListener {
     }
 
     @Override
+    public void setup(WelcomeScreenConfiguration config) {
+        isRtl = config.isRtl();
+        totalPages = config.pageCount();
+    }
+
+    @Override
     public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+        //Correct position for RTL. One is subtracted to make it zero indexed
+        if (isRtl)
+            position = totalPages - 1 - position;
 
         if (getFragment() != null && getFragment() instanceof OnChangeListener && position - index <= 1) {
             Fragment fragment = getFragment();
@@ -70,7 +82,7 @@ public class WelcomeScreenPage implements ViewPager.OnPageChangeListener {
                 fragmentWidth = fragment.getView().getWidth();
             }
 
-            boolean lowerPosition = position < index;
+            boolean lowerPosition = isRtl ? position > index : position < index;
             float offset = lowerPosition ? -(1 - positionOffset) : positionOffset;
             int offsetPixels = lowerPosition ? -(fragmentWidth - positionOffsetPixels) : positionOffsetPixels;
 

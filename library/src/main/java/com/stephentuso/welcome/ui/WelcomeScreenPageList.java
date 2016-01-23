@@ -1,7 +1,8 @@
 package com.stephentuso.welcome.ui;
 
 import android.support.v4.app.Fragment;
-import android.support.v4.view.ViewPager;
+
+import com.stephentuso.welcome.util.WelcomeScreenConfiguration;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -10,7 +11,7 @@ import java.util.Collections;
 /**
  * Created by stephentuso on 11/15/15.
  */
-public class WelcomeScreenPageList extends ArrayList<WelcomeScreenPage> implements ViewPager.OnPageChangeListener {
+public class WelcomeScreenPageList extends ArrayList<WelcomeScreenPage> implements OnWelcomeScreenPageChangeListener {
 
     public WelcomeScreenPageList(WelcomeScreenPage... pages) {
         super(Arrays.asList(pages));
@@ -54,6 +55,13 @@ public class WelcomeScreenPageList extends ArrayList<WelcomeScreenPage> implemen
     public void onPageScrollStateChanged(int state) {
         for (WelcomeScreenPage page : this) {
             page.onPageScrollStateChanged(state);
+        }
+    }
+
+    @Override
+    public void setup(WelcomeScreenConfiguration config) {
+        for (WelcomeScreenPage page : this) {
+            page.setup(config);
         }
     }
 }

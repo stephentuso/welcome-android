@@ -73,7 +73,7 @@ public class BasicWelcomeFragment extends Fragment implements WelcomeScreenPage.
     @Override
     public void onScrolled(int pageIndex, float offset, int offsetPixels) {
         if (showParallaxAnim && Build.VERSION.SDK_INT >= 11 && imageView != null) {
-            imageView.setX(-offsetPixels * 0.8f);
+            imageView.setTranslationX(-offsetPixels * 0.8f);
         }
     }
 
