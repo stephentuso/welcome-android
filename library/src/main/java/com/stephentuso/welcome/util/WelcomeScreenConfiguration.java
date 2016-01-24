@@ -85,8 +85,12 @@ public class WelcomeScreenConfiguration {
         return mParameters.mBackButtonSkips;
     }
 
-    public String getButtonTypefacePath() {
-        return mParameters.mButtonTypefacePath;
+    public String getSkipButtonTypefacePath() {
+        return mParameters.mSkipButtonTypefacePath;
+    }
+
+    public String getDoneButtonTypefacePath() {
+        return mParameters.mDoneButtonTypefacePath;
     }
 
     public boolean getCanSkip() {
@@ -139,7 +143,8 @@ public class WelcomeScreenConfiguration {
         private int mThemeResId = Theme.DARK.resId;
         private boolean mSwipeToDismiss = false;
         private int mExitAnimationResId = NO_ANIMATION_SET;
-        private String mButtonTypefacePath = "";
+        private String mSkipButtonTypefacePath = "";
+        private String mDoneButtonTypefacePath = "";
         private boolean mAnimateButtons = true;
         private boolean mUseCustomDoneButton = false;
 
@@ -164,8 +169,12 @@ public class WelcomeScreenConfiguration {
             mThemeResId = resId;
         }
 
-        public void setButtonTypefacePath(String typefacePath) {
-            mButtonTypefacePath = typefacePath;
+        public void setSkipButtonTypefacePath(String typefacePath) {
+            mSkipButtonTypefacePath = typefacePath;
+        }
+
+        public void setDoneButtonTypefacePath(String typefacePath) {
+            mDoneButtonTypefacePath = typefacePath;
         }
 
         public void setDefaultBackgroundColor(@ColorRes int resId) {

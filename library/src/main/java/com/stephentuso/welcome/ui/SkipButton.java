@@ -23,7 +23,7 @@ public class SkipButton extends WelcomeScreenViewWrapper {
     @Override
     public void setup(WelcomeScreenConfiguration config) {
         super.setup(config);
-        WelcomeUtils.setTypeface((TextView) this.getView(), config.getButtonTypefacePath(), config.getContext());
+        WelcomeUtils.setTypeface((TextView) this.getView(), config.getSkipButtonTypefacePath(), config.getContext());
     }
 
     @Override

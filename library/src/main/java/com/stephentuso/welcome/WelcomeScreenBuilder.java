@@ -87,12 +87,22 @@ public class WelcomeScreenBuilder {
     }
 
     /**
-     * Set the path to a typeface (in assets) to be used for the buttons
+     * Set the path to a typeface (in assets) to be used for the skip button
      * @param typefacePath The path to a typeface file in assets folder
      * @return this WelcomeScreenBuilder object to allow method calls to be chained
      */
-    public WelcomeScreenBuilder buttonTypefacePath(String typefacePath) {
-        mConfigParams.setButtonTypefacePath(typefacePath);
+    public WelcomeScreenBuilder skipButtonTypefacePath(String typefacePath) {
+        mConfigParams.setSkipButtonTypefacePath(typefacePath);
+        return this;
+    }
+
+    /**
+     * Set the path to a typeface (in assets) to be used for the done button
+     * @param typefacePath The path to a typeface file in assets folder
+     * @return this WelcomeScreenBuilder object to allow method calls to be chained
+     */
+    public WelcomeScreenBuilder doneButtonTypefacePath(String typefacePath) {
+        mConfigParams.setDoneButtonTypefacePath(typefacePath);
         return this;
     }
 

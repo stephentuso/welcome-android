@@ -22,7 +22,7 @@ public class DoneButton extends WelcomeScreenViewWrapper {
     public void setup(WelcomeScreenConfiguration config) {
         super.setup(config);
         shouldShow = !config.getUseCustomDoneButton();
-        WelcomeUtils.setTypeface((TextView) this.getView(), config.getButtonTypefacePath(), config.getContext());
+        WelcomeUtils.setTypeface((TextView) this.getView(), config.getDoneButtonTypefacePath(), config.getContext());
     }
 
     @Override
