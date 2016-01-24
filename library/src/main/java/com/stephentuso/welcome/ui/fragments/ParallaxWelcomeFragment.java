@@ -1,6 +1,5 @@
 package com.stephentuso.welcome.ui.fragments;
 
-import android.annotation.TargetApi;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.LayoutRes;
@@ -25,7 +24,8 @@ public class ParallaxWelcomeFragment extends Fragment implements WelcomeScreenPa
     public static final String KEY_DESCRIPTION = "description";
     public static final String KEY_TITLE = "title";
     public static final String KEY_START_FACTOR = "start_factor";
-    public static final String KEY_INTERVAL = "parallax_interval";
+    public static final String KEY_END_FACTOR = "end_factor";
+    public static final String KEY_PARALLAX_RECURSIVE = "parallax_recursive";
     public static final String KEY_HEADER_TYPEFACE_PATH = "header_typeface";
     public static final String KEY_DESCRIPTION_TYPEFACE_PATH = "description_typeface";
 
@@ -33,17 +33,20 @@ public class ParallaxWelcomeFragment extends Fragment implements WelcomeScreenPa
     private TextView titleView = null;
     private TextView descriptionView = null;
 
-    private float startFactor = 0.1f;
-    private float parallaxInterval = 0.3f;
+    private float startFactor = 0.2f;
+    private float endFactor = 1.0f;
+    private float parallaxInterval = 0f;
+    private boolean parallaxRecursive = false;
 
-    public static ParallaxWelcomeFragment newInstance(@LayoutRes int layoutId, String title, String description, float startParallaxFactor, float parallaxInterval,
-                                                      String headerTypefacePath, String descriptionTypefacePath) {
+    public static ParallaxWelcomeFragment newInstance(@LayoutRes int layoutId, String title, String description, float startParallaxFactor, float endParallaxFactor,
+                                                      boolean parallaxRecursive, String headerTypefacePath, String descriptionTypefacePath) {
         Bundle args = new Bundle();
         args.putInt(KEY_LAYOUT_ID, layoutId);
         args.putString(KEY_TITLE, title);
         args.putString(KEY_DESCRIPTION, description);
         args.putFloat(KEY_START_FACTOR, startParallaxFactor);
-        args.putFloat(KEY_INTERVAL, parallaxInterval);
+        args.putFloat(KEY_END_FACTOR, endParallaxFactor);
+        args.putBoolean(KEY_PARALLAX_RECURSIVE, parallaxRecursive);
         args.putString(KEY_HEADER_TYPEFACE_PATH, headerTypefacePath);
         args.putString(KEY_DESCRIPTION_TYPEFACE_PATH, descriptionTypefacePath);
         ParallaxWelcomeFragment fragment = new ParallaxWelcomeFragment();
@@ -66,7 +69,8 @@ public class ParallaxWelcomeFragment extends Fragment implements WelcomeScreenPa
             return view;
 
         startFactor = args.getFloat(KEY_START_FACTOR, startFactor);
-        parallaxInterval = args.getFloat(KEY_INTERVAL, parallaxInterval);
+        endFactor = args.getFloat(KEY_END_FACTOR, endFactor);
+        parallaxRecursive = args.getBoolean(KEY_PARALLAX_RECURSIVE, parallaxRecursive);
 
         inflater.inflate(args.getInt(KEY_LAYOUT_ID), frameLayout, true);
 
@@ -82,33 +86,16 @@ public class ParallaxWelcomeFragment extends Fragment implements WelcomeScreenPa
         return view;
     }
 
-    @TargetApi(Build.VERSION_CODES.HONEYCOMB)
-    private int applyParallaxEffect(View view, int startIndex, int offsetPixels) {
-        if (view instanceof ViewGroup) {
-            ViewGroup group = (ViewGroup) view;
-            for (int i = 0; i < group.getChildCount(); i++) {
-                startIndex = applyParallaxEffect(group.getChildAt(i), startIndex, offsetPixels);
-            }
-        } else {
-            applyParallaxEffectToView(view, startIndex, offsetPixels);
-            startIndex++;
-        }
-        return startIndex;
-    }
-
-    @TargetApi(Build.VERSION_CODES.HONEYCOMB)
-    private void applyParallaxEffectToView(View view, int index, int offsetPixels) {
-        view.setTranslationX(calculateOffsetAmount(index, offsetPixels));
-    }
-
-    private float calculateOffsetAmount(int index, int offsetPixels) {
-        return (startFactor + (index * parallaxInterval)) * -offsetPixels;
+    @Override
+    public void onStart() {
+        super.onStart();
+        parallaxInterval = (endFactor - startFactor)/(WelcomeUtils.calculateParallaxLayers(frameLayout.getChildAt(0), parallaxRecursive) - 1);
     }
 
     @Override
     public void onScrolled(int pageIndex, float offset, int offsetPixels) {
         if (Build.VERSION.SDK_INT >= 11 && frameLayout != null) {
-            applyParallaxEffect(frameLayout, 0, offsetPixels);
+            WelcomeUtils.applyParallaxEffect(frameLayout.getChildAt(0), parallaxRecursive, offsetPixels, startFactor, parallaxInterval);
         }
     }
 

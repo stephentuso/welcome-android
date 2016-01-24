@@ -311,7 +311,7 @@ public class WelcomeScreenBuilder {
      * @return this WelcomeScreenBuilder object to allow method calls to be chained
      */
     public WelcomeScreenBuilder parallaxPage(@LayoutRes final int resId, final String title, final String description, @ColorRes int colorResId) {
-        return parallaxPage(resId, title, description, colorResId, 0.1f, 0.3f);
+        return parallaxPage(resId, title, description, colorResId, 0.2f, 1.0f);
     }
 
     /**
@@ -323,13 +323,14 @@ public class WelcomeScreenBuilder {
      * @param title Text for the header TextView
      * @param description Text for the description TextView
      * @param colorResId Color resource id to be used as the background color
-     * @param startParallaxFactor The speed at which the first child should move. Negative values for slower, positive for faster. The default value is 0.1.
+     * @param startParallaxFactor The speed at which the first child should move. Negative values for slower than normal, positive for faster. The default value is 0.2.
      *                            A child with a factor of -1.0 will stay completely still, a child with a factor of 1.0 will move twice as fast.
-     * @param parallaxInterval The difference in speed between the children. The default value is 0.3.
+     * @param endParallaxFactor The speed at which the last child should move. Negative values for slower than normal, positive for faster. The default value is 1.0.
      * @return this WelcomeScreenBuilder object to allow method calls to be chained
      */
-    public WelcomeScreenBuilder parallaxPage(@LayoutRes final int resId, final String title, final String description, @ColorRes int colorResId, final float startParallaxFactor, final float parallaxInterval) {
-        return parallaxPage(resId, title, description, colorResId, startParallaxFactor, parallaxInterval, defaultHeaderTypefacePath, defaultDescriptionTypefacePath);
+    public WelcomeScreenBuilder parallaxPage(@LayoutRes final int resId, final String title, final String description, @ColorRes int colorResId,
+                                             final float startParallaxFactor, final float endParallaxFactor) {
+        return parallaxPage(resId, title, description, colorResId, startParallaxFactor, endParallaxFactor, defaultHeaderTypefacePath, defaultDescriptionTypefacePath);
     }
 
     /**
@@ -341,19 +342,19 @@ public class WelcomeScreenBuilder {
      * @param title Text for the header TextView
      * @param description Text for the description TextView
      * @param colorResId Color resource id to be used as the background color
-     * @param startParallaxFactor The speed at which the first child should move. Negative values for slower, positive for faster. The default value is 0.1.
+     * @param startParallaxFactor The speed at which the first child should move. Negative values for slower than normal, positive for faster. The default value is 0.2.
      *                            A child with a factor of -1.0 will stay completely still, a child with a factor of 1.0 will move twice as fast.
-     * @param parallaxInterval The difference in speed between the children. The default value is 0.3.
+     * @param endParallaxFactor The speed at which the last child should move. Negative values for slower than normal, positive for faster. The default value is 1.0.
      * @param headerTypefacePath The path to a typeface in assets to be used for the header
      * @param descriptionTypefacePath The path to a typeface in assets to be used for the description
      * @return this WelcomeScreenBuilder object to allow method calls to be chained
      */
     public WelcomeScreenBuilder parallaxPage(@LayoutRes final int resId, final String title, final String description, @ColorRes int colorResId,
-                                             final float startParallaxFactor, final float parallaxInterval, final String headerTypefacePath, final String descriptionTypefacePath) {
+                                             final float startParallaxFactor, final float endParallaxFactor, final String headerTypefacePath, final String descriptionTypefacePath) {
         mConfigParams.add(new WelcomeFragmentHolder() {
             @Override
             protected Fragment fragment() {
-                return ParallaxWelcomeFragment.newInstance(resId, title, description, startParallaxFactor, parallaxInterval, headerTypefacePath, descriptionTypefacePath);
+                return ParallaxWelcomeFragment.newInstance(resId, title, description, startParallaxFactor, endParallaxFactor, false, headerTypefacePath, descriptionTypefacePath);
             }
         }, colorResId);
         return this;
