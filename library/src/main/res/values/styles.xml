@@ -27,7 +27,6 @@
         <!-- Set this to white for now, setting it to transparent just resulted in black -->
         <item name="android:windowBackground">@color/white</item>
 
-
     </style>
 
     <style name="WelcomeScreenTheme.Light">
@@ -36,6 +35,10 @@
         <item name="welcomeButtonNextStyle">@style/WelcomeScreenNextButton.Light</item>
         <item name="welcomeIndicatorStyle">@style/WelcomeScreenPageIndicator.Light</item>
         <item name="welcomeButtonBackground">@drawable/button_borderless_background_theme_light</item>
+    </style>
+
+    <style name="WelcomeScreenTheme.SolidNavigation">
+        <!-- See values-v19 -->
     </style>
 
     <style name="WelcomeScreenText">
@@ -81,8 +84,8 @@
     </style>
 
     <style name="TextContainer">
-        <item name="android:paddingTop">@dimen/text_vertical_padding</item>
-        <item name="android:paddingBottom">@dimen/text_vertical_padding</item>
+        <item name="android:paddingTop">@dimen/text_top_padding</item>
+        <item name="android:paddingBottom">@dimen/text_bottom_padding</item>
         <item name="android:fitsSystemWindows">true</item>
         <item name="android:gravity">center</item>
     </style>

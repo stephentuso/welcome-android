@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="text_horizontal_margin">140dp</dimen>
+    <dimen name="text_top_padding">36dp</dimen>
+    <dimen name="text_bottom_padding">36dp</dimen>
+</resources>

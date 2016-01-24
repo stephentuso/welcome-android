@@ -14,7 +14,7 @@ import com.stephentuso.welcome.ui.BackgroundColor;
  */
 public class ColorChangingBackgroundView extends View {
 
-    BackgroundColor[] mColors;
+    BackgroundColor[] mColors = new BackgroundColor[0];
 
     int mCurrentPosition = 0;
     float mOffset = 0;
@@ -49,6 +49,10 @@ public class ColorChangingBackgroundView extends View {
         if (mPaint == null) {
             mPaint = new Paint();
         }
+
+        if (mColors == null || mColors.length == 0)
+            return;
+
         getDrawingRect(mRect);
         mPaint.setColor(mColors[mCurrentPosition].value());
         mPaint.setAlpha(255);

@@ -153,7 +153,7 @@ Styling
 You can add styles as shown below. Optional items are in square brackets.
 
 ```
-<style name="CustomWelcomeScreenTheme" parent="WelcomeScreenTheme[.Light]">
+<style name="CustomWelcomeScreenTheme" parent="WelcomeScreenTheme[.Light|.SolidNavigation]">
 
     <!-- Color of button text and titles/headings (in built in fragments) -->
     <item name="android:textColorPrimary">color</item>
@@ -177,7 +177,7 @@ You can add styles as shown below. Optional items are in square brackets.
 </style>
 
 <style name="MyWelcomeIndicator" parent="WelcomeScreenPageIndicator[.Light]">
-<item name="indicatorColor">color</item>
+    <item name="indicatorColor">color</item>
     <item name="currentPageColor">color</item>
     <item name="animated">true|false</item>
 </style>
@@ -203,8 +203,6 @@ The background color is transparent by default -->
 ```
 
 Apply your theme to a welcome screen in its `configuration()` by calling `WelcomeScreenBuilder.theme(int)`, passing your theme as the parameter.
-
-For now, there isn't a way to change the typefaces in the supplied fragments, you will have to use your own fragments to do that.
 
 Animations
 ----------

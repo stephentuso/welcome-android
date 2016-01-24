@@ -3,6 +3,15 @@
 
     <style name="WelcomeScreenBaseTheme" parent="Theme.AppCompat.NoActionBar">
         <item name="android:windowTranslucentStatus">true</item>
+        <item name="android:windowTranslucentNavigation">true</item>
+    </style>
+
+    <style name="WelcomeScreenTheme.SolidNavigation">
+        <item name="android:windowTranslucentNavigation">false</item>
+    </style>
+
+    <style name="WelcomeScreenTheme.Light.SolidNavigation">
+        <item name="android:windowTranslucentNavigation">false</item>
     </style>
 
 </resources>
