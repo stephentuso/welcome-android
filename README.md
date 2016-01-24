@@ -38,14 +38,12 @@ If you use proguard, add the following to your proguard rules
 }
 ```
 
-Usage
------
-
-### Basic
+Basic Usage
+-----------
 
 A basic welcome screen can be added in two steps:
 
-#### Extend WelcomeActivity
+### Extend WelcomeActivity
 
 To create a welcome screen, add a class to your project that extends `WelcomeActivity` (don't forget to add it to your AndroidManifest), and override the `configuration()` method. You can use `WelcomeScreenBuilder` to easily set it up:
 
@@ -62,7 +60,9 @@ protected WelcomeScreenConfiguration configuration() {
 }
 ```
 
-#### Show the welcome screen
+*Note: Default typeface methods and defaultBackgroundColor() need to be called before adding pages.*
+
+### Show the welcome screen
 
 Welcome screens are started with `WelcomeScreenHelper`. Put the class of your welcome screen in the second argument of the constructor.
 
@@ -72,9 +72,48 @@ new WelcomeScreenHelper(this, MyWelcomeActivity.class).show();
 
 You can call this from your launcher activity's onCreate or onStart. This will only show the welcome screen if the user hasn't completed it yet.
 
-### More options
+Included pages
+--------------
 
-#### Custom pages
+All methods shown in this section are part of `WelcomeScreenBuilder`. See the [javadoc](http://stephentuso.github.io/welcome-android/javadoc/com/stephentuso/welcome/WelcomeScreenBuilder.html) for more info on each.
+
+### [Title page](http://stephentuso.github.io/welcome-android/javadoc/com/stephentuso/welcome/WelcomeScreenBuilder.html#titlePage-int-java.lang.String-)
+
+A page with an image and a title. A parallax effect can be applied to the image.
+
+```
+titlePage(int resId, String title)
+titlePage(int resId, String title, int colorResId)
+titlePage(int resId, String title, int colorResId, boolean showParallaxAnim)
+titlePage(int resId, String title, int colorResId, boolean showParallaxAnim, String titleTypefacePath)
+```
+
+### [Basic page](http://stephentuso.github.io/welcome-android/javadoc/com/stephentuso/welcome/WelcomeScreenBuilder.html#basicPage-int-java.lang.String-java.lang.String-)
+
+A page with an image, heading, and description. A parallax effect can be applied to the image.
+
+```
+basicPage(int resId, String title, String description)
+basicPage(int resId, String title, String description, int colorResId)
+basicPage(int drawableId, String title, String description, int colorResId, boolean showParallaxAnim)
+basicPage(int drawableId, String title, String description, int colorResId, boolean showParallaxAnim,
+    String headerTypefacePath, String descriptionTypefacePath)
+```
+
+### [Parallax page](http://stephentuso.github.io/welcome-android/javadoc/com/stephentuso/welcome/WelcomeScreenBuilder.html#parallaxPage-int-java.lang.String-java.lang.String-)
+
+Similar to the basic page, but instead of an image you can supply a layout that will have a parallax effect applied to it. The speed at which the layout's children move is determined by their position in the layout, the first will move the slowest and the last will move the fastest.
+
+```
+parallaxPage(int resId, String title, String description)
+parallaxPage(int resId, String title, String description, int colorResId)
+parallaxPage(int resId, String title, String description, int colorResId, float startParallaxFactor, float endParallaxFactor)
+parallaxPage(int resId, String title, String description, int colorResId, float startParallaxFactor, float endParallaxFactor,
+    String headerTypefacePath, String descriptionTypefacePath))
+```
+
+Custom pages
+------------
 
 You can add your own fragments to the welcome screen with `WelcomeScreenBuilder.page()`:
 
@@ -93,7 +132,10 @@ protected WelcomeScreenConfiguration configuration() {
 }
 ```
 
-#### Welcome screen keys
+See [animations](https://github.com/stephentuso/welcome-android#animations) below for adding animations to custom fragments.
+
+Welcome screen keys
+-------------------
 
 You can assign keys (Make sure they are unique!) to welcome screens by adding the following to a class that extends `WelcomeActivity`.
 
@@ -105,7 +147,8 @@ public static String welcomeKey() {
 
 Only change this to a new value if you want everyone who has already used your app to see the welcome screen again! This key is used to determine whether or not to show the welcome screen. This could be useful if you use multiple welcome screens, or if you have updated one and want to show it again.
 
-#### Styling
+Styling
+-------
 
 You can add styles as shown below. Optional items are in square brackets.
 
@@ -163,20 +206,32 @@ Apply your theme to a welcome screen in its `configuration()` by calling `Welcom
 
 For now, there isn't a way to change the typefaces in the supplied fragments, you will have to use your own fragments to do that.
 
-#### Animations
+Animations
+----------
 
-Animations that play as pages are scrolled can be added to your custom fragments by implementing [WelcomeScreenPage.OnChangeListener](http://stephentuso.github.io/welcome-android/javadoc/com/stephentuso/welcome/ui/WelcomeScreenPage.OnChangeListener.html). As an example, the parallax effect from the built in fragments is shown below.
+Animations that play as pages are scrolled can be added to your custom fragments by implementing [WelcomeScreenPage.OnChangeListener](http://stephentuso.github.io/welcome-android/javadoc/com/stephentuso/welcome/ui/WelcomeScreenPage.OnChangeListener.html). As an example, a fade effect is shown below.
 
 ```
 @Override
 public void onScrolled(int pageIndex, float offset, int offsetPixels) {
     if (Build.VERSION.SDK_INT >= 11 && imageView != null) {
-        imageView.setTranslationX(-offsetPixels * 0.8f);
+        imageView.setAlpha(1-Math.abs(offset));
     }
 }
 ```
 
-#### Events (WIP)
+To add parallax effects similar to the included parallax page, use [WelcomeUtils.applyParallaxEffect()](http://stephentuso.github.io/welcome-android/javadoc/index.html?overview-summary.html), for example:
+
+```
+@Override
+public void onScrolled(int pageIndex, float offset, int offsetPixels) {
+    if (parallaxLayout != null)
+        WelcomeUtils.applyParallaxEffect(parallaxLayout, false, offsetPixels, 0.3f, 0.2f);
+}
+```
+
+Events (WIP)
+------------
 
 You can listen for the result of a welcome screen in the activity you start it from.
 
@@ -217,11 +272,12 @@ Todo
 
 -	Make `swipeToDismiss` fade to transparency (showing the activity beneath) rather than white
 -	Complete PreferenceWelcomeFragment
+-	Make ImageViews and parallax page content draw above text (currently goes beneath it, only visible while in landscape)
 
 License
 -------
 
-> Copyright 2015 Stephen Tuso
+> Copyright 2016 Stephen Tuso
 >
 > Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at
 >
