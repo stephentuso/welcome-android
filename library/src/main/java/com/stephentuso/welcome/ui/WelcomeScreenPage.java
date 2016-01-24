@@ -22,22 +22,26 @@ public class WelcomeScreenPage implements OnWelcomeScreenPageChangeListener {
 
         /**
          * Called when this page is coming into view
-         * @param pageIndex The position of this page
+         * @param pageIndex The position index of this page
          * @param offset The % offset of this page, negative if page is off the screen on the right, positive if off on the left
          * @param offsetPixels The offset of this page in pixels, negative if page is off the screen on the right, positive if off on the left
          */
-        void onScrolled(int pageIndex, float offset, int offsetPixels);
+        void onWelcomeScreenPageScrolled(int pageIndex, float offset, int offsetPixels);
 
         /**
-         * Called when the fragment that implements this is selected in the ViewPager
-         * @param pageIndex The index of this page
+         * Called when the selected page changes
+         * @param pageIndex The position index of this page
+         * @param selectedPageIndex The index of the page that was selected
          */
-        void onSelected(int pageIndex);
+        void onWelcomeScreenPageSelected(int pageIndex, int selectedPageIndex);
 
         /**
          * Called when the scroll state of the ViewPager changes
+         *
+         * @param pageIndex The position index of this page
+         * @param state The new scroll state
          */
-        void onScrollStateChanged(int state);
+        void onWelcomeScreenPageScrollStateChanged(int pageIndex, int state);
     }
 
     public WelcomeScreenPage(WelcomeFragmentHolder fragmentHolder, BackgroundColor backgroundColor) {
@@ -86,21 +90,21 @@ public class WelcomeScreenPage implements OnWelcomeScreenPageChangeListener {
             float offset = lowerPosition ? -(1 - positionOffset) : positionOffset;
             int offsetPixels = lowerPosition ? -(fragmentWidth - positionOffsetPixels) : positionOffsetPixels;
 
-            ((OnChangeListener) fragment).onScrolled(index, offset, offsetPixels);
+            ((OnChangeListener) fragment).onWelcomeScreenPageScrolled(index, offset, offsetPixels);
         }
     }
 
     @Override
     public void onPageSelected(int position) {
-        if (getFragment() != null && getFragment() instanceof OnChangeListener && index == position) {
-            ((OnChangeListener) getFragment()).onSelected(position);
+        if (getFragment() != null && getFragment() instanceof OnChangeListener) {
+            ((OnChangeListener) getFragment()).onWelcomeScreenPageSelected(index, position);
         }
     }
 
     @Override
     public void onPageScrollStateChanged(int state) {
         if (getFragment() != null && getFragment() instanceof OnChangeListener) {
-            ((OnChangeListener) getFragment()).onScrollStateChanged(state);
+            ((OnChangeListener) getFragment()).onWelcomeScreenPageScrollStateChanged(index, state);
         }
     }
 }

@@ -93,19 +93,19 @@ public class ParallaxWelcomeFragment extends Fragment implements WelcomeScreenPa
     }
 
     @Override
-    public void onScrolled(int pageIndex, float offset, int offsetPixels) {
+    public void onWelcomeScreenPageScrolled(int pageIndex, float offset, int offsetPixels) {
         if (Build.VERSION.SDK_INT >= 11 && frameLayout != null) {
             WelcomeUtils.applyParallaxEffect(frameLayout.getChildAt(0), parallaxRecursive, offsetPixels, startFactor, parallaxInterval);
         }
     }
 
     @Override
-    public void onSelected(int pageIndex) {
+    public void onWelcomeScreenPageSelected(int pageIndex, int selectedPageIndex) {
 
     }
 
     @Override
-    public void onScrollStateChanged(int state) {
+    public void onWelcomeScreenPageScrollStateChanged(int pageIndex, int state) {
 
     }
 
