@@ -17,7 +17,7 @@
         <item name="animated">true</item>
     </style>
 
-    <style name="CustomWelcomeScreenTitle" parent="WelcomeScreenText.Large.Title">
+    <style name="CustomWelcomeScreenTitle" parent="WelcomeScreenText.Title">
         <item name="android:textSize">30sp</item>
     </style>
 

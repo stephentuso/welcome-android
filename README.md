@@ -72,6 +72,8 @@ new WelcomeScreenHelper(this, MyWelcomeActivity.class).show();
 
 You can call this from your launcher activity's onCreate or onStart. This will only show the welcome screen if the user hasn't completed it yet.
 
+If you have issues with the buttons/indicator being covered by the nav bar, use one of the .SolidNavigation welcome screen themes.
+
 Included pages
 --------------
 
@@ -155,22 +157,31 @@ You can add styles as shown below. Optional items are in square brackets.
 ```
 <style name="CustomWelcomeScreenTheme" parent="WelcomeScreenTheme[.Light|.SolidNavigation]">
 
-    <!-- Color of button text and titles/headings (in built in fragments) -->
+    <!-- Color of button text and titles/headings (in built in fragments)
+        By default, this is also the color of the done/next button -->
     <item name="android:textColorPrimary">color</item>
-    <!-- Color of other text -->
+    <!-- Color of other text
+        By default, this is used for the skip button text color -->
     <item name="android:textColorSecondary">color</item>
 
-    <!-- Strings used for skip/done buttons -->
-    <item name="welcomeSkipButtonText">string</item>
-    <item name="welcomeDoneButtonText">string</item>
+    <!-- ** Button styles ** -->
+    <!-- Background is applied to all buttons,
+        to change a specific button background use the individual button styles -->
+    <item name="welcomeButtonBackground">drawable</item>
+    <!-- Done/skip button text -->
+    <item name="welcomeButtonSkipText">string</item>
+    <item name="welcomeButtonDoneText">string</item>
+    <!-- Individual button styles -->
+    <item name="welcomeButtonSkipStyle">@style/MyButtonSkip</item>
+    <item name="welcomeButtonNextStyle">@style/MyButtonNext</item>
+    <item name="welcomeButtonDoneStyle">@style/MyButtonDone</item>
 
     <!-- The drawable or color to fade to if swipeToDismiss is enabled -->
     <item name="android:windowBackground">drawable|color</item>
 
     <item name="welcomeIndicatorStyle">@style/MyWelcomeIndicator</item>
-    <item name="welcomeButtonNextStyle">@style/MyButtonNext</item>
-    <item name="welcomeButtonBackground">drawable</item>
     <item name="welcomeDividerStyle">@style/MyWelcomeScreenDivider</item>
+
     <item name="welcomeNormalTextStyle">@style/MyNormalText</item>
     <item name="welcomeLargeTextStyle">@style/MyLargeText</item>
     <item name="welcomeTitleTextStyle">@style/MyTitleText</item>
@@ -182,10 +193,15 @@ You can add styles as shown below. Optional items are in square brackets.
     <item name="animated">true|false</item>
 </style>
 
-<!-- Use this to change the image used for the next button.
-If you want to support RTL, add this in values-ldrtl/styles with a different image -->
-<style name="MyButtonNext" parent="WelcomeScreenNextButton[.Dark|.Light]">
+<!-- Use this to change the next button's image/color
+    To support RTL, add this in values-ldrtl/styles with an image facing left -->
+<style name="MyButtonNext" parent="WelcomeScreenButton.Next">
     <item name="android:src">drawable</item>
+    <item name="android:tint">color</item>
+</style>
+
+<style name="MyButtonSkip|MyButtonDone" parent="WelcomeScreenButton(.Skip|.Done)">
+    <item name="android:textColor">color</item>
 </style>
 
 <!-- A divider that is directly above the buttons/indicator.
@@ -196,7 +212,7 @@ The background color is transparent by default -->
 </style>
 
 <!-- The following can apply to any of the three text styles -->
-<style name="MyText" parent="WelcomeScreenText[.Large[.Title]]">
+<style name="MyText" parent="WelcomeScreenText[.Large|.Title][.Centered]">
     <!-- Add any properties that can be applied to a TextView -->
 </style>
 

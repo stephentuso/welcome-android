@@ -8,15 +8,17 @@
    </declare-styleable>
 
     <declare-styleable name="Theme">
-        <attr name="welcomeButtonNextStyle" format="reference"/>
         <attr name="welcomeButtonBackground" format="reference"/>
+        <attr name="welcomeButtonNextStyle" format="reference"/>
+        <attr name="welcomeButtonSkipStyle" format="reference"/>
+        <attr name="welcomeButtonDoneStyle" format="reference"/>
+        <attr name="welcomeButtonDoneText" format="string"/>
+        <attr name="welcomeButtonSkipText" format="string"/>
         <attr name="welcomeIndicatorStyle" format="reference"/>
         <attr name="welcomeDividerStyle" format="reference"/>
         <attr name="welcomeNormalTextStyle" format="reference"/>
         <attr name="welcomeLargeTextStyle" format="reference"/>
         <attr name="welcomeTitleTextStyle" format="reference"/>
-        <attr name="welcomeDoneButtonText" format="string"/>
-        <attr name="welcomeSkipButtonText" format="string"/>
     </declare-styleable>
     
 </resources>

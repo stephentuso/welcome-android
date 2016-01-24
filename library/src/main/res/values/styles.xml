@@ -9,16 +9,21 @@
         <item name="windowNoTitle">true</item>
         <item name="windowActionBar">false</item>
         <item name="android:textColorPrimary">@color/text_primary_theme_dark</item>
-        <item name="android:textColorSecondary">@color/text_primary_theme_dark</item>
-        <item name="welcomeButtonNextStyle">@style/WelcomeScreenNextButton.Dark</item>
+        <item name="android:textColorSecondary">@color/text_primary_theme_dark</item>]
+
         <item name="welcomeButtonBackground">@drawable/button_borderless_background</item>
+        <item name="welcomeButtonSkipStyle">@style/WelcomeScreenButton.Skip</item>
+        <item name="welcomeButtonNextStyle">@style/WelcomeScreenButton.Next</item>
+        <item name="welcomeButtonDoneStyle">@style/WelcomeScreenButton.Done</item>
+        <item name="welcomeButtonDoneText">@string/done</item>
+        <item name="welcomeButtonSkipText">@string/skip</item>
+
+        <item name="welcomeDividerStyle">@style/WelcomeScreenDivider</item>
         <item name="welcomeIndicatorStyle">@style/WelcomeScreenPageIndicator</item>
+
         <item name="welcomeNormalTextStyle">@style/WelcomeScreenText</item>
         <item name="welcomeLargeTextStyle">@style/WelcomeScreenText.Large</item>
-        <item name="welcomeTitleTextStyle">@style/WelcomeScreenText.Large.Title</item>
-        <item name="welcomeDividerStyle">@style/WelcomeScreenDivider</item>
-        <item name="welcomeDoneButtonText">@string/done</item>
-        <item name="welcomeSkipButtonText">@string/skip</item>
+        <item name="welcomeTitleTextStyle">@style/WelcomeScreenText.Title.Centered</item>
 
         <!-- Trying to make the background transparent, so swipeToDismiss will fade to the activity beneath -->
         <item name="android:backgroundDimEnabled">false</item>
@@ -32,7 +37,6 @@
     <style name="WelcomeScreenTheme.Light">
         <item name="android:textColorPrimary">@color/text_primary_theme_light</item>
         <item name="android:textColorSecondary">@color/text_primary_theme_light</item>
-        <item name="welcomeButtonNextStyle">@style/WelcomeScreenNextButton.Light</item>
         <item name="welcomeIndicatorStyle">@style/WelcomeScreenPageIndicator.Light</item>
         <item name="welcomeButtonBackground">@drawable/button_borderless_background_theme_light</item>
     </style>
@@ -55,9 +59,20 @@
         <item name="android:layout_marginBottom">@dimen/title_bottom_margin</item>
     </style>
 
-    <style name="WelcomeScreenText.Large.Title">
+    <style name="WelcomeScreenText.Title" parent="WelcomeScreenText.Large">
         <item name="android:textSize">26sp</item>
-        <item name="android:gravity">center</item>
+    </style>
+
+    <style name="WelcomeScreenText.Centered">
+        <item name="android:gravity">center_horizontal</item>
+    </style>
+
+    <style name="WelcomeScreenText.Large.Centered">
+        <item name="android:gravity">center_horizontal</item>
+    </style>
+
+    <style name="WelcomeScreenText.Title.Centered">
+        <item name="android:gravity">center_horizontal</item>
     </style>
 
     <style name="WelcomeScreenButton" parent="Widget.AppCompat.Button">
@@ -71,16 +86,17 @@
         <item name="android:padding">4dp</item>
     </style>
 
-    <style name="WelcomeScreenNextButton" parent="WelcomeScreenButton">
-        <item name="android:src">@drawable/ic_chevron_right_white_24dp</item>
+    <style name="WelcomeScreenButton.Skip">
+        <item name="android:textColor">?android:attr/textColorSecondary</item>
     </style>
 
-    <style name="WelcomeScreenNextButton.Dark">
-        <item name="android:src">@drawable/ic_chevron_right_white_24dp</item>
+    <style name="WelcomeScreenButton.Done">
+        <item name="android:textColor">?android:attr/textColorPrimary</item>
     </style>
 
-    <style name="WelcomeScreenNextButton.Light">
-        <item name="android:src">@drawable/ic_chevron_right_black_24dp</item>
+    <style name="WelcomeScreenButton.Next">
+        <item name="android:src">@drawable/ic_chevron_right_white_24dp</item>
+        <item name="android:tint">?android:attr/textColorPrimary</item>
     </style>
 
     <style name="TextContainer">

@@ -1,21 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:orientation="horizontal"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
               android:layout_width="match_parent"
               android:layout_height="match_parent"
               android:clipChildren="false">
 
-    <FrameLayout
-        android:id="@+id/parallax_frame"
+    <View
+        android:id="@+id/center_view"
         android:layout_width="0dp"
         android:layout_height="match_parent"
-        android:layout_weight="1"
-        android:clipChildren="false"/>
+        android:layout_centerHorizontal="true"/>
 
     <LinearLayout
-        android:layout_width="0dp"
+        android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        android:layout_weight="1"
+        android:layout_alignLeft="@id/center_view"
+        android:layout_alignStart="@id/center_view"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
         android:orientation="vertical"
         android:gravity="center"
         style="@style/TextContainer">
@@ -34,4 +35,14 @@
 
     </LinearLayout>
 
-</LinearLayout>
+    <FrameLayout
+        android:id="@+id/parallax_frame"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignRight="@id/center_view"
+        android:layout_alignEnd="@id/center_view"
+        android:clipChildren="false"/>
+
+</RelativeLayout>

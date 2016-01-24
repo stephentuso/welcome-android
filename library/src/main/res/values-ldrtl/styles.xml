@@ -1,12 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <style name="WelcomeScreenNextButton.Dark">
+    <style name="WelcomeScreenButton.Next">
         <item name="android:src">@drawable/ic_chevron_left_white_24dp</item>
-    </style>
-
-    <style name="WelcomeScreenNextButton.Light">
-        <item name="android:src">@drawable/ic_chevron_left_black_24dp</item>
+        <item name="android:tint">?android:attr/textColorPrimary</item>
     </style>
 
 </resources>
