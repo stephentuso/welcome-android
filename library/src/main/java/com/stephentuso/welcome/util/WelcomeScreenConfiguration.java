@@ -18,7 +18,6 @@ import com.stephentuso.welcome.ui.WelcomeScreenPageList;
 public class WelcomeScreenConfiguration {
 
     public static final int NO_ANIMATION_SET = -1;
-    public static final String NO_TYPEFACE = "";
 
     public enum Theme {
         /**
@@ -52,6 +51,10 @@ public class WelcomeScreenConfiguration {
                 }
             }, mParameters.mPages.getBackgroundColor(lastPageIndex())));
         }
+    }
+
+    public Context getContext() {
+        return mParameters.mContext;
     }
 
     public Fragment getFragment(int index) {
@@ -136,7 +139,7 @@ public class WelcomeScreenConfiguration {
         private int mThemeResId = Theme.DARK.resId;
         private boolean mSwipeToDismiss = false;
         private int mExitAnimationResId = NO_ANIMATION_SET;
-        private String mButtonTypefacePath = NO_TYPEFACE;
+        private String mButtonTypefacePath = "";
         private boolean mAnimateButtons = true;
         private boolean mUseCustomDoneButton = false;
 

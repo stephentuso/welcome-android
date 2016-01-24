@@ -1,9 +1,7 @@
 package com.stephentuso.welcome.ui;
 
-import android.animation.Animator;
 import android.os.Build;
 import android.support.v4.view.ViewCompat;
-import android.support.v4.view.ViewPropertyAnimatorCompat;
 import android.support.v4.view.ViewPropertyAnimatorListener;
 import android.view.View;
 
@@ -39,6 +37,10 @@ public abstract class WelcomeScreenViewWrapper implements OnWelcomeScreenPageCha
     public void setup(WelcomeScreenConfiguration config) {
         mLastPageIndex = config.lastViewablePageIndex();
         mAnimate = config.getAnimateButtons();
+    }
+
+    protected View getView() {
+        return this.mView;
     }
 
     protected void setVisibility(boolean visible) {

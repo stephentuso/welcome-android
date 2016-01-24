@@ -87,7 +87,17 @@ public class WelcomeScreenBuilder {
     }
 
     /**
-     * Set the path to a typeface (in assets) tp be used by default for titles
+     * Set the path to a typeface (in assets) to be used for the buttons
+     * @param typefacePath The path to a typeface file in assets folder
+     * @return this WelcomeScreenBuilder object to allow method calls to be chained
+     */
+    public WelcomeScreenBuilder buttonTypefacePath(String typefacePath) {
+        mConfigParams.setButtonTypefacePath(typefacePath);
+        return this;
+    }
+
+    /**
+     * Set the path to a typeface (in assets) to be used by default for titles
      * @param typefacePath The path to a typeface file in assets folder
      * @return this WelcomeScreenBuilder object to allow method calls to be chained
      */
@@ -97,7 +107,7 @@ public class WelcomeScreenBuilder {
     }
 
     /**
-     * Set the path to a typeface (in assets) tp be used by default for headers
+     * Set the path to a typeface (in assets) to be used by default for headers
      * @param typefacePath The path to a typeface file in assets folder
      * @return this WelcomeScreenBuilder object to allow method calls to be chained
      */
@@ -107,7 +117,7 @@ public class WelcomeScreenBuilder {
     }
 
     /**
-     * Set the path to a typeface (in assets) tp be used by default for descriptions
+     * Set the path to a typeface (in assets) to be used by default for descriptions
      * @param typefacePath The path to a typeface file in assets folder
      * @return this WelcomeScreenBuilder object to allow method calls to be chained
      */
