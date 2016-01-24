@@ -23,7 +23,7 @@ This library is available through jCenter.
 Gradle:
 
 ```
-compile 'com.stephentuso:welcome:0.4.0'
+compile 'com.stephentuso:welcome:0.4.1'
 ```
 
 If you use proguard, add the following to your proguard rules
