@@ -10,18 +10,15 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
 import com.stephentuso.welcome.R;
-import com.stephentuso.welcome.WelcomeCompletedEvent;
-import com.stephentuso.welcome.WelcomeFailedEvent;
-import com.stephentuso.welcome.WelcomeScreenHelper;
 import com.stephentuso.welcome.ui.view.WelcomeScreenBackgroundView;
 import com.stephentuso.welcome.ui.view.WelcomeScreenViewPagerIndicator;
 import com.stephentuso.welcome.util.SharedPreferencesHelper;
 import com.stephentuso.welcome.util.WelcomeScreenConfiguration;
 import com.stephentuso.welcome.util.WelcomeUtils;
 
-import de.greenrobot.event.EventBus;
-
 public abstract class WelcomeActivity extends AppCompatActivity {
+
+    public static final String WELCOME_SCREEN_KEY = "welcome_screen_key";
 
     ViewPager mViewPager;
     WelcomeFragmentPagerAdapter mAdapter;
@@ -118,31 +115,42 @@ public abstract class WelcomeActivity extends AppCompatActivity {
         return mConfiguration.isRtl() ? getPreviousPageIndex() <= mConfiguration.firstPageIndex() : getPreviousPageIndex() >= mConfiguration.firstPageIndex();
     }
 
+    /**
+     * Closes the activity and saves it as completed.
+     * A subsequent call to WelcomeScreenHelper.show() would not show this again,
+     * unless the key is changed.
+     */
     protected void completeWelcomeScreen() {
         SharedPreferencesHelper.storeWelcomeCompleted(this, getKey());
-        sendBroadcast(WelcomeScreenHelper.ACTION_WELCOME_COMPLETED);
-        EventBus.getDefault().post(new WelcomeCompletedEvent(getKey()));
+        setWelcomeScreenResult(RESULT_OK);
         super.finish();
         if (mConfiguration.getExitAnimation() != WelcomeScreenConfiguration.NO_ANIMATION_SET)
             overridePendingTransition(R.anim.none, mConfiguration.getExitAnimation());
     }
 
-    private void sendBroadcast(String action) {
-        Intent broadcastIntent = new Intent();
-        broadcastIntent.setAction(action);
-        sendBroadcast(broadcastIntent);
+    /**
+     * Closes the activity, doesn't save as completed.
+     * A subsequent call to WelcomeScreenHelper.show() would show this again.
+     */
+    protected void cancelWelcomeScreen() {
+        setWelcomeScreenResult(RESULT_CANCELED);
+        super.finish();
     }
 
     @Override
     public void onBackPressed() {
-
         if (mConfiguration.getCanSkip() && (mConfiguration.getBackButtonSkips() || !scrollToPreviousPage())) {
             completeWelcomeScreen();
         } else if (!mConfiguration.getCanSkip() && !scrollToPreviousPage()){
-            EventBus.getDefault().post(new WelcomeFailedEvent(getKey()));
-            finish();
+            cancelWelcomeScreen();
         }
 
+    }
+
+    private void setWelcomeScreenResult(int resultCode) {
+        Intent intent = this.getIntent();
+        intent.putExtra(WELCOME_SCREEN_KEY, getKey());
+        this.setResult(resultCode, intent);
     }
 
     private String getKey() {

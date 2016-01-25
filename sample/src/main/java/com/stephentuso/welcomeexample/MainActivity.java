@@ -1,14 +1,14 @@
 package com.stephentuso.welcomeexample;
 
-import android.content.Context;
-import android.support.v7.app.AppCompatActivity;
+import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Toast;
 
-import com.stephentuso.welcome.WelcomeCompletedEvent;
-import com.stephentuso.welcome.WelcomeFailedEvent;
 import com.stephentuso.welcome.WelcomeScreenHelper;
+import com.stephentuso.welcome.ui.WelcomeActivity;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -17,11 +17,9 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        WelcomeScreenHelper.register(this);
-
         new WelcomeScreenHelper(this, MyWelcomeActivity.class).show();
 
-        final Context activity = this;
+        final Activity activity = this;
 
         findViewById(R.id.button_show).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -33,18 +31,20 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        WelcomeScreenHelper.unregister(this);
-    }
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
 
-    public void onEvent(WelcomeCompletedEvent event) {
-        Toast.makeText(getApplicationContext(), event.welcomeScreenKey + " completed", Toast.LENGTH_SHORT).show();
-    }
+        if (requestCode == WelcomeScreenHelper.DEFAULT_WELCOME_SCREEN_REQUEST) {
+            String welcomeKey = data.getStringExtra(WelcomeActivity.WELCOME_SCREEN_KEY);
 
-    public void onEvent(WelcomeFailedEvent event) {
-        Toast.makeText(getApplicationContext(), event.welcomeScreenKey + " failed", Toast.LENGTH_SHORT).show();
-    }
+            if (resultCode == RESULT_OK) {
+                Toast.makeText(getApplicationContext(), welcomeKey + " completed", Toast.LENGTH_SHORT).show();
+            } else {
+                Toast.makeText(getApplicationContext(), welcomeKey + " failed", Toast.LENGTH_SHORT).show();
+            }
 
+        }
+
+    }
 
 }
