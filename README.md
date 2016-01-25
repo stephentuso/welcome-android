@@ -109,9 +109,10 @@ Similar to the basic page, but instead of an image you can supply a layout that 
 ```
 parallaxPage(int resId, String title, String description)
 parallaxPage(int resId, String title, String description, int colorResId)
-parallaxPage(int resId, String title, String description, int colorResId, float startParallaxFactor, float endParallaxFactor)
-parallaxPage(int resId, String title, String description, int colorResId, float startParallaxFactor, float endParallaxFactor,
-    String headerTypefacePath, String descriptionTypefacePath))
+parallaxPage(int resId, String title, String description, int colorResId, float startParallaxFactor,
+    float endParallaxFactor)
+parallaxPage(int resId, String title, String description, int colorResId, float startParallaxFactor,
+    float endParallaxFactor, String headerTypefacePath, String descriptionTypefacePath))
 ```
 
 Custom pages
@@ -136,26 +137,36 @@ protected WelcomeScreenConfiguration configuration() {
 
 See [animations](https://github.com/stephentuso/welcome-android#animations) below for adding animations to custom fragments.
 
-Welcome screen keys
--------------------
-
-You can assign keys (Make sure they are unique!) to welcome screens by adding the following to a class that extends `WelcomeActivity`.
-
-```
-public static String welcomeKey() {
-    return "Your unique key";
-}
-```
-
-Only change this to a new value if you want everyone who has already used your app to see the welcome screen again! This key is used to determine whether or not to show the welcome screen. This could be useful if you use multiple welcome screens, or if you have updated one and want to show it again.
-
 Styling
 -------
+
+### Themes
+
+The provided themes are listed below.
+
+Transparent status/navigation on API 19+. Content does not flow under status bar:
+
+-	`WelcomeSceenTheme` - The default theme. Meant to be used with dark backgrounds, the text, indicator, and buttons are light colored.
+-	`WelcomeScreenTheme.Light` - Meant to be used with light backgrounds; the text, indicator, and buttons are dark colored.
+
+Transparent status bar, solid navigation bar on API 19+. Content does not flow under status bar:
+
+-	`WelcomeScreenTheme.SolidNavigation`
+-	`WelcomeScreenTheme.Light.SolidNavigation`
+
+Transparent status bar, solid navigation bar on API 19+. Content flows under status bar:
+
+-	`WelcomeScreenTheme.SolidNavigation.UnderStatusBar`
+-	`WelcomeScreenTheme.Light.SolidNavigation.UnderStatusBar`
+
+### Styles
+
+Typefaces and a few other things (animations, button visibility) have to be set with `WelcomeScreenBuilder`, but everything else that is customizable can be changed with styles.
 
 You can add styles as shown below. Optional items are in square brackets.
 
 ```
-<style name="CustomWelcomeScreenTheme" parent="WelcomeScreenTheme[.Light|.SolidNavigation]">
+<style name="CustomWelcomeScreenTheme" parent="SEE THEMES ABOVE">
 
     <!-- Color of button text and titles/headings (in built in fragments)
         By default, this is also the color of the done/next button -->
@@ -234,7 +245,7 @@ public void onScrolled(int pageIndex, float offset, int offsetPixels) {
 }
 ```
 
-To add parallax effects similar to the included parallax page, use [WelcomeUtils.applyParallaxEffect()](http://stephentuso.github.io/welcome-android/javadoc/index.html?overview-summary.html), for example:
+To add parallax effects similar to the included parallax page, use [WelcomeUtils.applyParallaxEffect()](http://stephentuso.github.io/welcome-android/javadoc/index.html?overview-summary.html) in `onScrolled`. For example:
 
 ```
 @Override
@@ -243,6 +254,19 @@ public void onScrolled(int pageIndex, float offset, int offsetPixels) {
         WelcomeUtils.applyParallaxEffect(parallaxLayout, false, offsetPixels, 0.3f, 0.2f);
 }
 ```
+
+Welcome screen keys
+-------------------
+
+You can optionally assign keys (Make sure they are unique!) to welcome screens by adding the following to a class that extends `WelcomeActivity`.
+
+```
+public static String welcomeKey() {
+    return "Your unique key";
+}
+```
+
+Only change this to a new value if you want everyone who has already used your app to see the welcome screen again! This key is used to determine whether or not to show the welcome screen. This could be useful if you use multiple welcome screens, or if you have updated one and want to show it again.
 
 Events (WIP)
 ------------
