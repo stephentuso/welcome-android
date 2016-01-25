@@ -109,5 +109,4 @@ public class ParallaxWelcomeFragment extends Fragment implements WelcomeScreenPa
 
     }
 
-
 }

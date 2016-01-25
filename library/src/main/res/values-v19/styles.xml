@@ -14,4 +14,12 @@
         <item name="android:windowTranslucentNavigation">false</item>
     </style>
 
+    <style name="WelcomeScreenTheme.SolidNavigation.UnderStatusBar">
+        <item name="welcomeLayoutFitsSystemWindows">false</item>
+    </style>
+
+    <style name="WelcomeScreenTheme.Light.SolidNavigation.UnderStatusBar">
+        <item name="welcomeLayoutFitsSystemWindows">false</item>
+    </style>
+
 </resources>

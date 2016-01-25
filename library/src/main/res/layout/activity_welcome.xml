@@ -19,7 +19,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:fitsSystemWindows="true">
+        android:fitsSystemWindows="?attr/welcomeLayoutFitsSystemWindows">
 
         <android.support.v4.view.ViewPager
             android:id="@+id/view_pager"

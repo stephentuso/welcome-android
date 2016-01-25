@@ -19,6 +19,7 @@
         <attr name="welcomeNormalTextStyle" format="reference"/>
         <attr name="welcomeLargeTextStyle" format="reference"/>
         <attr name="welcomeTitleTextStyle" format="reference"/>
+        <attr name="welcomeLayoutFitsSystemWindows" format="boolean"/>
     </declare-styleable>
     
 </resources>

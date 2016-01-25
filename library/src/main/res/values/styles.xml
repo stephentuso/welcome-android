@@ -8,8 +8,9 @@
     <style name="WelcomeScreenTheme" parent="WelcomeScreenBaseTheme">
         <item name="windowNoTitle">true</item>
         <item name="windowActionBar">false</item>
+        <item name="welcomeLayoutFitsSystemWindows">true</item>
         <item name="android:textColorPrimary">@color/text_primary_theme_dark</item>
-        <item name="android:textColorSecondary">@color/text_primary_theme_dark</item>]
+        <item name="android:textColorSecondary">@color/text_primary_theme_dark</item>
 
         <item name="welcomeButtonBackground">@drawable/button_borderless_background</item>
         <item name="welcomeButtonSkipStyle">@style/WelcomeScreenButton.Skip</item>
@@ -42,6 +43,18 @@
     </style>
 
     <style name="WelcomeScreenTheme.SolidNavigation">
+        <!-- See values-v19 -->
+    </style>
+
+    <style name="WelcomeScreenTheme.Light.SolidNavigation">
+        <!-- See values-v19 -->
+    </style>
+
+    <style name="WelcomeScreenTheme.SolidNavigation.UnderStatusBar">
+        <!-- See values-v19 -->
+    </style>
+
+    <style name="WelcomeScreenTheme.Light.SolidNavigation.UnderStatusBar">
         <!-- See values-v19 -->
     </style>
 
