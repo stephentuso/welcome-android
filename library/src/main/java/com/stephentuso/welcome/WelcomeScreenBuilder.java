@@ -11,6 +11,7 @@ import android.support.v4.app.Fragment;
 import com.stephentuso.welcome.ui.BackgroundColor;
 import com.stephentuso.welcome.ui.WelcomeFragmentHolder;
 import com.stephentuso.welcome.ui.fragments.BasicWelcomeFragment;
+import com.stephentuso.welcome.ui.fragments.FullScreenParallaxWelcomeFragment;
 import com.stephentuso.welcome.ui.fragments.ParallaxWelcomeFragment;
 import com.stephentuso.welcome.ui.fragments.TitleFragment;
 import com.stephentuso.welcome.util.WelcomeScreenConfiguration;
@@ -306,7 +307,7 @@ public class WelcomeScreenBuilder {
     }
 
     /**
-     * Adds a page that applies a parallax effect to the supplied layout.
+     * Adds a page with a header and description that applies a parallax effect to the supplied layout.
      * The speed at which the children are moved is determined by their location in the layout,
      * the first will move the slowest and the last will move the fastest.
      *
@@ -320,7 +321,7 @@ public class WelcomeScreenBuilder {
     }
 
     /**
-     * Adds a page that applies a parallax effect to the supplied layout.
+     * Adds a page with a header and description that applies a parallax effect to the supplied layout.
      * The speed at which the children are moved is determined by their location in the layout,
      * the first will move the slowest and the last will move the fastest.
      *
@@ -335,7 +336,7 @@ public class WelcomeScreenBuilder {
     }
 
     /**
-     * Adds a page that applies a parallax effect to the supplied layout.
+     * Adds a page with a header and description that applies a parallax effect to the supplied layout.
      * The speed at which the children are moved is determined by their location in the layout,
      * the first will move the slowest and the last will move the fastest.
      *
@@ -354,7 +355,7 @@ public class WelcomeScreenBuilder {
     }
 
     /**
-     * Adds a page that applies a parallax effect to the supplied layout.
+     * Adds a page with a header and description that applies a parallax effect to the supplied layout.
      * The speed at which the children are moved is determined by their location in the layout,
      * the first will move the slowest and the last will move the fastest.
      *
@@ -375,6 +376,54 @@ public class WelcomeScreenBuilder {
             @Override
             protected Fragment fragment() {
                 return ParallaxWelcomeFragment.newInstance(resId, title, description, startParallaxFactor, endParallaxFactor, false, headerTypefacePath, descriptionTypefacePath);
+            }
+        }, colorResId);
+        return this;
+    }
+
+    /**
+     * Adds a page that applies a parallax effect to the supplied layout.
+     * The speed at which the children are moved is determined by their location in the layout,
+     * the first will move the slowest and the last will move the fastest.
+     * The default background color is used.
+     *
+     * @param resId The layout resource id to apply the parallax effect to
+     * @return this WelcomeScreenBuilder object to allow method calls to be chained
+     */
+    public WelcomeScreenBuilder fullScreenParallaxPage(@LayoutRes final int resId) {
+        return fullScreenParallaxPage(resId, 0, 0.2f, 1.0f);
+    }
+
+    /**
+     * Adds a page that applies a parallax effect to the supplied layout.
+     * The speed at which the children are moved is determined by their location in the layout,
+     * the first will move the slowest and the last will move the fastest.
+     *
+     * @param resId The layout resource id to apply the parallax effect to
+     * @param colorResId Color resource id to be used as the background color
+     * @return this WelcomeScreenBuilder object to allow method calls to be chained
+     */
+    public WelcomeScreenBuilder fullScreenParallaxPage(@LayoutRes final int resId, @ColorRes final int colorResId) {
+        return fullScreenParallaxPage(resId, colorResId, 0.2f, 1.0f);
+    }
+
+    /**
+     * Adds a page that applies a parallax effect to the supplied layout.
+     * The speed at which the children are moved is determined by their location in the layout,
+     * the first will move the slowest and the last will move the fastest.
+     *
+     * @param resId The layout resource id to apply the parallax effect to
+     * @param colorResId Color resource id to be used as the background color
+     * @param startParallaxFactor The speed at which the first child should move. Negative values for slower than normal, positive for faster. The default value is 0.2.
+     *                            A child with a factor of -1.0 will stay completely still, a child with a factor of 1.0 will move twice as fast.
+     * @param endParallaxFactor The speed at which the last child should move. Negative values for slower than normal, positive for faster. The default value is 1.0.
+     * @return this WelcomeScreenBuilder object to allow method calls to be chained
+     */
+    public WelcomeScreenBuilder fullScreenParallaxPage(@LayoutRes final int resId, @ColorRes final int colorResId, final float startParallaxFactor, final float endParallaxFactor) {
+        mConfigParams.add(new WelcomeFragmentHolder() {
+            @Override
+            protected Fragment fragment() {
+                return FullScreenParallaxWelcomeFragment.newInstance(resId, startParallaxFactor, endParallaxFactor, false);
             }
         }, colorResId);
         return this;
