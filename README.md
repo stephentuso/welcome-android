@@ -75,7 +75,7 @@ Skipping/Back button behavior
 
 By default, the welcome screen can be skipped, and pressing the back button will navigate to the previous page or close (skip) the welcome screen if on the first page. This can be changed with `WelcomeScreenBuilder.canSkip()`, `backButtonSkips()` (only applies if `canSkip` is true), and `backButtonNavigatesPages()`. If you disable skipping, the welcome screen will not be stored as completed when it closes.
 
-**If you set `canSkip` or `backButtonSkips` to false, see [Results](#Results) below for how to respond if a welcome screen is canceled**
+**If you set `canSkip` or `backButtonSkips` to false, see [Results](https://github.com/stephentuso/welcome-android#results) below for how to respond if a welcome screen is canceled**
 
 If you want the user to have to navigate through the welcome screen before using the app (if you wanted to provide some setup options in a custom fragment, for example), call `canSkip(false)` and close your app if the welcome screen's result is `RESULT_CANCELED`.
 
