@@ -120,6 +120,16 @@ parallaxPage(int resId, String title, String description, int colorResId, float 
     float endParallaxFactor, String headerTypefacePath, String descriptionTypefacePath))
 ```
 
+### [Full screen parallax page](http://stephentuso.github.io/welcome-android/javadoc/com/stephentuso/welcome/WelcomeScreenBuilder.html#fullScreenParallaxPage-int-)
+
+Applies a parallax effect in the same way the normal parallax page does, but the layout you provide fills the whole fragment, and there isn't a header or description.
+
+```
+fullScreenParallaxPage(int resId)
+fullScreenParallaxPage(int resId, int colorResId)
+fullScreenParallaxPage(int resId, int colorResId, float startParallaxFactor, float endParallaxFactor)
+```
+
 Custom pages
 ------------
 
