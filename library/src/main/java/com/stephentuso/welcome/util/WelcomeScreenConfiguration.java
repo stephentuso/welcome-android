@@ -14,6 +14,7 @@ import com.stephentuso.welcome.ui.WelcomeScreenPageList;
 
 /**
  * Created by stephentuso on 11/15/15.
+ * All getters are in WelcomeScreenConfiguration, all setters are in Parameters
  */
 public class WelcomeScreenConfiguration {
 
@@ -137,6 +138,10 @@ public class WelcomeScreenConfiguration {
         return mParameters.mUseCustomDoneButton;
     }
 
+    public boolean getShowNextButton() {
+        return mParameters.mShowNextButton;
+    }
+
     public static class Parameters {
 
         private WelcomeScreenPageList mPages = new WelcomeScreenPageList();
@@ -152,6 +157,7 @@ public class WelcomeScreenConfiguration {
         private String mDoneButtonTypefacePath = "";
         private boolean mAnimateButtons = true;
         private boolean mUseCustomDoneButton = false;
+        private boolean mShowNextButton = true;
 
         public Parameters(Context context) {
             mContext = context;
@@ -233,6 +239,10 @@ public class WelcomeScreenConfiguration {
 
         public void setUseCustomDoneButton(boolean useCustomDoneButton) {
             this.mUseCustomDoneButton = useCustomDoneButton;
+        }
+
+        public void setShowNextButton(boolean showNextButton) {
+            this.mShowNextButton = showNextButton;
         }
 
         private Integer getColor(@ColorRes int resId) {

@@ -92,7 +92,7 @@ public class WelcomeScreenBuilder {
 
     /**
      * Indicate that a done button is going to be provided in a custom fragment.
-     * Use {@link com.stephentuso.welcome.ui.WelcomeScreenFinisher#finish() WelcomeScreenFinisher.finish()} in the done button's onClickListener
+     * Use {@link com.stephentuso.welcome.ui.WelcomeScreenFinisher#finish() WelcomeScreenFinisher.finish()} in your button's onClickListener
      * to close the welcome screen correctly.
      *
      * @param useCustomDoneButton Whether or not a done button will be present in the last fragment
@@ -100,6 +100,17 @@ public class WelcomeScreenBuilder {
      */
     public WelcomeScreenBuilder useCustomDoneButton(boolean useCustomDoneButton) {
         mConfigParams.setUseCustomDoneButton(useCustomDoneButton);
+        return this;
+    }
+
+    /**
+     * Set the visibility of the next button
+     *
+     * @param showNextButton Whether or not to show the next button
+     * @return this WelcomeScreenBuilder object to allow method calls to be chained
+     */
+    public WelcomeScreenBuilder showNextButton(boolean showNextButton) {
+        mConfigParams.setShowNextButton(showNextButton);
         return this;
     }
 
