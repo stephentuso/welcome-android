@@ -30,9 +30,11 @@ If you use proguard, add the following to your proguard rules
 
 ```
 -keepclassmembers class * extends com.stephentuso.welcome.ui.WelcomeActivity {
-    public static String welcomeKey();
+    public static java.lang.String welcomeKey();
 }
 ```
+
+**!! The rule shown above has been corrected. If you are already using this library make sure your rule matches the one above !!**
 
 Basic Usage
 -----------
