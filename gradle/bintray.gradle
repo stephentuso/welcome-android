@@ -29,7 +29,7 @@ task publishJavadoc(type: Exec, dependsOn: javadoc) {
 
     //commandLine "bash", "-l", "$rootDir/.utility/local-gh-pages-javadoc-push.sh $buildDir"
 }
-publishJavadoc.shouldRunAfter(bintrayUpload)
+//publishJavadoc.shouldRunAfter(bintrayUpload)
 
 configure(publishJavadoc) {
     group = 'Publishing'
