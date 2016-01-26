@@ -8,4 +8,5 @@
     <dimen name="text_bottom_padding">8dp</dimen>
     <dimen name="flat_button_vertical_margin">4dp</dimen>
     <dimen name="flat_button_horizontal_margin">8dp</dimen>
+    <dimen name="title_text_size">26sp</dimen>
 </resources>

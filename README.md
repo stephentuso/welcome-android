@@ -32,10 +32,6 @@ If you use proguard, add the following to your proguard rules
 -keepclassmembers class * extends com.stephentuso.welcome.ui.WelcomeActivity {
     public static String welcomeKey();
 }
-
--keepclassmembers class ** {
-    public void onEvent*(***);
-}
 ```
 
 Basic Usage
@@ -73,6 +69,15 @@ new WelcomeScreenHelper(this, MyWelcomeActivity.class).show();
 You can call this from your launcher activity's onCreate or onStart. This will only show the welcome screen if the user hasn't completed it yet.
 
 If you have issues with the buttons/indicator being covered by the nav bar, use one of the .SolidNavigation welcome screen themes.
+
+Skipping/Back button behavior
+-----------------------------
+
+By default, the welcome screen can be skipped, and pressing the back button will navigate to the previous page or close (skip) the welcome screen if on the first page. This can be changed with `WelcomeScreenBuilder.canSkip()`, `backButtonSkips()` (only applies if `canSkip` is true), and `backButtonNavigatesPages()`. If you disable skipping, the welcome screen will not be stored as completed when it closes.
+
+**If you set `canSkip` or `backButtonSkips` to false, see [Results](#Results) below for how to respond if a welcome screen is canceled**
+
+If you want the user to have to navigate through the welcome screen before using the app (if you wanted to provide some setup options in a custom fragment, for example), call `canSkip(false)` and close your app if the welcome screen's result is `RESULT_CANCELED`.
 
 Included pages
 --------------
@@ -268,49 +273,38 @@ public static String welcomeKey() {
 
 Only change this to a new value if you want everyone who has already used your app to see the welcome screen again! This key is used to determine whether or not to show the welcome screen. This could be useful if you use multiple welcome screens, or if you have updated one and want to show it again.
 
-Events (WIP)
-------------
+Results
+-------
 
-You can listen for the result of a welcome screen in the activity you start it from.
-
--	Call `WelcomeScreenHelper.register(this)` in `onCreate`
--	Call `WelcomeScreenHelper.unregister(this)` in `onDestroy`
--	Add the two `onEvent` methods as shown below
+You can listen for the result of a welcome screen in the Activity that started it by overriding `onActivityResult`:
 
 ```
 @Override
-protected void onCreate(Bundle savedInstanceState) {
-    ...
-    WelcomeScreenHelper.register(this);
-    new WelcomeScreenHelper(this, MyWelcomeActivity.class).show();
-    ...
-}
+protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+    super.onActivityResult(requestCode, resultCode, data);
 
-@Override
-protected void onDestroy() {
-    ...
-    WelcomeScreenHelper.unregister(this);
-}
 
-public void onEvent(WelcomeCompletedEvent event) {
-    // Code here will run when the welcome screen has completed or has been skipped. Access the key of the welcome screen with event.welcomeScreenKey
-}
+    if (requestCode == WelcomeScreenHelper.DEFAULT_WELCOME_SCREEN_REQUEST) {
+        // The key of the welcome screen is in the Intent
+        String welcomeKey = data.getStringExtra(WelcomeActivity.WELCOME_SCREEN_KEY);
 
-public void onEvent(WelcomeFailedEvent event) {
-    // Code here will run when the welcome screen can't be skipped and the back button was pressed on the first page. Access the key of the welcome screen with event.welcomeScreenKey
+        if (resultCode == RESULT_OK) {
+            // Code here will run if the welcome screen was completed
+        } else {
+            // Code here will run if the welcome screen was canceled
+            // You will probably want to call finish() here
+        }
+
+    }
+
 }
 ```
-
-The failure event is mostly meant to be used when you don't want users to use the app without going through the welcome screen. If you wanted that, you could close the app in the failure method.
-
-Please note that these will not be called if resources are low and the activity they are in gets destroyed in the background.
 
 Todo
 ----
 
 -	Make `swipeToDismiss` fade to transparency (showing the activity beneath) rather than white
 -	Complete PreferenceWelcomeFragment
--	Make ImageViews and parallax page content draw above text (currently goes beneath it, only visible while in landscape)
 
 License
 -------

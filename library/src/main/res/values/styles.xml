@@ -73,7 +73,7 @@
     </style>
 
     <style name="WelcomeScreenText.Title" parent="WelcomeScreenText.Large">
-        <item name="android:textSize">26sp</item>
+        <item name="android:textSize">@dimen/title_text_size</item>
     </style>
 
     <style name="WelcomeScreenText.Centered">

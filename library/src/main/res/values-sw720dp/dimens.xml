@@ -3,4 +3,5 @@
     <dimen name="text_horizontal_margin">180dp</dimen>
     <dimen name="text_top_padding">80dp</dimen>
     <dimen name="text_bottom_padding">130dp</dimen>
+    <dimen name="title_text_size">34sp</dimen>
 </resources>
