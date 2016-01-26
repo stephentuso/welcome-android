@@ -40,7 +40,7 @@ public class MainActivity extends AppCompatActivity {
             if (resultCode == RESULT_OK) {
                 Toast.makeText(getApplicationContext(), welcomeKey + " completed", Toast.LENGTH_SHORT).show();
             } else {
-                Toast.makeText(getApplicationContext(), welcomeKey + " failed", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), welcomeKey + " canceled", Toast.LENGTH_SHORT).show();
             }
 
         }

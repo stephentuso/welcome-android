@@ -35,6 +35,7 @@ public class WelcomeScreenBuilder {
 
     /**
      * Enables or disables swipe to dismiss (disabled by default)
+     *
      * @param swipeToDismiss True to enable swipe to dismiss, false to disable it
      * @return this WelcomeScreenBuilder object to allow method calls to be chained
      */
@@ -46,6 +47,7 @@ public class WelcomeScreenBuilder {
     /**
      * Sets whether or not the welcome screen can be skipped.
      * Skipping is allowed by default
+     *
      * @param canSkip True to allow skipping, false to disable it
      * @return this WelcomeScreenBuilder object to allow method calls to be chained
      */
@@ -57,6 +59,7 @@ public class WelcomeScreenBuilder {
     /**
      * Only applies if skipping is allowed. Sets whether or not the back button can skip the welcome screen.
      * This is enabled by default.
+     *
      * @param backButtonSkips True to allow the back button to skip the welcome screen, false to disable it
      * @return this WelcomeScreenBuilder object to allow method calls to be chained
      */
@@ -66,7 +69,19 @@ public class WelcomeScreenBuilder {
     }
 
     /**
+     * Set whether or not pressing the back button will move to the previous page in the welcome screen.
+     * This is true by default
+     *
+     * @return this WelcomeScreenBuilder object to allow method calls to be chained
+     */
+    public WelcomeScreenBuilder backButtonNavigatesPages(boolean navigatesPages) {
+        mConfigParams.setBackButtonNavigatesPages(navigatesPages);
+        return this;
+    }
+
+    /**
      * Set whether or not the buttons fade out/in when changing visibilty
+     *
      * @param animateButtons True to animate buttons, false to not
      * @return this WelcomeScreenBuilder object to allow method calls to be chained
      */
@@ -79,6 +94,7 @@ public class WelcomeScreenBuilder {
      * Indicate that a done button is going to be provided in a custom fragment.
      * Use {@link com.stephentuso.welcome.ui.WelcomeScreenFinisher#finish() WelcomeScreenFinisher.finish()} in the done button's onClickListener
      * to close the welcome screen correctly.
+     *
      * @param useCustomDoneButton Whether or not a done button will be present in the last fragment
      * @return this WelcomeScreenBuilder object to allow method calls to be chained
      */
@@ -89,6 +105,7 @@ public class WelcomeScreenBuilder {
 
     /**
      * Set the path to a typeface (in assets) to be used for the skip button
+     *
      * @param typefacePath The path to a typeface file in assets folder
      * @return this WelcomeScreenBuilder object to allow method calls to be chained
      */
@@ -99,6 +116,7 @@ public class WelcomeScreenBuilder {
 
     /**
      * Set the path to a typeface (in assets) to be used for the done button
+     *
      * @param typefacePath The path to a typeface file in assets folder
      * @return this WelcomeScreenBuilder object to allow method calls to be chained
      */
@@ -109,6 +127,7 @@ public class WelcomeScreenBuilder {
 
     /**
      * Set the path to a typeface (in assets) to be used by default for titles
+     *
      * @param typefacePath The path to a typeface file in assets folder
      * @return this WelcomeScreenBuilder object to allow method calls to be chained
      */
@@ -119,6 +138,7 @@ public class WelcomeScreenBuilder {
 
     /**
      * Set the path to a typeface (in assets) to be used by default for headers
+     *
      * @param typefacePath The path to a typeface file in assets folder
      * @return this WelcomeScreenBuilder object to allow method calls to be chained
      */
@@ -129,6 +149,7 @@ public class WelcomeScreenBuilder {
 
     /**
      * Set the path to a typeface (in assets) to be used by default for descriptions
+     *
      * @param typefacePath The path to a typeface file in assets folder
      * @return this WelcomeScreenBuilder object to allow method calls to be chained
      */
@@ -139,6 +160,7 @@ public class WelcomeScreenBuilder {
 
     /**
      * Set the animation that is used when the welcome screen closes
+     *
      * @param exitAnimation The animation to use
      * @return this WelcomeScreenBuilder object to allow method calls to be chained
      */
@@ -149,6 +171,7 @@ public class WelcomeScreenBuilder {
 
     /**
      * Sets the theme of the welcome screen (Default is dark)
+     *
      * @param theme The theme to be used
      * @return this WelcomeScreenBuilder object to allow method calls to be chained
      */
@@ -159,6 +182,7 @@ public class WelcomeScreenBuilder {
 
     /**
      * Sets the resource id of the theme used by the welcome screen
+     *
      * @param resId The style resource id of the theme to be used
      * @return this WelcomeScreenBuilder object to allow method calls to be chained
      */
@@ -193,6 +217,7 @@ public class WelcomeScreenBuilder {
 
     /**
      * Adds a page with a large image, heading, and description, uses the default background color
+     *
      * @param drawableId The drawable resource id to use for the image
      * @param title Text for the header TextView
      * @param description Text for the description TextView
@@ -204,6 +229,7 @@ public class WelcomeScreenBuilder {
 
     /**
      * Adds a page with a large image, heading, and description
+     *
      * @param drawableId Drawable resource id to use for the image
      * @param title Text for the header TextView
      * @param description Text for the description TextView
@@ -216,6 +242,7 @@ public class WelcomeScreenBuilder {
 
     /**
      * Adds a page with a large image, heading, and description
+     *
      * @param drawableId Drawable resource id to use for the image
      * @param title Text for the header TextView
      * @param description Text for the description TextView
@@ -229,6 +256,7 @@ public class WelcomeScreenBuilder {
 
     /**
      * Adds a page with a large image, heading, and description
+     *
      * @param drawableId Drawable resource id to use for the image
      * @param title Text for the header TextView
      * @param description Text for the description TextView
@@ -255,6 +283,7 @@ public class WelcomeScreenBuilder {
 
     /**
      * Adds a page with a large image and a title, uses the default background color
+     *
      * @param resId The drawable resource id of an image
      * @param title Text for the title TextView
      * @return this WelcomeScreenBuilder object to allow method calls to be chained
@@ -265,6 +294,7 @@ public class WelcomeScreenBuilder {
 
     /**
      * Adds a page with a large image and a title
+     *
      * @param resId The drawable resource id of an image
      * @param title Text for the title TextView
      * @param colorResId Color resource id to be used as the background color
@@ -276,6 +306,7 @@ public class WelcomeScreenBuilder {
 
     /**
      * Adds a page with a large image and a title
+     *
      * @param resId The drawable resource id of an image
      * @param title Text for the title TextView
      * @param colorResId Color resource id to be used as the background color
@@ -288,6 +319,7 @@ public class WelcomeScreenBuilder {
 
     /**
      * Adds a page with a large image and a title
+     *
      * @param resId The drawable resource id of an image
      * @param title Text for the title TextView
      * @param colorResId Color resource id to be used as the background color
@@ -431,6 +463,7 @@ public class WelcomeScreenBuilder {
 
     /**
      * Adds a fragment, uses the default background color
+     *
      * @param fragmentHolder FragmentHolder that creates the fragment to add
      * @return this WelcomeScreenBuilder object to allow method calls to be chained
      */
@@ -441,6 +474,7 @@ public class WelcomeScreenBuilder {
 
     /**
      * Adds a fragment
+     *
      * @param fragmentHolder FragmentHolder that creates the fragment to add
      * @param colorResId Color resource id to be used as the background color
      * @return this WelcomeScreenBuilder object to allow method calls to be chained

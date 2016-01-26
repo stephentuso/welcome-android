@@ -85,6 +85,10 @@ public class WelcomeScreenConfiguration {
         return mParameters.mBackButtonSkips;
     }
 
+    public boolean getBackButtonNavigatesPages() {
+        return mParameters.mBackButtonNavigatesPages;
+    }
+
     public String getSkipButtonTypefacePath() {
         return mParameters.mSkipButtonTypefacePath;
     }
@@ -138,6 +142,7 @@ public class WelcomeScreenConfiguration {
         private WelcomeScreenPageList mPages = new WelcomeScreenPageList();
         private boolean mCanSkip = true;
         private boolean mBackButtonSkips = true;
+        private boolean mBackButtonNavigatesPages = true;
         private BackgroundColor mDefaultBackgroundColor;
         private Context mContext;
         private int mThemeResId = Theme.DARK.resId;
@@ -191,6 +196,10 @@ public class WelcomeScreenConfiguration {
 
         public void setBackButtonSkips(boolean backSkips) {
             mBackButtonSkips = backSkips;
+        }
+
+        public void setBackButtonNavigatesPages(boolean navigatesPages) {
+            mBackButtonNavigatesPages = navigatesPages;
         }
 
         public void add(WelcomeFragmentHolder fragmentHolder, @ColorRes int resId) {

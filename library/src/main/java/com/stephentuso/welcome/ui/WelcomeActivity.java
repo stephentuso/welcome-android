@@ -139,10 +139,20 @@ public abstract class WelcomeActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        if (mConfiguration.getCanSkip() && (mConfiguration.getBackButtonSkips() || !scrollToPreviousPage())) {
-            completeWelcomeScreen();
-        } else if (!mConfiguration.getCanSkip() && !scrollToPreviousPage()){
-            cancelWelcomeScreen();
+
+        boolean scrolledBack = false;
+        if (mConfiguration.getBackButtonNavigatesPages()) {
+            scrolledBack = scrollToPreviousPage();
+        }
+
+        if (!scrolledBack) {
+
+            if (mConfiguration.getCanSkip() && mConfiguration.getBackButtonSkips()) {
+                completeWelcomeScreen();
+            } else {
+                cancelWelcomeScreen();
+            }
+
         }
 
     }
