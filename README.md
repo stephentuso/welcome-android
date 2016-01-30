@@ -180,7 +180,7 @@ Transparent status bar, solid navigation bar on API 19+. Content flows under sta
 
 Typefaces and a few other things (animations, button visibility) have to be set with `WelcomeScreenBuilder`, but everything else that is customizable can be changed with styles.
 
-You can add styles as shown below. Optional items are in square brackets.
+You can add styles as shown below. Optional items are in square brackets. Apply your theme to a welcome screen with `WelcomeScreenBuilder.theme(int)`.
 
 ```
 <style name="CustomWelcomeScreenTheme" parent="SEE THEMES ABOVE">
@@ -213,6 +213,12 @@ You can add styles as shown below. Optional items are in square brackets.
     <item name="welcomeNormalTextStyle">@style/MyNormalText</item>
     <item name="welcomeLargeTextStyle">@style/MyLargeText</item>
     <item name="welcomeTitleTextStyle">@style/MyTitleText</item>
+
+    <!-- Add the following if you want to show the action bar.
+        Use WelcomeScreenBuilder.showActionBarBackButton(true) to show
+        the back button. -->
+    <item name="windowActionBar">true</item>
+    <item name="windowNoTitle">false</item>
 </style>
 
 <style name="MyWelcomeIndicator" parent="WelcomeScreenPageIndicator[.Light]">
@@ -245,8 +251,6 @@ The background color is transparent by default -->
 </style>
 
 ```
-
-Apply your theme to a welcome screen in its `configuration()` by calling `WelcomeScreenBuilder.theme(int)`, passing your theme as the parameter.
 
 Animations
 ----------
@@ -304,7 +308,7 @@ protected void onActivityResult(int requestCode, int resultCode, Intent data) {
             // Code here will run if the welcome screen was completed
         } else {
             // Code here will run if the welcome screen was canceled
-            // You will probably want to call finish() here
+            // In most cases you'll want to call finish() here
         }
 
     }
