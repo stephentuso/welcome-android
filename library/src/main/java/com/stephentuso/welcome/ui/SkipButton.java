@@ -24,7 +24,7 @@ public class SkipButton extends WelcomeScreenViewWrapper {
     @Override
     public void setup(WelcomeScreenConfiguration config) {
         super.setup(config);
-        onlyShowOnFirstPage = config.getShowNextButton();
+        onlyShowOnFirstPage = config.getShowPrevButton();
         WelcomeUtils.setTypeface((TextView) this.getView(), config.getSkipButtonTypefacePath(), config.getContext());
     }
 
