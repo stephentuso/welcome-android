@@ -142,6 +142,10 @@ public class WelcomeScreenConfiguration {
         return mParameters.mShowNextButton;
     }
 
+    public boolean getShowPrevButton() {
+        return mParameters.mShowPrevButton;
+    }
+
     public static class Parameters {
 
         private WelcomeScreenPageList mPages = new WelcomeScreenPageList();
@@ -158,6 +162,7 @@ public class WelcomeScreenConfiguration {
         private boolean mAnimateButtons = true;
         private boolean mUseCustomDoneButton = false;
         private boolean mShowNextButton = true;
+        private boolean mShowPrevButton = false;
 
         public Parameters(Context context) {
             mContext = context;
@@ -243,6 +248,10 @@ public class WelcomeScreenConfiguration {
 
         public void setShowNextButton(boolean showNextButton) {
             this.mShowNextButton = showNextButton;
+        }
+
+        public void setShowPrevButton(boolean showPrevButton) {
+            this.mShowPrevButton = showPrevButton;
         }
 
         private Integer getColor(@ColorRes int resId) {

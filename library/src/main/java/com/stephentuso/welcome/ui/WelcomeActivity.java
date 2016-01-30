@@ -51,6 +51,14 @@ public abstract class WelcomeActivity extends AppCompatActivity {
             }
         });
 
+        PreviousButton prev = new PreviousButton(findViewById(R.id.button_prev));
+        prev.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                scrollToPreviousPage();
+            }
+        });
+
         NextButton next = new NextButton(findViewById(R.id.button_next));
         next.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -78,7 +86,7 @@ public abstract class WelcomeActivity extends AppCompatActivity {
             }
         });
 
-        mItems = new WelcomeScreenItemList(background, indicator, skip, next, done, hider, mConfiguration.getPages());
+        mItems = new WelcomeScreenItemList(background, indicator, skip, prev, next, done, hider, mConfiguration.getPages());
         mViewPager.addOnPageChangeListener(mItems);
         mViewPager.setCurrentItem(mConfiguration.firstPageIndex());
         mItems.setup(mConfiguration);

@@ -115,6 +115,19 @@ public class WelcomeScreenBuilder {
     }
 
     /**
+     * Sets the visibility of the previous button (navigates back through the pages).
+     * This shows in the same spot as the skip button. If this welcome screen can be skipped,
+     * setting this to true will hide the skip button on all but the first page.
+     *
+     * @param showPrevButton Whether or not to show the previous button
+     * @return this WelcomeScreenBuilder object to allow method calls to be chained
+     */
+    public WelcomeScreenBuilder showPrevButton(boolean showPrevButton) {
+        mConfigParams.setShowPrevButton(showPrevButton);
+        return this;
+    }
+
+    /**
      * Set the path to a typeface (in assets) to be used for the skip button
      *
      * @param typefacePath The path to a typeface file in assets folder

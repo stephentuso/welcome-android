@@ -10,6 +10,7 @@
     <declare-styleable name="Theme">
         <attr name="welcomeButtonBackground" format="reference"/>
         <attr name="welcomeButtonNextStyle" format="reference"/>
+        <attr name="welcomeButtonPrevStyle" format="reference"/>
         <attr name="welcomeButtonSkipStyle" format="reference"/>
         <attr name="welcomeButtonDoneStyle" format="reference"/>
         <attr name="welcomeButtonDoneText" format="string"/>

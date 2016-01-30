@@ -37,12 +37,25 @@
             android:orientation="horizontal"
             android:gravity="center">
 
-            <Button
-                style="?attr/welcomeButtonSkipStyle"
-                android:id="@+id/button_skip"
+            <FrameLayout
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="?attr/welcomeButtonSkipText"/>
+                android:layout_height="wrap_content">
+
+                <Button
+                    style="?attr/welcomeButtonSkipStyle"
+                    android:id="@+id/button_skip"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="?attr/welcomeButtonSkipText"/>
+
+                <ImageButton
+                    style="?attr/welcomeButtonPrevStyle"
+                    android:id="@+id/button_prev"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:visibility="invisible"/>
+
+            </FrameLayout>
 
             <com.stephentuso.welcome.ui.view.WelcomeScreenViewPagerIndicator
                 android:id="@+id/pager_indicator"

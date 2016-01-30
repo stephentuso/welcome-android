@@ -12,6 +12,7 @@ import com.stephentuso.welcome.util.WelcomeUtils;
 public class SkipButton extends WelcomeScreenViewWrapper {
 
     private boolean enabled = true;
+    private boolean onlyShowOnFirstPage = false;
 
     public SkipButton(View button, boolean enabled) {
         super(button);
@@ -23,12 +24,16 @@ public class SkipButton extends WelcomeScreenViewWrapper {
     @Override
     public void setup(WelcomeScreenConfiguration config) {
         super.setup(config);
+        onlyShowOnFirstPage = config.getShowNextButton();
         WelcomeUtils.setTypeface((TextView) this.getView(), config.getSkipButtonTypefacePath(), config.getContext());
     }
 
     @Override
     public void onPageSelected(int pageIndex, int lastPageIndex) {
-        setVisibility(enabled && pageIndex != lastPageIndex);
+        if (onlyShowOnFirstPage)
+            setVisibility(enabled && pageIndex == 0);
+        else
+            setVisibility(enabled && pageIndex != lastPageIndex);
     }
 
 }

@@ -15,6 +15,7 @@
         <item name="welcomeButtonBackground">@drawable/button_borderless_background</item>
         <item name="welcomeButtonSkipStyle">@style/WelcomeScreenButton.Skip</item>
         <item name="welcomeButtonNextStyle">@style/WelcomeScreenButton.Next</item>
+        <item name="welcomeButtonPrevStyle">@style/WelcomeScreenButton.Prev</item>
         <item name="welcomeButtonDoneStyle">@style/WelcomeScreenButton.Done</item>
         <item name="welcomeButtonDoneText">@string/done</item>
         <item name="welcomeButtonSkipText">@string/skip</item>
@@ -109,6 +110,11 @@
 
     <style name="WelcomeScreenButton.Next">
         <item name="android:src">@drawable/ic_chevron_right_white_24dp</item>
+        <item name="android:tint">?android:attr/textColorPrimary</item>
+    </style>
+
+    <style name="WelcomeScreenButton.Prev">
+        <item name="android:src">@drawable/ic_chevron_left_white_24dp</item>
         <item name="android:tint">?android:attr/textColorPrimary</item>
     </style>
 
