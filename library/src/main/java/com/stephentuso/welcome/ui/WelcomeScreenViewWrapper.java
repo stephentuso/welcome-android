@@ -13,6 +13,7 @@ import com.stephentuso.welcome.util.WelcomeScreenConfiguration;
 public abstract class WelcomeScreenViewWrapper implements OnWelcomeScreenPageChangeListener {
 
     private View mView;
+    private int mFirstPageIndex = 0;
     private int mLastPageIndex = 0;
     private boolean mAnimate = true;
 
@@ -20,14 +21,14 @@ public abstract class WelcomeScreenViewWrapper implements OnWelcomeScreenPageCha
         mView = view;
     }
 
-    public abstract void onPageSelected(int pageIndex, int lastPageIndex);
+    public abstract void onPageSelected(int pageIndex, int firstPageIndex, int lastPageIndex);
 
     @Override
     public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {}
 
     @Override
     public void onPageSelected(int position) {
-        onPageSelected(position, mLastPageIndex);
+        onPageSelected(position, mFirstPageIndex, mLastPageIndex);
     }
 
     @Override
@@ -35,6 +36,7 @@ public abstract class WelcomeScreenViewWrapper implements OnWelcomeScreenPageCha
 
     @Override
     public void setup(WelcomeScreenConfiguration config) {
+        mFirstPageIndex = config.firstPageIndex();
         mLastPageIndex = config.lastViewablePageIndex();
         mAnimate = config.getAnimateButtons();
     }

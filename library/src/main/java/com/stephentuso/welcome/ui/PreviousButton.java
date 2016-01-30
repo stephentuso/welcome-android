@@ -22,8 +22,8 @@ public class PreviousButton extends WelcomeScreenViewWrapper {
     }
 
     @Override
-    public void onPageSelected(int pageIndex, int lastPageIndex) {
-        setVisibility(shouldShow && pageIndex > 0);
+    public void onPageSelected(int pageIndex, int firstPageIndex, int lastPageIndex) {
+        setVisibility(shouldShow && pageIndex != firstPageIndex);
     }
 
 

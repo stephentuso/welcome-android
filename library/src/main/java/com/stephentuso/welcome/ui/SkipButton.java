@@ -29,9 +29,9 @@ public class SkipButton extends WelcomeScreenViewWrapper {
     }
 
     @Override
-    public void onPageSelected(int pageIndex, int lastPageIndex) {
+    public void onPageSelected(int pageIndex, int firstPageIndex, int lastPageIndex) {
         if (onlyShowOnFirstPage)
-            setVisibility(enabled && pageIndex == 0);
+            setVisibility(enabled && pageIndex == firstPageIndex);
         else
             setVisibility(enabled && pageIndex != lastPageIndex);
     }

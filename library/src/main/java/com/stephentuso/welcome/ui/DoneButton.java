@@ -26,7 +26,7 @@ public class DoneButton extends WelcomeScreenViewWrapper {
     }
 
     @Override
-    public void onPageSelected(int pageIndex, int lastPageIndex) {
+    public void onPageSelected(int pageIndex, int firstPageIndex, int lastPageIndex) {
         setVisibility(shouldShow && pageIndex == lastPageIndex);
     }
 
