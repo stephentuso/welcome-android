@@ -128,6 +128,20 @@ public class WelcomeScreenBuilder {
     }
 
     /**
+     * If the action bar is enabled, setting this to true will cause the back
+     * button to be shown. Tapping it will cancel the welcome screen.
+     * (Show the action bar with a custom theme, set 'windowActionBar' to true
+     * and 'windowNoTitle' to false)
+     *
+     * @param showBackButton Whether or not to show the back button on the action bar
+     * @return this WelcomeScreenBuilder object to allow method calls to be chained
+     */
+    public WelcomeScreenBuilder showActionBarBackButton(boolean showBackButton) {
+        mConfigParams.setShowActionBarBAckButton(showBackButton);
+        return this;
+    }
+
+    /**
      * Set the path to a typeface (in assets) to be used for the skip button
      *
      * @param typefacePath The path to a typeface file in assets folder

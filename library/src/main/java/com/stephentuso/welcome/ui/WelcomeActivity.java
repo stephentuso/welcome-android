@@ -6,7 +6,9 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
+import android.view.MenuItem;
 import android.view.View;
 
 import com.stephentuso.welcome.R;
@@ -42,6 +44,12 @@ public abstract class WelcomeActivity extends AppCompatActivity {
 
         mViewPager = (ViewPager) findViewById(R.id.view_pager);
         mViewPager.setAdapter(mAdapter);
+
+        if (mConfiguration.getShowActionBarBackButton()) {
+            ActionBar actionBar = getSupportActionBar();
+            if (actionBar != null)
+                actionBar.setDisplayHomeAsUpEnabled(true);
+        }
 
         SkipButton skip = new SkipButton(findViewById(R.id.button_skip), mConfiguration.getCanSkip());
         skip.setOnClickListener(new View.OnClickListener() {
@@ -163,6 +171,17 @@ public abstract class WelcomeActivity extends AppCompatActivity {
 
         }
 
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        if (mConfiguration.getShowActionBarBackButton() && item.getItemId() == android.R.id.home) {
+            cancelWelcomeScreen();
+            return true;
+        }
+
+        return super.onOptionsItemSelected(item);
     }
 
     private void setWelcomeScreenResult(int resultCode) {
