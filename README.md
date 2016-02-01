@@ -180,7 +180,7 @@ Transparent status bar, solid navigation bar on API 19+. Content flows under sta
 
 Typefaces and a few other things (animations, button visibility) have to be set with `WelcomeScreenBuilder`, but everything else that is customizable can be changed with styles.
 
-You can add styles as shown below. Optional items are in square brackets. Apply your theme to a welcome screen with `WelcomeScreenBuilder.theme(int)`.
+You can add styles as shown below. Optional items are in square brackets. Apply your theme to a welcome screen with `WelcomeScreenBuilder.theme(R.style.YourThemeNameHere)`.
 
 ```
 <style name="CustomWelcomeScreenTheme" parent="SEE THEMES ABOVE">
@@ -321,6 +321,7 @@ Todo
 
 -	Make `swipeToDismiss` fade to transparency (showing the activity beneath) rather than white
 -	Complete PreferenceWelcomeFragment
+-	Improve layouts of included fragments
 
 License
 -------
