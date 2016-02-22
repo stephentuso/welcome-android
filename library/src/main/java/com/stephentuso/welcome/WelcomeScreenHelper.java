@@ -33,19 +33,24 @@ public class WelcomeScreenHelper {
 
     /**
      * Shows the welcome screen if it hasn't been completed yet
+     * @return true if the welcome screen was shown, false if it wasn't
      */
-    public void show() {
-        show(DEFAULT_WELCOME_SCREEN_REQUEST);
+    public boolean show() {
+        return show(DEFAULT_WELCOME_SCREEN_REQUEST);
     }
 
     /**
      * Shows the welcome screen if it hasn't been completed yet
      * @param requestCode The request code that will be returned with the result of the welcome screen
      *                    in your Activity's onActivityResult
+     * @return true if the welcome screen was shown, false if it wasn't
      */
-    public void show(int requestCode) {
-        if (shouldShow())
+    public boolean show(int requestCode) {
+        boolean shouldShow = shouldShow();
+        if (shouldShow) {
             startActivity(requestCode);
+        }
+        return shouldShow;
     }
 
     /**
