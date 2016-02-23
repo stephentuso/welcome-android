@@ -34,8 +34,6 @@ If you use proguard, add the following to your proguard rules
 }
 ```
 
-**!! The rule shown above has been corrected. If you are already using this library make sure your rule matches the one above !!**
-
 Basic Usage
 -----------
 
