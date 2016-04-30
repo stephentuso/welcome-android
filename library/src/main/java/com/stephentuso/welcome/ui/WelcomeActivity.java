@@ -101,6 +101,14 @@ public abstract class WelcomeActivity extends AppCompatActivity {
         mItems.onPageSelected(mViewPager.getCurrentItem());
     }
 
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if (mViewPager != null) {
+            mViewPager.clearOnPageChangeListeners();
+        }
+    }
+
     private boolean scrollToNextPage() {
         if (!canScrollToNextPage())
             return false;
