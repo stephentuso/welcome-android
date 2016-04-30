@@ -21,7 +21,7 @@ git clone --quiet --branch=gh-pages https://$GH_TOKEN@github.com/stephentuso/wel
 
 echo "Replacing with updated javadoc..."
 cd gh-pages
-git rm -rf .
+git rm -rf ./javadoc
 cp -Rf $WORKINGDIR/javadoc-latest/ ./javadoc
 git add -f .
 git commit -m "Update javadoc"

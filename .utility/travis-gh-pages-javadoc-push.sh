@@ -16,7 +16,7 @@ if [ "$TRAVIS_REPO_SLUG" == "stephentuso/welcome-android" ] && [ "$TRAVIS_JDK_VE
 
   echo -e "\nReplacing with updated javadoc..."
   cd gh-pages
-  git rm -rf .
+  git rm -rf ./javadoc
   cp -Rf $HOME/javadoc-latest/ ./javadoc
   git add -f .
   git commit -m "Update javadoc (travis build #$TRAVIS_BUILD_NUMBER)"
