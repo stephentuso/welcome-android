@@ -23,7 +23,7 @@ This library is available through jCenter.
 Gradle:
 
 ```
-compile 'com.stephentuso:welcome:0.6.1'
+compile 'com.stephentuso:welcome:0.7.0'
 ```
 
 If you use proguard, add the following to your proguard rules
@@ -37,11 +37,18 @@ If you use proguard, add the following to your proguard rules
 Basic Usage
 -----------
 
-A basic welcome screen can be added in two steps:
-
 ### Extend WelcomeActivity
 
-To create a welcome screen, add a class to your project that extends `WelcomeActivity` (don't forget to add it to your AndroidManifest), and override the `configuration()` method. You can use `WelcomeScreenBuilder` to easily set it up:
+To create a welcome screen, add a class to your project that extends `WelcomeActivity` and add it to AndroidManifest:
+
+```
+<activity android:name=".MyWelcomeActivity"       
+    android:theme="@style/WelcomeScreenTheme"/>
+```
+
+*You must set the theme in the manifest as shown above if you want swipeToDismiss to show the activity beneath. Note that the manifest theme will be overridden and have no effect on the other styles of the welcome screen (that will probably change in 1.0).*
+
+Override the Activity's `configuration()` method. You can use `WelcomeScreenBuilder` to easily set it up:
 
 ```
 @Override
@@ -60,15 +67,29 @@ protected WelcomeScreenConfiguration configuration() {
 
 ### Show the welcome screen
 
-Welcome screens are started with `WelcomeScreenHelper`. Put the class of your welcome screen in the second argument of the constructor.
+Welcome screens are started with `WelcomeScreenHelper`. `onSaveInstanceState` is needed to be sure only one instance of the welcome screen is started.
 
 ```
-new WelcomeScreenHelper(this, MyWelcomeActivity.class).show();
-```
+WelcomeScreenHelper welcomeScreen;
 
-You can call this from your launcher activity's onCreate or onStart. This will only show the welcome screen if the user hasn't completed it yet.
+@Override
+protected void onCreate(Bundle savedInstanceState) {
+    ...
+    welcomeScreen = new WelcomeScreenHelper(this, MyWelcomeActivity.class);
+    welcomeScreen.show(savedInstanceState);
+    ...
+}
+
+@Override
+protected void onSaveInstanceState(Bundle outState) {
+    super.onSaveInstanceState(outState);
+    welcomeScreen.onSaveInstanceState(outState);
+}
+```
 
 If you have issues with the buttons/indicator being covered by the nav bar, use one of the .SolidNavigation welcome screen themes.
+
+To force the welcome screen to be shown, for example, to let the user view it again when a button is pressed, create a `WelcomeScreenHelper` as shown above and call `.forceShow()`.
 
 Skipping/Back button behavior
 -----------------------------
