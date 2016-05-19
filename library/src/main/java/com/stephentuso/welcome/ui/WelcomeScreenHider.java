@@ -3,7 +3,6 @@ package com.stephentuso.welcome.ui;
 import android.os.Build;
 import android.view.View;
 
-import com.stephentuso.welcome.ui.OnWelcomeScreenPageChangeListener;
 import com.stephentuso.welcome.util.WelcomeScreenConfiguration;
 
 /**
@@ -37,15 +36,22 @@ public class WelcomeScreenHider implements OnWelcomeScreenPageChangeListener {
     @Override
     public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
 
-        if (!enabled)
+        if (!enabled) {
             return;
-
-        if (Build.VERSION.SDK_INT >= 11 && position == mLastPage - 1) {
-            mView.setAlpha(1-positionOffset);
         }
 
         if (position == mLastPage && mListener != null) {
             mListener.onViewHidden();
+        }
+
+        if (Build.VERSION.SDK_INT < 11) {
+            return;
+        }
+
+        if (position == mLastPage - 1) {
+            mView.setAlpha(1-positionOffset);
+        } else if (position < mLastPage - 1 && mView.getAlpha() != 1f) {
+            mView.setAlpha(1f);
         }
 
     }
