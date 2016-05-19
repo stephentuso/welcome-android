@@ -1,6 +1,5 @@
 package com.stephentuso.welcomeexample;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -12,19 +11,20 @@ import com.stephentuso.welcome.ui.WelcomeActivity;
 
 public class MainActivity extends AppCompatActivity {
 
+    WelcomeScreenHelper welcomeScreen;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        new WelcomeScreenHelper(this, MyWelcomeActivity.class).show();
-
-        final Activity activity = this;
+        welcomeScreen = new WelcomeScreenHelper(this, MyWelcomeActivity.class);
+        welcomeScreen.show(savedInstanceState);
 
         findViewById(R.id.button_show).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                new WelcomeScreenHelper(activity, MyWelcomeActivity.class).forceShow();
+                welcomeScreen.forceShow();
             }
         });
 
@@ -47,4 +47,9 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        welcomeScreen.onSaveInstanceState(outState);
+    }
 }

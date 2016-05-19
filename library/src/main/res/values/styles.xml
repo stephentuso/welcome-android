@@ -30,13 +30,12 @@
         <item name="windowActionBarOverlay">true</item>
         <item name="actionBarStyle">@style/TransparentActionBar</item>
 
-        <!-- Trying to make the background transparent, so swipeToDismiss will fade to the activity beneath -->
+        <!-- Make the background transparent, so swipeToDismiss will fade to the activity beneath -->
         <item name="android:backgroundDimEnabled">false</item>
         <item name="android:background">@color/transparent</item>
         <item name="background">@color/transparent</item>
-        <!-- Set this to white for now, setting it to transparent just resulted in black -->
-        <item name="android:windowBackground">@color/white</item>
-
+        <item name="android:windowBackground">@color/transparent</item>
+        <item name="android:windowIsTranslucent">true</item>
     </style>
 
     <style name="WelcomeScreenTheme.Light">

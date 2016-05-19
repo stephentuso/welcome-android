@@ -15,7 +15,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="com.stephentuso.welcomeexample.MyWelcomeActivity">
+        <activity android:name="com.stephentuso.welcomeexample.MyWelcomeActivity"
+            android:theme="@style/WelcomeScreenTheme">
         </activity>
     </application>
 
