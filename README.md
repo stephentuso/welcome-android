@@ -1,7 +1,7 @@
 Welcome
 =======
 
-[![Download](https://api.bintray.com/packages/stephentuso/maven/welcome/images/download.svg)](https://bintray.com/stephentuso/maven/welcome/_latestVersion) [![Build Status](https://travis-ci.org/stephentuso/welcome-android.svg?branch=master)](https://travis-ci.org/stephentuso/welcome-android)
+[![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-Welcome-blue.svg?style=flat)](http://android-arsenal.com/details/1/3610) [![Download](https://api.bintray.com/packages/stephentuso/maven/welcome/images/download.svg)](https://bintray.com/stephentuso/maven/welcome/_latestVersion) [![Build Status](https://travis-ci.org/stephentuso/welcome-android.svg?branch=master)](https://travis-ci.org/stephentuso/welcome-android)
 
 An easy to use and customizable welcome screen for Android apps.
 
@@ -276,34 +276,10 @@ The background color is transparent by default -->
 
 ```
 
-Animations
-----------
-
-Animations that play as pages are scrolled can be added to your custom fragments by implementing [WelcomeScreenPage.OnChangeListener](http://stephentuso.github.io/welcome-android/javadoc/com/stephentuso/welcome/ui/WelcomeScreenPage.OnChangeListener.html). As an example, a fade effect is shown below.
-
-```
-@Override
-public void onScrolled(int pageIndex, float offset, int offsetPixels) {
-    if (Build.VERSION.SDK_INT >= 11 && imageView != null) {
-        imageView.setAlpha(1-Math.abs(offset));
-    }
-}
-```
-
-To add parallax effects similar to the included parallax page, use [WelcomeUtils.applyParallaxEffect()](http://stephentuso.github.io/welcome-android/javadoc/index.html?overview-summary.html) in `onScrolled`. For example:
-
-```
-@Override
-public void onScrolled(int pageIndex, float offset, int offsetPixels) {
-    if (parallaxLayout != null)
-        WelcomeUtils.applyParallaxEffect(parallaxLayout, false, offsetPixels, 0.3f, 0.2f);
-}
-```
-
 Welcome screen keys
 -------------------
 
-You can optionally assign keys (Make sure they are unique!) to welcome screens by adding the following to a class that extends `WelcomeActivity`.
+If you want to use multiple welcome screens (in different parts of your app) or have updated one and want to show it again, you can assign keys (Make sure they are unique!) to welcome screens by adding the following to your welcome screen Activity.
 
 ```
 public static String welcomeKey() {
@@ -311,7 +287,7 @@ public static String welcomeKey() {
 }
 ```
 
-Only change this to a new value if you want everyone who has already used your app to see the welcome screen again! This key is used to determine whether or not to show the welcome screen. This could be useful if you use multiple welcome screens, or if you have updated one and want to show it again.
+**Note:** Only change this to a new value if you want everyone who has already used your app to see the welcome screen again! This key is used to determine whether or not to show the welcome screen.
 
 Results
 -------
@@ -340,12 +316,38 @@ protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 }
 ```
 
+One use for this is making sure users see the whole welcome screen before using your app - disable skipping and then close your main activity when the welcome screen is canceled.
+
+Animations
+----------
+
+Animations that play as pages are scrolled can be added to your custom fragments by implementing [WelcomeScreenPage.OnChangeListener](http://stephentuso.github.io/welcome-android/javadoc/com/stephentuso/welcome/ui/WelcomeScreenPage.OnChangeListener.html). As an example, a fade effect is shown below.
+
+```
+@Override
+public void onScrolled(int pageIndex, float offset, int offsetPixels) {
+    if (Build.VERSION.SDK_INT >= 11 && imageView != null) {
+        imageView.setAlpha(1-Math.abs(offset));
+    }
+}
+```
+
+To add parallax effects similar to the included parallax page, use [WelcomeUtils.applyParallaxEffect()](http://stephentuso.github.io/welcome-android/javadoc/index.html?overview-summary.html) in `onScrolled`. For example:
+
+```
+@Override
+public void onScrolled(int pageIndex, float offset, int offsetPixels) {
+    if (parallaxLayout != null)
+        WelcomeUtils.applyParallaxEffect(parallaxLayout, false, offsetPixels, 0.3f, 0.2f);
+}
+```
+
 Todo
 ----
 
--	Make `swipeToDismiss` fade to transparency (showing the activity beneath) rather than white
 -	Complete PreferenceWelcomeFragment
 -	Improve layouts of included fragments
+-	Refactor/clean up code and improve API
 
 License
 -------
