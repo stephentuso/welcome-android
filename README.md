@@ -101,9 +101,9 @@ Skipping/Back button behavior
 
 By default, the welcome screen can be skipped, and pressing the back button will navigate to the previous page or close (skip) the welcome screen if on the first page. This can be changed with `WelcomeScreenBuilder.canSkip()`, `backButtonSkips()` (only applies if `canSkip` is true), and `backButtonNavigatesPages()`. If you disable skipping, the welcome screen will not be stored as completed when it closes.
 
-If you want to require the user to navigate through the welcome screen before using the app (if you wanted to provide some setup options in a custom fragment, for example), call `canSkip(false)` and close your app if the welcome screen's result is `RESULT_CANCELED`.
+If you want to require users to navigate through the welcome screen before using the app, call `canSkip(false)` and close your app if the welcome screen's result is `RESULT_CANCELED`.
 
-**See [Results](https://github.com/stephentuso/welcome-android#results) below for how to respond if a welcome screen is canceled**
+See [Results](https://github.com/stephentuso/welcome-android#results) below for how to respond if a welcome screen is canceled.
 
 Included pages
 --------------
@@ -143,7 +143,7 @@ parallaxPage(int resId, String title, String description, int colorResId)
 parallaxPage(int resId, String title, String description, int colorResId, float startParallaxFactor,
     float endParallaxFactor)
 parallaxPage(int resId, String title, String description, int colorResId, float startParallaxFactor,
-    float endParallaxFactor, String headerTypefacePath, String descriptionTypefacePath))
+    float endParallaxFactor, String headerTypefacePath, String descriptionTypefacePath)
 ```
 
 ### [Full screen parallax page](http://stephentuso.github.io/welcome-android/javadoc/com/stephentuso/welcome/WelcomeScreenBuilder.html#fullScreenParallaxPage-int-)
@@ -169,7 +169,7 @@ protected WelcomeScreenConfiguration configuration() {
             .page(new WelcomeFragmentHolder() {
                 @Override
                 protected Fragment fragment() {
-                    return new YourFragmentHere;
+                    return new YourFragmentHere();
                 }
             }, R.color.background-color)
             ...
