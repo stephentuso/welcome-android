@@ -48,12 +48,13 @@ To create a welcome screen, add a class to your project that extends `WelcomeAct
 
 *You must set the theme in the manifest as shown above if you want swipeToDismiss to show the activity beneath. Note that the manifest theme will be overridden and have no effect on the other styles of the welcome screen (that will probably change in 1.0).*
 
-Override the Activity's `configuration()` method. You can use `WelcomeScreenBuilder` to easily set it up:
+Override the Activity's `configuration()` method. You can use `WelcomeScreenBuilder` to easily set it up, for example:
 
 ```
 @Override
 protected WelcomeScreenConfiguration configuration() {
     return new WelcomeScreenBuilder(this)
+            .theme(R.style.WelcomeScreenTheme_Light)
             .defaultBackgroundColor(R.color.background)
             .titlePage(R.drawable.logo, "Title")
             .basicPage(R.drawable.photo1, "Header", "More text.", R.color.red)
