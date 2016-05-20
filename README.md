@@ -72,7 +72,7 @@ protected WelcomeScreenConfiguration configuration() {
 
 ### Show the welcome screen
 
-Welcome screens are started with `WelcomeScreenHelper`. `onSaveInstanceState` is needed to be sure only one instance of the welcome screen is started.
+Welcome screens are started with `WelcomeScreenHelper`. `onSaveInstanceState` is needed to be sure only one instance of the welcome screen is started. Add the following to the Activity you want to show the welcome screen before (probably your launcher activity):
 
 ```java
 WelcomeScreenHelper welcomeScreen;
@@ -187,8 +187,8 @@ The provided themes are listed below.
 
 Transparent status/navigation on API 19+. Content does not flow under status bar:
 
--	`WelcomeSceenTheme` - The default theme. Meant to be used with dark backgrounds, the text, indicator, and buttons are light colored.
--	`WelcomeScreenTheme.Light` - Meant to be used with light backgrounds; the text, indicator, and buttons are dark colored.
+-	`WelcomeSceenTheme` - The default theme. For use with dark backgrounds; the text, indicator, and buttons are light colored.
+-	`WelcomeScreenTheme.Light` - For use with light backgrounds; the text, indicator, and buttons are dark colored.
 
 Transparent status bar, solid navigation bar on API 19+. Content does not flow under status bar:
 
