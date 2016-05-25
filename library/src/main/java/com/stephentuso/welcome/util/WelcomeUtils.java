@@ -15,13 +15,23 @@ import com.stephentuso.welcome.ui.WelcomeActivity;
  */
 public class WelcomeUtils {
 
+    private static final String TAG = WelcomeUtils.class.getName();
+
     public static String getKey(Class<? extends WelcomeActivity> activityClass) {
-        String key = "";
+        String key = null;
+
         try {
             key = (String) activityClass.getMethod("welcomeKey").invoke(null);
+            if (key.isEmpty()) {
+                Log.w(TAG, "welcomeKey() from " + activityClass.getSimpleName() + " returned an empty string. Is that an accident?");
+            }
+        } catch (NoSuchMethodException e) {
+            //Method not found, don't worry about it
         } catch (Exception e) {
             e.printStackTrace();
         }
+
+        if (key == null) { key = ""; }
         return key;
     }
 
@@ -30,7 +40,7 @@ public class WelcomeUtils {
             try {
                 textView.setTypeface(Typeface.createFromAsset(context.getAssets(), typefacePath));
             } catch (Exception e) {
-                Log.w("WelcomeScreen", "Error setting typeface");
+                Log.w(TAG, "Error setting typeface");
             }
         }
     }
