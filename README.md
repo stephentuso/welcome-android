@@ -27,7 +27,7 @@ This library is available through jCenter.
 Gradle:
 
 ```groovy
-compile 'com.stephentuso:welcome:0.7.1'
+compile 'com.stephentuso:welcome:0.7.2'
 ```
 
 If you use proguard, add the following to your proguard rules
