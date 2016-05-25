@@ -10,6 +10,8 @@ import android.widget.TextView;
 
 import com.stephentuso.welcome.ui.WelcomeActivity;
 
+import dalvik.annotation.TestTargetClass;
+
 /**
  * Created by stephentuso on 12/16/15.
  */
