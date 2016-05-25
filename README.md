@@ -26,7 +26,7 @@ This library is available through jCenter.
 
 Gradle:
 
-```
+```groovy
 compile 'com.stephentuso:welcome:0.7.1'
 ```
 
@@ -45,7 +45,7 @@ Basic Usage
 
 To create a welcome screen, add a class to your project that extends `WelcomeActivity` and add it to AndroidManifest:
 
-```
+```xml
 <activity android:name=".MyWelcomeActivity"       
     android:theme="@style/WelcomeScreenTheme"/>
 ```
@@ -54,7 +54,7 @@ To create a welcome screen, add a class to your project that extends `WelcomeAct
 
 Override the Activity's `configuration()` method. You can use `WelcomeScreenBuilder` to easily set it up, for example:
 
-```
+```java
 @Override
 protected WelcomeScreenConfiguration configuration() {
     return new WelcomeScreenBuilder(this)
@@ -72,9 +72,9 @@ protected WelcomeScreenConfiguration configuration() {
 
 ### Show the welcome screen
 
-Welcome screens are started with `WelcomeScreenHelper`. `onSaveInstanceState` is needed to be sure only one instance of the welcome screen is started.
+Welcome screens are started with `WelcomeScreenHelper`. `onSaveInstanceState` is needed to be sure only one instance of the welcome screen is started. Add the following to the Activity you want to show the welcome screen before (probably your launcher activity):
 
-```
+```java
 WelcomeScreenHelper welcomeScreen;
 
 @Override
@@ -114,7 +114,7 @@ All methods shown in this section are part of `WelcomeScreenBuilder`. See the [j
 
 A page with an image and a title. A parallax effect can be applied to the image.
 
-```
+```java
 titlePage(int resId, String title)
 titlePage(int resId, String title, int colorResId)
 titlePage(int resId, String title, int colorResId, boolean showParallaxAnim)
@@ -125,7 +125,7 @@ titlePage(int resId, String title, int colorResId, boolean showParallaxAnim, Str
 
 A page with an image, heading, and description. A parallax effect can be applied to the image.
 
-```
+```java
 basicPage(int resId, String title, String description)
 basicPage(int resId, String title, String description, int colorResId)
 basicPage(int drawableId, String title, String description, int colorResId, boolean showParallaxAnim)
@@ -137,7 +137,7 @@ basicPage(int drawableId, String title, String description, int colorResId, bool
 
 Similar to the basic page, but instead of an image you can supply a layout that will have a parallax effect applied to it. The speed at which the layout's children move is determined by their position in the layout, the first will move the slowest and the last will move the fastest.
 
-```
+```java
 parallaxPage(int resId, String title, String description)
 parallaxPage(int resId, String title, String description, int colorResId)
 parallaxPage(int resId, String title, String description, int colorResId, float startParallaxFactor,
@@ -150,7 +150,7 @@ parallaxPage(int resId, String title, String description, int colorResId, float 
 
 Applies a parallax effect in the same way the normal parallax page does, but the layout you provide fills the whole fragment, and there isn't a header or description.
 
-```
+```java
 fullScreenParallaxPage(int resId)
 fullScreenParallaxPage(int resId, int colorResId)
 fullScreenParallaxPage(int resId, int colorResId, float startParallaxFactor, float endParallaxFactor)
@@ -161,7 +161,7 @@ Custom pages
 
 You can add your own fragments to the welcome screen with `WelcomeScreenBuilder.page()`:
 
-```
+```java
 @Override
 protected WelcomeScreenConfiguration configuration() {
     return new WelcomeScreenBuilder(this)
@@ -187,8 +187,8 @@ The provided themes are listed below.
 
 Transparent status/navigation on API 19+. Content does not flow under status bar:
 
--	`WelcomeSceenTheme` - The default theme. Meant to be used with dark backgrounds, the text, indicator, and buttons are light colored.
--	`WelcomeScreenTheme.Light` - Meant to be used with light backgrounds; the text, indicator, and buttons are dark colored.
+-	`WelcomeSceenTheme` - The default theme. For use with dark backgrounds; the text, indicator, and buttons are light colored.
+-	`WelcomeScreenTheme.Light` - For use with light backgrounds; the text, indicator, and buttons are dark colored.
 
 Transparent status bar, solid navigation bar on API 19+. Content does not flow under status bar:
 
@@ -206,7 +206,7 @@ Typefaces and a few other things (animations, button visibility) have to be set 
 
 You can add styles as shown below. Optional items are in square brackets. Apply your theme to a welcome screen with `WelcomeScreenBuilder.theme(R.style.YourThemeNameHere)`.
 
-```
+```xml
 <style name="CustomWelcomeScreenTheme" parent="SEE THEMES ABOVE">
 
     <!-- Color of button text and titles/headings (in built in fragments)
@@ -281,7 +281,7 @@ Welcome screen keys
 
 If you want to use multiple welcome screens (in different parts of your app) or have updated one and want to show it again, you can assign keys (Make sure they are unique!) to welcome screens by adding the following to your welcome screen Activity.
 
-```
+```java
 public static String welcomeKey() {
     return "Your unique key";
 }
@@ -294,7 +294,7 @@ Results
 
 You can listen for the result of a welcome screen in the Activity that started it by overriding `onActivityResult`:
 
-```
+```java
 @Override
 protected void onActivityResult(int requestCode, int resultCode, Intent data) {
     super.onActivityResult(requestCode, resultCode, data);
@@ -323,7 +323,7 @@ Animations
 
 Animations that play as pages are scrolled can be added to your custom fragments by implementing [WelcomeScreenPage.OnChangeListener](http://stephentuso.github.io/welcome-android/javadoc/com/stephentuso/welcome/ui/WelcomeScreenPage.OnChangeListener.html). As an example, a fade effect is shown below.
 
-```
+```java
 @Override
 public void onScrolled(int pageIndex, float offset, int offsetPixels) {
     if (Build.VERSION.SDK_INT >= 11 && imageView != null) {
@@ -334,7 +334,7 @@ public void onScrolled(int pageIndex, float offset, int offsetPixels) {
 
 To add parallax effects similar to the included parallax page, use [WelcomeUtils.applyParallaxEffect()](http://stephentuso.github.io/welcome-android/javadoc/index.html?overview-summary.html) in `onScrolled`. For example:
 
-```
+```java
 @Override
 public void onScrolled(int pageIndex, float offset, int offsetPixels) {
     if (parallaxLayout != null)
@@ -348,14 +348,21 @@ Todo
 -	Complete PreferenceWelcomeFragment
 -	Improve layouts of included fragments
 -	Refactor/clean up code and improve API
+-	Unit tests
 
 License
 -------
 
-> Copyright 2016 Stephen Tuso
->
-> Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at
->
-> http://www.apache.org/licenses/LICENSE-2.0
->
-> Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
+    Copyright 2015-2016 Stephen Tuso
+
+    Licensed under the Apache License, Version 2.0 (the "License");
+    you may not use this file except in compliance with the License.
+    You may obtain a copy of the License at
+
+       http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing, software
+    distributed under the License is distributed on an "AS IS" BASIS,
+    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See the License for the specific language governing permissions and
+    limitations under the License.
