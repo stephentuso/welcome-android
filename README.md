@@ -95,6 +95,7 @@ protected WelcomeScreenConfiguration configuration() {
             .build();
 }
 ```
+You do not need to override `onCreate` or call `setContentView`. 
 
 *Note: Default typeface methods and defaultBackgroundColor() need to be called before adding pages.*
 
