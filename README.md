@@ -19,8 +19,35 @@ Look in the [sample](https://github.com/stephentuso/welcome-android/blob/master/
 
 [Changelog/Releases](https://github.com/stephentuso/welcome-android/releases)
 
+Contributing
+============
+
+Feel free to open a PR to add a feature or fix a bug, all contributions are welcome.
+
+Table of Contents
+=================
+
+-	[Adding to your project](README.md#adding-to-your-project)
+-	[Basic Usage](README.md#basic-usage)
+	-	[Extend WelcomeActivity](README.md#extend-welcomeactivity)
+	-	[Show the welcome screen](README.md#show-the-welcome-screen)
+-	[Skipping/Back button behavior](README.md#skippingback-button-behavior)
+-	[Included pages](README.md#included-pages)
+	-	[<a href="http://stephentuso.github.io/welcome-android/javadoc/com/stephentuso/welcome/WelcomeScreenBuilder.html#titlePage-int-java.lang.String-">Title page</a>](README.md#title-page)
+	-	[<a href="http://stephentuso.github.io/welcome-android/javadoc/com/stephentuso/welcome/WelcomeScreenBuilder.html#basicPage-int-java.lang.String-java.lang.String-">Basic page</a>](README.md#basic-page)
+	-	[<a href="http://stephentuso.github.io/welcome-android/javadoc/com/stephentuso/welcome/WelcomeScreenBuilder.html#parallaxPage-int-java.lang.String-java.lang.String-">Parallax page</a>](README.md#parallax-page)
+	-	[<a href="http://stephentuso.github.io/welcome-android/javadoc/com/stephentuso/welcome/WelcomeScreenBuilder.html#fullScreenParallaxPage-int-">Full screen parallax page</a>](README.md#full-screen-parallax-page)
+-	[Custom pages](README.md#custom-pages)
+-	[Styling](README.md#styling)
+	-	[Themes](README.md#themes)
+	-	[Styles](README.md#styles)
+-	[Welcome screen keys](README.md#welcome-screen-keys)
+-	[Results](README.md#results)
+-	[Animations](README.md#animations)
+-	[License](README.md#license)
+
 Adding to your project
-----------------------
+======================
 
 This library is available through jCenter.
 
@@ -39,9 +66,10 @@ If you use proguard, add the following to your proguard rules
 ```
 
 Basic Usage
------------
+===========
 
-### Extend WelcomeActivity
+Extend WelcomeActivity
+----------------------
 
 To create a welcome screen, add a class to your project that extends `WelcomeActivity` and add it to AndroidManifest:
 
@@ -70,7 +98,8 @@ protected WelcomeScreenConfiguration configuration() {
 
 *Note: Default typeface methods and defaultBackgroundColor() need to be called before adding pages.*
 
-### Show the welcome screen
+Show the welcome screen
+-----------------------
 
 Welcome screens are started with `WelcomeScreenHelper`. `onSaveInstanceState` is needed to be sure only one instance of the welcome screen is started. Add the following to the Activity you want to show the welcome screen before (probably your launcher activity):
 
@@ -97,7 +126,7 @@ If you have issues with the buttons/indicator being covered by the nav bar, use 
 To force the welcome screen to be shown, for example, to let the user view it again when a button is pressed, create a `WelcomeScreenHelper` as shown above and call `.forceShow()`.
 
 Skipping/Back button behavior
------------------------------
+=============================
 
 By default, the welcome screen can be skipped, and pressing the back button will navigate to the previous page or close (skip) the welcome screen if on the first page. This can be changed with `WelcomeScreenBuilder.canSkip()`, `backButtonSkips()` (only applies if `canSkip` is true), and `backButtonNavigatesPages()`. If you disable skipping, the welcome screen will not be stored as completed when it closes.
 
@@ -106,11 +135,12 @@ If you want to require users to navigate through the welcome screen before using
 See [Results](https://github.com/stephentuso/welcome-android#results) below for how to respond if a welcome screen is canceled.
 
 Included pages
---------------
+==============
 
 All methods shown in this section are part of `WelcomeScreenBuilder`. See the [javadoc](http://stephentuso.github.io/welcome-android/javadoc/com/stephentuso/welcome/WelcomeScreenBuilder.html) for more info on each.
 
-### [Title page](http://stephentuso.github.io/welcome-android/javadoc/com/stephentuso/welcome/WelcomeScreenBuilder.html#titlePage-int-java.lang.String-)
+[Title page](http://stephentuso.github.io/welcome-android/javadoc/com/stephentuso/welcome/WelcomeScreenBuilder.html#titlePage-int-java.lang.String-)
+----------------------------------------------------------------------------------------------------------------------------------------------------
 
 A page with an image and a title. A parallax effect can be applied to the image.
 
@@ -121,7 +151,8 @@ titlePage(int resId, String title, int colorResId, boolean showParallaxAnim)
 titlePage(int resId, String title, int colorResId, boolean showParallaxAnim, String titleTypefacePath)
 ```
 
-### [Basic page](http://stephentuso.github.io/welcome-android/javadoc/com/stephentuso/welcome/WelcomeScreenBuilder.html#basicPage-int-java.lang.String-java.lang.String-)
+[Basic page](http://stephentuso.github.io/welcome-android/javadoc/com/stephentuso/welcome/WelcomeScreenBuilder.html#basicPage-int-java.lang.String-java.lang.String-)
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 A page with an image, heading, and description. A parallax effect can be applied to the image.
 
@@ -133,7 +164,8 @@ basicPage(int drawableId, String title, String description, int colorResId, bool
     String headerTypefacePath, String descriptionTypefacePath)
 ```
 
-### [Parallax page](http://stephentuso.github.io/welcome-android/javadoc/com/stephentuso/welcome/WelcomeScreenBuilder.html#parallaxPage-int-java.lang.String-java.lang.String-)
+[Parallax page](http://stephentuso.github.io/welcome-android/javadoc/com/stephentuso/welcome/WelcomeScreenBuilder.html#parallaxPage-int-java.lang.String-java.lang.String-)
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 Similar to the basic page, but instead of an image you can supply a layout that will have a parallax effect applied to it. The speed at which the layout's children move is determined by their position in the layout, the first will move the slowest and the last will move the fastest.
 
@@ -146,7 +178,8 @@ parallaxPage(int resId, String title, String description, int colorResId, float 
     float endParallaxFactor, String headerTypefacePath, String descriptionTypefacePath)
 ```
 
-### [Full screen parallax page](http://stephentuso.github.io/welcome-android/javadoc/com/stephentuso/welcome/WelcomeScreenBuilder.html#fullScreenParallaxPage-int-)
+[Full screen parallax page](http://stephentuso.github.io/welcome-android/javadoc/com/stephentuso/welcome/WelcomeScreenBuilder.html#fullScreenParallaxPage-int-)
+---------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 Applies a parallax effect in the same way the normal parallax page does, but the layout you provide fills the whole fragment, and there isn't a header or description.
 
@@ -157,7 +190,7 @@ fullScreenParallaxPage(int resId, int colorResId, float startParallaxFactor, flo
 ```
 
 Custom pages
-------------
+============
 
 You can add your own fragments to the welcome screen with `WelcomeScreenBuilder.page()`:
 
@@ -179,9 +212,10 @@ protected WelcomeScreenConfiguration configuration() {
 See [animations](https://github.com/stephentuso/welcome-android#animations) below for adding animations to custom fragments.
 
 Styling
--------
+=======
 
-### Themes
+Themes
+------
 
 The provided themes are listed below.
 
@@ -200,7 +234,8 @@ Transparent status bar, solid navigation bar on API 19+. Content flows under sta
 -	`WelcomeScreenTheme.SolidNavigation.UnderStatusBar`
 -	`WelcomeScreenTheme.Light.SolidNavigation.UnderStatusBar`
 
-### Styles
+Styles
+------
 
 Typefaces and a few other things (animations, button visibility) have to be set with `WelcomeScreenBuilder`, but everything else that is customizable can be changed with styles.
 
@@ -277,7 +312,7 @@ The background color is transparent by default -->
 ```
 
 Welcome screen keys
--------------------
+===================
 
 If you want to use multiple welcome screens (in different parts of your app) or have updated one and want to show it again, you can assign keys (Make sure they are unique!) to welcome screens by adding the following to your welcome screen Activity.
 
@@ -290,7 +325,7 @@ public static String welcomeKey() {
 **Note:** Only change this to a new value if you want everyone who has already used your app to see the welcome screen again! This key is used to determine whether or not to show the welcome screen.
 
 Results
--------
+=======
 
 You can listen for the result of a welcome screen in the Activity that started it by overriding `onActivityResult`:
 
@@ -319,7 +354,7 @@ protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 One use for this is making sure users see the whole welcome screen before using your app - disable skipping and then close your main activity when the welcome screen is canceled.
 
 Animations
-----------
+==========
 
 Animations that play as pages are scrolled can be added to your custom fragments by implementing [WelcomeScreenPage.OnChangeListener](http://stephentuso.github.io/welcome-android/javadoc/com/stephentuso/welcome/ui/WelcomeScreenPage.OnChangeListener.html). As an example, a fade effect is shown below.
 
@@ -342,27 +377,21 @@ public void onScrolled(int pageIndex, float offset, int offsetPixels) {
 }
 ```
 
-Todo
-----
-
--	Complete PreferenceWelcomeFragment
--	Improve layouts of included fragments
--	Refactor/clean up code and improve API
--	Unit tests
-
 License
--------
+=======
 
-    Copyright 2015-2016 Stephen Tuso
+```
+Copyright 2015-2016 Stephen Tuso
 
-    Licensed under the Apache License, Version 2.0 (the "License");
-    you may not use this file except in compliance with the License.
-    You may obtain a copy of the License at
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
 
-       http://www.apache.org/licenses/LICENSE-2.0
+   http://www.apache.org/licenses/LICENSE-2.0
 
-    Unless required by applicable law or agreed to in writing, software
-    distributed under the License is distributed on an "AS IS" BASIS,
-    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-    See the License for the specific language governing permissions and
-    limitations under the License.
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+```
