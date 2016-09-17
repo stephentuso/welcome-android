@@ -27,24 +27,27 @@ Feel free to open a PR to add a feature or fix a bug, all contributions are welc
 Table of Contents
 =================
 
--	[Adding to your project](README.md#adding-to-your-project)
--	[Basic Usage](README.md#basic-usage)
-	-	[Extend WelcomeActivity](README.md#extend-welcomeactivity)
-	-	[Show the welcome screen](README.md#show-the-welcome-screen)
--	[Skipping/Back button behavior](README.md#skippingback-button-behavior)
--	[Included pages](README.md#included-pages)
-	-	[<a href="http://stephentuso.github.io/welcome-android/javadoc/com/stephentuso/welcome/WelcomeScreenBuilder.html#titlePage-int-java.lang.String-">Title page</a>](README.md#title-page)
-	-	[<a href="http://stephentuso.github.io/welcome-android/javadoc/com/stephentuso/welcome/WelcomeScreenBuilder.html#basicPage-int-java.lang.String-java.lang.String-">Basic page</a>](README.md#basic-page)
-	-	[<a href="http://stephentuso.github.io/welcome-android/javadoc/com/stephentuso/welcome/WelcomeScreenBuilder.html#parallaxPage-int-java.lang.String-java.lang.String-">Parallax page</a>](README.md#parallax-page)
-	-	[<a href="http://stephentuso.github.io/welcome-android/javadoc/com/stephentuso/welcome/WelcomeScreenBuilder.html#fullScreenParallaxPage-int-">Full screen parallax page</a>](README.md#full-screen-parallax-page)
--	[Custom pages](README.md#custom-pages)
--	[Styling](README.md#styling)
-	-	[Themes](README.md#themes)
-	-	[Styles](README.md#styles)
--	[Welcome screen keys](README.md#welcome-screen-keys)
--	[Results](README.md#results)
--	[Animations](README.md#animations)
--	[License](README.md#license)
+-	[Welcome](#welcome)
+-	[Contributing](#contributing)
+-	[Table of Contents](#table-of-contents)
+-	[Adding to your project](#adding-to-your-project)
+-	[Basic Usage](#basic-usage)
+	-	[Extend WelcomeActivity](#extend-welcomeactivity)
+	-	[Show the welcome screen](#show-the-welcome-screen)
+-	[Skipping/Back button behavior](#skippingback-button-behavior)
+-	[Included pages](#included-pages)
+	-	[Title page](#title-page)
+	-	[Basic page](#basic-page)
+	-	[Parallax page](#parallax-page)
+	-	[Full screen parallax page](#full-screen-parallax-page)
+-	[Custom pages](#custom-pages)
+-	[Styling](#styling)
+	-	[Themes](#themes)
+	-	[Styles](#styles)
+-	[Welcome screen keys](#welcome-screen-keys)
+-	[Results](#results)
+-	[Animations](#animations)
+-	[License](#license)
 
 Adding to your project
 ======================
@@ -95,7 +98,8 @@ protected WelcomeScreenConfiguration configuration() {
             .build();
 }
 ```
-You do not need to override `onCreate` or call `setContentView`. 
+
+You do not need to override `onCreate` or call `setContentView`.
 
 *Note: Default typeface methods and defaultBackgroundColor() need to be called before adding pages.*
 
@@ -140,10 +144,12 @@ Included pages
 
 All methods shown in this section are part of `WelcomeScreenBuilder`. See the [javadoc](http://stephentuso.github.io/welcome-android/javadoc/com/stephentuso/welcome/WelcomeScreenBuilder.html) for more info on each.
 
-[Title page](http://stephentuso.github.io/welcome-android/javadoc/com/stephentuso/welcome/WelcomeScreenBuilder.html#titlePage-int-java.lang.String-)
-----------------------------------------------------------------------------------------------------------------------------------------------------
+Title page
+----------
 
 A page with an image and a title. A parallax effect can be applied to the image.
+
+[Javadoc](http://stephentuso.github.io/welcome-android/javadoc/com/stephentuso/welcome/WelcomeScreenBuilder.html#titlePage-int-java.lang.String-)
 
 ```java
 titlePage(int resId, String title)
@@ -152,10 +158,12 @@ titlePage(int resId, String title, int colorResId, boolean showParallaxAnim)
 titlePage(int resId, String title, int colorResId, boolean showParallaxAnim, String titleTypefacePath)
 ```
 
-[Basic page](http://stephentuso.github.io/welcome-android/javadoc/com/stephentuso/welcome/WelcomeScreenBuilder.html#basicPage-int-java.lang.String-java.lang.String-)
----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Basic page
+----------
 
 A page with an image, heading, and description. A parallax effect can be applied to the image.
+
+[Javadoc](http://stephentuso.github.io/welcome-android/javadoc/com/stephentuso/welcome/WelcomeScreenBuilder.html#basicPage-int-java.lang.String-java.lang.String-)
 
 ```java
 basicPage(int resId, String title, String description)
@@ -165,10 +173,12 @@ basicPage(int drawableId, String title, String description, int colorResId, bool
     String headerTypefacePath, String descriptionTypefacePath)
 ```
 
-[Parallax page](http://stephentuso.github.io/welcome-android/javadoc/com/stephentuso/welcome/WelcomeScreenBuilder.html#parallaxPage-int-java.lang.String-java.lang.String-)
----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Parallax page
+-------------
 
 Similar to the basic page, but instead of an image you can supply a layout that will have a parallax effect applied to it. The speed at which the layout's children move is determined by their position in the layout, the first will move the slowest and the last will move the fastest.
+
+[Javadoc](http://stephentuso.github.io/welcome-android/javadoc/com/stephentuso/welcome/WelcomeScreenBuilder.html#parallaxPage-int-java.lang.String-java.lang.String-)
 
 ```java
 parallaxPage(int resId, String title, String description)
@@ -179,10 +189,12 @@ parallaxPage(int resId, String title, String description, int colorResId, float 
     float endParallaxFactor, String headerTypefacePath, String descriptionTypefacePath)
 ```
 
-[Full screen parallax page](http://stephentuso.github.io/welcome-android/javadoc/com/stephentuso/welcome/WelcomeScreenBuilder.html#fullScreenParallaxPage-int-)
----------------------------------------------------------------------------------------------------------------------------------------------------------------
+Full screen parallax page
+-------------------------
 
 Applies a parallax effect in the same way the normal parallax page does, but the layout you provide fills the whole fragment, and there isn't a header or description.
+
+[Javadoc](http://stephentuso.github.io/welcome-android/javadoc/com/stephentuso/welcome/WelcomeScreenBuilder.html#fullScreenParallaxPage-int-)
 
 ```java
 fullScreenParallaxPage(int resId)
