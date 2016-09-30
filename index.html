@@ -19,13 +19,13 @@
     </section>
 
     <section class="main-content">
-      <p><a href="https://bintray.com/stephentuso/maven/welcome/_latestVersion"><img src="https://api.bintray.com/packages/stephentuso/maven/welcome/images/download.svg" alt="Download"></a> <a href="https://travis-ci.org/stephentuso/welcome-android"><img src="https://travis-ci.org/stephentuso/welcome-android.svg?branch=master" alt="Build Status"></a></p>
+      <p><a href="http://android-arsenal.com/details/1/3610"><img src="https://img.shields.io/badge/Android%20Arsenal-Welcome-blue.svg?style=flat" alt="Android Arsenal"></a> <a href="https://bintray.com/stephentuso/maven/welcome/_latestVersion"><img src="https://api.bintray.com/packages/stephentuso/maven/welcome/images/download.svg" alt="Download"></a> <a href="https://travis-ci.org/stephentuso/welcome-android"><img src="https://travis-ci.org/stephentuso/welcome-android.svg?branch=master" alt="Build Status"></a></p>
 
 <p>An easy to use and customizable welcome screen for Android apps.</p>
 
 <p><img src="https://raw.githubusercontent.com/stephentuso/welcome-android/master/media/sample-video.gif" alt="Sample video"></p>
 
-<p>Look in the <a href="https://github.com/stephentuso/welcome-android/blob/master/sample/src/main/java/com/stephentuso/welcomeexample/MyWelcomeActivity.java">sample</a> to see how the above welcome screen is defined. (It runs smoothly, the gif is just choppy)</p>
+<p>Look in the <a href="https://github.com/stephentuso/welcome-android/blob/master/sample/src/main/java/com/stephentuso/welcomeexample/MyWelcomeActivity.java">sample</a> to see how the above welcome screen is created.</p>
 
 <p><strong>Features</strong></p>
 
@@ -35,19 +35,76 @@
 <li>  Ability to use built in layouts or custom fragments</li>
 </ul>
 
+<p>Please open a new <a href="https://github.com/stephentuso/welcome-android/issues">issue</a> if you find a bug or have a problem.</p>
+
 <p><a href="http://stephentuso.github.io/welcome-android/javadoc/">Javadoc</a></p>
 
 <p><a href="https://github.com/stephentuso/welcome-android/releases">Changelog/Releases</a></p>
 
-<h2>
-<a id="adding-to-your-project" class="anchor" href="#adding-to-your-project" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Adding to your project</h2>
+<h1>
+<a id="contributing" class="anchor" href="#contributing" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Contributing</h1>
+
+<p>Feel free to open a PR to add a feature or fix a bug, all contributions are welcome.</p>
+
+<h1>
+<a id="table-of-contents" class="anchor" href="#table-of-contents" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Table of Contents</h1>
+
+<ul>
+<li>  <a href="#adding-to-your-project">Adding to your project</a>
+</li>
+<li>  <a href="#basic-usage">Basic Usage</a>
+
+<ul>
+<li>  <a href="#extend-welcomeactivity">Extend WelcomeActivity</a>
+</li>
+<li>  <a href="#show-the-welcome-screen">Show the welcome screen</a>
+</li>
+</ul>
+</li>
+<li>  <a href="#skippingback-button-behavior">Skipping/Back button behavior</a>
+</li>
+<li>  <a href="#included-pages">Included pages</a>
+
+<ul>
+<li>  <a href="#title-page">Title page</a>
+</li>
+<li>  <a href="#basic-page">Basic page</a>
+</li>
+<li>  <a href="#parallax-page">Parallax page</a>
+</li>
+<li>  <a href="#full-screen-parallax-page">Full screen parallax page</a>
+</li>
+</ul>
+</li>
+<li>  <a href="#custom-pages">Custom pages</a>
+</li>
+<li>  <a href="#styling">Styling</a>
+
+<ul>
+<li>  <a href="#themes">Themes</a>
+</li>
+<li>  <a href="#styles">Styles</a>
+</li>
+</ul>
+</li>
+<li>  <a href="#welcome-screen-keys">Welcome screen keys</a>
+</li>
+<li>  <a href="#results">Results</a>
+</li>
+<li>  <a href="#animations">Animations</a>
+</li>
+<li>  <a href="#license">License</a>
+</li>
+</ul>
+
+<h1>
+<a id="adding-to-your-project" class="anchor" href="#adding-to-your-project" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Adding to your project</h1>
 
 <p>This library is available through jCenter.</p>
 
 <p>Gradle:</p>
 
-<pre><code>compile 'com.stephentuso:welcome:0.7.0'
-</code></pre>
+<div class="highlight highlight-source-groovy"><pre>compile <span class="pl-s"><span class="pl-pds">'</span>com.stephentuso:welcome:0.7.2<span class="pl-pds">'</span></span></pre></div>
 
 <p>If you use proguard, add the following to your proguard rules</p>
 
@@ -56,161 +113,159 @@
 }
 </code></pre>
 
-<h2>
-<a id="basic-usage" class="anchor" href="#basic-usage" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Basic Usage</h2>
+<h1>
+<a id="basic-usage" class="anchor" href="#basic-usage" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Basic Usage</h1>
 
-<h3>
-<a id="extend-welcomeactivity" class="anchor" href="#extend-welcomeactivity" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Extend WelcomeActivity</h3>
+<h2>
+<a id="extend-welcomeactivity" class="anchor" href="#extend-welcomeactivity" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Extend WelcomeActivity</h2>
 
 <p>To create a welcome screen, add a class to your project that extends <code>WelcomeActivity</code> and add it to AndroidManifest:</p>
 
-<pre><code>&lt;activity android:name=".MyWelcomeActivity"       
-    android:theme="@style/WelcomeScreenTheme"/&gt;
-</code></pre>
+<div class="highlight highlight-text-xml"><pre>&lt;<span class="pl-ent">activity</span> <span class="pl-e">android</span><span class="pl-e">:</span><span class="pl-e">name</span>=<span class="pl-s"><span class="pl-pds">"</span>.MyWelcomeActivity<span class="pl-pds">"</span></span>       
+    <span class="pl-e">android</span><span class="pl-e">:</span><span class="pl-e">theme</span>=<span class="pl-s"><span class="pl-pds">"</span>@style/WelcomeScreenTheme<span class="pl-pds">"</span></span>/&gt;</pre></div>
 
 <p><em>You must set the theme in the manifest as shown above if you want swipeToDismiss to show the activity beneath. Note that the manifest theme will be overridden and have no effect on the other styles of the welcome screen (that will probably change in 1.0).</em></p>
 
 <p>Override the Activity's <code>configuration()</code> method. You can use <code>WelcomeScreenBuilder</code> to easily set it up, for example:</p>
 
-<pre><code>@Override
-protected WelcomeScreenConfiguration configuration() {
-    return new WelcomeScreenBuilder(this)
-            .theme(R.style.WelcomeScreenTheme_Light)
-            .defaultBackgroundColor(R.color.background)
-            .titlePage(R.drawable.logo, "Title")
-            .basicPage(R.drawable.photo1, "Header", "More text.", R.color.red)
-            .basicPage(R.drawable.photo2, "Lorem ipsum", "dolor sit amet.")
-            .swipeToDismiss(true)
+<div class="highlight highlight-source-java"><pre><span class="pl-k">@Override</span>
+<span class="pl-k">protected</span> <span class="pl-smi">WelcomeScreenConfiguration</span> configuration() {
+    <span class="pl-k">return</span> <span class="pl-k">new</span> <span class="pl-smi">WelcomeScreenBuilder</span>(<span class="pl-v">this</span>)
+            .theme(<span class="pl-smi">R</span><span class="pl-k">.</span><span class="pl-smi">style<span class="pl-k">.</span>WelcomeScreenTheme_Light</span>)
+            .defaultBackgroundColor(<span class="pl-smi">R</span><span class="pl-k">.</span>color<span class="pl-k">.</span>background)
+            .titlePage(<span class="pl-smi">R</span><span class="pl-k">.</span>drawable<span class="pl-k">.</span>logo, <span class="pl-s"><span class="pl-pds">"</span>Title<span class="pl-pds">"</span></span>)
+            .basicPage(<span class="pl-smi">R</span><span class="pl-k">.</span>drawable<span class="pl-k">.</span>photo1, <span class="pl-s"><span class="pl-pds">"</span>Header<span class="pl-pds">"</span></span>, <span class="pl-s"><span class="pl-pds">"</span>More text.<span class="pl-pds">"</span></span>, <span class="pl-smi">R</span><span class="pl-k">.</span>color<span class="pl-k">.</span>red)
+            .basicPage(<span class="pl-smi">R</span><span class="pl-k">.</span>drawable<span class="pl-k">.</span>photo2, <span class="pl-s"><span class="pl-pds">"</span>Lorem ipsum<span class="pl-pds">"</span></span>, <span class="pl-s"><span class="pl-pds">"</span>dolor sit amet.<span class="pl-pds">"</span></span>)
+            .swipeToDismiss(<span class="pl-c1">true</span>)
             .build();
-}
-</code></pre>
+}</pre></div>
+
+<p>You do not need to override <code>onCreate</code> or call <code>setContentView</code>.</p>
 
 <p><em>Note: Default typeface methods and defaultBackgroundColor() need to be called before adding pages.</em></p>
 
-<h3>
-<a id="show-the-welcome-screen" class="anchor" href="#show-the-welcome-screen" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Show the welcome screen</h3>
+<h2>
+<a id="show-the-welcome-screen" class="anchor" href="#show-the-welcome-screen" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Show the welcome screen</h2>
 
-<p>Welcome screens are started with <code>WelcomeScreenHelper</code>. <code>onSaveInstanceState</code> is needed to be sure only one instance of the welcome screen is started.</p>
+<p>Welcome screens are started with <code>WelcomeScreenHelper</code>. <code>onSaveInstanceState</code> is needed to be sure only one instance of the welcome screen is started. Add the following to the Activity you want to show the welcome screen before (probably your launcher activity):</p>
 
-<pre><code>WelcomeScreenHelper welcomeScreen;
+<div class="highlight highlight-source-java"><pre><span class="pl-smi">WelcomeScreenHelper</span> welcomeScreen;
 
-@Override
-protected void onCreate(Bundle savedInstanceState) {
-    ...
-    welcomeScreen = new WelcomeScreenHelper(this, MyWelcomeActivity.class);
-    welcomeScreen.show(savedInstanceState);
-    ...
+<span class="pl-k">@Override</span>
+<span class="pl-k">protected</span> <span class="pl-k">void</span> onCreate(<span class="pl-smi">Bundle</span> savedInstanceState) {
+    <span class="pl-c1">...</span>
+    welcomeScreen <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-smi">WelcomeScreenHelper</span>(<span class="pl-v">this</span>, <span class="pl-smi">MyWelcomeActivity</span><span class="pl-k">.</span>class);
+    welcomeScreen<span class="pl-k">.</span>show(savedInstanceState);
+    <span class="pl-c1">...</span>
 }
 
-@Override
-protected void onSaveInstanceState(Bundle outState) {
-    super.onSaveInstanceState(outState);
-    welcomeScreen.onSaveInstanceState(outState);
-}
-</code></pre>
+<span class="pl-k">@Override</span>
+<span class="pl-k">protected</span> <span class="pl-k">void</span> onSaveInstanceState(<span class="pl-smi">Bundle</span> outState) {
+    <span class="pl-v">super</span><span class="pl-k">.</span>onSaveInstanceState(outState);
+    welcomeScreen<span class="pl-k">.</span>onSaveInstanceState(outState);
+}</pre></div>
 
 <p>If you have issues with the buttons/indicator being covered by the nav bar, use one of the .SolidNavigation welcome screen themes.</p>
 
 <p>To force the welcome screen to be shown, for example, to let the user view it again when a button is pressed, create a <code>WelcomeScreenHelper</code> as shown above and call <code>.forceShow()</code>.</p>
 
-<h2>
-<a id="skippingback-button-behavior" class="anchor" href="#skippingback-button-behavior" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Skipping/Back button behavior</h2>
+<h1>
+<a id="skippingback-button-behavior" class="anchor" href="#skippingback-button-behavior" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Skipping/Back button behavior</h1>
 
 <p>By default, the welcome screen can be skipped, and pressing the back button will navigate to the previous page or close (skip) the welcome screen if on the first page. This can be changed with <code>WelcomeScreenBuilder.canSkip()</code>, <code>backButtonSkips()</code> (only applies if <code>canSkip</code> is true), and <code>backButtonNavigatesPages()</code>. If you disable skipping, the welcome screen will not be stored as completed when it closes.</p>
 
-<p>If you want to require the user to navigate through the welcome screen before using the app (if you wanted to provide some setup options in a custom fragment, for example), call <code>canSkip(false)</code> and close your app if the welcome screen's result is <code>RESULT_CANCELED</code>.</p>
+<p>If you want to require users to navigate through the welcome screen before using the app, call <code>canSkip(false)</code> and close your app if the welcome screen's result is <code>RESULT_CANCELED</code>.</p>
 
-<p><strong>See <a href="https://github.com/stephentuso/welcome-android#results">Results</a> below for how to respond if a welcome screen is canceled</strong></p>
+<p>See <a href="https://github.com/stephentuso/welcome-android#results">Results</a> below for how to respond if a welcome screen is canceled.</p>
 
-<h2>
-<a id="included-pages" class="anchor" href="#included-pages" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Included pages</h2>
+<h1>
+<a id="included-pages" class="anchor" href="#included-pages" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Included pages</h1>
 
 <p>All methods shown in this section are part of <code>WelcomeScreenBuilder</code>. See the <a href="http://stephentuso.github.io/welcome-android/javadoc/com/stephentuso/welcome/WelcomeScreenBuilder.html">javadoc</a> for more info on each.</p>
 
-<h3>
-<a id="title-page" class="anchor" href="#title-page" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a><a href="http://stephentuso.github.io/welcome-android/javadoc/com/stephentuso/welcome/WelcomeScreenBuilder.html#titlePage-int-java.lang.String-">Title page</a>
-</h3>
+<h2>
+<a id="title-page" class="anchor" href="#title-page" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Title page</h2>
 
 <p>A page with an image and a title. A parallax effect can be applied to the image.</p>
 
-<pre><code>titlePage(int resId, String title)
-titlePage(int resId, String title, int colorResId)
-titlePage(int resId, String title, int colorResId, boolean showParallaxAnim)
-titlePage(int resId, String title, int colorResId, boolean showParallaxAnim, String titleTypefacePath)
-</code></pre>
+<p><a href="http://stephentuso.github.io/welcome-android/javadoc/com/stephentuso/welcome/WelcomeScreenBuilder.html#titlePage-int-java.lang.String-">Javadoc</a></p>
 
-<h3>
-<a id="basic-page" class="anchor" href="#basic-page" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a><a href="http://stephentuso.github.io/welcome-android/javadoc/com/stephentuso/welcome/WelcomeScreenBuilder.html#basicPage-int-java.lang.String-java.lang.String-">Basic page</a>
-</h3>
+<div class="highlight highlight-source-java"><pre>titlePage(<span class="pl-k">int</span> resId, <span class="pl-smi">String</span> title)
+titlePage(<span class="pl-k">int</span> resId, <span class="pl-smi">String</span> title, <span class="pl-k">int</span> colorResId)
+titlePage(<span class="pl-k">int</span> resId, <span class="pl-smi">String</span> title, <span class="pl-k">int</span> colorResId, <span class="pl-k">boolean</span> showParallaxAnim)
+titlePage(<span class="pl-k">int</span> resId, <span class="pl-smi">String</span> title, <span class="pl-k">int</span> colorResId, <span class="pl-k">boolean</span> showParallaxAnim, <span class="pl-smi">String</span> titleTypefacePath)</pre></div>
+
+<h2>
+<a id="basic-page" class="anchor" href="#basic-page" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Basic page</h2>
 
 <p>A page with an image, heading, and description. A parallax effect can be applied to the image.</p>
 
-<pre><code>basicPage(int resId, String title, String description)
-basicPage(int resId, String title, String description, int colorResId)
-basicPage(int drawableId, String title, String description, int colorResId, boolean showParallaxAnim)
-basicPage(int drawableId, String title, String description, int colorResId, boolean showParallaxAnim,
-    String headerTypefacePath, String descriptionTypefacePath)
-</code></pre>
+<p><a href="http://stephentuso.github.io/welcome-android/javadoc/com/stephentuso/welcome/WelcomeScreenBuilder.html#basicPage-int-java.lang.String-java.lang.String-">Javadoc</a></p>
 
-<h3>
-<a id="parallax-page" class="anchor" href="#parallax-page" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a><a href="http://stephentuso.github.io/welcome-android/javadoc/com/stephentuso/welcome/WelcomeScreenBuilder.html#parallaxPage-int-java.lang.String-java.lang.String-">Parallax page</a>
-</h3>
+<div class="highlight highlight-source-java"><pre>basicPage(<span class="pl-k">int</span> resId, <span class="pl-smi">String</span> title, <span class="pl-smi">String</span> description)
+basicPage(<span class="pl-k">int</span> resId, <span class="pl-smi">String</span> title, <span class="pl-smi">String</span> description, <span class="pl-k">int</span> colorResId)
+basicPage(<span class="pl-k">int</span> drawableId, <span class="pl-smi">String</span> title, <span class="pl-smi">String</span> description, <span class="pl-k">int</span> colorResId, <span class="pl-k">boolean</span> showParallaxAnim)
+basicPage(<span class="pl-k">int</span> drawableId, <span class="pl-smi">String</span> title, <span class="pl-smi">String</span> description, <span class="pl-k">int</span> colorResId, <span class="pl-k">boolean</span> showParallaxAnim,
+    <span class="pl-smi">String</span> headerTypefacePath, <span class="pl-smi">String</span> descriptionTypefacePath)</pre></div>
+
+<h2>
+<a id="parallax-page" class="anchor" href="#parallax-page" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Parallax page</h2>
 
 <p>Similar to the basic page, but instead of an image you can supply a layout that will have a parallax effect applied to it. The speed at which the layout's children move is determined by their position in the layout, the first will move the slowest and the last will move the fastest.</p>
 
-<pre><code>parallaxPage(int resId, String title, String description)
-parallaxPage(int resId, String title, String description, int colorResId)
-parallaxPage(int resId, String title, String description, int colorResId, float startParallaxFactor,
-    float endParallaxFactor)
-parallaxPage(int resId, String title, String description, int colorResId, float startParallaxFactor,
-    float endParallaxFactor, String headerTypefacePath, String descriptionTypefacePath))
-</code></pre>
+<p><a href="http://stephentuso.github.io/welcome-android/javadoc/com/stephentuso/welcome/WelcomeScreenBuilder.html#parallaxPage-int-java.lang.String-java.lang.String-">Javadoc</a></p>
 
-<h3>
-<a id="full-screen-parallax-page" class="anchor" href="#full-screen-parallax-page" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a><a href="http://stephentuso.github.io/welcome-android/javadoc/com/stephentuso/welcome/WelcomeScreenBuilder.html#fullScreenParallaxPage-int-">Full screen parallax page</a>
-</h3>
+<div class="highlight highlight-source-java"><pre>parallaxPage(<span class="pl-k">int</span> resId, <span class="pl-smi">String</span> title, <span class="pl-smi">String</span> description)
+parallaxPage(<span class="pl-k">int</span> resId, <span class="pl-smi">String</span> title, <span class="pl-smi">String</span> description, <span class="pl-k">int</span> colorResId)
+parallaxPage(<span class="pl-k">int</span> resId, <span class="pl-smi">String</span> title, <span class="pl-smi">String</span> description, <span class="pl-k">int</span> colorResId, <span class="pl-k">float</span> startParallaxFactor,
+    <span class="pl-k">float</span> endParallaxFactor)
+parallaxPage(<span class="pl-k">int</span> resId, <span class="pl-smi">String</span> title, <span class="pl-smi">String</span> description, <span class="pl-k">int</span> colorResId, <span class="pl-k">float</span> startParallaxFactor,
+    <span class="pl-k">float</span> endParallaxFactor, <span class="pl-smi">String</span> headerTypefacePath, <span class="pl-smi">String</span> descriptionTypefacePath)</pre></div>
+
+<h2>
+<a id="full-screen-parallax-page" class="anchor" href="#full-screen-parallax-page" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Full screen parallax page</h2>
 
 <p>Applies a parallax effect in the same way the normal parallax page does, but the layout you provide fills the whole fragment, and there isn't a header or description.</p>
 
-<pre><code>fullScreenParallaxPage(int resId)
-fullScreenParallaxPage(int resId, int colorResId)
-fullScreenParallaxPage(int resId, int colorResId, float startParallaxFactor, float endParallaxFactor)
-</code></pre>
+<p><a href="http://stephentuso.github.io/welcome-android/javadoc/com/stephentuso/welcome/WelcomeScreenBuilder.html#fullScreenParallaxPage-int-">Javadoc</a></p>
 
-<h2>
-<a id="custom-pages" class="anchor" href="#custom-pages" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Custom pages</h2>
+<div class="highlight highlight-source-java"><pre>fullScreenParallaxPage(<span class="pl-k">int</span> resId)
+fullScreenParallaxPage(<span class="pl-k">int</span> resId, <span class="pl-k">int</span> colorResId)
+fullScreenParallaxPage(<span class="pl-k">int</span> resId, <span class="pl-k">int</span> colorResId, <span class="pl-k">float</span> startParallaxFactor, <span class="pl-k">float</span> endParallaxFactor)</pre></div>
+
+<h1>
+<a id="custom-pages" class="anchor" href="#custom-pages" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Custom pages</h1>
 
 <p>You can add your own fragments to the welcome screen with <code>WelcomeScreenBuilder.page()</code>:</p>
 
-<pre><code>@Override
-protected WelcomeScreenConfiguration configuration() {
-    return new WelcomeScreenBuilder(this)
-            ...
-            .page(new WelcomeFragmentHolder() {
-                @Override
-                protected Fragment fragment() {
-                    return new YourFragmentHere;
+<div class="highlight highlight-source-java"><pre><span class="pl-k">@Override</span>
+<span class="pl-k">protected</span> <span class="pl-smi">WelcomeScreenConfiguration</span> configuration() {
+    <span class="pl-k">return</span> <span class="pl-k">new</span> <span class="pl-smi">WelcomeScreenBuilder</span>(<span class="pl-v">this</span>)
+            <span class="pl-c1">...</span>
+            .page(<span class="pl-k">new</span> <span class="pl-smi">WelcomeFragmentHolder</span>() {
+                <span class="pl-k">@Override</span>
+                <span class="pl-k">protected</span> <span class="pl-smi">Fragment</span> <span class="pl-en">fragment</span>() {
+                    <span class="pl-k">return</span> <span class="pl-k">new</span> <span class="pl-smi">YourFragmentHere</span>();
                 }
-            }, R.color.background-color)
-            ...
-}
-</code></pre>
+            }, <span class="pl-smi">R</span><span class="pl-k">.</span>color<span class="pl-k">.</span>background<span class="pl-k">-</span>color)
+            <span class="pl-c1">...</span>
+}</pre></div>
 
 <p>See <a href="https://github.com/stephentuso/welcome-android#animations">animations</a> below for adding animations to custom fragments.</p>
 
-<h2>
-<a id="styling" class="anchor" href="#styling" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Styling</h2>
+<h1>
+<a id="styling" class="anchor" href="#styling" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Styling</h1>
 
-<h3>
-<a id="themes" class="anchor" href="#themes" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Themes</h3>
+<h2>
+<a id="themes" class="anchor" href="#themes" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Themes</h2>
 
 <p>The provided themes are listed below.</p>
 
 <p>Transparent status/navigation on API 19+. Content does not flow under status bar:</p>
 
 <ul>
-<li>  <code>WelcomeSceenTheme</code> - The default theme. Meant to be used with dark backgrounds, the text, indicator, and buttons are light colored.</li>
-<li>  <code>WelcomeScreenTheme.Light</code> - Meant to be used with light backgrounds; the text, indicator, and buttons are dark colored.</li>
+<li>  <code>WelcomeSceenTheme</code> - The default theme. For use with dark backgrounds; the text, indicator, and buttons are light colored.</li>
+<li>  <code>WelcomeScreenTheme.Light</code> - For use with light backgrounds; the text, indicator, and buttons are dark colored.</li>
 </ul>
 
 <p>Transparent status bar, solid navigation bar on API 19+. Content does not flow under status bar:</p>
@@ -231,163 +286,156 @@ protected WelcomeScreenConfiguration configuration() {
 </li>
 </ul>
 
-<h3>
-<a id="styles" class="anchor" href="#styles" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Styles</h3>
+<h2>
+<a id="styles" class="anchor" href="#styles" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Styles</h2>
 
 <p>Typefaces and a few other things (animations, button visibility) have to be set with <code>WelcomeScreenBuilder</code>, but everything else that is customizable can be changed with styles.</p>
 
 <p>You can add styles as shown below. Optional items are in square brackets. Apply your theme to a welcome screen with <code>WelcomeScreenBuilder.theme(R.style.YourThemeNameHere)</code>.</p>
 
-<pre><code>&lt;style name="CustomWelcomeScreenTheme" parent="SEE THEMES ABOVE"&gt;
+<div class="highlight highlight-text-xml"><pre>&lt;<span class="pl-ent">style</span> <span class="pl-e">name</span>=<span class="pl-s"><span class="pl-pds">"</span>CustomWelcomeScreenTheme<span class="pl-pds">"</span></span> <span class="pl-e">parent</span>=<span class="pl-s"><span class="pl-pds">"</span>SEE THEMES ABOVE<span class="pl-pds">"</span></span>&gt;
 
-    &lt;!-- Color of button text and titles/headings (in built in fragments)
-        By default, this is also the color of the done/next button --&gt;
-    &lt;item name="android:textColorPrimary"&gt;color&lt;/item&gt;
-    &lt;!-- Color of other text
-        By default, this is used for the skip button text color --&gt;
-    &lt;item name="android:textColorSecondary"&gt;color&lt;/item&gt;
+    <span class="pl-c">&lt;!-- Color of button text and titles/headings (in built in fragments)</span>
+<span class="pl-c">        By default, this is also the color of the done/next button --&gt;</span>
+    &lt;<span class="pl-ent">item</span> <span class="pl-e">name</span>=<span class="pl-s"><span class="pl-pds">"</span>android:textColorPrimary<span class="pl-pds">"</span></span>&gt;color&lt;/<span class="pl-ent">item</span>&gt;
+    <span class="pl-c">&lt;!-- Color of other text</span>
+<span class="pl-c">        By default, this is used for the skip button text color --&gt;</span>
+    &lt;<span class="pl-ent">item</span> <span class="pl-e">name</span>=<span class="pl-s"><span class="pl-pds">"</span>android:textColorSecondary<span class="pl-pds">"</span></span>&gt;color&lt;/<span class="pl-ent">item</span>&gt;
 
-    &lt;!-- ** Button styles ** --&gt;
-    &lt;!-- Background is applied to all buttons,
-        to change a specific button background use the individual button styles --&gt;
-    &lt;item name="welcomeButtonBackground"&gt;drawable&lt;/item&gt;
-    &lt;!-- Done/skip button text --&gt;
-    &lt;item name="welcomeButtonSkipText"&gt;string&lt;/item&gt;
-    &lt;item name="welcomeButtonDoneText"&gt;string&lt;/item&gt;
-    &lt;!-- Individual button styles --&gt;
-    &lt;item name="welcomeButtonSkipStyle"&gt;@style/MyButtonSkip&lt;/item&gt;
-    &lt;item name="welcomeButtonNextStyle"&gt;@style/MyButtonNext&lt;/item&gt;
-    &lt;item name="welcomeButtonDoneStyle"&gt;@style/MyButtonDone&lt;/item&gt;
+    <span class="pl-c">&lt;!-- ** Button styles ** --&gt;</span>
+    <span class="pl-c">&lt;!-- Background is applied to all buttons,</span>
+<span class="pl-c">        to change a specific button background use the individual button styles --&gt;</span>
+    &lt;<span class="pl-ent">item</span> <span class="pl-e">name</span>=<span class="pl-s"><span class="pl-pds">"</span>welcomeButtonBackground<span class="pl-pds">"</span></span>&gt;drawable&lt;/<span class="pl-ent">item</span>&gt;
+    <span class="pl-c">&lt;!-- Done/skip button text --&gt;</span>
+    &lt;<span class="pl-ent">item</span> <span class="pl-e">name</span>=<span class="pl-s"><span class="pl-pds">"</span>welcomeButtonSkipText<span class="pl-pds">"</span></span>&gt;string&lt;/<span class="pl-ent">item</span>&gt;
+    &lt;<span class="pl-ent">item</span> <span class="pl-e">name</span>=<span class="pl-s"><span class="pl-pds">"</span>welcomeButtonDoneText<span class="pl-pds">"</span></span>&gt;string&lt;/<span class="pl-ent">item</span>&gt;
+    <span class="pl-c">&lt;!-- Individual button styles --&gt;</span>
+    &lt;<span class="pl-ent">item</span> <span class="pl-e">name</span>=<span class="pl-s"><span class="pl-pds">"</span>welcomeButtonSkipStyle<span class="pl-pds">"</span></span>&gt;@style/MyButtonSkip&lt;/<span class="pl-ent">item</span>&gt;
+    &lt;<span class="pl-ent">item</span> <span class="pl-e">name</span>=<span class="pl-s"><span class="pl-pds">"</span>welcomeButtonNextStyle<span class="pl-pds">"</span></span>&gt;@style/MyButtonNext&lt;/<span class="pl-ent">item</span>&gt;
+    &lt;<span class="pl-ent">item</span> <span class="pl-e">name</span>=<span class="pl-s"><span class="pl-pds">"</span>welcomeButtonDoneStyle<span class="pl-pds">"</span></span>&gt;@style/MyButtonDone&lt;/<span class="pl-ent">item</span>&gt;
 
-    &lt;!-- The drawable or color to fade to if swipeToDismiss is enabled --&gt;
-    &lt;item name="android:windowBackground"&gt;drawable|color&lt;/item&gt;
+    <span class="pl-c">&lt;!-- The drawable or color to fade to if swipeToDismiss is enabled --&gt;</span>
+    &lt;<span class="pl-ent">item</span> <span class="pl-e">name</span>=<span class="pl-s"><span class="pl-pds">"</span>android:windowBackground<span class="pl-pds">"</span></span>&gt;drawable|color&lt;/<span class="pl-ent">item</span>&gt;
 
-    &lt;item name="welcomeIndicatorStyle"&gt;@style/MyWelcomeIndicator&lt;/item&gt;
-    &lt;item name="welcomeDividerStyle"&gt;@style/MyWelcomeScreenDivider&lt;/item&gt;
+    &lt;<span class="pl-ent">item</span> <span class="pl-e">name</span>=<span class="pl-s"><span class="pl-pds">"</span>welcomeIndicatorStyle<span class="pl-pds">"</span></span>&gt;@style/MyWelcomeIndicator&lt;/<span class="pl-ent">item</span>&gt;
+    &lt;<span class="pl-ent">item</span> <span class="pl-e">name</span>=<span class="pl-s"><span class="pl-pds">"</span>welcomeDividerStyle<span class="pl-pds">"</span></span>&gt;@style/MyWelcomeScreenDivider&lt;/<span class="pl-ent">item</span>&gt;
 
-    &lt;item name="welcomeNormalTextStyle"&gt;@style/MyNormalText&lt;/item&gt;
-    &lt;item name="welcomeLargeTextStyle"&gt;@style/MyLargeText&lt;/item&gt;
-    &lt;item name="welcomeTitleTextStyle"&gt;@style/MyTitleText&lt;/item&gt;
+    &lt;<span class="pl-ent">item</span> <span class="pl-e">name</span>=<span class="pl-s"><span class="pl-pds">"</span>welcomeNormalTextStyle<span class="pl-pds">"</span></span>&gt;@style/MyNormalText&lt;/<span class="pl-ent">item</span>&gt;
+    &lt;<span class="pl-ent">item</span> <span class="pl-e">name</span>=<span class="pl-s"><span class="pl-pds">"</span>welcomeLargeTextStyle<span class="pl-pds">"</span></span>&gt;@style/MyLargeText&lt;/<span class="pl-ent">item</span>&gt;
+    &lt;<span class="pl-ent">item</span> <span class="pl-e">name</span>=<span class="pl-s"><span class="pl-pds">"</span>welcomeTitleTextStyle<span class="pl-pds">"</span></span>&gt;@style/MyTitleText&lt;/<span class="pl-ent">item</span>&gt;
 
-    &lt;!-- Add the following if you want to show the action bar.
-        Use WelcomeScreenBuilder.showActionBarBackButton(true) to show
-        the back button. --&gt;
-    &lt;item name="windowActionBar"&gt;true&lt;/item&gt;
-    &lt;item name="windowNoTitle"&gt;false&lt;/item&gt;
-&lt;/style&gt;
+    <span class="pl-c">&lt;!-- Add the following if you want to show the action bar.</span>
+<span class="pl-c">        Use WelcomeScreenBuilder.showActionBarBackButton(true) to show</span>
+<span class="pl-c">        the back button. --&gt;</span>
+    &lt;<span class="pl-ent">item</span> <span class="pl-e">name</span>=<span class="pl-s"><span class="pl-pds">"</span>windowActionBar<span class="pl-pds">"</span></span>&gt;true&lt;/<span class="pl-ent">item</span>&gt;
+    &lt;<span class="pl-ent">item</span> <span class="pl-e">name</span>=<span class="pl-s"><span class="pl-pds">"</span>windowNoTitle<span class="pl-pds">"</span></span>&gt;false&lt;/<span class="pl-ent">item</span>&gt;
+&lt;/<span class="pl-ent">style</span>&gt;
 
-&lt;style name="MyWelcomeIndicator" parent="WelcomeScreenPageIndicator[.Light]"&gt;
-    &lt;item name="indicatorColor"&gt;color&lt;/item&gt;
-    &lt;item name="currentPageColor"&gt;color&lt;/item&gt;
-    &lt;item name="animated"&gt;true|false&lt;/item&gt;
-&lt;/style&gt;
+&lt;<span class="pl-ent">style</span> <span class="pl-e">name</span>=<span class="pl-s"><span class="pl-pds">"</span>MyWelcomeIndicator<span class="pl-pds">"</span></span> <span class="pl-e">parent</span>=<span class="pl-s"><span class="pl-pds">"</span>WelcomeScreenPageIndicator[.Light]<span class="pl-pds">"</span></span>&gt;
+    &lt;<span class="pl-ent">item</span> <span class="pl-e">name</span>=<span class="pl-s"><span class="pl-pds">"</span>indicatorColor<span class="pl-pds">"</span></span>&gt;color&lt;/<span class="pl-ent">item</span>&gt;
+    &lt;<span class="pl-ent">item</span> <span class="pl-e">name</span>=<span class="pl-s"><span class="pl-pds">"</span>currentPageColor<span class="pl-pds">"</span></span>&gt;color&lt;/<span class="pl-ent">item</span>&gt;
+    &lt;<span class="pl-ent">item</span> <span class="pl-e">name</span>=<span class="pl-s"><span class="pl-pds">"</span>animated<span class="pl-pds">"</span></span>&gt;true|false&lt;/<span class="pl-ent">item</span>&gt;
+&lt;/<span class="pl-ent">style</span>&gt;
 
-&lt;!-- Use this to change the next button's image/color
-    To support RTL, add this in values-ldrtl/styles with an image facing left --&gt;
-&lt;style name="MyButtonNext" parent="WelcomeScreenButton.Next"&gt;
-    &lt;item name="android:src"&gt;drawable&lt;/item&gt;
-    &lt;item name="android:tint"&gt;color&lt;/item&gt;
-&lt;/style&gt;
+<span class="pl-c">&lt;!-- Use this to change the next button's image/color</span>
+<span class="pl-c">    To support RTL, add this in values-ldrtl/styles with an image facing left --&gt;</span>
+&lt;<span class="pl-ent">style</span> <span class="pl-e">name</span>=<span class="pl-s"><span class="pl-pds">"</span>MyButtonNext<span class="pl-pds">"</span></span> <span class="pl-e">parent</span>=<span class="pl-s"><span class="pl-pds">"</span>WelcomeScreenButton.Next<span class="pl-pds">"</span></span>&gt;
+    &lt;<span class="pl-ent">item</span> <span class="pl-e">name</span>=<span class="pl-s"><span class="pl-pds">"</span>android:src<span class="pl-pds">"</span></span>&gt;drawable&lt;/<span class="pl-ent">item</span>&gt;
+    &lt;<span class="pl-ent">item</span> <span class="pl-e">name</span>=<span class="pl-s"><span class="pl-pds">"</span>android:tint<span class="pl-pds">"</span></span>&gt;color&lt;/<span class="pl-ent">item</span>&gt;
+&lt;/<span class="pl-ent">style</span>&gt;
 
-&lt;style name="MyButtonSkip|MyButtonDone" parent="WelcomeScreenButton(.Skip|.Done)"&gt;
-    &lt;item name="android:textColor"&gt;color&lt;/item&gt;
-&lt;/style&gt;
+&lt;<span class="pl-ent">style</span> <span class="pl-e">name</span>=<span class="pl-s"><span class="pl-pds">"</span>MyButtonSkip|MyButtonDone<span class="pl-pds">"</span></span> <span class="pl-e">parent</span>=<span class="pl-s"><span class="pl-pds">"</span>WelcomeScreenButton(.Skip|.Done)<span class="pl-pds">"</span></span>&gt;
+    &lt;<span class="pl-ent">item</span> <span class="pl-e">name</span>=<span class="pl-s"><span class="pl-pds">"</span>android:textColor<span class="pl-pds">"</span></span>&gt;color&lt;/<span class="pl-ent">item</span>&gt;
+&lt;/<span class="pl-ent">style</span>&gt;
 
-&lt;!-- A divider that is directly above the buttons/indicator.
-The background color is transparent by default --&gt;
-&lt;style name="MyWelcomeScreenDivider" parent="WelcomeScreenDivider[.Dark|.Light]"&gt;
-    &lt;item name="android:background"&gt;drawable|color&lt;/item&gt;
-    &lt;item name="android:layout_height"&gt;dimen&lt;/item&gt;
-&lt;/style&gt;
+<span class="pl-c">&lt;!-- A divider that is directly above the buttons/indicator.</span>
+<span class="pl-c">The background color is transparent by default --&gt;</span>
+&lt;<span class="pl-ent">style</span> <span class="pl-e">name</span>=<span class="pl-s"><span class="pl-pds">"</span>MyWelcomeScreenDivider<span class="pl-pds">"</span></span> <span class="pl-e">parent</span>=<span class="pl-s"><span class="pl-pds">"</span>WelcomeScreenDivider[.Dark|.Light]<span class="pl-pds">"</span></span>&gt;
+    &lt;<span class="pl-ent">item</span> <span class="pl-e">name</span>=<span class="pl-s"><span class="pl-pds">"</span>android:background<span class="pl-pds">"</span></span>&gt;drawable|color&lt;/<span class="pl-ent">item</span>&gt;
+    &lt;<span class="pl-ent">item</span> <span class="pl-e">name</span>=<span class="pl-s"><span class="pl-pds">"</span>android:layout_height<span class="pl-pds">"</span></span>&gt;dimen&lt;/<span class="pl-ent">item</span>&gt;
+&lt;/<span class="pl-ent">style</span>&gt;
 
-&lt;!-- The following can apply to any of the three text styles --&gt;
-&lt;style name="MyText" parent="WelcomeScreenText[.Large|.Title][.Centered]"&gt;
-    &lt;!-- Add any properties that can be applied to a TextView --&gt;
-&lt;/style&gt;
+<span class="pl-c">&lt;!-- The following can apply to any of the three text styles --&gt;</span>
+&lt;<span class="pl-ent">style</span> <span class="pl-e">name</span>=<span class="pl-s"><span class="pl-pds">"</span>MyText<span class="pl-pds">"</span></span> <span class="pl-e">parent</span>=<span class="pl-s"><span class="pl-pds">"</span>WelcomeScreenText[.Large|.Title][.Centered]<span class="pl-pds">"</span></span>&gt;
+    <span class="pl-c">&lt;!-- Add any properties that can be applied to a TextView --&gt;</span>
+&lt;/<span class="pl-ent">style</span>&gt;
+</pre></div>
 
-</code></pre>
+<h1>
+<a id="welcome-screen-keys" class="anchor" href="#welcome-screen-keys" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Welcome screen keys</h1>
 
-<h2>
-<a id="animations" class="anchor" href="#animations" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Animations</h2>
+<p>If you want to use multiple welcome screens (in different parts of your app) or have updated one and want to show it again, you can assign keys (Make sure they are unique!) to welcome screens by adding the following to your welcome screen Activity.</p>
 
-<p>Animations that play as pages are scrolled can be added to your custom fragments by implementing <a href="http://stephentuso.github.io/welcome-android/javadoc/com/stephentuso/welcome/ui/WelcomeScreenPage.OnChangeListener.html">WelcomeScreenPage.OnChangeListener</a>. As an example, a fade effect is shown below.</p>
+<div class="highlight highlight-source-java"><pre><span class="pl-k">public</span> <span class="pl-k">static</span> <span class="pl-smi">String</span> welcomeKey() {
+    <span class="pl-k">return</span> <span class="pl-s"><span class="pl-pds">"</span>Your unique key<span class="pl-pds">"</span></span>;
+}</pre></div>
 
-<pre><code>@Override
-public void onScrolled(int pageIndex, float offset, int offsetPixels) {
-    if (Build.VERSION.SDK_INT &gt;= 11 &amp;&amp; imageView != null) {
-        imageView.setAlpha(1-Math.abs(offset));
-    }
-}
-</code></pre>
+<p><strong>Note:</strong> Only change this to a new value if you want everyone who has already used your app to see the welcome screen again! This key is used to determine whether or not to show the welcome screen.</p>
 
-<p>To add parallax effects similar to the included parallax page, use <a href="http://stephentuso.github.io/welcome-android/javadoc/index.html?overview-summary.html">WelcomeUtils.applyParallaxEffect()</a> in <code>onScrolled</code>. For example:</p>
-
-<pre><code>@Override
-public void onScrolled(int pageIndex, float offset, int offsetPixels) {
-    if (parallaxLayout != null)
-        WelcomeUtils.applyParallaxEffect(parallaxLayout, false, offsetPixels, 0.3f, 0.2f);
-}
-</code></pre>
-
-<h2>
-<a id="welcome-screen-keys" class="anchor" href="#welcome-screen-keys" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Welcome screen keys</h2>
-
-<p>You can optionally assign keys (Make sure they are unique!) to welcome screens by adding the following to a class that extends <code>WelcomeActivity</code>.</p>
-
-<pre><code>public static String welcomeKey() {
-    return "Your unique key";
-}
-</code></pre>
-
-<p>Only change this to a new value if you want everyone who has already used your app to see the welcome screen again! This key is used to determine whether or not to show the welcome screen. This could be useful if you use multiple welcome screens, or if you have updated one and want to show it again.</p>
-
-<h2>
-<a id="results" class="anchor" href="#results" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Results</h2>
+<h1>
+<a id="results" class="anchor" href="#results" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Results</h1>
 
 <p>You can listen for the result of a welcome screen in the Activity that started it by overriding <code>onActivityResult</code>:</p>
 
-<pre><code>@Override
-protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-    super.onActivityResult(requestCode, resultCode, data);
+<div class="highlight highlight-source-java"><pre><span class="pl-k">@Override</span>
+<span class="pl-k">protected</span> <span class="pl-k">void</span> onActivityResult(<span class="pl-k">int</span> requestCode, <span class="pl-k">int</span> resultCode, <span class="pl-smi">Intent</span> data) {
+    <span class="pl-v">super</span><span class="pl-k">.</span>onActivityResult(requestCode, resultCode, data);
 
 
-    if (requestCode == WelcomeScreenHelper.DEFAULT_WELCOME_SCREEN_REQUEST) {
-        // The key of the welcome screen is in the Intent
-        String welcomeKey = data.getStringExtra(WelcomeActivity.WELCOME_SCREEN_KEY);
+    <span class="pl-k">if</span> (requestCode <span class="pl-k">==</span> <span class="pl-smi">WelcomeScreenHelper</span><span class="pl-c1"><span class="pl-k">.</span>DEFAULT_WELCOME_SCREEN_REQUEST</span>) {
+        <span class="pl-c">// The key of the welcome screen is in the Intent</span>
+        <span class="pl-smi">String</span> welcomeKey <span class="pl-k">=</span> data<span class="pl-k">.</span>getStringExtra(<span class="pl-smi">WelcomeActivity</span><span class="pl-c1"><span class="pl-k">.</span>WELCOME_SCREEN_KEY</span>);
 
-        if (resultCode == RESULT_OK) {
-            // Code here will run if the welcome screen was completed
-        } else {
-            // Code here will run if the welcome screen was canceled
-            // In most cases you'll want to call finish() here
+        <span class="pl-k">if</span> (resultCode <span class="pl-k">==</span> <span class="pl-c1">RESULT_OK</span>) {
+            <span class="pl-c">// Code here will run if the welcome screen was completed</span>
+        } <span class="pl-k">else</span> {
+            <span class="pl-c">// Code here will run if the welcome screen was canceled</span>
+            <span class="pl-c">// In most cases you'll want to call finish() here</span>
         }
 
     }
 
-}
+}</pre></div>
+
+<p>One use for this is making sure users see the whole welcome screen before using your app - disable skipping and then close your main activity when the welcome screen is canceled.</p>
+
+<h1>
+<a id="animations" class="anchor" href="#animations" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Animations</h1>
+
+<p>Animations that play as pages are scrolled can be added to your custom fragments by implementing <a href="http://stephentuso.github.io/welcome-android/javadoc/com/stephentuso/welcome/ui/WelcomeScreenPage.OnChangeListener.html">WelcomeScreenPage.OnChangeListener</a>. As an example, a fade effect is shown below.</p>
+
+<div class="highlight highlight-source-java"><pre><span class="pl-k">@Override</span>
+<span class="pl-k">public</span> <span class="pl-k">void</span> onScrolled(<span class="pl-k">int</span> pageIndex, <span class="pl-k">float</span> offset, <span class="pl-k">int</span> offsetPixels) {
+    <span class="pl-k">if</span> (<span class="pl-smi">Build</span><span class="pl-c1"><span class="pl-k">.</span>VERSION<span class="pl-k">.</span>SDK_INT</span> <span class="pl-k">&gt;=</span> <span class="pl-c1">11</span> <span class="pl-k">&amp;&amp;</span> imageView <span class="pl-k">!=</span> <span class="pl-c1">null</span>) {
+        imageView<span class="pl-k">.</span>setAlpha(<span class="pl-c1">1</span><span class="pl-k">-</span><span class="pl-smi">Math</span><span class="pl-k">.</span>abs(offset));
+    }
+}</pre></div>
+
+<p>To add parallax effects similar to the included parallax page, use <a href="http://stephentuso.github.io/welcome-android/javadoc/index.html?overview-summary.html">WelcomeUtils.applyParallaxEffect()</a> in <code>onScrolled</code>. For example:</p>
+
+<div class="highlight highlight-source-java"><pre><span class="pl-k">@Override</span>
+<span class="pl-k">public</span> <span class="pl-k">void</span> onScrolled(<span class="pl-k">int</span> pageIndex, <span class="pl-k">float</span> offset, <span class="pl-k">int</span> offsetPixels) {
+    <span class="pl-k">if</span> (parallaxLayout <span class="pl-k">!=</span> <span class="pl-c1">null</span>)
+        <span class="pl-smi">WelcomeUtils</span><span class="pl-k">.</span>applyParallaxEffect(parallaxLayout, <span class="pl-c1">false</span>, offsetPixels, <span class="pl-c1">0.3f</span>, <span class="pl-c1">0.2f</span>);
+}</pre></div>
+
+<h1>
+<a id="license" class="anchor" href="#license" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>License</h1>
+
+<pre><code>Copyright 2015-2016 Stephen Tuso
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+   http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
 </code></pre>
-
-<h2>
-<a id="todo" class="anchor" href="#todo" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Todo</h2>
-
-<ul>
-<li>  Make <code>swipeToDismiss</code> fade to transparency (showing the activity beneath) rather than white</li>
-<li>  Complete PreferenceWelcomeFragment</li>
-<li>  Improve layouts of included fragments</li>
-</ul>
-
-<h2>
-<a id="license" class="anchor" href="#license" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>License</h2>
-
-<blockquote>
-<p>Copyright 2016 Stephen Tuso</p>
-
-<p>Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at</p>
-
-<p><a href="http://www.apache.org/licenses/LICENSE-2.0">http://www.apache.org/licenses/LICENSE-2.0</a></p>
-
-<p>Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.</p>
-</blockquote>
 
       <footer class="site-footer">
         <span class="site-footer-owner"><a href="https://github.com/stephentuso/welcome-android">Welcome</a> is maintained by <a href="https://github.com/stephentuso">stephentuso</a>.</span>
