@@ -6,7 +6,6 @@ branches:
         - master
 
 jdk:
-    - oraclejdk7
     - oraclejdk8
 
 script: "./gradlew build javadoc"
@@ -15,8 +14,8 @@ android:
     components:
         - tools
         - platform-tools
-        - build-tools-23.0.2
-        - android-23
+        - build-tools-24.0.3
+        - android-24
         - extra-android-support
         - extra-android-m2repository
         - extra-google-m2repository

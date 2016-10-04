@@ -79,7 +79,7 @@ Extend WelcomeActivity
 To create a welcome screen, add a class to your project that extends `WelcomeActivity` and add it to AndroidManifest:
 
 ```xml
-<activity android:name=".MyWelcomeActivity"       
+<activity android:name=".MyWelcomeActivity"
     android:theme="@style/WelcomeScreenTheme"/>
 ```
 
