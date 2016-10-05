@@ -10,4 +10,7 @@
     <color name="red_background">#D32F2F</color>
     <color name="purple_background">#7B1FA2</color>
 
+    <color name="transparent_button_pressed">#44444444</color>
+    <color name="transparent_button_focused">#44666666</color>
+
 </resources>

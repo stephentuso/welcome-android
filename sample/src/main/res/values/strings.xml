@@ -1,3 +1,14 @@
 <resources>
     <string name="app_name">Welcome Example</string>
+
+    <string name="title_sample">Sample</string>
+    <string name="description_sample">The welcome screen for this sample app</string>
+
+    <string name="title_default">Default</string>
+    <string name="description_default">No custom styles or properties</string>
+
+    <string name="title_light">Light theme</string>
+    <string name="description_light">Light background and dark text</string>
+
+
 </resources>

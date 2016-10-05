@@ -7,12 +7,12 @@ import com.stephentuso.welcome.util.WelcomeScreenConfiguration;
 /**
  * Created by stephentuso on 11/15/15.
  */
-public class MyWelcomeActivity extends WelcomeActivity {
+public class SampleWelcomeActivity extends WelcomeActivity {
 
     @Override
     protected WelcomeScreenConfiguration configuration() {
         return new WelcomeScreenBuilder(this)
-                .theme(R.style.CustomWelcomeScreenTheme)
+                .theme(R.style.SampleWelcomeScreenTheme)
                 .defaultTitleTypefacePath("Montserrat-Bold.ttf")
                 .defaultHeaderTypefacePath("Montserrat-Bold.ttf")
                 .titlePage(R.drawable.photo, "Welcome", R.color.orange_background)
@@ -23,7 +23,6 @@ public class MyWelcomeActivity extends WelcomeActivity {
                 .exitAnimation(android.R.anim.fade_out)
                 .build();
     }
-
 
     public static String welcomeKey() {
         return "WelcomeScreen";
