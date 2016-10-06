@@ -30,7 +30,7 @@ public class WelcomeScreenConfiguration {
          */
         LIGHT(R.style.WelcomeScreenTheme_Light);
 
-        private int resId;
+        public int resId;
 
         Theme(int resId) {
             this.resId = resId;
