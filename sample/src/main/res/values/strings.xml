@@ -19,7 +19,4 @@
     <string name="title_custom_page">Custom pages</string>
     <string name="description_custom_page">A welcome screen with custom fragments</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
-
 </resources>
