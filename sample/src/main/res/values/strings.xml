@@ -10,5 +10,16 @@
     <string name="title_light">Light theme</string>
     <string name="description_light">Light background and dark text</string>
 
+    <string name="title_no_skip">No skip</string>
+    <string name="description_no_skip">Skipping is disabled</string>
+
+    <string name="title_back_exit">Back button behaviour</string>
+    <string name="description_back_exit">Pressing back will exit rather than navigating through pages</string>
+
+    <string name="title_custom_page">Custom pages</string>
+    <string name="description_custom_page">A welcome screen with custom fragments</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 </resources>

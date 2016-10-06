@@ -1,0 +1,43 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:tools="http://schemas.android.com/tools"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                tools:context="com.stephentuso.welcomeexample.fragment.DoneFragment"
+                android:gravity="center"
+    android:id="@+id/layout">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="fitCenter"
+        android:src="@drawable/circle"
+        android:maxWidth="400dp"
+        android:layout_margin="8dp"/>
+
+    <TextView
+        style="@style/WelcomeScreenText.Large.Centered"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="This is a custom fragment"
+        android:layout_above="@+id/center"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="15dp"/>
+
+    <View
+        android:id="@+id/center"
+        android:layout_width="match_parent"
+        android:layout_height="0px"
+        android:layout_centerVertical="true"/>
+
+    <Button
+        style="@style/Widget.AppCompat.Button.Borderless"
+        android:id="@+id/button"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:text="Show toast"
+        android:layout_marginTop="20dp"
+        android:layout_below="@id/center"
+        android:layout_centerHorizontal="true"/>
+
+</RelativeLayout>

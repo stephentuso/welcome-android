@@ -8,28 +8,46 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
-
-    <!-- Styles for SampleWelcomeActivity -->
-    <style name="SampleWelcomeScreenTheme" parent="WelcomeScreenTheme">
-        <item name="welcomeIndicatorStyle">@style/SampleIndicator</item>
-        <item name="welcomeTitleTextStyle">@style/WelcomeScreenText.Title.Centered</item>
+    <!-- Hopefully this won't be needed in a future version of the library,
+         for now have to set the colors this way -->
+    <style name="BaseWelcomeScreenTheme" parent="WelcomeScreenTheme">
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
     </style>
 
-    <style name="SampleIndicator" parent="WelcomeScreenPageIndicator">
+    <style name="BaseWelcomeScreenTheme.Light" parent="WelcomeScreenTheme.Light">
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <!-- Animated indicators -->
+    <style name="WelcomeScreenPageIndicator.Animated">
         <item name="animated">true</item>
+    </style>
+
+    <style name="WelcomeScreenPageIndicator.Light.Animated">
+        <item name="animated">true</item>
+    </style>
+
+    <!-- Styles for SampleWelcomeActivity -->
+    <style name="SampleWelcomeScreenTheme" parent="BaseWelcomeScreenTheme">
+        <item name="welcomeIndicatorStyle">@style/WelcomeScreenPageIndicator.Animated</item>
+        <item name="welcomeTitleTextStyle">@style/WelcomeScreenText.Title.Centered</item>
     </style>
 
 
     <!-- Styles for LightWelcomeActivity -->
-    <style name="LightWelcomeScreenTheme" parent="WelcomeScreenTheme.Light">
+    <style name="LightWelcomeScreenTheme" parent="BaseWelcomeScreenTheme.Light">
         <item name="welcomeIndicatorStyle">@style/LightWelcomeIndicator</item>
         <item name="welcomeTitleTextStyle">@style/WelcomeScreenText.Title.Centered</item>
-        <item name="android:textColorPrimary">#444</item>
+        <item name="android:textColorPrimary">@color/blue_background</item>
         <item name="android:textColorSecondary">#666</item>
     </style>
 
-    <style name="LightWelcomeIndicator" parent="WelcomeScreenTheme.Light">
-        <item name="currentPageColor">#0099cc</item>
+    <style name="LightWelcomeIndicator" parent="WelcomeScreenPageIndicator.Light.Animated">
+        <item name="currentPageColor">@color/blue_background</item>
     </style>
 
 

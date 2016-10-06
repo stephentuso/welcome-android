@@ -14,7 +14,7 @@
         android:layout_marginTop="@dimen/list_item_margin"
         android:layout_marginLeft="@dimen/list_item_margin"
         android:layout_marginRight="@dimen/list_item_margin"
-        android:layout_marginBottom="12dp"
+        android:layout_marginBottom="8dp"
         android:textColor="@android:color/primary_text_light"/>
 
     <TextView

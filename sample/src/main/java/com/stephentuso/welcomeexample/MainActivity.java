@@ -37,9 +37,13 @@ public class MainActivity extends AppCompatActivity {
         sampleWelcomeScreen = new WelcomeScreenHelper(this, SampleWelcomeActivity.class);
         sampleWelcomeScreen.show(savedInstanceState);
 
+        //List of welcome screens
         welcomeScreens.add(new ScreenItem(R.string.title_sample, R.string.description_sample, sampleWelcomeScreen, null));
         welcomeScreens.add(new ScreenItem(R.string.title_default, R.string.description_default, DefaultWelcomeActivity.class));
         welcomeScreens.add(new ScreenItem(R.string.title_light, R.string.description_light, LightWelcomeActivity.class));
+        welcomeScreens.add(new ScreenItem(R.string.title_no_skip, R.string.description_no_skip, NoSkipWelcomeActivity.class, REQUEST_WELCOME_SCREEN_RESULT));
+        welcomeScreens.add(new ScreenItem(R.string.title_back_exit, R.string.description_back_exit, BackExitWelcomeActivity.class));
+        welcomeScreens.add(new ScreenItem(R.string.title_custom_page, R.string.description_custom_page, CustomPageWelcomeActivity.class));
 
         recyclerView.setLayoutManager(new GridLayoutManager(this, 1));
         recyclerView.setAdapter(new Adapter());
@@ -53,9 +57,9 @@ public class MainActivity extends AppCompatActivity {
         if (requestCode == REQUEST_WELCOME_SCREEN_RESULT) {
 
             if (resultCode == RESULT_OK) {
-                Toast.makeText(getApplicationContext(), "Welcome Screen Completed", Toast.LENGTH_LONG).show();
-            } else {
-                Toast.makeText(getApplicationContext(), "Welcome Screen Canceled", Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(), "Completed (RESULT_OK)", Toast.LENGTH_SHORT).show();
+            } else if (resultCode == RESULT_CANCELED) {
+                Toast.makeText(getApplicationContext(), "Canceled (RESULT_CANCELED)", Toast.LENGTH_SHORT).show();
             }
 
         }
@@ -65,6 +69,12 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
+
+        // This is needed to prevent welcome screens from being
+        // automatically shown multiple times
+
+        // This is the only one needed because it is the only one that
+        // is shown automatically. The others are only force shown.
         sampleWelcomeScreen.onSaveInstanceState(outState);
     }
 

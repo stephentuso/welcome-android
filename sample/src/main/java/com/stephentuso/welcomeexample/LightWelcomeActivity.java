@@ -21,7 +21,7 @@ public class LightWelcomeActivity extends WelcomeActivity {
                 .defaultTitleTypefacePath("Montserrat-Bold.ttf")
                 .defaultHeaderTypefacePath("Montserrat-Bold.ttf")
                 .titlePage(R.drawable.ic_photo_gray, "Light Theme")
-                .basicPage(R.drawable.ic_photo_gray, "Easy styling", "This look can be created with styles easily")
+                .basicPage(R.drawable.ic_photo_gray, "Easy styling", "All colors can be customized with styles")
                 .swipeToDismiss(true)
                 .exitAnimation(android.R.anim.fade_out)
                 .build();

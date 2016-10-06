@@ -15,12 +15,18 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="com.stephentuso.welcomeexample.SampleWelcomeActivity"
-            android:theme="@style/WelcomeScreenTheme"/>
-        <activity android:name="com.stephentuso.welcomeexample.DefaultWelcomeActivity"
-                  android:theme="@style/WelcomeScreenTheme"/>
-        <activity android:name="com.stephentuso.welcomeexample.LightWelcomeActivity"
-                  android:theme="@style/WelcomeScreenTheme"/>
+        <activity android:name=".SampleWelcomeActivity"
+            android:theme="@style/BaseWelcomeScreenTheme"/>
+        <activity android:name=".DefaultWelcomeActivity"
+                  android:theme="@style/BaseWelcomeScreenTheme"/>
+        <activity android:name=".LightWelcomeActivity"
+                  android:theme="@style/BaseWelcomeScreenTheme"/>
+        <activity android:name=".NoSkipWelcomeActivity"
+                  android:theme="@style/BaseWelcomeScreenTheme"/>
+        <activity android:name=".BackExitWelcomeActivity"
+                  android:theme="@style/BaseWelcomeScreenTheme"/>
+        <activity android:name=".CustomPageWelcomeActivity"
+                  android:theme="@style/BaseWelcomeScreenTheme"/>
     </application>
 
 </manifest>
