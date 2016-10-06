@@ -15,10 +15,10 @@ public class SampleWelcomeActivity extends WelcomeActivity {
                 .theme(R.style.SampleWelcomeScreenTheme)
                 .defaultTitleTypefacePath("Montserrat-Bold.ttf")
                 .defaultHeaderTypefacePath("Montserrat-Bold.ttf")
-                .titlePage(R.drawable.photo, "Welcome", R.color.orange_background)
-                .basicPage(R.drawable.photo, "Simple to use", "Add a welcome screen to your app with only a few lines of code.", R.color.red_background)
+                .basicPage(R.drawable.ic_front_desk_white, "Welcome", "An Android library for onboarding, instructional screens, and more", R.color.orange_background)
+                .basicPage(R.drawable.ic_thumb_up_white, "Simple to use", "Add a welcome screen to your app with only a few lines of code.", R.color.red_background)
                 .parallaxPage(R.layout.parallax_example, "Easy parallax", "Supply a layout and parallax effects will automatically be applied", R.color.purple_background, 0.2f, 2f)
-                .basicPage(R.drawable.photo, "Customizable", "All elements of the welcome screen can be customized easily.", R.color.blue_background)
+                .basicPage(R.drawable.ic_edit_white, "Customizable", "All elements of the welcome screen can be customized easily.", R.color.blue_background)
                 .swipeToDismiss(true)
                 .exitAnimation(android.R.anim.fade_out)
                 .build();

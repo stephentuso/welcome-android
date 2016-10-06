@@ -31,10 +31,18 @@
         <item name="animated">true</item>
     </style>
 
+    <!-- Styles used by most of the welcome screens -->
+    <style name="GeneralWelcomeScreenTheme" parent="BaseWelcomeScreenTheme">
+        <item name="welcomeIndicatorStyle">@style/WelcomeScreenPageIndicator.Animated</item>
+        <item name="welcomeTitleTextStyle">@style/WelcomeScreenText.Title.Centered</item>
+    </style>
+
     <!-- Styles for SampleWelcomeActivity -->
     <style name="SampleWelcomeScreenTheme" parent="BaseWelcomeScreenTheme">
         <item name="welcomeIndicatorStyle">@style/WelcomeScreenPageIndicator.Animated</item>
         <item name="welcomeTitleTextStyle">@style/WelcomeScreenText.Title.Centered</item>
+        <item name="welcomeLargeTextStyle">@style/WelcomeScreenText.Large.Centered</item>
+        <item name="welcomeNormalTextStyle">@style/WelcomeScreenText.Centered</item>
     </style>
 
 
@@ -42,12 +50,12 @@
     <style name="LightWelcomeScreenTheme" parent="BaseWelcomeScreenTheme.Light">
         <item name="welcomeIndicatorStyle">@style/LightWelcomeIndicator</item>
         <item name="welcomeTitleTextStyle">@style/WelcomeScreenText.Title.Centered</item>
-        <item name="android:textColorPrimary">@color/blue_background</item>
+        <item name="android:textColorPrimary">#0089DC</item>
         <item name="android:textColorSecondary">#666</item>
     </style>
 
     <style name="LightWelcomeIndicator" parent="WelcomeScreenPageIndicator.Light.Animated">
-        <item name="currentPageColor">@color/blue_background</item>
+        <item name="currentPageColor">@color/colorAccent</item>
     </style>
 
 

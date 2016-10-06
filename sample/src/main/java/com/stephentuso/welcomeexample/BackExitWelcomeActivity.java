@@ -13,9 +13,11 @@ public class BackExitWelcomeActivity extends WelcomeActivity {
     @Override
     protected WelcomeScreenConfiguration configuration() {
         return new WelcomeScreenBuilder(this)
-                .theme(R.style.SampleWelcomeScreenTheme)
+                .theme(R.style.GeneralWelcomeScreenTheme)
+                .defaultTitleTypefacePath("Roboto-Bold.ttf")
+                .defaultHeaderTypefacePath("Roboto-Bold.ttf")
                 .basicPage(R.drawable.photo, "No back navigation", "By default, the back button can be used to go back a page")
-                .basicPage(R.drawable.photo, "Back will exit", "Pressing back on this page will close the activity, rather than going to the previous page")
+                .basicPage(R.drawable.ic_back_white, "Back will exit", "Pressing back on this page will close the activity, rather than going to the previous page")
                 .backButtonNavigatesPages(false)
                 .swipeToDismiss(true)
                 .build();

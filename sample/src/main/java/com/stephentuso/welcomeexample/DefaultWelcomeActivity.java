@@ -14,7 +14,7 @@ public class DefaultWelcomeActivity extends WelcomeActivity {
     protected WelcomeScreenConfiguration configuration() {
         return new WelcomeScreenBuilder(this)
                 .titlePage(R.drawable.photo, "Default Welcome Screen")
-                .basicPage(R.drawable.photo, "Default style", "No custom styles are applied to this welcome screen")
+                .basicPage(R.drawable.ic_style_white, "Default style", "No custom styles are applied to this welcome screen")
                 .basicPage(R.drawable.photo, "Default properties", "No properties were set on the WelcomeScreenBuilder")
                 .build();
     }
