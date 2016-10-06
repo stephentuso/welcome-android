@@ -59,7 +59,7 @@ This library is available through jCenter.
 Gradle:
 
 ```groovy
-compile 'com.stephentuso:welcome:0.7.2'
+compile 'com.stephentuso:welcome:0.7.3'
 ```
 
 If you use proguard, add the following to your proguard rules
