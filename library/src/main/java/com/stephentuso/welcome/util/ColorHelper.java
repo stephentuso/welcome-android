@@ -3,6 +3,7 @@ package com.stephentuso.welcome.util;
 import android.content.Context;
 import android.support.annotation.AttrRes;
 import android.support.annotation.ColorRes;
+import android.support.v4.content.ContextCompat;
 import android.util.TypedValue;
 
 /**
@@ -11,7 +12,7 @@ import android.util.TypedValue;
 public class ColorHelper {
 
     public static int getColor(Context context, @ColorRes int resId) {
-        return context.getResources().getColor(resId);
+        return ContextCompat.getColor(context, resId);
     }
 
     public static int resolveColorAttribute(Context context, @AttrRes int resId, int fallback) {
