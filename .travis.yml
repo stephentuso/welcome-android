@@ -26,3 +26,4 @@ env:
 
 after_success:
     - .utility/travis-gh-pages-javadoc-push.sh
+    - bash <(curl -s https://codecov.io/bash)
