@@ -7,8 +7,6 @@ An easy to use and customizable welcome screen for Android apps.
 
 ![Sample video](https://raw.githubusercontent.com/stephentuso/welcome-android/master/media/sample-video.gif)
 
-Look in the [sample](https://github.com/stephentuso/welcome-android/blob/master/sample/src/main/java/com/stephentuso/welcomeexample/SampleWelcomeActivity.java) to see how the above welcome screen is created.
-
 **Features**
 
 -	Fully customizable
@@ -21,6 +19,15 @@ Please open a new [issue](https://github.com/stephentuso/welcome-android/issues)
 
 [Changelog/Releases](https://github.com/stephentuso/welcome-android/releases)
 
+Demo
+====
+
+A demo app is available on Google play:
+
+<a href='https://play.google.com/store/apps/details?id=com.stephentuso.welcomeexample&utm_source=global_co&utm_medium=prtnr&utm_content=Mar2515&utm_campaign=PartBadge&pcampaignid=MKT-Other-global-all-co-prtnr-py-PartBadge-Mar2515-1'><img width='240' alt='Get it on Google Play' src='https://play.google.com/intl/en_us/badges/images/generic/en_badge_web_generic.png'/></a>
+
+The source code is in the [sample module](https://github.com/stephentuso/welcome-android/blob/master/sample/src/main/).
+
 Contributing
 ============
 
@@ -29,9 +36,6 @@ Feel free to open a PR to add a feature or fix a bug, all contributions are welc
 Table of Contents
 =================
 
--	[Welcome](#welcome)
--	[Contributing](#contributing)
--	[Table of Contents](#table-of-contents)
 -	[Adding to your project](#adding-to-your-project)
 -	[Basic Usage](#basic-usage)
 	-	[Extend WelcomeActivity](#extend-welcomeactivity)
@@ -43,6 +47,7 @@ Table of Contents
 	-	[Parallax page](#parallax-page)
 	-	[Full screen parallax page](#full-screen-parallax-page)
 -	[Custom pages](#custom-pages)
+	-	[Custom Done Button](#custom-done-button)
 -	[Styling](#styling)
 	-	[Themes](#themes)
 	-	[Styles](#styles)
@@ -225,6 +230,10 @@ protected WelcomeScreenConfiguration configuration() {
 ```
 
 See [animations](https://github.com/stephentuso/welcome-android#animations) below for adding animations to custom fragments.
+
+### Custom Done Button
+
+If you want to use a button in a custom fragment instead of the default done button, call `useCustomDoneButton(true)` on the builder and `new WelcomeScreenFinisher(MyFragment.this).finish()` in the button's `OnClickListener`.
 
 Styling
 =======
