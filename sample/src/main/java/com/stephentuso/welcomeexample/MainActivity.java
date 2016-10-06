@@ -1,6 +1,7 @@
 package com.stephentuso.welcomeexample;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
@@ -48,6 +49,22 @@ public class MainActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(new GridLayoutManager(this, 1));
         recyclerView.setAdapter(new Adapter());
 
+        //Website button
+        findViewById(R.id.button_website).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openUrlInBrowser("http://stephentuso.github.io/welcome-android/");
+            }
+        });
+
+        //Source button
+        findViewById(R.id.button_source).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openUrlInBrowser("https://github.com/stephentuso/welcome-android");
+            }
+        });
+
     }
 
     @Override
@@ -76,6 +93,12 @@ public class MainActivity extends AppCompatActivity {
         // This is the only one needed because it is the only one that
         // is shown automatically. The others are only force shown.
         sampleWelcomeScreen.onSaveInstanceState(outState);
+    }
+
+    private void openUrlInBrowser(String urlString) {
+        Intent intent = new Intent(Intent.ACTION_VIEW);
+        intent.setData(Uri.parse(urlString));
+        startActivity(intent);
     }
 
     private static class ViewHolder extends RecyclerView.ViewHolder {

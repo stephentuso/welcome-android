@@ -1,6 +1,10 @@
 <resources>
     <string name="app_name">Welcome Example</string>
 
+    <string name="website">Website</string>
+    <string name="source">Source</string>
+
+    <!-- Strings for list of welcome screens -->
     <string name="title_sample">Sample</string>
     <string name="description_sample">The welcome screen for this sample app</string>
 
