@@ -199,7 +199,7 @@ public class WelcomeScreenConfiguration {
         }
 
         public void setDefaultBackgroundColor(@ColorRes int resId) {
-            ColorHelper.getColor(mContext, resId);
+            mDefaultBackgroundColor = new BackgroundColor(ColorHelper.getColor(mContext, resId));
         }
 
         public void setDefaultBackgroundColor(BackgroundColor color) {
