@@ -44,28 +44,6 @@ public class WelcomeScreenHelper {
     }
 
     /**
-     * @deprecated Use show(Bundle savedInstanceState) instead and call WelcomeScreenHelper.onSaveInstanceState in your Activity's onSaveInstanceState
-     * Shows the welcome screen if it hasn't been completed yet
-     * @return true if the welcome screen was shown, false if it wasn't
-     */
-    @Deprecated
-    public boolean show() {
-        return show(DEFAULT_WELCOME_SCREEN_REQUEST);
-    }
-
-    /**
-     * @deprecated Use show(Bundle savedInstanceState, int requestCode) instead and call WelcomeScreenHelper.onSaveInstanceState in your Activity's onSaveInstanceState
-     * Shows the welcome screen if it hasn't been completed yet
-     * @param requestCode The request code that will be returned with the result of the welcome screen
-     *                    in your Activity's onActivityResult
-     * @return true if the welcome screen was shown, false if it wasn't
-     */
-    @Deprecated
-    public boolean show(int requestCode) {
-        return show(null, requestCode);
-    }
-
-    /**
      * Shows the welcome screen if it hasn't already been started or completed yet
      * @param savedInstanceState Saved instance state Bundle
      * @return true if the welcome screen was shown, false if it wasn't
