@@ -20,10 +20,6 @@ public class ExampleFragment extends Fragment implements WelcomeScreenPage.OnCha
 
     private ViewGroup rootLayout;
 
-    public ExampleFragment() {
-        // Required empty public constructor
-    }
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -53,11 +49,11 @@ public class ExampleFragment extends Fragment implements WelcomeScreenPage.OnCha
 
     @Override
     public void onWelcomeScreenPageSelected(int pageIndex, int selectedPageIndex) {
-
+        //Not used
     }
 
     @Override
     public void onWelcomeScreenPageScrollStateChanged(int pageIndex, int state) {
-
+        //Not used
     }
 }

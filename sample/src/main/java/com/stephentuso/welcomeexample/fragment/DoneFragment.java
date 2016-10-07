@@ -20,10 +20,6 @@ public class DoneFragment extends Fragment implements WelcomeScreenPage.OnChange
 
     private ViewGroup rootLayout;
 
-    public DoneFragment() {
-        // Required empty public constructor
-    }
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -53,11 +49,11 @@ public class DoneFragment extends Fragment implements WelcomeScreenPage.OnChange
 
     @Override
     public void onWelcomeScreenPageSelected(int pageIndex, int selectedPageIndex) {
-
+        //Not used
     }
 
     @Override
     public void onWelcomeScreenPageScrollStateChanged(int pageIndex, int state) {
-
+        //Not used
     }
 }

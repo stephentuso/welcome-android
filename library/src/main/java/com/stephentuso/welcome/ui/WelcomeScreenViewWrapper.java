@@ -10,21 +10,23 @@ import com.stephentuso.welcome.util.WelcomeScreenConfiguration;
 /**
  * Created by stephentuso on 11/15/15.
  */
-public abstract class WelcomeScreenViewWrapper implements OnWelcomeScreenPageChangeListener {
+/*package*/ abstract class WelcomeScreenViewWrapper implements OnWelcomeScreenPageChangeListener {
 
     private View mView;
     private int mFirstPageIndex = 0;
     private int mLastPageIndex = 0;
     private boolean mAnimate = true;
 
-    public WelcomeScreenViewWrapper(View view) {
+    /*package*/ WelcomeScreenViewWrapper(View view) {
         mView = view;
     }
 
     public abstract void onPageSelected(int pageIndex, int firstPageIndex, int lastPageIndex);
 
     @Override
-    public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {}
+    public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+        //Not needed, empty so that subclasses can choose whether or not to implement
+    }
 
     @Override
     public void onPageSelected(int position) {
@@ -32,7 +34,9 @@ public abstract class WelcomeScreenViewWrapper implements OnWelcomeScreenPageCha
     }
 
     @Override
-    public void onPageScrollStateChanged(int state) {}
+    public void onPageScrollStateChanged(int state) {
+        //Not needed, empty so that subclasses can choose whether or not to implement
+    }
 
     @Override
     public void setup(WelcomeScreenConfiguration config) {
@@ -87,7 +91,9 @@ public abstract class WelcomeScreenViewWrapper implements OnWelcomeScreenPageCha
         ViewPropertyAnimatorListener listener = new ViewPropertyAnimatorListener() {
 
             @Override
-            public void onAnimationStart(View view) {}
+            public void onAnimationStart(View view) {
+                //Nothing needed here
+            }
 
             @Override
             public void onAnimationEnd(View view) {
@@ -128,7 +134,7 @@ public abstract class WelcomeScreenViewWrapper implements OnWelcomeScreenPageCha
         ViewCompat.animate(mView).alpha(1f).setListener(listener).start();
     }
 
-    public void setOnClickListener(View.OnClickListener listener) {
+    /*package*/ void setOnClickListener(View.OnClickListener listener) {
         mView.setOnClickListener(listener);
     }
 

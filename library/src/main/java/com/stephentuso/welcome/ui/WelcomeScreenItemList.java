@@ -8,9 +8,9 @@ import java.util.Arrays;
 /**
  * Created by stephentuso on 11/16/15.
  */
-public class WelcomeScreenItemList implements OnWelcomeScreenPageChangeListener {
+/*package*/ class WelcomeScreenItemList implements OnWelcomeScreenPageChangeListener {
 
-    ArrayList<OnWelcomeScreenPageChangeListener> mItems;
+    private ArrayList<OnWelcomeScreenPageChangeListener> mItems;
 
     public WelcomeScreenItemList(OnWelcomeScreenPageChangeListener... items) {
         mItems = new ArrayList<>(Arrays.asList(items));

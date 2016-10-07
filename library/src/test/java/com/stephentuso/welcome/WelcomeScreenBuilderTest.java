@@ -26,11 +26,11 @@ import static org.mockito.Mockito.when;
 @RunWith(MockitoJUnitRunner.class)
 public class WelcomeScreenBuilderTest {
 
-    @Mock Resources resources;
-    @Mock Theme theme;
-    @Mock Context context;
+    @Mock private Resources resources;
+    @Mock private Theme theme;
+    @Mock private Context context;
 
-    WelcomeScreenBuilder builder;
+    private WelcomeScreenBuilder builder;
 
     @Before
     public void setUp() {

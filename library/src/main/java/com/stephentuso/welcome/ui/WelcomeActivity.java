@@ -23,11 +23,11 @@ public abstract class WelcomeActivity extends AppCompatActivity {
 
     public static final String WELCOME_SCREEN_KEY = "welcome_screen_key";
 
-    ViewPager mViewPager;
-    WelcomeFragmentPagerAdapter mAdapter;
-    WelcomeScreenConfiguration mConfiguration;
+    private ViewPager mViewPager;
+    private WelcomeFragmentPagerAdapter mAdapter;
+    private WelcomeScreenConfiguration mConfiguration;
 
-    WelcomeScreenItemList mItems = new WelcomeScreenItemList();
+    private WelcomeScreenItemList mItems = new WelcomeScreenItemList();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

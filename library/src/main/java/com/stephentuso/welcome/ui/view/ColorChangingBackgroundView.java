@@ -14,13 +14,13 @@ import com.stephentuso.welcome.ui.BackgroundColor;
  */
 public class ColorChangingBackgroundView extends View {
 
-    BackgroundColor[] mColors = new BackgroundColor[0];
+    private BackgroundColor[] mColors = new BackgroundColor[0];
 
-    int mCurrentPosition = 0;
-    float mOffset = 0;
+    private int mCurrentPosition = 0;
+    private float mOffset = 0;
 
-    Paint mPaint = null;
-    Rect mRect = new Rect();
+    private Paint mPaint = null;
+    private Rect mRect = new Rect();
 
     public ColorChangingBackgroundView(Context context) {
         super(context);

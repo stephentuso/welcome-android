@@ -75,10 +75,9 @@ public class WelcomeScreenPage implements OnWelcomeScreenPageChangeListener {
     public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
 
         //Correct position for RTL. One is subtracted to make it zero indexed
-        if (isRtl)
-            position = totalPages - 1 - position;
+        int realPosition = isRtl ? totalPages - 1 - position : position;
 
-        if (getFragment() != null && getFragment() instanceof OnChangeListener && position - index <= 1) {
+        if (getFragment() != null && getFragment() instanceof OnChangeListener && realPosition - index <= 1) {
             Fragment fragment = getFragment();
 
             int fragmentWidth = 0;
@@ -86,7 +85,7 @@ public class WelcomeScreenPage implements OnWelcomeScreenPageChangeListener {
                 fragmentWidth = fragment.getView().getWidth();
             }
 
-            boolean lowerPosition = isRtl ? position > index : position < index;
+            boolean lowerPosition = isRtl ? realPosition > index : realPosition < index;
             float offset = lowerPosition ? -(1 - positionOffset) : positionOffset;
             int offsetPixels = lowerPosition ? -(fragmentWidth - positionOffsetPixels) : positionOffsetPixels;
 

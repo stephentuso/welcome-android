@@ -3,8 +3,6 @@ package com.stephentuso.welcome.util;
 import android.content.Context;
 import android.content.SharedPreferences;
 
-import com.stephentuso.welcome.ui.WelcomeActivity;
-
 /**
  * Created by stephentuso on 11/15/15.
  */

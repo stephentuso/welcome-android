@@ -1,9 +1,6 @@
 package com.stephentuso.welcomeexample;
 
-import android.graphics.Color;
-
 import com.stephentuso.welcome.WelcomeScreenBuilder;
-import com.stephentuso.welcome.ui.BackgroundColor;
 import com.stephentuso.welcome.ui.WelcomeActivity;
 import com.stephentuso.welcome.util.WelcomeScreenConfiguration;
 
@@ -17,7 +14,7 @@ public class LightWelcomeActivity extends WelcomeActivity {
     protected WelcomeScreenConfiguration configuration() {
         return new WelcomeScreenBuilder(this)
                 .theme(R.style.LightWelcomeScreenTheme)
-                .defaultBackgroundColor(new BackgroundColor(Color.WHITE))
+                .defaultBackgroundColor(R.color.white)
                 .defaultTitleTypefacePath("Roboto-Bold.ttf")
                 .defaultHeaderTypefacePath("Roboto-Bold.ttf")
                 .titlePage(R.drawable.ic_style_blue, "Light Theme")

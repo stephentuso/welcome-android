@@ -51,10 +51,6 @@ public class TitleFragment extends Fragment implements WelcomeScreenPage.OnChang
         return fragment;
     }
 
-    public TitleFragment() {
-        // Required empty public constructor
-    }
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_title, container, false);
@@ -90,11 +86,11 @@ public class TitleFragment extends Fragment implements WelcomeScreenPage.OnChang
 
     @Override
     public void onWelcomeScreenPageSelected(int pageIndex, int selectedPageIndex) {
-
+        //Not used
     }
 
     @Override
     public void onWelcomeScreenPageScrollStateChanged(int pageIndex, int state) {
-
+        //Not used
     }
 }

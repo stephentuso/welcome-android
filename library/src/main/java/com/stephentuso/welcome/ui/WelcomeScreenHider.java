@@ -58,11 +58,11 @@ public class WelcomeScreenHider implements OnWelcomeScreenPageChangeListener {
 
     @Override
     public void onPageSelected(int position) {
-
+        //Not needed
     }
 
     @Override
     public void onPageScrollStateChanged(int state) {
-
+        //Not needed
     }
 }

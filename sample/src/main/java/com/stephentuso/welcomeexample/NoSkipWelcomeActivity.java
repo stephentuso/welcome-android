@@ -16,7 +16,6 @@ public class NoSkipWelcomeActivity extends WelcomeActivity {
                 .theme(R.style.GeneralWelcomeScreenTheme)
                 .defaultTitleTypefacePath("Roboto-Bold.ttf")
                 .defaultHeaderTypefacePath("Roboto-Bold.ttf")
-                .defaultBackgroundColor(R.color.red_background)
                 .basicPage(R.drawable.ic_image_white, "No skip", "canSkip(false) was called on the builder")
                 .basicPage(R.drawable.ic_back_white, "Back behaviour", "Pressing back on the first page will finish this with RESULT_CANCELED")
                 .basicPage(R.drawable.ic_check_white, "Completion", "RESULT_OK will only be returned after navigating all the way to the end")

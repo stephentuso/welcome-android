@@ -86,11 +86,11 @@ public class BasicWelcomeFragment extends Fragment implements WelcomeScreenPage.
 
     @Override
     public void onWelcomeScreenPageSelected(int pageIndex, int selectedPageIndex) {
-
+        //Not used
     }
 
     @Override
     public void onWelcomeScreenPageScrollStateChanged(int pageIndex, int state) {
-
+        //Not used
     }
 }

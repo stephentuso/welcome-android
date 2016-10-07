@@ -1,4 +1,3 @@
-
 #!/bin/bash
 echo -e "\nChecking conditions.."
 if [ "$TRAVIS_REPO_SLUG" == "stephentuso/welcome-android" ] && [ "$TRAVIS_JDK_VERSION" == "oraclejdk8" ] && [ "$TRAVIS_PULL_REQUEST" == "false" ] && [ "$TRAVIS_BRANCH" == "master" ]; then

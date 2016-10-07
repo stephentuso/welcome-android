@@ -60,7 +60,8 @@ public class WelcomeUtils {
         return 1;
     }
 
-    private static int calculateParallaxLayersRecursively(View view, int count) {
+    private static int calculateParallaxLayersRecursively(View view, int startCount) {
+        int count = startCount;
         if (view instanceof ViewGroup) {
             ViewGroup group = (ViewGroup) view;
             for (int i = 0; i < group.getChildCount(); i++) {
@@ -100,16 +101,17 @@ public class WelcomeUtils {
     }
 
     private static int applyParallaxEffectRecursively(View view, int offsetPixels, float startParallaxFactor, float parallaxInterval, int index) {
+        int nextIndex = index;
         if (view instanceof ViewGroup) {
             ViewGroup group = (ViewGroup) view;
             for (int i = 0; i < group.getChildCount(); i++) {
-                index = applyParallaxEffectRecursively(group.getChildAt(i), offsetPixels, startParallaxFactor, parallaxInterval, index);
+                nextIndex = applyParallaxEffectRecursively(group.getChildAt(i), offsetPixels, startParallaxFactor, parallaxInterval, index);
             }
         } else {
             translateViewForParallaxEffect(view, index, offsetPixels, startParallaxFactor, parallaxInterval);
-            index++;
+            nextIndex++;
         }
-        return index;
+        return nextIndex;
     }
 
     private static void translateViewForParallaxEffect(View view, int index, int offsetPixels, float startParallaxFactor, float parallaxInterval) {

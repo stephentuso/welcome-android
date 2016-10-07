@@ -1,4 +1,3 @@
-
 #!/bin/bash
 echo "Publishing javadoc..."
 

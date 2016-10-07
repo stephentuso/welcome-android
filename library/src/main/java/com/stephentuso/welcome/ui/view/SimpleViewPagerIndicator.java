@@ -17,17 +17,17 @@ import com.stephentuso.welcome.R;
  */
 public class SimpleViewPagerIndicator extends View implements ViewPager.OnPageChangeListener {
 
-    Paint paint;
+    private Paint paint;
 
-    int currentPageColor = 0x99ffffff;
-    int otherPageColor = 0x22000000;
+    private int currentPageColor = 0x99ffffff;
+    private int otherPageColor = 0x22000000;
 
-    int mTotalPages = 0;
-    int mCurrentPage = 0;
-    float mCurrentPageOffset = 0;
+    private int mTotalPages = 0;
+    private int mCurrentPage = 0;
+    private float mCurrentPageOffset = 0;
 
-    int spacing = 16;
-    int size = 4;
+    private int spacing = 16;
+    private int size = 4;
 
     private boolean animated = false;
 
@@ -83,7 +83,7 @@ public class SimpleViewPagerIndicator extends View implements ViewPager.OnPageCh
 
     @Override
     public void onPageScrollStateChanged(int state) {
-
+        //Not used
     }
 
     private Point getCenter() {
