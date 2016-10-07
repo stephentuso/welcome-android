@@ -20,7 +20,7 @@ android:
         - sys-img-${ANDROID_ABI}-${ANDROID_TARGET}
 
 branches:
-    only: master
+    except: gh-pages
 
 script:
     - ./gradlew build javadoc jacocoTestReport assembleAndroidTest
