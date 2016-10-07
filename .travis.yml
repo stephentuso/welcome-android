@@ -1,14 +1,12 @@
-
 language: android
 
-branches:
-    only:
-        - master
+jdk: oraclejdk8
 
-jdk:
-    - oraclejdk8
-
-script: "./gradlew build javadoc"
+env:
+    global:
+        - ANDROID_TARGET=android-15
+        - ANDROID_ABI=armeabi-v7a
+        - secure: "JOFMjB+yxMqPr//v+CHhY7x3iRP2r6aZOL1v79jwNY2D0kMNyAlNNO/tTH23fTaZZ856YCYXIit8Q0/1jIXudLq8tHH30MhzGFMIrnFIQomL6WnF7gcDefJr+wszSgGeg5tXnz+ihcu3EVJdNW6Z31E3rGiLllr7AmdOHJG0gAPhK3RHeP7gH5qtumPeZU/19i8i00YGQXcj9ExwVd12B0Wnf3U2QKOe8OjOM+saXKvP2u3KtmX23AXnx4ahMOW66MsXLrD5fWv6rFqMuJDiTc3iXAxLS+iZCLRzWmag0a22YETcyBMbQObXRQ7qN+oh+7sYAVzg0t0hX8itm2zzqqgj/UzRIyvu2TPw73XS51msfUY/wvzREavu1RmXlalWiE9doc0y0BRBjvaNfwg0iHsp+TIC8/9+SRMPSctGS4RqwL5oXOz0OYv6bbNN3Yg4NcamvK8gOQfZlFLOwY80bYm+S020FW3tJMiNjbpwRjwIrWEExbFzQ4AXArbdwoUPWCmIJhHiGekekF6cnQJjs3w9HTIv6d1jFM7NLwpelJhe9RoFR6cF401HA6/m27UrJJ0MEfpryakZCATn5S5znObrxVc3ce0tlcjHdTdZOSMRoyQpCTwbhYC61406ddYGMsGOt6vho+pBdL+MAX5oFyElrbF+h7olAfYHnk7nifU="
 
 android:
     components:
@@ -19,10 +17,18 @@ android:
         - extra-android-support
         - extra-android-m2repository
         - extra-google-m2repository
+        - sys-img-${ANDROID_ABI}-${ANDROID_TARGET}
 
-env:
-    global:
-        - secure: "JOFMjB+yxMqPr//v+CHhY7x3iRP2r6aZOL1v79jwNY2D0kMNyAlNNO/tTH23fTaZZ856YCYXIit8Q0/1jIXudLq8tHH30MhzGFMIrnFIQomL6WnF7gcDefJr+wszSgGeg5tXnz+ihcu3EVJdNW6Z31E3rGiLllr7AmdOHJG0gAPhK3RHeP7gH5qtumPeZU/19i8i00YGQXcj9ExwVd12B0Wnf3U2QKOe8OjOM+saXKvP2u3KtmX23AXnx4ahMOW66MsXLrD5fWv6rFqMuJDiTc3iXAxLS+iZCLRzWmag0a22YETcyBMbQObXRQ7qN+oh+7sYAVzg0t0hX8itm2zzqqgj/UzRIyvu2TPw73XS51msfUY/wvzREavu1RmXlalWiE9doc0y0BRBjvaNfwg0iHsp+TIC8/9+SRMPSctGS4RqwL5oXOz0OYv6bbNN3Yg4NcamvK8gOQfZlFLOwY80bYm+S020FW3tJMiNjbpwRjwIrWEExbFzQ4AXArbdwoUPWCmIJhHiGekekF6cnQJjs3w9HTIv6d1jFM7NLwpelJhe9RoFR6cF401HA6/m27UrJJ0MEfpryakZCATn5S5znObrxVc3ce0tlcjHdTdZOSMRoyQpCTwbhYC61406ddYGMsGOt6vho+pBdL+MAX5oFyElrbF+h7olAfYHnk7nifU="
+branches:
+    only: master
+
+script:
+    - ./gradlew build javadoc jacocoTestReport assembleAndroidTest
+    - echo no | android create avd --force -n test -t $ANDROID_TARGET --abi $ANDROID_ABI
+    - emulator -avd test -no-skin -no-audio -no-window &
+    - android-wait-for-emulator
+    - adb shell setprop dalvik.vm.dexopt-flags v=n,o=v
+    - ./gradlew connectedCheck
 
 after_success:
     - .utility/travis-gh-pages-javadoc-push.sh
