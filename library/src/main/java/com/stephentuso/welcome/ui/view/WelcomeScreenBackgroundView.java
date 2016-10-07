@@ -3,8 +3,8 @@ package com.stephentuso.welcome.ui.view;
 import android.content.Context;
 import android.util.AttributeSet;
 
+import com.stephentuso.welcome.WelcomeConfiguration;
 import com.stephentuso.welcome.ui.OnWelcomeScreenPageChangeListener;
-import com.stephentuso.welcome.util.WelcomeScreenConfiguration;
 
 /**
  * Created by stephentuso on 11/16/15.
@@ -24,7 +24,7 @@ public class WelcomeScreenBackgroundView extends ColorChangingBackgroundView imp
     }
 
     @Override
-    public void setup(WelcomeScreenConfiguration config) {
+    public void setup(WelcomeConfiguration config) {
         setColors(config.getBackgroundColors());
     }
 

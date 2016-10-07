@@ -1,6 +1,6 @@
 package com.stephentuso.welcome.ui;
 
-import com.stephentuso.welcome.util.WelcomeScreenConfiguration;
+import com.stephentuso.welcome.WelcomeConfiguration;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -38,7 +38,7 @@ import java.util.Arrays;
     }
 
     @Override
-    public void setup(WelcomeScreenConfiguration config) {
+    public void setup(WelcomeConfiguration config) {
         for (OnWelcomeScreenPageChangeListener changeListener : mItems) {
             changeListener.setup(config);
         }

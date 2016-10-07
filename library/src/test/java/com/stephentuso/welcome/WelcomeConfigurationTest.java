@@ -3,10 +3,12 @@ package com.stephentuso.welcome;
 import android.content.Context;
 import android.content.res.Resources;
 import android.content.res.Resources.Theme;
+import android.graphics.Color;
 import android.os.Build;
+import android.support.v4.app.Fragment;
 import android.util.TypedValue;
 
-import com.stephentuso.welcome.util.WelcomeScreenConfiguration;
+import com.stephentuso.welcome.ui.WelcomeFragmentHolder;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -24,33 +26,49 @@ import static org.mockito.Mockito.when;
  */
 
 @RunWith(MockitoJUnitRunner.class)
-public class WelcomeScreenBuilderTest {
+public class WelcomeConfigurationTest {
 
     @Mock private Resources resources;
     @Mock private Theme theme;
     @Mock private Context context;
 
-    private WelcomeScreenBuilder builder;
+    private WelcomeConfiguration.Builder builder;
+
+    private static int DEFAULT_COLOR = 0x1e88e5;
 
     @Before
     public void setUp() {
 
-        when(resources.getColor(R.color.default_background_color)).thenReturn(0x1e88e5);
+        when(resources.getColor(R.color.default_background_color)).thenReturn(DEFAULT_COLOR);
+        when(resources.getColor(R.color.white)).thenReturn(Color.WHITE);
         when(theme.resolveAttribute(R.attr.colorPrimary, new TypedValue(), true)).thenReturn(false);
         when(context.getResources()).thenReturn(resources);
         when(context.getTheme()).thenReturn(theme);
 
-        builder = new WelcomeScreenBuilder(context);
+        builder = new WelcomeConfiguration.Builder(context);
+    }
+
+    private void useRtl(boolean rtl) {
+        when(resources.getBoolean(R.bool.isRtl)).thenReturn(rtl);
     }
 
     @Test
     public void testSwipeToDismiss() {
         builder.swipeToDismiss(true);
+
         if (Build.VERSION.SDK_INT < 11) {
             assertFalse(builder.build().getSwipeToDismiss());
         } else {
             assertTrue(builder.build().getSwipeToDismiss());
         }
+
+        assertTrue(builder.build().shouldSwipeToDismiss(20));
+        assertTrue(builder.build().shouldSwipeToDismiss(11));
+        assertFalse(builder.build().shouldSwipeToDismiss(8));
+
+        useRtl(true);
+
+        assertFalse(builder.build().shouldSwipeToDismiss(20));
 
         builder.swipeToDismiss(false);
         assertFalse(builder.build().getSwipeToDismiss());
@@ -140,15 +158,57 @@ public class WelcomeScreenBuilderTest {
 
     @Test
     public void testTheme() {
-        builder.theme(WelcomeScreenConfiguration.Theme.DARK);
-        assertEquals(WelcomeScreenConfiguration.Theme.DARK.resId, builder.build().getThemeResId());
+        builder.theme(WelcomeConfiguration.Theme.DARK);
+        assertEquals(WelcomeConfiguration.Theme.DARK.resId, builder.build().getThemeResId());
         builder.theme(R.style.WelcomeScreenTheme_Light);
         assertEquals(R.style.WelcomeScreenTheme_Light, builder.build().getThemeResId());
     }
 
     @Test
+    public void testPageOrder() {
+
+        final Fragment fragment1 = new Fragment();
+        final Fragment fragment2 = new Fragment();
+        final Fragment fragment3 = new Fragment();
+
+        builder
+                .page(new WelcomeFragmentHolder() {
+                    @Override
+                    protected Fragment fragment() {
+                        return fragment1;
+                    }
+                })
+                .page(new WelcomeFragmentHolder() {
+                    @Override
+                    protected Fragment fragment() {
+                        return fragment2;
+                    }
+                })
+                .page(new WelcomeFragmentHolder() {
+                    @Override
+                    protected Fragment fragment() {
+                        return fragment3;
+                    }
+                });
+
+        assertTrue(builder.build().createFragment(0) == fragment1);
+        assertTrue(builder.build().createFragment(1) == fragment2);
+
+        useRtl(true);
+
+        assertTrue(builder.build().createFragment(0) == fragment3);
+        assertTrue(builder.build().createFragment(1) == fragment2);
+    }
+
+    @Test
+    public void testInitDefaultBackgroundColor() {
+        assertEquals(DEFAULT_COLOR, builder.build().getDefaultBackgroundColor().value());
+    }
+
+    @Test
     public void testDefaultBackgroundColor() {
-        //TODO: hard to test right now
+        builder.defaultBackgroundColor(R.color.white);
+        assertEquals(Color.WHITE, builder.build().getDefaultBackgroundColor().value());
     }
 
 }

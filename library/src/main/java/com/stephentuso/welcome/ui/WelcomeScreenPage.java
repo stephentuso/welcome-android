@@ -2,7 +2,7 @@ package com.stephentuso.welcome.ui;
 
 import android.support.v4.app.Fragment;
 
-import com.stephentuso.welcome.util.WelcomeScreenConfiguration;
+import com.stephentuso.welcome.WelcomeConfiguration;
 
 /**
  * Created by stephentuso on 11/15/15.
@@ -66,7 +66,7 @@ public class WelcomeScreenPage implements OnWelcomeScreenPageChangeListener {
     }
 
     @Override
-    public void setup(WelcomeScreenConfiguration config) {
+    public void setup(WelcomeConfiguration config) {
         isRtl = config.isRtl();
         totalPages = config.pageCount();
     }

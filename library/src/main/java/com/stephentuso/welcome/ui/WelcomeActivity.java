@@ -13,10 +13,10 @@ import android.view.MenuItem;
 import android.view.View;
 
 import com.stephentuso.welcome.R;
+import com.stephentuso.welcome.WelcomeConfiguration;
 import com.stephentuso.welcome.ui.view.WelcomeScreenBackgroundView;
 import com.stephentuso.welcome.ui.view.WelcomeScreenViewPagerIndicator;
 import com.stephentuso.welcome.util.SharedPreferencesHelper;
-import com.stephentuso.welcome.util.WelcomeScreenConfiguration;
 import com.stephentuso.welcome.util.WelcomeUtils;
 
 public abstract class WelcomeActivity extends AppCompatActivity {
@@ -25,7 +25,7 @@ public abstract class WelcomeActivity extends AppCompatActivity {
 
     private ViewPager mViewPager;
     private WelcomeFragmentPagerAdapter mAdapter;
-    private WelcomeScreenConfiguration mConfiguration;
+    private WelcomeConfiguration mConfiguration;
 
     private WelcomeScreenItemList mItems = new WelcomeScreenItemList();
 
@@ -151,7 +151,7 @@ public abstract class WelcomeActivity extends AppCompatActivity {
         SharedPreferencesHelper.storeWelcomeCompleted(this, getKey());
         setWelcomeScreenResult(RESULT_OK);
         super.finish();
-        if (mConfiguration.getExitAnimation() != WelcomeScreenConfiguration.NO_ANIMATION_SET)
+        if (mConfiguration.getExitAnimation() != WelcomeConfiguration.NO_ANIMATION_SET)
             overridePendingTransition(R.anim.none, mConfiguration.getExitAnimation());
     }
 
@@ -205,7 +205,7 @@ public abstract class WelcomeActivity extends AppCompatActivity {
         return WelcomeUtils.getKey(this.getClass());
     }
 
-    protected abstract WelcomeScreenConfiguration configuration();
+    protected abstract WelcomeConfiguration configuration();
 
     private class WelcomeFragmentPagerAdapter extends FragmentPagerAdapter {
 

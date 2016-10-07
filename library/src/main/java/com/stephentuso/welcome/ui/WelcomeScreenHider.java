@@ -3,7 +3,7 @@ package com.stephentuso.welcome.ui;
 import android.os.Build;
 import android.view.View;
 
-import com.stephentuso.welcome.util.WelcomeScreenConfiguration;
+import com.stephentuso.welcome.WelcomeConfiguration;
 
 /**
  * Created by stephentuso on 11/16/15.
@@ -28,7 +28,7 @@ public class WelcomeScreenHider implements OnWelcomeScreenPageChangeListener {
     }
 
     @Override
-    public void setup(WelcomeScreenConfiguration config) {
+    public void setup(WelcomeConfiguration config) {
         enabled = config.getSwipeToDismiss();
         mLastPage = config.lastPageIndex();
     }

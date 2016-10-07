@@ -2,7 +2,7 @@ package com.stephentuso.welcome.ui;
 
 import android.support.v4.app.Fragment;
 
-import com.stephentuso.welcome.util.WelcomeScreenConfiguration;
+import com.stephentuso.welcome.WelcomeConfiguration;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -59,7 +59,7 @@ public class WelcomeScreenPageList extends ArrayList<WelcomeScreenPage> implemen
     }
 
     @Override
-    public void setup(WelcomeScreenConfiguration config) {
+    public void setup(WelcomeConfiguration config) {
         for (WelcomeScreenPage page : this) {
             page.setup(config);
         }

@@ -1,8 +1,7 @@
 package com.stephentuso.welcomeexample;
 
-import com.stephentuso.welcome.WelcomeScreenBuilder;
+import com.stephentuso.welcome.WelcomeConfiguration;
 import com.stephentuso.welcome.ui.WelcomeActivity;
-import com.stephentuso.welcome.util.WelcomeScreenConfiguration;
 
 /**
  * Created by stephentuso on 10/5/16.
@@ -11,8 +10,8 @@ import com.stephentuso.welcome.util.WelcomeScreenConfiguration;
 public class LightWelcomeActivity extends WelcomeActivity {
 
     @Override
-    protected WelcomeScreenConfiguration configuration() {
-        return new WelcomeScreenBuilder(this)
+    protected WelcomeConfiguration configuration() {
+        return new WelcomeConfiguration.Builder(this)
                 .theme(R.style.LightWelcomeScreenTheme)
                 .defaultBackgroundColor(R.color.white)
                 .defaultTitleTypefacePath("Roboto-Bold.ttf")

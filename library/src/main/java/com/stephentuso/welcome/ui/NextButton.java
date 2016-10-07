@@ -2,7 +2,7 @@ package com.stephentuso.welcome.ui;
 
 import android.view.View;
 
-import com.stephentuso.welcome.util.WelcomeScreenConfiguration;
+import com.stephentuso.welcome.WelcomeConfiguration;
 
 /**
  * Created by stephentuso on 11/15/15.
@@ -16,7 +16,7 @@ public class NextButton extends WelcomeScreenViewWrapper {
     }
 
     @Override
-    public void setup(WelcomeScreenConfiguration config) {
+    public void setup(WelcomeConfiguration config) {
         super.setup(config);
         this.shouldShow = config.getShowNextButton();
     }

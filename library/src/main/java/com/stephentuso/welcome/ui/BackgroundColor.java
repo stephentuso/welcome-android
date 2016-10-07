@@ -11,21 +11,19 @@ import android.support.annotation.Nullable;
  */
 public class BackgroundColor {
 
-    private int mColor = Color.GRAY;
+    private int color = Color.GRAY;
 
     public BackgroundColor(@Nullable @ColorInt Integer color) {
         if (color != null)
-            this.mColor = color;
+            this.color = color;
     }
 
-    public BackgroundColor(@Nullable @ColorInt Integer color, int defaultColor) {
-        mColor = defaultColor;
-        if (color != null)
-            mColor = color;
+    public BackgroundColor(@Nullable @ColorInt Integer color, @ColorInt int fallbackColor) {
+        this.color = color != null ? color : fallbackColor;
     }
 
     public int value() {
-        return this.mColor;
+        return this.color;
     }
 
 }

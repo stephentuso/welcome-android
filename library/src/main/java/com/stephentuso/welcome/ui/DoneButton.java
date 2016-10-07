@@ -3,7 +3,7 @@ package com.stephentuso.welcome.ui;
 import android.view.View;
 import android.widget.TextView;
 
-import com.stephentuso.welcome.util.WelcomeScreenConfiguration;
+import com.stephentuso.welcome.WelcomeConfiguration;
 import com.stephentuso.welcome.util.WelcomeUtils;
 
 /**
@@ -19,7 +19,7 @@ public class DoneButton extends WelcomeScreenViewWrapper {
     }
 
     @Override
-    public void setup(WelcomeScreenConfiguration config) {
+    public void setup(WelcomeConfiguration config) {
         super.setup(config);
         shouldShow = !config.getUseCustomDoneButton();
         WelcomeUtils.setTypeface((TextView) this.getView(), config.getDoneButtonTypefacePath(), config.getContext());

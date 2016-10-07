@@ -5,7 +5,7 @@ import android.support.v4.view.ViewCompat;
 import android.support.v4.view.ViewPropertyAnimatorListener;
 import android.view.View;
 
-import com.stephentuso.welcome.util.WelcomeScreenConfiguration;
+import com.stephentuso.welcome.WelcomeConfiguration;
 
 /**
  * Created by stephentuso on 11/15/15.
@@ -39,7 +39,7 @@ import com.stephentuso.welcome.util.WelcomeScreenConfiguration;
     }
 
     @Override
-    public void setup(WelcomeScreenConfiguration config) {
+    public void setup(WelcomeConfiguration config) {
         mFirstPageIndex = config.firstPageIndex();
         mLastPageIndex = config.lastViewablePageIndex();
         mAnimate = config.getAnimateButtons();
