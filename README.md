@@ -12,6 +12,7 @@ An easy to use and customizable welcome screen for Android apps.
 -	Fully customizable
 -	RTL support
 -	Ability to use built in layouts or custom fragments
+-   Built in layouts support all screen sizes and orientations
 
 Please open a new [issue](https://github.com/stephentuso/welcome-android/issues) if you find a bug or have a problem.
 
@@ -32,6 +33,8 @@ Contributing
 ============
 
 Feel free to open a PR to add a feature or fix a bug, all contributions are welcome.
+
+All new development takes place on the [dev branch](https://github.com/stephentuso/welcome-android/tree/dev).
 
 Table of Contents
 =================
