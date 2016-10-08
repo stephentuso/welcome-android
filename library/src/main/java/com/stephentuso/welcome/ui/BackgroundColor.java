@@ -1,7 +1,7 @@
 package com.stephentuso.welcome.ui;
 
-import android.graphics.Color;
 import android.support.annotation.ColorInt;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 
 /**
@@ -11,11 +11,10 @@ import android.support.annotation.Nullable;
  */
 public class BackgroundColor {
 
-    private int color = Color.GRAY;
+    private int color = 0;
 
-    public BackgroundColor(@Nullable @ColorInt Integer color) {
-        if (color != null)
-            this.color = color;
+    public BackgroundColor(@NonNull @ColorInt Integer color) {
+        this.color = color;
     }
 
     public BackgroundColor(@Nullable @ColorInt Integer color, @ColorInt int fallbackColor) {

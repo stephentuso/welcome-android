@@ -52,6 +52,10 @@ public class WelcomeConfiguration {
     public WelcomeConfiguration(Builder builder) {
         this.builder = builder;
 
+        if (pageCount() == 0) {
+            throw new IllegalStateException("0 pages; at least one page must be added");
+        }
+
         if (getSwipeToDismiss()) {
             builder.page(new WelcomeScreenPage(new WelcomeFragmentHolder() {
                 @Override
@@ -65,18 +69,6 @@ public class WelcomeConfiguration {
             builder.pages.reversePageOrder();
         }
 
-    }
-
-    //To make this testable
-    /**
-     * Returns whether or not swipeToDismiss
-     * will be enabled on the specified Androi SDK API level
-     *
-     * @param sdkInt Android SDK level
-     * @return swipeToDismiss
-     */
-    public boolean shouldSwipeToDismiss(int sdkInt) {
-        return builder.swipeToDismiss && (!isRtl() && sdkInt >= 11);
     }
 
     /**
@@ -225,11 +217,12 @@ public class WelcomeConfiguration {
 
     /**
      * Check if swipeToDismiss is enabled
+     * Returns false if SDK_INT is less than 11
      *
      * @return swipeToDismiss
      */
     public boolean getSwipeToDismiss() {
-        return shouldSwipeToDismiss(Build.VERSION.SDK_INT);
+        return builder.swipeToDismiss && (!isRtl() && Build.VERSION.SDK_INT >= 11);
     }
 
     /**
@@ -631,6 +624,19 @@ public class WelcomeConfiguration {
          */
         public Builder page(WelcomeFragmentHolder fragmentHolder, @ColorRes int resId) {
             page(new WelcomeScreenPage(fragmentHolder, new BackgroundColor(getColor(resId), defaultBackgroundColor.value())));
+            return this;
+        }
+
+        /**
+         * Adds a fragment
+         *
+         * @param fragmentHolder FragmentHolder that creates the fragment to add
+         * @param backgroundColor Background color for this page
+         *
+         * @return this Builder object to allow method calls to be chained
+         */
+        public Builder page(WelcomeFragmentHolder fragmentHolder, BackgroundColor backgroundColor) {
+            page(new WelcomeScreenPage(fragmentHolder, new BackgroundColor(backgroundColor.value(), defaultBackgroundColor.value())));
             return this;
         }
 
