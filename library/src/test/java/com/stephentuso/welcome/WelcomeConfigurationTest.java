@@ -27,6 +27,8 @@ import static org.mockito.Mockito.when;
 
 /**
  * Created by stephentuso on 10/6/16.
+ *
+ * Tests for WelcomeConfiguration and WelcomeConfiguration.Builder
  */
 
 @RunWith(MockitoJUnitRunner.class)
@@ -47,6 +49,7 @@ public class WelcomeConfigurationTest {
         when(resources.getColor(R.color.default_background_color)).thenReturn(DEFAULT_COLOR);
         when(resources.getColor(R.color.white)).thenReturn(Color.WHITE);
         when(theme.resolveAttribute(R.attr.colorPrimary, new TypedValue(), true)).thenReturn(false);
+        when(theme.resolveAttribute(android.R.attr.colorPrimary, new TypedValue(), true)).thenReturn(false);
         when(context.getResources()).thenReturn(resources);
         when(context.getTheme()).thenReturn(theme);
 
@@ -60,14 +63,14 @@ public class WelcomeConfigurationTest {
 
         builder2 = new WelcomeConfiguration.Builder(context);
 
-        useRtl(false);
+        setRtl(false);
         setApiLevel(12);
     }
 
 
     //Helper methods
 
-    private void useRtl(boolean rtl) {
+    private void setRtl(boolean rtl) {
         when(resources.getBoolean(R.bool.isRtl)).thenReturn(rtl);
     }
 
@@ -90,11 +93,13 @@ public class WelcomeConfigurationTest {
     //Tests
 
     @Test
-    public void testMisc() {
+    public void testContext() {
         assertTrue(builder1.build().getContext() == context);
+    }
 
-
-
+    @Test(expected = IllegalStateException.class)
+    public void testZeroPagesThrows() {
+        builder2.build();
     }
 
     @Test
@@ -108,9 +113,9 @@ public class WelcomeConfigurationTest {
         setApiLevel(18);
         assertTrue(builder1.build().getSwipeToDismiss());
 
-        useRtl(true);
+        setRtl(true);
 
-        assertFalse(builder1.build().getSwipeToDismiss());
+        assertTrue(builder1.build().getSwipeToDismiss());
 
         builder1.swipeToDismiss(false);
         assertFalse(builder1.build().getSwipeToDismiss());
@@ -228,9 +233,33 @@ public class WelcomeConfigurationTest {
     public void testPageIndexFunctions() {
         builder2.page(null).page(null).page(null).swipeToDismiss(false);
 
+        //SwipeToDismiss false
+
         //Not rtl
         assertEquals(0, builder2.build().firstPageIndex());
         assertEquals(2, builder2.build().lastPageIndex());
+        assertEquals(2, builder2.build().lastViewablePageIndex());
+
+        //Rtl
+        setRtl(true);
+        assertEquals(2, builder2.build().firstPageIndex());
+        assertEquals(0, builder2.build().lastPageIndex());
+        assertEquals(0, builder2.build().lastViewablePageIndex());
+
+        //SwipeToDismiss true
+        builder2.swipeToDismiss(true);
+
+        //rtl false
+        setRtl(false);
+        assertEquals(0, builder2.build().firstPageIndex());
+        assertEquals(3, builder2.build().lastPageIndex());
+        assertEquals(2, builder2.build().lastViewablePageIndex());
+
+        //Rtl true
+        setRtl(true);
+        assertEquals(3, builder2.build().firstPageIndex());
+        assertEquals(0, builder2.build().lastPageIndex());
+        assertEquals(1, builder2.build().lastViewablePageIndex());
 
     }
 
@@ -267,12 +296,12 @@ public class WelcomeConfigurationTest {
         assertTrue(builder2.build().createFragment(0) == fragment1);
         assertTrue(builder2.build().createFragment(1) == fragment2);
 
-        useRtl(true);
+        setRtl(true);
 
         assertTrue(builder2.build().createFragment(0) == fragment3);
         assertTrue(builder2.build().createFragment(1) == fragment2);
 
-        useRtl(false);
+        setRtl(false);
 
         // Test page count
 
@@ -308,6 +337,9 @@ public class WelcomeConfigurationTest {
 
     @Test
     public void testInitDefaultBackgroundColor() {
+        //TODO: Improve this
+        assertEquals(DEFAULT_COLOR, builder1.build().getDefaultBackgroundColor().value());
+        setApiLevel(22);
         assertEquals(DEFAULT_COLOR, builder1.build().getDefaultBackgroundColor().value());
     }
 
@@ -315,9 +347,17 @@ public class WelcomeConfigurationTest {
     public void testDefaultBackgroundColor() {
         builder2.defaultBackgroundColor(R.color.white)
                 .page(null, 0);
+
         WelcomeConfiguration config = builder2.build();
         assertEquals(Color.WHITE, config.getDefaultBackgroundColor().value());
         assertEquals(Color.WHITE, config.getBackgroundColors()[0].value());
+
+        builder2.defaultBackgroundColor(new BackgroundColor(Color.WHITE))
+                .page(null, 0);
+
+        config = builder2.build();
+        assertEquals(Color.WHITE, config.getDefaultBackgroundColor().value());
+        assertEquals(Color.WHITE, config.getBackgroundColors()[1].value());
     }
 
     @Test
@@ -342,7 +382,7 @@ public class WelcomeConfigurationTest {
             assertEquals(colors[i], bgColors[i].value());
         }
 
-        useRtl(true);
+        setRtl(true);
         BackgroundColor[] reversedBg = builder2.build().getBackgroundColors();
         int maxIndex = colors.length - 1;
         for (int i = maxIndex; i >= 0; i--) {
