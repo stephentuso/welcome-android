@@ -33,7 +33,10 @@ public abstract class WelcomeActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         mConfiguration = configuration();
         //overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
-        super.setTheme(mConfiguration.getThemeResId());
+        if (mConfiguration.getThemeResId() != WelcomeConfiguration.NO_THEME_SET) {
+            super.setTheme(mConfiguration.getThemeResId());
+        }
+
         /* Passing null for savedInstanceState fixes issue with fragments in list not matching
            the displayed ones after the screen was rotated. (Parallax animations would stop working)
            TODO: Look into this more
