@@ -12,7 +12,6 @@ public class LightWelcomeActivity extends WelcomeActivity {
     @Override
     protected WelcomeConfiguration configuration() {
         return new WelcomeConfiguration.Builder(this)
-                .theme(R.style.LightWelcomeScreenTheme)
                 .defaultBackgroundColor(R.color.white)
                 .defaultTitleTypefacePath("Roboto-Bold.ttf")
                 .defaultHeaderTypefacePath("Roboto-Bold.ttf")

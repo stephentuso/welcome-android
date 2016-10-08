@@ -17,7 +17,6 @@ public class CustomPageWelcomeActivity extends WelcomeActivity {
     @Override
     protected WelcomeConfiguration configuration() {
         return new WelcomeConfiguration.Builder(this)
-                .theme(R.style.GeneralWelcomeScreenTheme)
                 .page(new WelcomeFragmentHolder() {
                     @Override
                     protected Fragment fragment() {

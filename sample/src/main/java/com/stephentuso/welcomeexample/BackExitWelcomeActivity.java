@@ -12,7 +12,6 @@ public class BackExitWelcomeActivity extends WelcomeActivity {
     @Override
     protected WelcomeConfiguration configuration() {
         return new WelcomeConfiguration.Builder(this)
-                .theme(R.style.GeneralWelcomeScreenTheme)
                 .defaultTitleTypefacePath("Roboto-Bold.ttf")
                 .defaultHeaderTypefacePath("Roboto-Bold.ttf")
                 .basicPage(R.drawable.ic_image_white, "No back navigation", "By default, the back button can be used to go back a page")

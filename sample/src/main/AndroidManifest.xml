@@ -15,18 +15,25 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <activity android:name=".SampleWelcomeActivity"
-            android:theme="@style/BaseWelcomeScreenTheme"/>
+            android:theme="@style/SampleWelcomeScreenTheme"/>
+
         <activity android:name=".DefaultWelcomeActivity"
                   android:theme="@style/BaseWelcomeScreenTheme"/>
+
         <activity android:name=".LightWelcomeActivity"
-                  android:theme="@style/BaseWelcomeScreenTheme"/>
+                  android:theme="@style/LightWelcomeScreenTheme"/>
+
         <activity android:name=".NoSkipWelcomeActivity"
-                  android:theme="@style/BaseWelcomeScreenTheme"/>
+                  android:theme="@style/GeneralWelcomeScreenTheme"/>
+
         <activity android:name=".BackExitWelcomeActivity"
-                  android:theme="@style/BaseWelcomeScreenTheme"/>
+                  android:theme="@style/GeneralWelcomeScreenTheme"/>
+
         <activity android:name=".CustomPageWelcomeActivity"
-                  android:theme="@style/BaseWelcomeScreenTheme"/>
+                  android:theme="@style/GeneralWelcomeScreenTheme"/>
+
     </application>
 
 </manifest>

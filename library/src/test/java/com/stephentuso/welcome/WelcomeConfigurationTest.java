@@ -223,8 +223,6 @@ public class WelcomeConfigurationTest {
 
     @Test
     public void testTheme() {
-        builder1.theme(WelcomeConfiguration.Theme.DARK);
-        assertEquals(WelcomeConfiguration.Theme.DARK.resId, builder1.build().getThemeResId());
         builder1.theme(R.style.WelcomeScreenTheme_Light);
         assertEquals(R.style.WelcomeScreenTheme_Light, builder1.build().getThemeResId());
     }

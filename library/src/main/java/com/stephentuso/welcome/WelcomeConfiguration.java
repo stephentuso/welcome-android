@@ -26,26 +26,7 @@ import com.stephentuso.welcome.util.ColorHelper;
 public class WelcomeConfiguration {
 
     public static final int NO_ANIMATION_SET = -1;
-
-    public enum Theme {
-        /**
-         * Dark background, light text
-         */
-        DARK(R.style.WelcomeScreenTheme),
-        /**
-         * Light background, dark text
-         */
-        LIGHT(R.style.WelcomeScreenTheme_Light);
-
-        /**
-         * The resource id for this theme
-         */
-        public int resId;
-
-        Theme(int resId) {
-            this.resId = resId;
-        }
-    }
+    public static final int NO_THEME_SET = -1;
 
     private Builder builder;
 
@@ -340,7 +321,7 @@ public class WelcomeConfiguration {
         protected boolean backButtonNavigatesPages = true;
         protected BackgroundColor defaultBackgroundColor;
         protected Context context;
-        protected int themeResId = Theme.DARK.resId;
+        protected int themeResId = NO_THEME_SET;
         protected boolean swipeToDismiss = false;
         protected int exitAnimationResId = NO_ANIMATION_SET;
         protected String skipButtonTypefacePath = null;
@@ -562,22 +543,15 @@ public class WelcomeConfiguration {
         }
 
         /**
-         * Sets the theme of the welcome screen (Default is dark)
+         * @deprecated Set the theme in the android manifest
          *
-         * @param theme The theme to be used
-         * @return this Builder object to allow method calls to be chained
-         */
-        public Builder theme(WelcomeConfiguration.Theme theme) {
-            this.themeResId = theme.resId;
-            return this;
-        }
-
-        /**
-         * Sets the resource id of the theme used by the welcome screen
+         * Sets the resource id of the theme used by the welcome screen.
+         * This will override the theme set in the manifest.
          *
          * @param resId The style resource id of the theme to be used
          * @return this Builder object to allow method calls to be chained
          */
+        @Deprecated
         public Builder theme(@StyleRes int resId) {
             this.themeResId = resId;
             return this;

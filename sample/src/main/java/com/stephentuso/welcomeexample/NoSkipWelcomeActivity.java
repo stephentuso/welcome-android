@@ -12,7 +12,6 @@ public class NoSkipWelcomeActivity extends WelcomeActivity {
     @Override
     protected WelcomeConfiguration configuration() {
         return new WelcomeConfiguration.Builder(this)
-                .theme(R.style.GeneralWelcomeScreenTheme)
                 .defaultTitleTypefacePath("Roboto-Bold.ttf")
                 .defaultHeaderTypefacePath("Roboto-Bold.ttf")
                 .basicPage(R.drawable.ic_image_white, "No skip", "canSkip(false) was called on the builder")
