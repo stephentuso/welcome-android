@@ -23,6 +23,11 @@ android {
             testCoverageEnabled true
         }
     }
+
+    sourceSets {
+        main.res.srcDirs += 'src/main/res-public'
+    }
+
 }
 
 dependencies {

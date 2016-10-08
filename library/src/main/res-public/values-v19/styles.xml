@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="WelcomeScreenTheme.SolidNavigation">
+        <item name="android:windowTranslucentNavigation">false</item>
+    </style>
+
+    <style name="WelcomeScreenTheme.Light.SolidNavigation">
+        <item name="android:windowTranslucentNavigation">false</item>
+    </style>
+
+    <style name="WelcomeScreenTheme.SolidNavigation.UnderStatusBar">
+        <item name="welcomeLayoutFitsSystemWindows">false</item>
+    </style>
+
+    <style name="WelcomeScreenTheme.Light.SolidNavigation.UnderStatusBar">
+        <item name="welcomeLayoutFitsSystemWindows">false</item>
+    </style>
+
+</resources>

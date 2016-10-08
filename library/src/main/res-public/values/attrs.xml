@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!-- PUBLIC ATTRS -->
 
-   <declare-styleable name="SimpleViewPagerIndicator">
-       <attr name="currentPageColor" format="color"/>
-       <attr name="indicatorColor" format="color"/>
-       <attr name="animated" format="boolean"/>
-   </declare-styleable>
+    <declare-styleable name="SimpleViewPagerIndicator">
+        <attr name="currentPageColor" format="color"/>
+        <attr name="indicatorColor" format="color"/>
+        <attr name="animated" format="boolean"/>
+    </declare-styleable>
 
     <declare-styleable name="Theme">
         <attr name="welcomeButtonBackground" format="reference"/>
@@ -22,5 +23,5 @@
         <attr name="welcomeTitleTextStyle" format="reference"/>
         <attr name="welcomeLayoutFitsSystemWindows" format="boolean"/>
     </declare-styleable>
-    
+
 </resources>

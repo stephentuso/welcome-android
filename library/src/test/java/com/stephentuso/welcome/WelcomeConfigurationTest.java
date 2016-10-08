@@ -151,6 +151,24 @@ public class WelcomeConfigurationTest {
     }
 
     @Test
+    public void testDefaultTitleTypefacePath() {
+        builder.defaultTitleTypefacePath("title");
+        assertEquals("title", builder.build().getDefaultTitleTypefacePath());
+    }
+
+    @Test
+    public void testDefaultHeaderTypefacePath() {
+        builder.defaultHeaderTypefacePath("header");
+        assertEquals("header", builder.build().getDefaultHeaderTypefacePath());
+    }
+
+    @Test
+    public void testDefaultDescriptionTypefacePath() {
+        builder.defaultDescriptionTypefacePath("description");
+        assertEquals("description", builder.build().getDefaultDescriptionTypefacePath());
+    }
+
+    @Test
     public void testExitAnimation() {
         builder.exitAnimation(R.anim.fade_out);
         assertEquals(R.anim.fade_out, builder.build().getExitAnimation());

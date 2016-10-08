@@ -172,7 +172,7 @@ public class WelcomeConfiguration {
     /**
      * Typeface path for skip button
      *
-     * @return typeface path
+     * @return path to typeface in assets folder
      */
     public String getSkipButtonTypefacePath() {
         return builder.skipButtonTypefacePath;
@@ -181,10 +181,37 @@ public class WelcomeConfiguration {
     /**
      * Typeface path for done button
      *
-     * @return typeface path
+     * @return path to typeface in assets folder
      */
     public String getDoneButtonTypefacePath() {
         return builder.doneButtonTypefacePath;
+    }
+
+    /**
+     * Default typeface path for titles
+     *
+     * @return path to typeface in assets folder
+     */
+    public String getDefaultTitleTypefacePath() {
+        return builder.defaultTitleTypefacePath;
+    }
+
+    /**
+     * Default typeface path for headers
+     *
+     * @return path to typeface in assets folder
+     */
+    public String getDefaultHeaderTypefacePath() {
+        return builder.defaultHeaderTypefacePath;
+    }
+
+    /**
+     * Default typeface path for descriptions
+     *
+     * @return path to typeface in assets folder
+     */
+    public String getDefaultDescriptionTypefacePath() {
+        return builder.defaultDescriptionTypefacePath;
     }
 
     /**
