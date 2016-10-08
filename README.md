@@ -7,6 +7,9 @@ An easy to use and customizable welcome screen for Android apps.
 
 ![Sample video](https://raw.githubusercontent.com/stephentuso/welcome-android/master/media/sample-video.gif)
 
+Look in the [sample](https://github.com/stephentuso/welcome-android/blob/master/sample/src/main/java/com/stephentuso/welcomeexample/SampleWelcomeActivity.java) to see how the above welcome screen is created.
+
+
 **Features**
 
 -	Fully customizable
