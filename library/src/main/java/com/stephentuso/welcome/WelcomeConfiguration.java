@@ -21,7 +21,7 @@ import com.stephentuso.welcome.util.ColorHelper;
 
 /**
  * Created by stephentuso on 11/15/15.
- * All getters are in WelcomeScreenConfiguration, all setters are in Builder
+ * All getters are in WelcomeConfiguration, all setters are in Builder
  */
 public class WelcomeConfiguration {
 
@@ -49,15 +49,20 @@ public class WelcomeConfiguration {
 
     private Builder builder;
 
+    private WelcomeScreenPageList pages;
+
     public WelcomeConfiguration(Builder builder) {
         this.builder = builder;
+
+        this.pages = new WelcomeScreenPageList();
+        pages.addAll(builder.pages);
 
         if (pageCount() == 0) {
             throw new IllegalStateException("0 pages; at least one page must be added");
         }
 
         if (getSwipeToDismiss()) {
-            builder.page(new WelcomeScreenPage(new WelcomeFragmentHolder() {
+            pages.add(new WelcomeScreenPage(new WelcomeFragmentHolder() {
                 @Override
                 public Fragment fragment() {
                     return new Fragment();
@@ -66,7 +71,7 @@ public class WelcomeConfiguration {
         }
 
         if (isRtl()) {
-            builder.pages.reversePageOrder();
+            pages.reversePageOrder();
         }
 
     }
@@ -87,7 +92,7 @@ public class WelcomeConfiguration {
      * @return fragment
      */
     public Fragment getFragment(int index) {
-        return builder.pages.getFragment(index);
+        return pages.getFragment(index);
     }
 
     /**
@@ -97,7 +102,7 @@ public class WelcomeConfiguration {
      * @return fragment
      */
     public Fragment createFragment(int index) {
-        return builder.pages.get(index).createFragment();
+        return pages.get(index).createFragment();
     }
 
     /**
@@ -114,17 +119,16 @@ public class WelcomeConfiguration {
      * @return array of background colors
      */
     public BackgroundColor[] getBackgroundColors() {
-        return builder.pages.getBackgroundColors();
+        return pages.getBackgroundColors();
     }
 
     /**
-     * Get the total number of pages, will be +1 if swipeToDismiss
-     * is enabled
+     * Get the total number of pages, will be +1 if swipeToDismiss is enabled
      *
      * @return total number of pages
      */
     public int pageCount() {
-        return builder.pages.size();
+        return pages.size();
     }
 
     /**
@@ -140,7 +144,7 @@ public class WelcomeConfiguration {
      * @return list of pages
      */
     public WelcomeScreenPageList getPages() {
-        return builder.pages;
+        return pages;
     }
 
     /**
@@ -241,7 +245,7 @@ public class WelcomeConfiguration {
      * @return first page index
      */
     public int firstPageIndex() {
-        return isRtl() ? builder.pages.size() - 1 : 0;
+        return isRtl() ? pages.size() - 1 : 0;
     }
 
     /**
@@ -251,7 +255,7 @@ public class WelcomeConfiguration {
      * @return last page index
      */
     public int lastPageIndex() {
-        return isRtl() ? 0 : builder.pages.size() - 1;
+        return isRtl() ? 0 : pages.size() - 1;
     }
 
     /**

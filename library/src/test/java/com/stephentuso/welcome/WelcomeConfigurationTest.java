@@ -262,19 +262,6 @@ public class WelcomeConfigurationTest {
                 });
 
 
-        // Test page count
-
-        assertEquals(3, builder2.build().viewablePageCount());
-
-        builder2.swipeToDismiss(true);
-        assertEquals(4, builder2.build().pageCount());
-        assertEquals(4, builder2.build().getPages().size());
-
-        builder2.swipeToDismiss(false);
-        assertEquals(3, builder2.build().pageCount());
-        assertEquals(3, builder2.build().getPages().size());
-
-
         // Test page order
 
         assertTrue(builder2.build().createFragment(0) == fragment1);
@@ -284,6 +271,21 @@ public class WelcomeConfigurationTest {
 
         assertTrue(builder2.build().createFragment(0) == fragment3);
         assertTrue(builder2.build().createFragment(1) == fragment2);
+
+        useRtl(false);
+
+        // Test page count
+
+        assertEquals(3, builder2.build().viewablePageCount());
+
+        builder2.swipeToDismiss(true);
+        System.out.print(builder2.build().getSwipeToDismiss());
+        assertEquals(4, builder2.build().pageCount());
+        assertEquals(4, builder2.build().getPages().size());
+
+        builder2.swipeToDismiss(false);
+        assertEquals(3, builder2.build().pageCount());
+        assertEquals(3, builder2.build().getPages().size());
     }
 
     @Test
