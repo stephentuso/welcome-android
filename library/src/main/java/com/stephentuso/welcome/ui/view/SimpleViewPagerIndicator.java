@@ -22,14 +22,19 @@ public class SimpleViewPagerIndicator extends View implements ViewPager.OnPageCh
     private int currentPageColor = 0x99ffffff;
     private int otherPageColor = 0x22000000;
 
-    private int mTotalPages = 0;
-    private int mCurrentPage = 0;
-    private float mCurrentPageOffset = 0;
+    private int totalPages = 0;
+    private int currentPage = 0;
+    private int displayedPage = 0;
+    private float currentPageOffset = 0;
+
+    //Used to show correct position when rtl and swipeToDismiss
+    private int pageIndexOffset = 0;
 
     private int spacing = 16;
     private int size = 4;
 
     private boolean animated = false;
+    private boolean isRtl = false;
 
     public SimpleViewPagerIndicator(Context context) {
         this(context, null);
@@ -66,8 +71,8 @@ public class SimpleViewPagerIndicator extends View implements ViewPager.OnPageCh
     @Override
     public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
         if (animated) {
-            mCurrentPage = position;
-            mCurrentPageOffset = mCurrentPage == mTotalPages - 1 ? 0 : positionOffset;
+            setPosition(position);
+            currentPageOffset = canShowAnimation() ? 0 : positionOffset;
             invalidate();
         }
     }
@@ -75,8 +80,8 @@ public class SimpleViewPagerIndicator extends View implements ViewPager.OnPageCh
     @Override
     public void onPageSelected(int position) {
         if (!animated) {
-            mCurrentPage = position;
-            mCurrentPageOffset = 0;
+            setPosition(position);
+            currentPageOffset = 0;
             invalidate();
         }
     }
@@ -91,13 +96,26 @@ public class SimpleViewPagerIndicator extends View implements ViewPager.OnPageCh
     }
 
     public void setPosition(int position) {
-        mCurrentPage = position;
+        currentPage = position + pageIndexOffset;
+        displayedPage = isRtl ? Math.max(currentPage, 0) : Math.min(currentPage, totalPages - 1);
         invalidate();
     }
 
     public void setTotalPages(int totalPages) {
-        mTotalPages = totalPages;
+        this.totalPages = totalPages;
         invalidate();
+    }
+
+    public void setRtl(boolean rtl) {
+        this.isRtl = rtl;
+    }
+
+    public void setPageIndexOffset(int offset) {
+        this.pageIndexOffset = offset;
+    }
+
+    private boolean canShowAnimation() {
+        return isRtl ? currentPage < 0 : currentPage == totalPages - 1;
     }
 
     @Override
@@ -108,18 +126,18 @@ public class SimpleViewPagerIndicator extends View implements ViewPager.OnPageCh
         float startX = getFirstDotPosition(center.x);
 
         paint.setColor(otherPageColor);
-        for (int i = 0; i < mTotalPages; i++) {
+        for (int i = 0; i < totalPages; i++) {
             canvas.drawCircle(startX + spacing * i, center.y, size, paint);
         }
 
         paint.setColor(currentPageColor);
-        canvas.drawCircle(startX + (spacing * (mCurrentPage + mCurrentPageOffset)), center.y, size, paint);
+        canvas.drawCircle(startX + (spacing * (displayedPage + currentPageOffset)), center.y, size, paint);
     }
 
     private float getFirstDotPosition(float centerX) {
-        float centerIndex = mTotalPages % 2 == 0 ? (mTotalPages-1)/2 : mTotalPages/2;
+        float centerIndex = totalPages % 2 == 0 ? (totalPages -1)/2 : totalPages /2;
         float spacingMult = (float) Math.floor(centerIndex);
-        if (mTotalPages % 2 == 0)
+        if (totalPages % 2 == 0)
             spacingMult += 0.5;
         return centerX - (spacing * spacingMult);
     }

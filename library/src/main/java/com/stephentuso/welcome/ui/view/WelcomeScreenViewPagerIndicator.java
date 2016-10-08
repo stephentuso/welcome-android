@@ -28,5 +28,11 @@ public class WelcomeScreenViewPagerIndicator extends SimpleViewPagerIndicator im
     @Override
     public void setup(WelcomeConfiguration config) {
         setTotalPages(config.viewablePageCount());
+        if (config.isRtl()) {
+            setRtl(true);
+            if (config.getSwipeToDismiss()) {
+                setPageIndexOffset(-1);
+            }
+        }
     }
 }

@@ -10,13 +10,14 @@ import com.stephentuso.welcome.WelcomeConfiguration;
  */
 public class WelcomeScreenHider implements OnWelcomeScreenPageChangeListener {
 
-    private View mView;
-    private Integer mLastPage = null;
-    private OnViewHiddenListener mListener = null;
+    private View view;
+    private Integer lastPage = null;
+    private boolean isRtl = false;
+    private OnViewHiddenListener listener = null;
     private boolean enabled = false;
 
     public WelcomeScreenHider(View viewToHide) {
-        mView = viewToHide;
+        view = viewToHide;
     }
 
     public interface OnViewHiddenListener {
@@ -24,13 +25,14 @@ public class WelcomeScreenHider implements OnWelcomeScreenPageChangeListener {
     }
 
     public void setOnViewHiddenListener(OnViewHiddenListener listener) {
-        mListener = listener;
+        this.listener = listener;
     }
 
     @Override
     public void setup(WelcomeConfiguration config) {
         enabled = config.getSwipeToDismiss();
-        mLastPage = config.lastPageIndex();
+        lastPage = config.lastPageIndex();
+        isRtl = config.isRtl();
     }
 
     @Override
@@ -40,18 +42,23 @@ public class WelcomeScreenHider implements OnWelcomeScreenPageChangeListener {
             return;
         }
 
-        if (position == mLastPage && mListener != null) {
-            mListener.onViewHidden();
+        if (position == lastPage && positionOffset == 0 && listener != null) {
+            listener.onViewHidden();
         }
 
         if (Build.VERSION.SDK_INT < 11) {
             return;
         }
 
-        if (position == mLastPage - 1) {
-            mView.setAlpha(1-positionOffset);
-        } else if (position < mLastPage - 1 && mView.getAlpha() != 1f) {
-            mView.setAlpha(1f);
+        boolean shouldSetAlpha = position == (isRtl ? lastPage : lastPage - 1);
+        float alpha = isRtl ? positionOffset : 1f - positionOffset;
+
+        boolean beforeLastPage = isRtl ? position > lastPage : position < lastPage - 1;
+
+        if (shouldSetAlpha) {
+            view.setAlpha(alpha);
+        } else if (beforeLastPage && view.getAlpha() != 1f) {
+            view.setAlpha(1f);
         }
 
     }

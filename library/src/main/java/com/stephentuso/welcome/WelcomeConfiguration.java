@@ -67,7 +67,7 @@ public class WelcomeConfiguration {
                 public Fragment fragment() {
                     return new Fragment();
                 }
-            }, builder.pages.getBackgroundColor(lastPageIndex())));
+            }, pages.getBackgroundColor(pageCount() - 1)));
         }
 
         if (isRtl()) {
@@ -226,7 +226,7 @@ public class WelcomeConfiguration {
      * @return swipeToDismiss
      */
     public boolean getSwipeToDismiss() {
-        return builder.swipeToDismiss && (!isRtl() && Build.VERSION.SDK_INT >= 11);
+        return builder.swipeToDismiss && Build.VERSION.SDK_INT >= 11;
     }
 
     /**
@@ -265,7 +265,7 @@ public class WelcomeConfiguration {
      * @return last viewable page index
      */
     public int lastViewablePageIndex() {
-        return builder.swipeToDismiss ? Math.abs(lastPageIndex() - 1) : lastPageIndex();
+        return getSwipeToDismiss() ? Math.abs(lastPageIndex() - 1) : lastPageIndex();
     }
 
     /**
@@ -647,7 +647,6 @@ public class WelcomeConfiguration {
         private void page(WelcomeScreenPage page) {
             page.setIndex(pages.size());
             pages.add(page);
-            //TODO: Reverse if rtl
         }
 
         /**

@@ -233,6 +233,7 @@ public class WelcomeConfigurationTest {
     public void testPageIndexFunctions() {
         builder2.page(null).page(null).page(null).swipeToDismiss(false);
 
+
         //SwipeToDismiss false
 
         //Not rtl
@@ -245,6 +246,7 @@ public class WelcomeConfigurationTest {
         assertEquals(2, builder2.build().firstPageIndex());
         assertEquals(0, builder2.build().lastPageIndex());
         assertEquals(0, builder2.build().lastViewablePageIndex());
+
 
         //SwipeToDismiss true
         builder2.swipeToDismiss(true);
@@ -373,6 +375,9 @@ public class WelcomeConfigurationTest {
             builder2.page(null, new BackgroundColor(color));
         }
 
+
+        //False swipeToDismiss
+
         builder2.swipeToDismiss(false);
 
         BackgroundColor[] bgColors = builder2.build().getBackgroundColors();
@@ -384,11 +389,40 @@ public class WelcomeConfigurationTest {
 
         setRtl(true);
         BackgroundColor[] reversedBg = builder2.build().getBackgroundColors();
+        assertEquals(colors.length, reversedBg.length);
         int maxIndex = colors.length - 1;
         for (int i = maxIndex; i >= 0; i--) {
             assertEquals(colors[maxIndex - i], reversedBg[i].value());
         }
 
+
+        // True swipeToDismiss - extra page should match color of last page
+
+        setRtl(false);
+        builder2.swipeToDismiss(true);
+
+        bgColors = builder2.build().getBackgroundColors();
+        assertEquals(colors.length + 1, bgColors.length);
+
+        for (int i = 0; i < bgColors.length; i++) {
+            int j = i;
+            if (j == colors.length)
+                j--;
+            assertEquals(colors[j], bgColors[i].value());
+        }
+
+        setRtl(true);
+        reversedBg = builder2.build().getBackgroundColors();
+        assertEquals(colors.length + 1, reversedBg.length);
+        maxIndex = reversedBg.length - 1;
+        for (int i = maxIndex; i >= 0; i--) {
+            int j = maxIndex - i;
+            if (j == colors.length) {
+                j--;
+            }
+            System.out.print(j);
+            assertEquals(colors[j], reversedBg[i].value());
+        }
 
     }
 
