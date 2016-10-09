@@ -32,7 +32,7 @@ public abstract class WelcomeActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         mConfiguration = configuration();
-        //overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
+
         if (mConfiguration.getThemeResId() != WelcomeConfiguration.NO_THEME_SET) {
             super.setTheme(mConfiguration.getThemeResId());
         }

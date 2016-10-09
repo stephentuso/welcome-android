@@ -16,6 +16,8 @@
             </intent-filter>
         </activity>
 
+        <activity android:name=".TestActivity"/>
+
         <activity android:name=".SampleWelcomeActivity"
             android:theme="@style/SampleWelcomeScreenTheme"/>
 
