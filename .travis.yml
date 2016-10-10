@@ -31,5 +31,6 @@ script:
     - ./gradlew connectedCheck jacocoTestReport
 
 after_success:
+    - rm ./sample/build/reports/coverage/debug/report.xml
     - .utility/travis-gh-pages-javadoc-push.sh
     - bash <(curl -s https://codecov.io/bash)

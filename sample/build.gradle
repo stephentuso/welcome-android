@@ -62,9 +62,16 @@ def getTransitiveProjectDependencies(project, configuration) {
 
 task deleteSampleReport {
     group = "Reporting"
+
+    onlyIf {
+        true
+    }
+
     def sampleReport = new File(getBuildDir(), "reports/coverage/debug/report.xml")
     if (sampleReport.exists()) {
-        sampleReport.delete()
+        if (!sampleReport.delete()) {
+            logger.warn('Error deleting sample report')
+        }
     }
 }
 
