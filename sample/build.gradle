@@ -19,6 +19,9 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
+        debug {
+            testCoverageEnabled = true
+        }
     }
     applicationVariants.all { variant ->
         //variant.dex.dependsOn deleteJacocoagentJar
@@ -57,7 +60,15 @@ def getTransitiveProjectDependencies(project, configuration) {
     return dependencyProjects.unique()
 }
 
-task jacocoTestReport(type: JacocoReport) {
+task deleteSampleReport {
+    group = "Reporting"
+    def sampleReport = new File(getBuildDir(), "reports/coverage/debug/report.xml")
+    if (sampleReport.exists()) {
+        sampleReport.delete()
+    }
+}
+
+task jacocoTestReport(type: JacocoReport, dependsOn: "deleteSampleReport") {
     group = "Reporting"
 
     File reportOutDir = file('build/outputs/reports/jacocoCoverage');
@@ -65,7 +76,13 @@ task jacocoTestReport(type: JacocoReport) {
     reportOutDir.mkdirs()
 
     def buildDir = getBuildDir()
-    def projectDependencies = getTransitiveProjectDependencies(this, 'debugCompile')
+    def projectDependencies
+    try {
+        projectDependencies = getTransitiveProjectDependencies(this, 'debugCompile')
+    } catch (Exception e) {
+        return
+    }
+
 
     executionData = fileTree(dir: buildDir, includes: ['**/*.exec', '**/*.ec'])
 
