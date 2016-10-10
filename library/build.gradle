@@ -10,8 +10,6 @@ android {
         targetSdkVersion 24
         versionCode Integer.parseInt(VERSION_CODE)
         versionName VERSION_NAME
-
-        vectorDrawables.useSupportLibrary = true
     }
 
     buildTypes {

@@ -8,7 +8,6 @@ import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.app.AppCompatDelegate;
 import android.view.MenuItem;
 import android.view.View;
 
@@ -40,8 +39,6 @@ public abstract class WelcomeActivity extends AppCompatActivity {
          */
         super.onCreate(null);
         setContentView(R.layout.activity_welcome);
-
-        AppCompatDelegate.setCompatVectorFromResourcesEnabled(true);
 
         mAdapter = new WelcomeFragmentPagerAdapter(getSupportFragmentManager());
 
