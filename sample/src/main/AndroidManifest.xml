@@ -16,17 +16,19 @@
             </intent-filter>
         </activity>
         <activity android:name=".SampleWelcomeActivity"
-            android:theme="@style/BaseWelcomeScreenTheme"/>
+            android:theme="@style/WelcomeScreenTheme"/>
         <activity android:name=".DefaultWelcomeActivity"
-                  android:theme="@style/BaseWelcomeScreenTheme"/>
+                  android:theme="@style/WelcomeScreenTheme"/>
         <activity android:name=".LightWelcomeActivity"
-                  android:theme="@style/BaseWelcomeScreenTheme"/>
+                  android:theme="@style/WelcomeScreenTheme"/>
         <activity android:name=".NoSkipWelcomeActivity"
-                  android:theme="@style/BaseWelcomeScreenTheme"/>
+                  android:theme="@style/WelcomeScreenTheme"/>
         <activity android:name=".BackExitWelcomeActivity"
-                  android:theme="@style/BaseWelcomeScreenTheme"/>
+                  android:theme="@style/WelcomeScreenTheme"/>
         <activity android:name=".CustomPageWelcomeActivity"
-                  android:theme="@style/BaseWelcomeScreenTheme"/>
+                  android:theme="@style/WelcomeScreenTheme"/>
+        <activity android:name=".IncludedPagesWelcomeActivity"
+                  android:theme="@style/WelcomeScreenTheme" />
     </application>
 
 </manifest>

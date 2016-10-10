@@ -11,7 +11,7 @@ public class SampleWelcomeActivity extends WelcomeActivity {
 
     @Override
     protected WelcomeScreenConfiguration configuration() {
-        return new WelcomeScreenBuilder(this)
+        return new WelcomeScreenBuilder(getApplicationContext())
                 .theme(R.style.SampleWelcomeScreenTheme)
                 .defaultTitleTypefacePath("Montserrat-Bold.ttf")
                 .defaultHeaderTypefacePath("Montserrat-Bold.ttf")

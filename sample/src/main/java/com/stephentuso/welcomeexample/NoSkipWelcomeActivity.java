@@ -12,7 +12,7 @@ public class NoSkipWelcomeActivity extends WelcomeActivity {
 
     @Override
     protected WelcomeScreenConfiguration configuration() {
-        return new WelcomeScreenBuilder(this)
+        return new WelcomeScreenBuilder(getApplicationContext())
                 .theme(R.style.GeneralWelcomeScreenTheme)
                 .defaultTitleTypefacePath("Roboto-Bold.ttf")
                 .defaultHeaderTypefacePath("Roboto-Bold.ttf")
