@@ -35,14 +35,16 @@ public class WelcomeUtils {
         return key;
     }
 
-    public static void setTypeface(TextView textView, String typefacePath, Context context) {
+    public static boolean setTypeface(TextView textView, String typefacePath, Context context) {
         if (typefacePath != null && !typefacePath.equals("")) {
             try {
                 textView.setTypeface(Typeface.createFromAsset(context.getAssets(), typefacePath));
+                return true;
             } catch (Exception e) {
                 Log.w(TAG, "Error setting typeface");
             }
         }
+        return false;
     }
 
     public static int calculateParallaxLayers(View view, boolean recursive) {

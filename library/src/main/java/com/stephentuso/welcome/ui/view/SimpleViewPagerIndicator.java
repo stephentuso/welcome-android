@@ -47,13 +47,15 @@ public class SimpleViewPagerIndicator extends View implements ViewPager.OnPageCh
     public SimpleViewPagerIndicator(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
 
-        TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.SimpleViewPagerIndicator, defStyleAttr, 0);
+        if (attrs != null) {
+            TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.SimpleViewPagerIndicator, defStyleAttr, 0);
 
-        currentPageColor = a.getColor(R.styleable.SimpleViewPagerIndicator_currentPageColor, currentPageColor);
-        otherPageColor = a.getColor(R.styleable.SimpleViewPagerIndicator_indicatorColor, otherPageColor);
-        animated = a.getBoolean(R.styleable.SimpleViewPagerIndicator_animated, animated);
+            currentPageColor = a.getColor(R.styleable.SimpleViewPagerIndicator_currentPageColor, currentPageColor);
+            otherPageColor = a.getColor(R.styleable.SimpleViewPagerIndicator_indicatorColor, otherPageColor);
+            animated = a.getBoolean(R.styleable.SimpleViewPagerIndicator_animated, animated);
 
-        a.recycle();
+            a.recycle();
+        }
 
         init(context);
     }
@@ -66,7 +68,6 @@ public class SimpleViewPagerIndicator extends View implements ViewPager.OnPageCh
         spacing *= density;
         size *= density;
     }
-
 
     @Override
     public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
@@ -101,17 +102,37 @@ public class SimpleViewPagerIndicator extends View implements ViewPager.OnPageCh
         invalidate();
     }
 
+    public int getPosition() {
+        return currentPage;
+    }
+
+    public int getDisplayedPosition() {
+        return displayedPage;
+    }
+
     public void setTotalPages(int totalPages) {
         this.totalPages = totalPages;
         invalidate();
+    }
+
+    public int getTotalPages() {
+        return totalPages;
     }
 
     public void setRtl(boolean rtl) {
         this.isRtl = rtl;
     }
 
+    public boolean isRtl() {
+        return isRtl;
+    }
+
     public void setPageIndexOffset(int offset) {
         this.pageIndexOffset = offset;
+    }
+
+    public int getPageIndexOffset() {
+        return pageIndexOffset;
     }
 
     private boolean canShowAnimation() {

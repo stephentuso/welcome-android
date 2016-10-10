@@ -60,6 +60,11 @@ public class WelcomeScreenHelperAndroidTest {
         instrumentation.addMonitor(monitor);
 
         String key = WelcomeUtils.getKey(DefaultWelcomeActivity.class);
+
+        SharedPreferencesHelper.storeWelcomeCompleted(activity, key);
+        assertFalse(helper.show(null));
+        assertFalse(helper.show(new Bundle()));
+
         SharedPreferencesHelper.removeWelcomeCompleted(activity, key);
 
         assertTrue(helper.show(null));
