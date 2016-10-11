@@ -1,9 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <resources>
-  <public type="style" name="WelcomeScreenTheme.SolidNavigation"/>
-  <public type="style" name="WelcomeScreenTheme.Light.SolidNavigation"/>
-  <public type="style" name="WelcomeScreenTheme.SolidNavigation.UnderStatusBar"/>
-  <public type="style" name="WelcomeScreenTheme.Light.SolidNavigation.UnderStatusBar"/>
   <public type="attr" name="currentPageColor"/>
   <public type="attr" name="indicatorColor"/>
   <public type="attr" name="animated"/>
@@ -20,12 +16,12 @@
   <public type="attr" name="welcomeLargeTextStyle"/>
   <public type="attr" name="welcomeTitleTextStyle"/>
   <public type="attr" name="welcomeLayoutFitsSystemWindows"/>
-  <public type="style" name="WelcomeScreenTheme"/>
-  <public type="style" name="WelcomeScreenTheme.Light"/>
   <public type="style" name="WelcomeScreenTheme.SolidNavigation"/>
   <public type="style" name="WelcomeScreenTheme.Light.SolidNavigation"/>
   <public type="style" name="WelcomeScreenTheme.SolidNavigation.UnderStatusBar"/>
   <public type="style" name="WelcomeScreenTheme.Light.SolidNavigation.UnderStatusBar"/>
+  <public type="style" name="WelcomeScreenTheme"/>
+  <public type="style" name="WelcomeScreenTheme.Light"/>
   <public type="style" name="WelcomeScreenText"/>
   <public type="style" name="WelcomeScreenText.Large"/>
   <public type="style" name="WelcomeScreenText.Title"/>
