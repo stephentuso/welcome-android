@@ -3,7 +3,7 @@ package com.stephentuso.welcome;
 import android.support.annotation.DrawableRes;
 import android.support.v4.app.Fragment;
 
-import com.stephentuso.welcome.ui.fragments.BasicWelcomeFragment;
+import com.stephentuso.welcome.ui.fragments.WelcomeBasicFragment;
 
 /**
  * Created by stephentuso on 10/11/16.
@@ -18,7 +18,7 @@ public class BasicPage extends WelcomePage {
     private String headerTypefacePath = null;
     private String descriptionTypefacePath = null;
 
-    private BasicWelcomeFragment fragment = null;
+    private WelcomeBasicFragment fragment = null;
 
     public BasicPage(@DrawableRes int drawableResId, String title, String description) {
         this.drawableResId = drawableResId;
@@ -62,7 +62,7 @@ public class BasicPage extends WelcomePage {
 
     @Override
     public Fragment createFragment() {
-        this.fragment = BasicWelcomeFragment.newInstance(drawableResId, title, description, showParallax, headerTypefacePath, descriptionTypefacePath);
+        this.fragment = WelcomeBasicFragment.newInstance(drawableResId, title, description, showParallax, headerTypefacePath, descriptionTypefacePath);
         return fragment;
     }
 

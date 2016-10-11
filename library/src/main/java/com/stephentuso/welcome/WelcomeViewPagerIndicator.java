@@ -8,17 +8,17 @@ import android.util.AttributeSet;
  * An extension of {@link SimpleViewPagerIndicator SimpleViewPagerIndicator} that implements
  * the setup method of {@link OnWelcomeScreenPageChangeListener OnWelcomeScreenPageChangeListener}
  */
-public class WelcomeScreenViewPagerIndicator extends SimpleViewPagerIndicator implements OnWelcomeScreenPageChangeListener {
+public class WelcomeViewPagerIndicator extends SimpleViewPagerIndicator implements OnWelcomeScreenPageChangeListener {
 
-    public WelcomeScreenViewPagerIndicator(Context context) {
+    public WelcomeViewPagerIndicator(Context context) {
         super(context);
     }
 
-    public WelcomeScreenViewPagerIndicator(Context context, AttributeSet attrs) {
+    public WelcomeViewPagerIndicator(Context context, AttributeSet attrs) {
         super(context, attrs);
     }
 
-    public WelcomeScreenViewPagerIndicator(Context context, AttributeSet attrs, int defStyleAttr) {
+    public WelcomeViewPagerIndicator(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
     }
 

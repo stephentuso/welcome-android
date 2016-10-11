@@ -20,7 +20,7 @@ public abstract class WelcomeActivity extends AppCompatActivity {
     private WelcomeFragmentPagerAdapter mAdapter;
     private WelcomeConfiguration mConfiguration;
 
-    private WelcomeScreenItemList mItems = new WelcomeScreenItemList();
+    private WelcomeItemList mItems = new WelcomeItemList();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -82,18 +82,18 @@ public abstract class WelcomeActivity extends AppCompatActivity {
             }
         });
 
-        WelcomeScreenViewPagerIndicator indicator = (WelcomeScreenViewPagerIndicator) findViewById(R.id.pager_indicator);
-        WelcomeScreenBackgroundView background = (WelcomeScreenBackgroundView) findViewById(R.id.background_view);
+        WelcomeViewPagerIndicator indicator = (WelcomeViewPagerIndicator) findViewById(R.id.pager_indicator);
+        WelcomeBackgroundView background = (WelcomeBackgroundView) findViewById(R.id.background_view);
 
-        WelcomeScreenHider hider = new WelcomeScreenHider(findViewById(R.id.root));
-        hider.setOnViewHiddenListener(new WelcomeScreenHider.OnViewHiddenListener() {
+        WelcomeViewHider hider = new WelcomeViewHider(findViewById(R.id.root));
+        hider.setOnViewHiddenListener(new WelcomeViewHider.OnViewHiddenListener() {
             @Override
             public void onViewHidden() {
                 completeWelcomeScreen();
             }
         });
 
-        mItems = new WelcomeScreenItemList(background, indicator, skip, prev, next, done, hider, mConfiguration.getPages());
+        mItems = new WelcomeItemList(background, indicator, skip, prev, next, done, hider, mConfiguration.getPages());
         mItems.setup(mConfiguration);
         mViewPager.addOnPageChangeListener(mItems);
         mViewPager.setCurrentItem(mConfiguration.firstPageIndex());

@@ -12,7 +12,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.stephentuso.welcome.WelcomeActivity;
-import com.stephentuso.welcome.WelcomeScreenHelper;
+import com.stephentuso.welcome.WelcomeHelper;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,7 +21,7 @@ public class MainActivity extends AppCompatActivity {
 
     private static final int REQUEST_WELCOME_SCREEN_RESULT = 13;
 
-    private WelcomeScreenHelper sampleWelcomeScreen;
+    private WelcomeHelper sampleWelcomeScreen;
 
     private List<ScreenItem> welcomeScreens = new ArrayList<>();
 
@@ -35,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
         recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
 
         // The welcome screen for this app (only one that automatically shows)
-        sampleWelcomeScreen = new WelcomeScreenHelper(this, SampleWelcomeActivity.class);
+        sampleWelcomeScreen = new WelcomeHelper(this, SampleWelcomeActivity.class);
         sampleWelcomeScreen.show(savedInstanceState);
 
         //List of welcome screens
@@ -158,7 +158,7 @@ public class MainActivity extends AppCompatActivity {
 
         String title;
         String description;
-        WelcomeScreenHelper helper;
+        WelcomeHelper helper;
         Integer requestCode;
 
         ScreenItem(int titleRes, int descriptionRes, Class<? extends WelcomeActivity> activityClass) {
@@ -166,10 +166,10 @@ public class MainActivity extends AppCompatActivity {
         }
 
         ScreenItem(int titleRes, int descriptionRes, Class<? extends WelcomeActivity> activityClass, Integer requestCode) {
-            this(titleRes, descriptionRes, new WelcomeScreenHelper(MainActivity.this, activityClass), requestCode);
+            this(titleRes, descriptionRes, new WelcomeHelper(MainActivity.this, activityClass), requestCode);
         }
 
-        ScreenItem(int titleRes, int descriptionRes, WelcomeScreenHelper helper, Integer requestCode) {
+        ScreenItem(int titleRes, int descriptionRes, WelcomeHelper helper, Integer requestCode) {
             this.title = getString(titleRes);
             this.description = getString(descriptionRes);
             this.helper = helper;

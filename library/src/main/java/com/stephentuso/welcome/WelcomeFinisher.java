@@ -6,14 +6,14 @@ import android.support.v4.app.Fragment;
  * Created by stephentuso on 1/22/16.
  * Provides a way to correctly close a welcome screen
  */
-public class WelcomeScreenFinisher {
+public class WelcomeFinisher {
 
     private Fragment mFragment;
 
     /**
      * @param fragment A fragment that is a custom page in a {@link WelcomeActivity}
      */
-    public WelcomeScreenFinisher(Fragment fragment) {
+    public WelcomeFinisher(Fragment fragment) {
         mFragment = fragment;
     }
 

@@ -8,8 +8,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.stephentuso.welcome.WelcomeFinisher;
 import com.stephentuso.welcome.WelcomePage;
-import com.stephentuso.welcome.WelcomeScreenFinisher;
 import com.stephentuso.welcome.WelcomeUtils;
 import com.stephentuso.welcomeexample.R;
 
@@ -36,7 +36,7 @@ public class DoneFragment extends Fragment implements WelcomePage.OnChangeListen
         view.findViewById(R.id.button).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                new WelcomeScreenFinisher(DoneFragment.this).finish();
+                new WelcomeFinisher(DoneFragment.this).finish();
             }
         });
     }

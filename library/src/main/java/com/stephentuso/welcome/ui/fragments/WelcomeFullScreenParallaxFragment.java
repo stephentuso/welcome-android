@@ -17,7 +17,7 @@ import com.stephentuso.welcome.WelcomeUtils;
 /**
  * Created by stephentuso on 1/24/16.
  */
-public class FullScreenParallaxWelcomeFragment extends Fragment implements WelcomePage.OnChangeListener {
+public class WelcomeFullScreenParallaxFragment extends Fragment implements WelcomePage.OnChangeListener {
 
     public static final String KEY_LAYOUT_ID = "drawable_id";
     public static final String KEY_START_FACTOR = "start_factor";
@@ -31,14 +31,14 @@ public class FullScreenParallaxWelcomeFragment extends Fragment implements Welco
     private float parallaxInterval = 0f;
     private boolean parallaxRecursive = false;
 
-    public static FullScreenParallaxWelcomeFragment newInstance(@LayoutRes int layoutId, float startParallaxFactor, float endParallaxFactor,
-                                                      boolean parallaxRecursive) {
+    public static WelcomeFullScreenParallaxFragment newInstance(@LayoutRes int layoutId, float startParallaxFactor, float endParallaxFactor,
+                                                                boolean parallaxRecursive) {
         Bundle args = new Bundle();
         args.putInt(KEY_LAYOUT_ID, layoutId);
         args.putFloat(KEY_START_FACTOR, startParallaxFactor);
         args.putFloat(KEY_END_FACTOR, endParallaxFactor);
         args.putBoolean(KEY_PARALLAX_RECURSIVE, parallaxRecursive);
-        FullScreenParallaxWelcomeFragment fragment = new FullScreenParallaxWelcomeFragment();
+        WelcomeFullScreenParallaxFragment fragment = new WelcomeFullScreenParallaxFragment();
         fragment.setArguments(args);
         return fragment;
     }

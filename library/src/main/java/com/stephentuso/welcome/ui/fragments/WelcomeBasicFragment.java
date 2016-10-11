@@ -2,13 +2,13 @@ package com.stephentuso.welcome.ui.fragments;
 
 import android.os.Build;
 import android.os.Bundle;
-import android.support.annotation.LayoutRes;
+import android.support.annotation.DrawableRes;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.FrameLayout;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.stephentuso.welcome.R;
@@ -16,40 +16,33 @@ import com.stephentuso.welcome.WelcomePage;
 import com.stephentuso.welcome.WelcomeUtils;
 
 /**
- * Created by stephentuso on 1/23/16.
+ * Created by stephentuso on 11/15/15.
+ * A simple fragment that shows an image, a heading, and a description.
  */
-public class ParallaxWelcomeFragment extends Fragment implements WelcomePage.OnChangeListener {
+public class WelcomeBasicFragment extends Fragment implements WelcomePage.OnChangeListener {
 
-    public static final String KEY_LAYOUT_ID = "drawable_id";
+    public static final String KEY_DRAWABLE_ID = "drawable_id";
     public static final String KEY_DESCRIPTION = "description";
     public static final String KEY_TITLE = "title";
-    public static final String KEY_START_FACTOR = "start_factor";
-    public static final String KEY_END_FACTOR = "end_factor";
-    public static final String KEY_PARALLAX_RECURSIVE = "parallax_recursive";
+    public static final String KEY_SHOW_ANIM = "show_anim";
     public static final String KEY_HEADER_TYPEFACE_PATH = "header_typeface";
     public static final String KEY_DESCRIPTION_TYPEFACE_PATH = "description_typeface";
 
-    private FrameLayout frameLayout = null;
+    private ImageView imageView = null;
     private TextView titleView = null;
     private TextView descriptionView = null;
+    private boolean showParallaxAnim = true;
 
-    private float startFactor = 0.2f;
-    private float endFactor = 1.0f;
-    private float parallaxInterval = 0f;
-    private boolean parallaxRecursive = false;
-
-    public static ParallaxWelcomeFragment newInstance(@LayoutRes int layoutId, String title, String description, float startParallaxFactor, float endParallaxFactor,
-                                                      boolean parallaxRecursive, String headerTypefacePath, String descriptionTypefacePath) {
+    public static WelcomeBasicFragment newInstance(@DrawableRes int drawableId, String title, String description, boolean showParallaxAnim,
+                                                   String headerTypefacePath, String descriptionTypefacePath) {
         Bundle args = new Bundle();
-        args.putInt(KEY_LAYOUT_ID, layoutId);
+        args.putInt(KEY_DRAWABLE_ID, drawableId);
         args.putString(KEY_TITLE, title);
         args.putString(KEY_DESCRIPTION, description);
-        args.putFloat(KEY_START_FACTOR, startParallaxFactor);
-        args.putFloat(KEY_END_FACTOR, endParallaxFactor);
-        args.putBoolean(KEY_PARALLAX_RECURSIVE, parallaxRecursive);
+        args.putBoolean(KEY_SHOW_ANIM, showParallaxAnim);
         args.putString(KEY_HEADER_TYPEFACE_PATH, headerTypefacePath);
         args.putString(KEY_DESCRIPTION_TYPEFACE_PATH, descriptionTypefacePath);
-        ParallaxWelcomeFragment fragment = new ParallaxWelcomeFragment();
+        WelcomeBasicFragment fragment = new WelcomeBasicFragment();
         fragment.setArguments(args);
         return fragment;
     }
@@ -57,22 +50,20 @@ public class ParallaxWelcomeFragment extends Fragment implements WelcomePage.OnC
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_parallax, container, false);
+        View view = inflater.inflate(R.layout.fragment_basic, container, false);
 
         Bundle args = getArguments();
 
-        frameLayout = (FrameLayout) view.findViewById(R.id.parallax_frame);
+        imageView = (ImageView) view.findViewById(R.id.image);
         titleView = (TextView) view.findViewById(R.id.title);
         descriptionView = (TextView) view.findViewById(R.id.description);
 
         if (args == null)
             return view;
 
-        startFactor = args.getFloat(KEY_START_FACTOR, startFactor);
-        endFactor = args.getFloat(KEY_END_FACTOR, endFactor);
-        parallaxRecursive = args.getBoolean(KEY_PARALLAX_RECURSIVE, parallaxRecursive);
+        showParallaxAnim = args.getBoolean(KEY_SHOW_ANIM, showParallaxAnim);
 
-        inflater.inflate(args.getInt(KEY_LAYOUT_ID), frameLayout, true);
+        imageView.setImageResource(args.getInt(KEY_DRAWABLE_ID));
 
         if (args.getString(KEY_TITLE) != null)
             titleView.setText(args.getString(KEY_TITLE));
@@ -87,15 +78,9 @@ public class ParallaxWelcomeFragment extends Fragment implements WelcomePage.OnC
     }
 
     @Override
-    public void onStart() {
-        super.onStart();
-        parallaxInterval = (endFactor - startFactor)/(WelcomeUtils.calculateParallaxLayers(frameLayout.getChildAt(0), parallaxRecursive) - 1);
-    }
-
-    @Override
     public void onWelcomeScreenPageScrolled(int pageIndex, float offset, int offsetPixels) {
-        if (Build.VERSION.SDK_INT >= 11 && frameLayout != null) {
-            WelcomeUtils.applyParallaxEffect(frameLayout.getChildAt(0), parallaxRecursive, offsetPixels, startFactor, parallaxInterval);
+        if (showParallaxAnim && Build.VERSION.SDK_INT >= 11 && imageView != null) {
+            imageView.setTranslationX(-offsetPixels * 0.8f);
         }
     }
 
@@ -108,5 +93,4 @@ public class ParallaxWelcomeFragment extends Fragment implements WelcomePage.OnC
     public void onWelcomeScreenPageScrollStateChanged(int pageIndex, int state) {
         //Not used
     }
-
 }

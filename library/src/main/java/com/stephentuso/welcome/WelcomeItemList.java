@@ -6,11 +6,11 @@ import java.util.Arrays;
 /**
  * Created by stephentuso on 11/16/15.
  */
-/*package*/ class WelcomeScreenItemList implements OnWelcomeScreenPageChangeListener {
+/*package*/ class WelcomeItemList implements OnWelcomeScreenPageChangeListener {
 
     private ArrayList<OnWelcomeScreenPageChangeListener> mItems;
 
-    public WelcomeScreenItemList(OnWelcomeScreenPageChangeListener... items) {
+    public WelcomeItemList(OnWelcomeScreenPageChangeListener... items) {
         mItems = new ArrayList<>(Arrays.asList(items));
     }
 

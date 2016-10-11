@@ -5,7 +5,7 @@ import android.view.View;
 /**
  * Created by stephentuso on 11/15/15.
  */
-public class NextButton extends WelcomeScreenViewWrapper {
+public class NextButton extends WelcomeViewWrapper {
 
     private boolean shouldShow = true;
 

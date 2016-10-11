@@ -9,7 +9,7 @@ import android.support.test.InstrumentationRegistry;
 import android.support.test.runner.AndroidJUnit4;
 
 import com.stephentuso.welcome.SharedPreferencesHelper;
-import com.stephentuso.welcome.WelcomeScreenHelper;
+import com.stephentuso.welcome.WelcomeHelper;
 import com.stephentuso.welcome.WelcomeUtils;
 
 import org.junit.After;
@@ -29,7 +29,7 @@ import static org.junit.Assert.assertTrue;
 public class WelcomeScreenHelperAndroidTest {
 
     private Activity activity;
-    private WelcomeScreenHelper helper;
+    private WelcomeHelper helper;
     private Instrumentation instrumentation;
 
     @Before
@@ -44,7 +44,7 @@ public class WelcomeScreenHelperAndroidTest {
 
         activity = instrumentation.waitForMonitor(monitor);
         assertNotNull(activity);
-        helper = new WelcomeScreenHelper(activity, DefaultWelcomeActivity.class);
+        helper = new WelcomeHelper(activity, DefaultWelcomeActivity.class);
     }
 
     @After

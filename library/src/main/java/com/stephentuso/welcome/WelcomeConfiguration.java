@@ -9,10 +9,10 @@ import android.support.annotation.LayoutRes;
 import android.support.annotation.StyleRes;
 import android.support.v4.app.Fragment;
 
-import com.stephentuso.welcome.ui.fragments.BasicWelcomeFragment;
-import com.stephentuso.welcome.ui.fragments.FullScreenParallaxWelcomeFragment;
-import com.stephentuso.welcome.ui.fragments.ParallaxWelcomeFragment;
-import com.stephentuso.welcome.ui.fragments.TitleFragment;
+import com.stephentuso.welcome.ui.fragments.WelcomeBasicFragment;
+import com.stephentuso.welcome.ui.fragments.WelcomeFullScreenParallaxFragment;
+import com.stephentuso.welcome.ui.fragments.WelcomeParallaxFragment;
+import com.stephentuso.welcome.ui.fragments.WelcomeTitleFragment;
 
 /**
  * Created by stephentuso on 11/15/15.
@@ -25,12 +25,12 @@ public class WelcomeConfiguration {
 
     private Builder builder;
 
-    private WelcomeScreenPageList pages;
+    private WelcomePageList pages;
 
     public WelcomeConfiguration(Builder builder) {
         this.builder = builder;
 
-        this.pages = new WelcomeScreenPageList();
+        this.pages = new WelcomePageList();
         pages.addAll(builder.pages);
 
         if (pageCount() == 0) {
@@ -121,7 +121,7 @@ public class WelcomeConfiguration {
     /**
      * @return list of pages
      */
-    public WelcomeScreenPageList getPages() {
+    public WelcomePageList getPages() {
         return pages;
     }
 
@@ -312,7 +312,7 @@ public class WelcomeConfiguration {
 
     public static class Builder {
 
-        protected WelcomeScreenPageList pages = new WelcomeScreenPageList();
+        protected WelcomePageList pages = new WelcomePageList();
         protected boolean canSkip = true;
         protected boolean backButtonSkips = true;
         protected boolean backButtonNavigatesPages = true;
@@ -424,7 +424,7 @@ public class WelcomeConfiguration {
 
         /**
          * Indicate that a done button is going to be provided in a custom fragment.
-         * Use {@link WelcomeScreenFinisher#finish() WelcomeScreenFinisher.finish()} in your button's onClickListener
+         * Use {@link WelcomeFinisher#finish() WelcomeScreenFinisher.finish()} in your button's onClickListener
          * to close the welcome screen correctly.
          *
          * @param useCustomDoneButton Whether or not a done button will be present in the last fragment
@@ -704,7 +704,7 @@ public class WelcomeConfiguration {
             page(new WelcomeFragmentHolder() {
                 @Override
                 public Fragment fragment() {
-                    return BasicWelcomeFragment.newInstance(drawableId, title, description, showParallaxAnim, headerTypefacePath, descriptionTypefacePath);
+                    return WelcomeBasicFragment.newInstance(drawableId, title, description, showParallaxAnim, headerTypefacePath, descriptionTypefacePath);
                 }
             }, colorResId);
             return this;
@@ -761,7 +761,7 @@ public class WelcomeConfiguration {
             page(new WelcomeFragmentHolder() {
                 @Override
                 public Fragment fragment() {
-                    return TitleFragment.newInstance(resId, title, showParallaxAnim, titleTypefacePath);
+                    return WelcomeTitleFragment.newInstance(resId, title, showParallaxAnim, titleTypefacePath);
                 }
             }, colorResId);
             return this;
@@ -836,7 +836,7 @@ public class WelcomeConfiguration {
             page(new WelcomeFragmentHolder() {
                 @Override
                 protected Fragment fragment() {
-                    return ParallaxWelcomeFragment.newInstance(resId, title, description, startParallaxFactor, endParallaxFactor, false, headerTypefacePath, descriptionTypefacePath);
+                    return WelcomeParallaxFragment.newInstance(resId, title, description, startParallaxFactor, endParallaxFactor, false, headerTypefacePath, descriptionTypefacePath);
                 }
             }, colorResId);
             return this;
@@ -884,7 +884,7 @@ public class WelcomeConfiguration {
             page(new WelcomeFragmentHolder() {
                 @Override
                 protected Fragment fragment() {
-                    return FullScreenParallaxWelcomeFragment.newInstance(resId, startParallaxFactor, endParallaxFactor, false);
+                    return WelcomeFullScreenParallaxFragment.newInstance(resId, startParallaxFactor, endParallaxFactor, false);
                 }
             }, colorResId);
             return this;

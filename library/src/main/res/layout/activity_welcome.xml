@@ -9,7 +9,7 @@
     android:fitsSystemWindows="false"
     android:background="@color/transparent">
 
-    <com.stephentuso.welcome.WelcomeScreenBackgroundView
+    <com.stephentuso.welcome.WelcomeBackgroundView
         android:id="@+id/background_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -57,7 +57,7 @@
 
             </FrameLayout>
 
-            <com.stephentuso.welcome.WelcomeScreenViewPagerIndicator
+            <com.stephentuso.welcome.WelcomeViewPagerIndicator
                 android:id="@+id/pager_indicator"
                 android:layout_width="0dp"
                 android:layout_height="20dp"

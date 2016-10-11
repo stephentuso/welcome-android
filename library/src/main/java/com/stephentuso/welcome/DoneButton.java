@@ -6,7 +6,7 @@ import android.widget.TextView;
 /**
  * Created by stephentuso on 11/15/15.
  */
-public class DoneButton extends WelcomeScreenViewWrapper {
+public class DoneButton extends WelcomeViewWrapper {
 
     private boolean shouldShow = true;
 

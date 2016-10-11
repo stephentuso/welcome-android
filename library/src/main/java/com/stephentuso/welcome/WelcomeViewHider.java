@@ -6,7 +6,7 @@ import android.view.View;
 /**
  * Created by stephentuso on 11/16/15.
  */
-public class WelcomeScreenHider implements OnWelcomeScreenPageChangeListener {
+public class WelcomeViewHider implements OnWelcomeScreenPageChangeListener {
 
     private View view;
     private Integer lastPage = null;
@@ -14,7 +14,7 @@ public class WelcomeScreenHider implements OnWelcomeScreenPageChangeListener {
     private OnViewHiddenListener listener = null;
     private boolean enabled = false;
 
-    public WelcomeScreenHider(View viewToHide) {
+    public WelcomeViewHider(View viewToHide) {
         view = viewToHide;
     }
 

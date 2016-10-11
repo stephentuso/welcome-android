@@ -17,10 +17,10 @@ import com.stephentuso.welcome.WelcomeUtils;
 
 /**
  * A simple fragment that shows an image and a title.
- * Use the {@link TitleFragment#newInstance} factory method to
+ * Use the {@link WelcomeTitleFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class TitleFragment extends Fragment implements WelcomePage.OnChangeListener {
+public class WelcomeTitleFragment extends Fragment implements WelcomePage.OnChangeListener {
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_DRAWABLE_ID = "drawable_id";
     private static final String ARG_TITLE = "title";
@@ -40,8 +40,8 @@ public class TitleFragment extends Fragment implements WelcomePage.OnChangeListe
      * @return A new instance of TitleFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static TitleFragment newInstance(@DrawableRes int resId, String title, boolean showParallaxAnim, String typefacePath) {
-        TitleFragment fragment = new TitleFragment();
+    public static WelcomeTitleFragment newInstance(@DrawableRes int resId, String title, boolean showParallaxAnim, String typefacePath) {
+        WelcomeTitleFragment fragment = new WelcomeTitleFragment();
         Bundle args = new Bundle();
         args.putInt(ARG_DRAWABLE_ID, resId);
         args.putString(ARG_TITLE, title);

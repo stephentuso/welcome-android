@@ -6,15 +6,15 @@ import android.support.v7.preference.PreferenceFragmentCompat;
 /**
  * Created by stephentuso on 11/16/15.
  */
-public class PreferenceWelcomeFragment extends PreferenceFragmentCompat {
+public class WelcomePreferenceFragment extends PreferenceFragmentCompat {
 
     public static final String KEY_XML_ID = "preference_xml_id";
 
-    public static PreferenceWelcomeFragment newInstance(int preferencesResId) {
+    public static WelcomePreferenceFragment newInstance(int preferencesResId) {
         Bundle args = new Bundle();
         args.putInt(KEY_XML_ID, preferencesResId);
 
-        PreferenceWelcomeFragment fragment = new PreferenceWelcomeFragment();
+        WelcomePreferenceFragment fragment = new WelcomePreferenceFragment();
         fragment.setArguments(args);
         return fragment;
     }

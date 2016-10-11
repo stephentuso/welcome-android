@@ -8,7 +8,7 @@ import android.os.Bundle;
  * Created by stephentuso on 11/15/15.
  * Class that handles showing a welcome screen
  */
-public class WelcomeScreenHelper {
+public class WelcomeHelper {
 
     public static final int DEFAULT_WELCOME_SCREEN_REQUEST = 1;
 
@@ -22,7 +22,7 @@ public class WelcomeScreenHelper {
      * @param activity An activity
      * @param activityClass Class of your welcome screen. An Activity that extends {@link WelcomeActivity WelcomeActivity}
      */
-    public WelcomeScreenHelper(Activity activity, Class<? extends WelcomeActivity> activityClass) {
+    public WelcomeHelper(Activity activity, Class<? extends WelcomeActivity> activityClass) {
         mActivity = activity;
         mActivityClass = activityClass;
     }

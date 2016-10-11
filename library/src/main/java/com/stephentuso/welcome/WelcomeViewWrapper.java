@@ -8,14 +8,14 @@ import android.view.View;
 /**
  * Created by stephentuso on 11/15/15.
  */
-/*package*/ abstract class WelcomeScreenViewWrapper implements OnWelcomeScreenPageChangeListener {
+/*package*/ abstract class WelcomeViewWrapper implements OnWelcomeScreenPageChangeListener {
 
     private View mView;
     private int mFirstPageIndex = 0;
     private int mLastPageIndex = 0;
     private boolean mAnimate = true;
 
-    /*package*/ WelcomeScreenViewWrapper(View view) {
+    /*package*/ WelcomeViewWrapper(View view) {
         mView = view;
     }
 

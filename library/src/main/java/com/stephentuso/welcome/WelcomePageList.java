@@ -9,9 +9,9 @@ import java.util.Collections;
 /**
  * Created by stephentuso on 11/15/15.
  */
-public class WelcomeScreenPageList extends ArrayList<WelcomePage> implements OnWelcomeScreenPageChangeListener {
+public class WelcomePageList extends ArrayList<WelcomePage> implements OnWelcomeScreenPageChangeListener {
 
-    public WelcomeScreenPageList(WelcomePage... pages) {
+    public WelcomePageList(WelcomePage... pages) {
         super(Arrays.asList(pages));
     }
 
