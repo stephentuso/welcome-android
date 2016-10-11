@@ -2,9 +2,9 @@ package com.stephentuso.welcomeexample;
 
 import android.support.v4.app.Fragment;
 
+import com.stephentuso.welcome.WelcomeActivity;
 import com.stephentuso.welcome.WelcomeConfiguration;
-import com.stephentuso.welcome.ui.WelcomeActivity;
-import com.stephentuso.welcome.ui.WelcomeFragmentHolder;
+import com.stephentuso.welcome.WelcomeFragmentHolder;
 import com.stephentuso.welcomeexample.fragment.DoneFragment;
 import com.stephentuso.welcomeexample.fragment.ExampleFragment;
 

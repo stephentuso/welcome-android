@@ -11,8 +11,8 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.stephentuso.welcome.WelcomeActivity;
 import com.stephentuso.welcome.WelcomeScreenHelper;
-import com.stephentuso.welcome.ui.WelcomeActivity;
 
 import java.util.ArrayList;
 import java.util.List;

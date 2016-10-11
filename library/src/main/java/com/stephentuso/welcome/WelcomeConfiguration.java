@@ -9,15 +9,10 @@ import android.support.annotation.LayoutRes;
 import android.support.annotation.StyleRes;
 import android.support.v4.app.Fragment;
 
-import com.stephentuso.welcome.ui.BackgroundColor;
-import com.stephentuso.welcome.ui.WelcomeFragmentHolder;
-import com.stephentuso.welcome.ui.WelcomeScreenPage;
-import com.stephentuso.welcome.ui.WelcomeScreenPageList;
 import com.stephentuso.welcome.ui.fragments.BasicWelcomeFragment;
 import com.stephentuso.welcome.ui.fragments.FullScreenParallaxWelcomeFragment;
 import com.stephentuso.welcome.ui.fragments.ParallaxWelcomeFragment;
 import com.stephentuso.welcome.ui.fragments.TitleFragment;
-import com.stephentuso.welcome.util.ColorHelper;
 
 /**
  * Created by stephentuso on 11/15/15.
@@ -43,12 +38,14 @@ public class WelcomeConfiguration {
         }
 
         if (getSwipeToDismiss()) {
-            pages.add(new WelcomeScreenPage(new WelcomeFragmentHolder() {
+            FragmentWelcomePage blankPage = new FragmentWelcomePage(new WelcomeFragmentHolder() {
                 @Override
-                public Fragment fragment() {
+                protected Fragment fragment() {
                     return new Fragment();
                 }
-            }, pages.getBackgroundColor(pageCount() - 1)));
+            });
+            blankPage.setBackgroundColor(pages.getBackgroundColor(pageCount() - 1));
+            pages.add(blankPage);
         }
 
         if (isRtl()) {
@@ -427,7 +424,7 @@ public class WelcomeConfiguration {
 
         /**
          * Indicate that a done button is going to be provided in a custom fragment.
-         * Use {@link com.stephentuso.welcome.ui.WelcomeScreenFinisher#finish() WelcomeScreenFinisher.finish()} in your button's onClickListener
+         * Use {@link WelcomeScreenFinisher#finish() WelcomeScreenFinisher.finish()} in your button's onClickListener
          * to close the welcome screen correctly.
          *
          * @param useCustomDoneButton Whether or not a done button will be present in the last fragment
@@ -588,8 +585,7 @@ public class WelcomeConfiguration {
          * @return this WelcomeScreenBuilder object to allow method calls to be chained
          */
         public Builder page(WelcomeFragmentHolder fragmentHolder) {
-            page(fragmentHolder, 0);
-            return this;
+            return page(fragmentHolder, 0);
         }
 
         /**
@@ -601,8 +597,7 @@ public class WelcomeConfiguration {
          * @return this Builder object to allow method calls to be chained
          */
         public Builder page(WelcomeFragmentHolder fragmentHolder, @ColorRes int resId) {
-            page(new WelcomeScreenPage(fragmentHolder, new BackgroundColor(getColor(resId), defaultBackgroundColor.value())));
-            return this;
+            return page(new FragmentWelcomePage(fragmentHolder), resId);
         }
 
         /**
@@ -614,13 +609,45 @@ public class WelcomeConfiguration {
          * @return this Builder object to allow method calls to be chained
          */
         public Builder page(WelcomeFragmentHolder fragmentHolder, BackgroundColor backgroundColor) {
-            page(new WelcomeScreenPage(fragmentHolder, new BackgroundColor(backgroundColor.value(), defaultBackgroundColor.value())));
-            return this;
+            return page(new FragmentWelcomePage(fragmentHolder), backgroundColor);
         }
 
-        private void page(WelcomeScreenPage page) {
+        /**
+         * Adds a page, uses the default background color
+         *
+         * @param page The page to add
+         *
+         * @return this Builder object to allow method calls to be chained
+         */
+        public Builder page(WelcomePage page) {
+            return page(page, defaultBackgroundColor);
+        }
+
+        /**
+         * Adds a page
+         *
+         * @param page The page to add
+         * @param colorResId The background color of the page
+         *
+         * @return this Builder object to allow method calls to be chained
+         */
+        public Builder page(WelcomePage page, @ColorRes int colorResId) {
+            return page(page, new BackgroundColor(getColor(colorResId), defaultBackgroundColor.value()));
+        }
+
+        /**
+         * Adds a page
+         *
+         * @param page The page to add
+         * @param backgroundColor The background color of the page
+         *
+         * @return this Builder object to allow method calls to be chained
+         */
+        public Builder page(WelcomePage page, BackgroundColor backgroundColor) {
             page.setIndex(pages.size());
+            page.setBackgroundColor(backgroundColor);
             pages.add(page);
+            return this;
         }
 
         /**

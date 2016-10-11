@@ -70,7 +70,7 @@ compile 'com.stephentuso:welcome:0.7.3'
 If you use proguard, add the following to your proguard rules
 
 ```
--keepclassmembers class * extends com.stephentuso.welcome.ui.WelcomeActivity {
+-keepclassmembers class * extends com.stephentuso.welcome.WelcomeActivity {
     public static java.lang.String welcomeKey();
 }
 ```

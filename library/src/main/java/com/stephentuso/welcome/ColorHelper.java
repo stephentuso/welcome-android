@@ -1,4 +1,4 @@
-package com.stephentuso.welcome.util;
+package com.stephentuso.welcome;
 
 import android.content.Context;
 import android.support.annotation.AttrRes;

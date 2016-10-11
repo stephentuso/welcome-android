@@ -8,9 +8,9 @@ import android.os.Bundle;
 import android.support.test.InstrumentationRegistry;
 import android.support.test.runner.AndroidJUnit4;
 
+import com.stephentuso.welcome.SharedPreferencesHelper;
 import com.stephentuso.welcome.WelcomeScreenHelper;
-import com.stephentuso.welcome.util.SharedPreferencesHelper;
-import com.stephentuso.welcome.util.WelcomeUtils;
+import com.stephentuso.welcome.WelcomeUtils;
 
 import org.junit.After;
 import org.junit.Before;

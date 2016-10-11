@@ -16,6 +16,6 @@
 #   public *;
 #}
 
--keepclassmembers class * extends com.stephentuso.welcome.ui.WelcomeActivity {
+-keepclassmembers class * extends com.stephentuso.welcome.WelcomeActivity {
     public static java.lang.String welcomeKey();
 }

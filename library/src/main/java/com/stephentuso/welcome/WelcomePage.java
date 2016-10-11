@@ -1,19 +1,17 @@
-package com.stephentuso.welcome.ui;
+package com.stephentuso.welcome;
 
 import android.support.v4.app.Fragment;
-
-import com.stephentuso.welcome.WelcomeConfiguration;
 
 /**
  * Created by stephentuso on 11/15/15.
  */
-public class WelcomeScreenPage implements OnWelcomeScreenPageChangeListener {
+public abstract class WelcomePage implements OnWelcomeScreenPageChangeListener {
 
-    private final WelcomeFragmentHolder fragmentHolder;
-    private final BackgroundColor backgroundColor;
-    private int index = -2;
-    private boolean isRtl = false;
-    private int totalPages = 0;
+    private Integer backgroundColorResId = null;
+    private BackgroundColor backgroundColor = null;
+    protected int index = -2;
+    protected boolean isRtl = false;
+    protected int totalPages = 0;
 
     /**
      * Interface to be implemented by fragments that are part of a WelcomeActivity
@@ -44,21 +42,20 @@ public class WelcomeScreenPage implements OnWelcomeScreenPageChangeListener {
         void onWelcomeScreenPageScrollStateChanged(int pageIndex, int state);
     }
 
-    public WelcomeScreenPage(WelcomeFragmentHolder fragmentHolder, BackgroundColor backgroundColor) {
-        this.fragmentHolder = fragmentHolder;
-        this.backgroundColor = backgroundColor;
-    }
-
     public void setIndex(int index) {
         this.index = index;
     }
 
-    public Fragment getFragment() {
-        return fragmentHolder.getFragment();
+    public abstract Fragment getFragment();
+
+    public abstract Fragment createFragment();
+
+    /* package */ boolean backgroundColorIsSet() {
+        return backgroundColorResId != null || backgroundColor != null;
     }
 
-    public Fragment createFragment() {
-        return fragmentHolder.createFragment();
+    /* package */ void setBackgroundColor(BackgroundColor backgroundColor) {
+        this.backgroundColor = backgroundColor;
     }
 
     public BackgroundColor getBackgroundColor() {

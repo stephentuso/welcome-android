@@ -1,4 +1,4 @@
-package com.stephentuso.welcome.ui.view;
+package com.stephentuso.welcome;
 
 import android.content.Context;
 import android.content.res.TypedArray;
@@ -8,8 +8,6 @@ import android.graphics.Point;
 import android.support.v4.view.ViewPager;
 import android.util.AttributeSet;
 import android.view.View;
-
-import com.stephentuso.welcome.R;
 
 /**
  * Created by stephentuso on 11/16/15.

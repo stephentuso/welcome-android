@@ -8,15 +8,15 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.stephentuso.welcome.ui.WelcomeScreenFinisher;
-import com.stephentuso.welcome.ui.WelcomeScreenPage;
-import com.stephentuso.welcome.util.WelcomeUtils;
+import com.stephentuso.welcome.WelcomePage;
+import com.stephentuso.welcome.WelcomeScreenFinisher;
+import com.stephentuso.welcome.WelcomeUtils;
 import com.stephentuso.welcomeexample.R;
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class DoneFragment extends Fragment implements WelcomeScreenPage.OnChangeListener {
+public class DoneFragment extends Fragment implements WelcomePage.OnChangeListener {
 
     private ViewGroup rootLayout;
 

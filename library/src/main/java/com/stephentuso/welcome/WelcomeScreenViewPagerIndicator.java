@@ -1,15 +1,12 @@
-package com.stephentuso.welcome.ui.view;
+package com.stephentuso.welcome;
 
 import android.content.Context;
 import android.util.AttributeSet;
 
-import com.stephentuso.welcome.WelcomeConfiguration;
-import com.stephentuso.welcome.ui.OnWelcomeScreenPageChangeListener;
-
 /**
  * Created by stephentuso on 11/16/15.
- * An extension of {@link com.stephentuso.welcome.ui.view.SimpleViewPagerIndicator SimpleViewPagerIndicator} that implements
- * the setup method of {@link com.stephentuso.welcome.ui.OnWelcomeScreenPageChangeListener OnWelcomeScreenPageChangeListener}
+ * An extension of {@link SimpleViewPagerIndicator SimpleViewPagerIndicator} that implements
+ * the setup method of {@link OnWelcomeScreenPageChangeListener OnWelcomeScreenPageChangeListener}
  */
 public class WelcomeScreenViewPagerIndicator extends SimpleViewPagerIndicator implements OnWelcomeScreenPageChangeListener {
 

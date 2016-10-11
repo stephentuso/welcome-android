@@ -1,4 +1,4 @@
-package com.stephentuso.welcome.ui.view;
+package com.stephentuso.welcome;
 
 import android.content.Context;
 import android.graphics.Canvas;
@@ -6,8 +6,6 @@ import android.graphics.Paint;
 import android.graphics.Rect;
 import android.util.AttributeSet;
 import android.view.View;
-
-import com.stephentuso.welcome.ui.BackgroundColor;
 
 /**
  * Created by stephentuso on 11/16/15.

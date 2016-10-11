@@ -12,14 +12,14 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.stephentuso.welcome.R;
-import com.stephentuso.welcome.ui.WelcomeScreenPage;
-import com.stephentuso.welcome.util.WelcomeUtils;
+import com.stephentuso.welcome.WelcomePage;
+import com.stephentuso.welcome.WelcomeUtils;
 
 /**
  * Created by stephentuso on 11/15/15.
  * A simple fragment that shows an image, a heading, and a description.
  */
-public class BasicWelcomeFragment extends Fragment implements WelcomeScreenPage.OnChangeListener {
+public class BasicWelcomeFragment extends Fragment implements WelcomePage.OnChangeListener {
 
     public static final String KEY_DRAWABLE_ID = "drawable_id";
     public static final String KEY_DESCRIPTION = "description";

@@ -1,9 +1,7 @@
-package com.stephentuso.welcome.ui;
+package com.stephentuso.welcome;
 
 import android.os.Build;
 import android.view.View;
-
-import com.stephentuso.welcome.WelcomeConfiguration;
 
 /**
  * Created by stephentuso on 11/16/15.

@@ -8,9 +8,6 @@ import android.os.Build;
 import android.support.v4.app.Fragment;
 import android.util.TypedValue;
 
-import com.stephentuso.welcome.ui.BackgroundColor;
-import com.stephentuso.welcome.ui.WelcomeFragmentHolder;
-
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -42,6 +39,8 @@ public class WelcomeConfigurationTest {
     private WelcomeConfiguration.Builder builder2; //Will have no pages
 
     private static int DEFAULT_COLOR = 0x1e88e5;
+
+    private static final WelcomeFragmentHolder nullPage = null;
 
     @Before
     public void setUp() {
@@ -229,7 +228,7 @@ public class WelcomeConfigurationTest {
 
     @Test
     public void testPageIndexFunctions() {
-        builder2.page(null).page(null).page(null).swipeToDismiss(false);
+        builder2.page(nullPage).page(nullPage).page(nullPage).swipeToDismiss(false);
 
 
         //SwipeToDismiss false
@@ -308,7 +307,6 @@ public class WelcomeConfigurationTest {
         assertEquals(3, builder2.build().viewablePageCount());
 
         builder2.swipeToDismiss(true);
-        System.out.print(builder2.build().getSwipeToDismiss());
         assertEquals(4, builder2.build().pageCount());
         assertEquals(4, builder2.build().getPages().size());
 
@@ -346,14 +344,14 @@ public class WelcomeConfigurationTest {
     @Test
     public void testDefaultBackgroundColor() {
         builder2.defaultBackgroundColor(R.color.white)
-                .page(null, 0);
+                .page(nullPage, 0);
 
         WelcomeConfiguration config = builder2.build();
         assertEquals(Color.WHITE, config.getDefaultBackgroundColor().value());
         assertEquals(Color.WHITE, config.getBackgroundColors()[0].value());
 
         builder2.defaultBackgroundColor(new BackgroundColor(Color.WHITE))
-                .page(null, 0);
+                .page(nullPage, 0);
 
         config = builder2.build();
         assertEquals(Color.WHITE, config.getDefaultBackgroundColor().value());
@@ -370,7 +368,7 @@ public class WelcomeConfigurationTest {
         };
 
         for (int color : colors) {
-            builder2.page(null, new BackgroundColor(color));
+            builder2.page(nullPage, new BackgroundColor(color));
         }
 
 
@@ -418,7 +416,6 @@ public class WelcomeConfigurationTest {
             if (j == colors.length) {
                 j--;
             }
-            System.out.print(j);
             assertEquals(colors[j], reversedBg[i].value());
         }
 

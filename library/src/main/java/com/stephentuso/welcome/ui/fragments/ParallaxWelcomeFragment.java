@@ -12,13 +12,13 @@ import android.widget.FrameLayout;
 import android.widget.TextView;
 
 import com.stephentuso.welcome.R;
-import com.stephentuso.welcome.ui.WelcomeScreenPage;
-import com.stephentuso.welcome.util.WelcomeUtils;
+import com.stephentuso.welcome.WelcomePage;
+import com.stephentuso.welcome.WelcomeUtils;
 
 /**
  * Created by stephentuso on 1/23/16.
  */
-public class ParallaxWelcomeFragment extends Fragment implements WelcomeScreenPage.OnChangeListener {
+public class ParallaxWelcomeFragment extends Fragment implements WelcomePage.OnChangeListener {
 
     public static final String KEY_LAYOUT_ID = "drawable_id";
     public static final String KEY_DESCRIPTION = "description";

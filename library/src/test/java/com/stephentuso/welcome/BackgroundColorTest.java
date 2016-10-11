@@ -2,8 +2,6 @@ package com.stephentuso.welcome;
 
 import android.graphics.Color;
 
-import com.stephentuso.welcome.ui.BackgroundColor;
-
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;

@@ -12,15 +12,15 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.stephentuso.welcome.R;
-import com.stephentuso.welcome.ui.WelcomeScreenPage;
-import com.stephentuso.welcome.util.WelcomeUtils;
+import com.stephentuso.welcome.WelcomePage;
+import com.stephentuso.welcome.WelcomeUtils;
 
 /**
  * A simple fragment that shows an image and a title.
  * Use the {@link TitleFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class TitleFragment extends Fragment implements WelcomeScreenPage.OnChangeListener {
+public class TitleFragment extends Fragment implements WelcomePage.OnChangeListener {
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_DRAWABLE_ID = "drawable_id";
     private static final String ARG_TITLE = "title";

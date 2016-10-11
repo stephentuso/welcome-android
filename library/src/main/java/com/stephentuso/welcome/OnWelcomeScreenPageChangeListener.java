@@ -1,8 +1,6 @@
-package com.stephentuso.welcome.ui;
+package com.stephentuso.welcome;
 
 import android.support.v4.view.ViewPager;
-
-import com.stephentuso.welcome.WelcomeConfiguration;
 
 /**
  * Created by stephentuso on 11/16/15.

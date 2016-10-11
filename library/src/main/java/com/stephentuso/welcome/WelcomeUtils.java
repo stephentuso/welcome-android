@@ -1,4 +1,4 @@
-package com.stephentuso.welcome.util;
+package com.stephentuso.welcome;
 
 import android.content.Context;
 import android.graphics.Typeface;
@@ -7,8 +7,6 @@ import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-
-import com.stephentuso.welcome.ui.WelcomeActivity;
 
 /**
  * Created by stephentuso on 12/16/15.

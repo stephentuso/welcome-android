@@ -1,8 +1,5 @@
 package com.stephentuso.welcome;
 
-import com.stephentuso.welcome.ui.WelcomeActivity;
-import com.stephentuso.welcome.util.WelcomeUtils;
-
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;

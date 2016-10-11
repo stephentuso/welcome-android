@@ -1,4 +1,4 @@
-package com.stephentuso.welcome.ui;
+package com.stephentuso.welcome;
 
 import android.support.annotation.ColorInt;
 import android.support.annotation.Nullable;

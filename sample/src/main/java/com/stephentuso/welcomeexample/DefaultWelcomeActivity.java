@@ -1,7 +1,7 @@
 package com.stephentuso.welcomeexample;
 
+import com.stephentuso.welcome.WelcomeActivity;
 import com.stephentuso.welcome.WelcomeConfiguration;
-import com.stephentuso.welcome.ui.WelcomeActivity;
 
 /**
  * Created by stephentuso on 10/5/16.

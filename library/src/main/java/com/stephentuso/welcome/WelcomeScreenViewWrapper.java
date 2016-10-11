@@ -1,11 +1,9 @@
-package com.stephentuso.welcome.ui;
+package com.stephentuso.welcome;
 
 import android.os.Build;
 import android.support.v4.view.ViewCompat;
 import android.support.v4.view.ViewPropertyAnimatorListener;
 import android.view.View;
-
-import com.stephentuso.welcome.WelcomeConfiguration;
 
 /**
  * Created by stephentuso on 11/15/15.

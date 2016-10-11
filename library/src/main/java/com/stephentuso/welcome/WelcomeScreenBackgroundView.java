@@ -1,10 +1,7 @@
-package com.stephentuso.welcome.ui.view;
+package com.stephentuso.welcome;
 
 import android.content.Context;
 import android.util.AttributeSet;
-
-import com.stephentuso.welcome.WelcomeConfiguration;
-import com.stephentuso.welcome.ui.OnWelcomeScreenPageChangeListener;
 
 /**
  * Created by stephentuso on 11/16/15.

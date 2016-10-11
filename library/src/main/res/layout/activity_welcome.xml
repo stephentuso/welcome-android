@@ -3,13 +3,13 @@
     android:id="@+id/root"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context="com.stephentuso.welcome.ui.WelcomeActivity"
+    tools:context="com.stephentuso.welcome.WelcomeActivity"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="false"
     android:background="@color/transparent">
 
-    <com.stephentuso.welcome.ui.view.WelcomeScreenBackgroundView
+    <com.stephentuso.welcome.WelcomeScreenBackgroundView
         android:id="@+id/background_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -57,7 +57,7 @@
 
             </FrameLayout>
 
-            <com.stephentuso.welcome.ui.view.WelcomeScreenViewPagerIndicator
+            <com.stephentuso.welcome.WelcomeScreenViewPagerIndicator
                 android:id="@+id/pager_indicator"
                 android:layout_width="0dp"
                 android:layout_height="20dp"

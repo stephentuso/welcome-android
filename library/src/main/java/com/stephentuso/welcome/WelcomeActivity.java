@@ -1,4 +1,4 @@
-package com.stephentuso.welcome.ui;
+package com.stephentuso.welcome;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -11,13 +11,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.app.AppCompatDelegate;
 import android.view.MenuItem;
 import android.view.View;
-
-import com.stephentuso.welcome.R;
-import com.stephentuso.welcome.WelcomeConfiguration;
-import com.stephentuso.welcome.ui.view.WelcomeScreenBackgroundView;
-import com.stephentuso.welcome.ui.view.WelcomeScreenViewPagerIndicator;
-import com.stephentuso.welcome.util.SharedPreferencesHelper;
-import com.stephentuso.welcome.util.WelcomeUtils;
 
 public abstract class WelcomeActivity extends AppCompatActivity {
 
@@ -101,9 +94,9 @@ public abstract class WelcomeActivity extends AppCompatActivity {
         });
 
         mItems = new WelcomeScreenItemList(background, indicator, skip, prev, next, done, hider, mConfiguration.getPages());
+        mItems.setup(mConfiguration);
         mViewPager.addOnPageChangeListener(mItems);
         mViewPager.setCurrentItem(mConfiguration.firstPageIndex());
-        mItems.setup(mConfiguration);
         mItems.onPageSelected(mViewPager.getCurrentItem());
     }
 
