@@ -43,11 +43,3 @@ dependencies {
 }
 
 apply from: '../gradle/bintray.gradle'
-/*
-task generatePublicXml(type: Exec) {
-    workingDir 'src/main/res-public'
-    commandLine 'bash', '-c', 'export PATH="$PATH:/usr/local/bin"; pubxml'
-    ignoreExitValue true
-}
-preBuild.dependsOn generatePublicXml
-*/
