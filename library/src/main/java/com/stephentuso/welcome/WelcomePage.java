@@ -42,7 +42,7 @@ public abstract class WelcomePage implements OnWelcomeScreenPageChangeListener {
         void onWelcomeScreenPageScrollStateChanged(int pageIndex, int state);
     }
 
-    public void setIndex(int index) {
+    /* package */ void setIndex(int index) {
         this.index = index;
     }
 

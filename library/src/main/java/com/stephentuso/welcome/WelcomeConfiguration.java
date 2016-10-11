@@ -4,15 +4,12 @@ import android.content.Context;
 import android.os.Build;
 import android.support.annotation.AnimRes;
 import android.support.annotation.ColorRes;
-import android.support.annotation.DrawableRes;
 import android.support.annotation.LayoutRes;
 import android.support.annotation.StyleRes;
 import android.support.v4.app.Fragment;
 
-import com.stephentuso.welcome.ui.fragments.WelcomeBasicFragment;
 import com.stephentuso.welcome.ui.fragments.WelcomeFullScreenParallaxFragment;
 import com.stephentuso.welcome.ui.fragments.WelcomeParallaxFragment;
-import com.stephentuso.welcome.ui.fragments.WelcomeTitleFragment;
 
 /**
  * Created by stephentuso on 11/15/15.
@@ -647,123 +644,6 @@ public class WelcomeConfiguration {
             page.setIndex(pages.size());
             page.setBackgroundColor(backgroundColor);
             pages.add(page);
-            return this;
-        }
-
-        /**
-         * Adds a page with a large image, heading, and description, uses the default background color
-         *
-         * @param drawableId The drawable resource id to use for the image
-         * @param title Text for the header TextView
-         * @param description Text for the description TextView
-         * @return this Builder object to allow method calls to be chained
-         */
-        public Builder basicPage(@DrawableRes int drawableId, String title, String description) {
-            return basicPage(drawableId, title, description, 0);
-        }
-
-        /**
-         * Adds a page with a large image, heading, and description
-         *
-         * @param drawableId Drawable resource id to use for the image
-         * @param title Text for the header TextView
-         * @param description Text for the description TextView
-         * @param colorResId Color resource id to be used as the background color
-         * @return this Builder object to allow method calls to be chained
-         */
-        public Builder basicPage(@DrawableRes final int drawableId, final String title, final String description, @ColorRes int colorResId) {
-            return basicPage(drawableId, title, description, colorResId, true);
-        }
-
-        /**
-         * Adds a page with a large image, heading, and description
-         *
-         * @param drawableId Drawable resource id to use for the image
-         * @param title Text for the header TextView
-         * @param description Text for the description TextView
-         * @param colorResId Color resource id to be used as the background color
-         * @param showParallaxAnim Whether or not to show a parallax animation as the page is scrolled
-         * @return this Builder object to allow method calls to be chained
-         */
-        public Builder basicPage(@DrawableRes final int drawableId, final String title, final String description, @ColorRes int colorResId, final boolean showParallaxAnim) {
-            return basicPage(drawableId, title, description, colorResId, showParallaxAnim, defaultHeaderTypefacePath, defaultDescriptionTypefacePath);
-        }
-
-        /**
-         * Adds a page with a large image, heading, and description
-         *
-         * @param drawableId Drawable resource id to use for the image
-         * @param title Text for the header TextView
-         * @param description Text for the description TextView
-         * @param colorResId Color resource id to be used as the background color
-         * @param showParallaxAnim Whether or not to show a parallax animation as the page is scrolled
-         * @return this Builder object to allow method calls to be chained
-         */
-        public Builder basicPage(@DrawableRes final int drawableId, final String title, final String description, @ColorRes int colorResId,
-                                              final boolean showParallaxAnim, final String headerTypefacePath, final String descriptionTypefacePath) {
-            page(new WelcomeFragmentHolder() {
-                @Override
-                public Fragment fragment() {
-                    return WelcomeBasicFragment.newInstance(drawableId, title, description, showParallaxAnim, headerTypefacePath, descriptionTypefacePath);
-                }
-            }, colorResId);
-            return this;
-        }
-
-        /**
-         * Adds a page with a large image and a title, uses the default background color
-         *
-         * @param resId The drawable resource id of an image
-         * @param title Text for the title TextView
-         * @return this Builder object to allow method calls to be chained
-         */
-        public Builder titlePage(@DrawableRes int resId, String title) {
-            return titlePage(resId, title, 0);
-        }
-
-        /**
-         * Adds a page with a large image and a title
-         *
-         * @param resId The drawable resource id of an image
-         * @param title Text for the title TextView
-         * @param colorResId Color resource id to be used as the background color
-         * @return this Builder object to allow method calls to be chained
-         */
-        public Builder titlePage(@DrawableRes final int resId, final String title, @ColorRes int colorResId) {
-            return titlePage(resId, title, colorResId, true);
-        }
-
-        /**
-         * Adds a page with a large image and a title
-         *
-         * @param resId The drawable resource id of an image
-         * @param title Text for the title TextView
-         * @param colorResId Color resource id to be used as the background color
-         * @param showParallaxAnim Whether or not to show a parallax animation as the page is scrolled
-         * @return this Builder object to allow method calls to be chained
-         */
-        public Builder titlePage(@DrawableRes final int resId, final String title, @ColorRes int colorResId, final boolean showParallaxAnim) {
-            return titlePage(resId, title, colorResId, showParallaxAnim, defaultTitleTypefacePath);
-        }
-
-        /**
-         * Adds a page with a large image and a title
-         *
-         * @param resId The drawable resource id of an image
-         * @param title Text for the title TextView
-         * @param colorResId Color resource id to be used as the background color
-         * @param showParallaxAnim Whether or not to show a parallax animation as the page is scrolled
-         * @param titleTypefacePath The path to a typeface in assets to be used for the title
-         * @return this Builder object to allow method calls to be chained
-         */
-        public Builder titlePage(@DrawableRes final int resId, final String title, @ColorRes int colorResId, final boolean showParallaxAnim,
-                                              final String titleTypefacePath) {
-            page(new WelcomeFragmentHolder() {
-                @Override
-                public Fragment fragment() {
-                    return WelcomeTitleFragment.newInstance(resId, title, showParallaxAnim, titleTypefacePath);
-                }
-            }, colorResId);
             return this;
         }
 

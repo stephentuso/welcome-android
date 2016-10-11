@@ -1,5 +1,7 @@
 package com.stephentuso.welcomeexample;
 
+import com.stephentuso.welcome.BasicPage;
+import com.stephentuso.welcome.TitlePage;
 import com.stephentuso.welcome.WelcomeActivity;
 import com.stephentuso.welcome.WelcomeConfiguration;
 
@@ -15,8 +17,8 @@ public class LightWelcomeActivity extends WelcomeActivity {
                 .defaultBackgroundColor(R.color.white)
                 .defaultTitleTypefacePath("Roboto-Bold.ttf")
                 .defaultHeaderTypefacePath("Roboto-Bold.ttf")
-                .titlePage(R.drawable.ic_style_blue, "Light Theme")
-                .basicPage(R.drawable.ic_brush_blue, "Easy styling", "All colors can be customized with styles")
+                .page(new TitlePage(R.drawable.ic_style_blue, "Light Theme"))
+                .page(new BasicPage(R.drawable.ic_brush_blue, "Easy styling", "All colors can be customized with styles"))
                 .swipeToDismiss(true)
                 .exitAnimation(android.R.anim.fade_out)
                 .build();
