@@ -4,12 +4,8 @@ import android.content.Context;
 import android.os.Build;
 import android.support.annotation.AnimRes;
 import android.support.annotation.ColorRes;
-import android.support.annotation.LayoutRes;
 import android.support.annotation.StyleRes;
 import android.support.v4.app.Fragment;
-
-import com.stephentuso.welcome.ui.fragments.WelcomeFullScreenParallaxFragment;
-import com.stephentuso.welcome.ui.fragments.WelcomeParallaxFragment;
 
 /**
  * Created by stephentuso on 11/15/15.
@@ -644,129 +640,6 @@ public class WelcomeConfiguration {
             page.setIndex(pages.size());
             page.setBackgroundColor(backgroundColor);
             pages.add(page);
-            return this;
-        }
-
-        /**
-         * Adds a page with a header and description that applies a parallax effect to the supplied layout.
-         * The speed at which the children are moved is determined by their location in the layout,
-         * the first will move the slowest and the last will move the fastest.
-         *
-         * @param resId The layout resource id to apply the parallax effect to
-         * @param title Text for the header TextView
-         * @param description Text for the description TextView
-         * @return this Builder object to allow method calls to be chained
-         */
-        public Builder parallaxPage(@LayoutRes final int resId, final String title, final String description) {
-            return parallaxPage(resId, title, description, 0);
-        }
-
-        /**
-         * Adds a page with a header and description that applies a parallax effect to the supplied layout.
-         * The speed at which the children are moved is determined by their location in the layout,
-         * the first will move the slowest and the last will move the fastest.
-         *
-         * @param resId The layout resource id to apply the parallax effect to
-         * @param title Text for the header TextView
-         * @param description Text for the description TextView
-         * @param colorResId Color resource id to be used as the background color
-         * @return this Builder object to allow method calls to be chained
-         */
-        public Builder parallaxPage(@LayoutRes final int resId, final String title, final String description, @ColorRes int colorResId) {
-            return parallaxPage(resId, title, description, colorResId, 0.2f, 1.0f);
-        }
-
-        /**
-         * Adds a page with a header and description that applies a parallax effect to the supplied layout.
-         * The speed at which the children are moved is determined by their location in the layout,
-         * the first will move the slowest and the last will move the fastest.
-         *
-         * @param resId The layout resource id to apply the parallax effect to
-         * @param title Text for the header TextView
-         * @param description Text for the description TextView
-         * @param colorResId Color resource id to be used as the background color
-         * @param startParallaxFactor The speed at which the first child should move. Negative values for slower than normal, positive for faster. The default value is 0.2.
-         *                            A child with a factor of -1.0 will stay completely still, a child with a factor of 1.0 will move twice as fast.
-         * @param endParallaxFactor The speed at which the last child should move. Negative values for slower than normal, positive for faster. The default value is 1.0.
-         * @return this Builder object to allow method calls to be chained
-         */
-        public Builder parallaxPage(@LayoutRes final int resId, final String title, final String description, @ColorRes int colorResId,
-                                                 final float startParallaxFactor, final float endParallaxFactor) {
-            return parallaxPage(resId, title, description, colorResId, startParallaxFactor, endParallaxFactor, defaultHeaderTypefacePath, defaultDescriptionTypefacePath);
-        }
-
-        /**
-         * Adds a page with a header and description that applies a parallax effect to the supplied layout.
-         * The speed at which the children are moved is determined by their location in the layout,
-         * the first will move the slowest and the last will move the fastest.
-         *
-         * @param resId The layout resource id to apply the parallax effect to
-         * @param title Text for the header TextView
-         * @param description Text for the description TextView
-         * @param colorResId Color resource id to be used as the background color
-         * @param startParallaxFactor The speed at which the first child should move. Negative values for slower than normal, positive for faster. The default value is 0.2.
-         *                            A child with a factor of -1.0 will stay completely still, a child with a factor of 1.0 will move twice as fast.
-         * @param endParallaxFactor The speed at which the last child should move. Negative values for slower than normal, positive for faster. The default value is 1.0.
-         * @param headerTypefacePath The path to a typeface in assets to be used for the header
-         * @param descriptionTypefacePath The path to a typeface in assets to be used for the description
-         * @return this Builder object to allow method calls to be chained
-         */
-        public Builder parallaxPage(@LayoutRes final int resId, final String title, final String description, @ColorRes int colorResId,
-                                                 final float startParallaxFactor, final float endParallaxFactor, final String headerTypefacePath, final String descriptionTypefacePath) {
-            page(new WelcomeFragmentHolder() {
-                @Override
-                protected Fragment fragment() {
-                    return WelcomeParallaxFragment.newInstance(resId, title, description, startParallaxFactor, endParallaxFactor, false, headerTypefacePath, descriptionTypefacePath);
-                }
-            }, colorResId);
-            return this;
-        }
-
-        /**
-         * Adds a page that applies a parallax effect to the supplied layout.
-         * The speed at which the children are moved is determined by their location in the layout,
-         * the first will move the slowest and the last will move the fastest.
-         * The default background color is used.
-         *
-         * @param resId The layout resource id to apply the parallax effect to
-         * @return this Builder object to allow method calls to be chained
-         */
-        public Builder fullScreenParallaxPage(@LayoutRes final int resId) {
-            return fullScreenParallaxPage(resId, 0, 0.2f, 1.0f);
-        }
-
-        /**
-         * Adds a page that applies a parallax effect to the supplied layout.
-         * The speed at which the children are moved is determined by their location in the layout,
-         * the first will move the slowest and the last will move the fastest.
-         *
-         * @param resId The layout resource id to apply the parallax effect to
-         * @param colorResId Color resource id to be used as the background color
-         * @return this Builder object to allow method calls to be chained
-         */
-        public Builder fullScreenParallaxPage(@LayoutRes final int resId, @ColorRes final int colorResId) {
-            return fullScreenParallaxPage(resId, colorResId, 0.2f, 1.0f);
-        }
-
-        /**
-         * Adds a page that applies a parallax effect to the supplied layout.
-         * The speed at which the children are moved is determined by their location in the layout,
-         * the first will move the slowest and the last will move the fastest.
-         *
-         * @param resId The layout resource id to apply the parallax effect to
-         * @param colorResId Color resource id to be used as the background color
-         * @param startParallaxFactor The speed at which the first child should move. Negative values for slower than normal, positive for faster. The default value is 0.2.
-         *                            A child with a factor of -1.0 will stay completely still, a child with a factor of 1.0 will move twice as fast.
-         * @param endParallaxFactor The speed at which the last child should move. Negative values for slower than normal, positive for faster. The default value is 1.0.
-         * @return this Builder object to allow method calls to be chained
-         */
-        public Builder fullScreenParallaxPage(@LayoutRes final int resId, @ColorRes final int colorResId, final float startParallaxFactor, final float endParallaxFactor) {
-            page(new WelcomeFragmentHolder() {
-                @Override
-                protected Fragment fragment() {
-                    return WelcomeFullScreenParallaxFragment.newInstance(resId, startParallaxFactor, endParallaxFactor, false);
-                }
-            }, colorResId);
             return this;
         }
 

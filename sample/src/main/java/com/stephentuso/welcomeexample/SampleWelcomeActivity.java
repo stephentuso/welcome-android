@@ -1,6 +1,7 @@
 package com.stephentuso.welcomeexample;
 
 import com.stephentuso.welcome.BasicPage;
+import com.stephentuso.welcome.ParallaxPage;
 import com.stephentuso.welcome.WelcomeActivity;
 import com.stephentuso.welcome.WelcomeConfiguration;
 
@@ -22,7 +23,13 @@ public class SampleWelcomeActivity extends WelcomeActivity {
                         "Simple to use",
                         "Add a welcome screen to your app with only a few lines of code."),
                         R.color.red_background)
-                .parallaxPage(R.layout.parallax_example, "Easy parallax", "Supply a layout and parallax effects will automatically be applied", R.color.purple_background, 0.2f, 2f)
+                .page(new ParallaxPage(R.layout.parallax_example,
+                        "Easy parallax",
+                        "Supply a layout and parallax effects will automatically be applied")
+                        .firstParallaxFactor(-2f)
+                        .lastParallaxFactor(2f),
+                        R.color.purple_background
+                )
                 .page(new BasicPage(R.drawable.ic_edit_white,
                         "Customizable",
                         "All elements of the welcome screen can be customized easily."),
