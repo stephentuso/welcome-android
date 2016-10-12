@@ -37,7 +37,7 @@ public class WelcomeConfiguration {
                     return new Fragment();
                 }
             });
-            blankPage.setBackgroundColor(pages.getBackgroundColor(pageCount() - 1));
+            blankPage.background(pages.getBackgroundColor(getContext(), pageCount() - 1));
             pages.add(blankPage);
         }
 
@@ -90,7 +90,7 @@ public class WelcomeConfiguration {
      * @return array of background colors
      */
     public BackgroundColor[] getBackgroundColors() {
-        return pages.getBackgroundColors();
+        return pages.getBackgroundColors(getContext());
     }
 
     /**
@@ -578,7 +578,7 @@ public class WelcomeConfiguration {
          * @return this WelcomeScreenBuilder object to allow method calls to be chained
          */
         public Builder page(WelcomeFragmentHolder fragmentHolder) {
-            return page(fragmentHolder, 0);
+            return page(new FragmentWelcomePage(fragmentHolder));
         }
 
         /**
@@ -590,7 +590,7 @@ public class WelcomeConfiguration {
          * @return this Builder object to allow method calls to be chained
          */
         public Builder page(WelcomeFragmentHolder fragmentHolder, @ColorRes int resId) {
-            return page(new FragmentWelcomePage(fragmentHolder), resId);
+            return page(new FragmentWelcomePage(fragmentHolder).background(resId));
         }
 
         /**
@@ -602,7 +602,7 @@ public class WelcomeConfiguration {
          * @return this Builder object to allow method calls to be chained
          */
         public Builder page(WelcomeFragmentHolder fragmentHolder, BackgroundColor backgroundColor) {
-            return page(new FragmentWelcomePage(fragmentHolder), backgroundColor);
+            return page(new FragmentWelcomePage(fragmentHolder).background(backgroundColor));
         }
 
         /**
@@ -613,32 +613,10 @@ public class WelcomeConfiguration {
          * @return this Builder object to allow method calls to be chained
          */
         public Builder page(WelcomePage page) {
-            return page(page, defaultBackgroundColor);
-        }
-
-        /**
-         * Adds a page
-         *
-         * @param page The page to add
-         * @param colorResId The background color of the page
-         *
-         * @return this Builder object to allow method calls to be chained
-         */
-        public Builder page(WelcomePage page, @ColorRes int colorResId) {
-            return page(page, new BackgroundColor(getColor(colorResId), defaultBackgroundColor.value()));
-        }
-
-        /**
-         * Adds a page
-         *
-         * @param page The page to add
-         * @param backgroundColor The background color of the page
-         *
-         * @return this Builder object to allow method calls to be chained
-         */
-        public Builder page(WelcomePage page, BackgroundColor backgroundColor) {
             page.setIndex(pages.size());
-            page.setBackgroundColor(backgroundColor);
+            if (!page.backgroundIsSet()) {
+                page.background(defaultBackgroundColor);
+            }
             pages.add(page);
             return this;
         }

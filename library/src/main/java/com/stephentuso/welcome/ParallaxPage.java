@@ -15,7 +15,7 @@ import com.stephentuso.welcome.ui.fragments.WelcomeParallaxFragment;
  * Created by stephentuso on 10/12/16.
  */
 
-public class ParallaxPage extends WelcomePage {
+public class ParallaxPage extends WelcomePage<ParallaxPage> {
 
     private WelcomeParallaxFragment fragment;
 

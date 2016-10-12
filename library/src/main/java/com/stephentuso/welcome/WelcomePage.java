@@ -1,11 +1,15 @@
 package com.stephentuso.welcome;
 
+import android.content.Context;
+import android.support.annotation.ColorRes;
 import android.support.v4.app.Fragment;
 
 /**
  * Created by stephentuso on 11/15/15.
+ *
+ * @param <T> needed for method chaining of inherited methods in subclasses
  */
-public abstract class WelcomePage implements OnWelcomeScreenPageChangeListener {
+public abstract class WelcomePage<T extends WelcomePage> implements OnWelcomeScreenPageChangeListener {
 
     private Integer backgroundColorResId = null;
     private BackgroundColor backgroundColor = null;
@@ -50,15 +54,26 @@ public abstract class WelcomePage implements OnWelcomeScreenPageChangeListener {
 
     public abstract Fragment createFragment();
 
-    /* package */ boolean backgroundColorIsSet() {
+    /* package */ boolean backgroundIsSet() {
         return backgroundColorResId != null || backgroundColor != null;
     }
 
-    /* package */ void setBackgroundColor(BackgroundColor backgroundColor) {
-        this.backgroundColor = backgroundColor;
+    public T background(@ColorRes int colorResId) {
+        this.backgroundColorResId = colorResId;
+        this.backgroundColor = null;
+        return (T) this;
     }
 
-    public BackgroundColor getBackgroundColor() {
+    public T background(BackgroundColor backgroundColor) {
+        this.backgroundColor = backgroundColor;
+        this.backgroundColorResId = null;
+        return (T) this;
+    }
+
+    /* package */ BackgroundColor getBackground(Context context) {
+        if (backgroundColor == null) {
+            backgroundColor = new BackgroundColor(ColorHelper.getColor(context, backgroundColorResId));
+        }
         return backgroundColor;
     }
 

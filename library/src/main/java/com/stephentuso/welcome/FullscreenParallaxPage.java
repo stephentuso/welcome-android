@@ -15,7 +15,7 @@ import com.stephentuso.welcome.ui.fragments.WelcomeFullScreenParallaxFragment;
  * Created by stephentuso on 10/12/16.
  */
 
-public class FullscreenParallaxPage extends WelcomePage {
+public class FullscreenParallaxPage extends WelcomePage<FullscreenParallaxPage> {
 
     private WelcomeFullScreenParallaxFragment fragment;
 

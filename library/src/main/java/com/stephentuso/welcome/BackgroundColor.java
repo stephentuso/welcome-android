@@ -6,7 +6,8 @@ import android.support.annotation.Nullable;
 /**
  * Created by stephentuso on 11/15/15.
  *
- * Wrapper for a color int
+ * Wrapper for a color int. Used to distinguish between
+ * color resource ids and color ints.
  */
 public class BackgroundColor {
 

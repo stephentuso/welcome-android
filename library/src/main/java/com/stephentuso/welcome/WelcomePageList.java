@@ -1,5 +1,6 @@
 package com.stephentuso.welcome;
 
+import android.content.Context;
 import android.support.v4.app.Fragment;
 
 import java.util.ArrayList;
@@ -19,14 +20,14 @@ public class WelcomePageList extends ArrayList<WelcomePage> implements OnWelcome
         return get(index).getFragment();
     }
 
-    public BackgroundColor getBackgroundColor(int index) {
-        return get(index).getBackgroundColor();
+    public BackgroundColor getBackgroundColor(Context context, int index) {
+        return get(index).getBackground(context);
     }
 
-    public BackgroundColor[] getBackgroundColors() {
+    public BackgroundColor[] getBackgroundColors(Context context) {
         ArrayList<BackgroundColor> colors = new ArrayList<BackgroundColor>();
         for (WelcomePage page : this) {
-            colors.add(page.getBackgroundColor());
+            colors.add(page.getBackground(context));
         }
         return colors.toArray(new BackgroundColor[1]);
     }

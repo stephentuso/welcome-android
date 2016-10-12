@@ -10,7 +10,7 @@ import com.stephentuso.welcome.ui.fragments.WelcomeTitleFragment;
  *
  * Created by stephentuso on 10/11/16.
  */
-public class TitlePage extends WelcomePage {
+public class TitlePage extends WelcomePage<TitlePage> {
 
     private int drawableResId;
     private String title;

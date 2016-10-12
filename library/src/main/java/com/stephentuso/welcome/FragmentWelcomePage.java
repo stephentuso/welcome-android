@@ -6,7 +6,7 @@ import android.support.v4.app.Fragment;
  * Created by stephentuso on 10/11/16.
  */
 
-public class FragmentWelcomePage extends WelcomePage {
+public class FragmentWelcomePage extends WelcomePage<FragmentWelcomePage> {
 
     private WelcomeFragmentHolder fragmentHolder;
 

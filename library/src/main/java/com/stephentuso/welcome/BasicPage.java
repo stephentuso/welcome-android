@@ -10,7 +10,7 @@ import com.stephentuso.welcome.ui.fragments.WelcomeBasicFragment;
  *
  * Created by stephentuso on 10/11/16.
  */
-public class BasicPage extends WelcomePage {
+public class BasicPage extends WelcomePage<BasicPage> {
 
     private int drawableResId;
     private String title;
