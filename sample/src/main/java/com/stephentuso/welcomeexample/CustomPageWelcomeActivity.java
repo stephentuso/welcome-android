@@ -2,9 +2,9 @@ package com.stephentuso.welcomeexample;
 
 import android.support.v4.app.Fragment;
 
+import com.stephentuso.welcome.FragmentWelcomePage;
 import com.stephentuso.welcome.WelcomeActivity;
 import com.stephentuso.welcome.WelcomeConfiguration;
-import com.stephentuso.welcome.WelcomeFragmentHolder;
 import com.stephentuso.welcomeexample.fragment.DoneFragment;
 import com.stephentuso.welcomeexample.fragment.ExampleFragment;
 
@@ -17,13 +17,13 @@ public class CustomPageWelcomeActivity extends WelcomeActivity {
     @Override
     protected WelcomeConfiguration configuration() {
         return new WelcomeConfiguration.Builder(this)
-                .page(new WelcomeFragmentHolder() {
+                .page(new FragmentWelcomePage() {
                     @Override
                     protected Fragment fragment() {
                         return new ExampleFragment();
                     }
                 })
-                .page(new WelcomeFragmentHolder() {
+                .page(new FragmentWelcomePage() {
                     @Override
                     protected Fragment fragment() {
                         return new DoneFragment();

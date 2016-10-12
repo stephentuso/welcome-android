@@ -17,8 +17,6 @@ import com.stephentuso.welcome.ui.fragments.WelcomeFullScreenParallaxFragment;
 
 public class FullscreenParallaxPage extends WelcomePage<FullscreenParallaxPage> {
 
-    private WelcomeFullScreenParallaxFragment fragment;
-
     private int layoutResId;
     private float firstParallaxFactor = 0.2f;
     private float lastParallaxFactor = 2f;
@@ -97,14 +95,8 @@ public class FullscreenParallaxPage extends WelcomePage<FullscreenParallaxPage> 
     }
 
     @Override
-    public Fragment getFragment() {
-        return fragment;
-    }
-
-    @Override
-    public Fragment createFragment() {
-        fragment = WelcomeFullScreenParallaxFragment.newInstance(layoutResId, firstParallaxFactor, lastParallaxFactor, parallaxRecursive);
-        return fragment;
+    public Fragment fragment() {
+        return WelcomeFullScreenParallaxFragment.newInstance(layoutResId, firstParallaxFactor, lastParallaxFactor, parallaxRecursive);
     }
 
 }

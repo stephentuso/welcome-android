@@ -40,8 +40,6 @@ public class WelcomeConfigurationTest {
 
     private static int DEFAULT_COLOR = 0x1e88e5;
 
-    private static final WelcomeFragmentHolder nullPage = null;
-
     @Before
     public void setUp() {
 
@@ -53,7 +51,7 @@ public class WelcomeConfigurationTest {
         when(context.getTheme()).thenReturn(theme);
 
         builder1 = new WelcomeConfiguration.Builder(context);
-        builder1.page(new WelcomeFragmentHolder() {
+        builder1.page(new FragmentWelcomePage() {
             @Override
             protected Fragment fragment() {
                 return new Fragment();
@@ -88,6 +86,14 @@ public class WelcomeConfigurationTest {
 
     }
 
+    private FragmentWelcomePage newBlankPage() {
+        return new FragmentWelcomePage() {
+            @Override
+            protected Fragment fragment() {
+                return new Fragment();
+            }
+        };
+    }
 
     //Tests
 
@@ -228,7 +234,7 @@ public class WelcomeConfigurationTest {
 
     @Test
     public void testPageIndexFunctions() {
-        builder2.page(nullPage).page(nullPage).page(nullPage).swipeToDismiss(false);
+        builder2.page(newBlankPage()).page(newBlankPage()).page(newBlankPage()).swipeToDismiss(false);
 
 
         //SwipeToDismiss false
@@ -270,19 +276,19 @@ public class WelcomeConfigurationTest {
         final Fragment fragment3 = new Fragment();
 
         builder2
-                .page(new WelcomeFragmentHolder() {
+                .page(new FragmentWelcomePage() {
                     @Override
                     protected Fragment fragment() {
                         return fragment1;
                     }
                 })
-                .page(new WelcomeFragmentHolder() {
+                .page(new FragmentWelcomePage() {
                     @Override
                     protected Fragment fragment() {
                         return fragment2;
                     }
                 })
-                .page(new WelcomeFragmentHolder() {
+                .page(new FragmentWelcomePage() {
                     @Override
                     protected Fragment fragment() {
                         return fragment3;
@@ -319,7 +325,7 @@ public class WelcomeConfigurationTest {
     public void testCreateGetFragment() {
         final Fragment fragment1 = new Fragment();
 
-        builder2.page(new WelcomeFragmentHolder() {
+        builder2.page(new FragmentWelcomePage() {
             @Override
             protected Fragment fragment() {
                 return fragment1;
@@ -344,14 +350,14 @@ public class WelcomeConfigurationTest {
     @Test
     public void testDefaultBackgroundColor() {
         builder2.defaultBackgroundColor(R.color.white)
-                .page(nullPage, 0);
+                .page(newBlankPage());
 
         WelcomeConfiguration config = builder2.build();
         assertEquals(Color.WHITE, config.getDefaultBackgroundColor().value());
         assertEquals(Color.WHITE, config.getBackgroundColors()[0].value());
 
         builder2.defaultBackgroundColor(new BackgroundColor(Color.WHITE))
-                .page(nullPage, 0);
+                .page(newBlankPage());
 
         config = builder2.build();
         assertEquals(Color.WHITE, config.getDefaultBackgroundColor().value());
@@ -368,7 +374,7 @@ public class WelcomeConfigurationTest {
         };
 
         for (int color : colors) {
-            builder2.page(nullPage, new BackgroundColor(color));
+            builder2.page(newBlankPage().background(new BackgroundColor(color)));
         }
 
 

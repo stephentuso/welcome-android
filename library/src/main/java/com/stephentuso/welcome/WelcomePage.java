@@ -17,6 +17,8 @@ public abstract class WelcomePage<T extends WelcomePage> implements OnWelcomeScr
     protected boolean isRtl = false;
     protected int totalPages = 0;
 
+    private Fragment fragment;
+
     /**
      * Interface to be implemented by fragments that are part of a WelcomeActivity
      */
@@ -50,9 +52,16 @@ public abstract class WelcomePage<T extends WelcomePage> implements OnWelcomeScr
         this.index = index;
     }
 
-    public abstract Fragment getFragment();
+    public Fragment getFragment() {
+        return fragment;
+    }
 
-    public abstract Fragment createFragment();
+    public Fragment createFragment() {
+        this.fragment = fragment();
+        return fragment;
+    }
+
+    protected abstract Fragment fragment();
 
     /* package */ boolean backgroundIsSet() {
         return backgroundColorResId != null || backgroundColor != null;

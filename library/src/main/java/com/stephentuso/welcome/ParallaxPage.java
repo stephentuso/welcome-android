@@ -17,8 +17,6 @@ import com.stephentuso.welcome.ui.fragments.WelcomeParallaxFragment;
 
 public class ParallaxPage extends WelcomePage<ParallaxPage> {
 
-    private WelcomeParallaxFragment fragment;
-
     private int layoutResId;
     private String title;
     private String description;
@@ -145,13 +143,7 @@ public class ParallaxPage extends WelcomePage<ParallaxPage> {
     }
 
     @Override
-    public Fragment getFragment() {
-        return fragment;
-    }
-
-    @Override
-    public Fragment createFragment() {
-        fragment = WelcomeParallaxFragment.newInstance(layoutResId, title, description, firstParallaxFactor, lastParallaxFactor, parallaxRecursive, headerTypefacePath, descriptionTyefacePath);
-        return fragment;
+    public Fragment fragment() {
+        return WelcomeParallaxFragment.newInstance(layoutResId, title, description, firstParallaxFactor, lastParallaxFactor, parallaxRecursive, headerTypefacePath, descriptionTyefacePath);
     }
 }

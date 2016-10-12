@@ -31,14 +31,12 @@ public class WelcomeConfiguration {
         }
 
         if (getSwipeToDismiss()) {
-            FragmentWelcomePage blankPage = new FragmentWelcomePage(new WelcomeFragmentHolder() {
+            pages.add(new FragmentWelcomePage() {
                 @Override
                 protected Fragment fragment() {
                     return new Fragment();
                 }
-            });
-            blankPage.background(pages.getBackgroundColor(getContext(), pageCount() - 1));
-            pages.add(blankPage);
+            }.background(pages.getBackgroundColor(getContext(), pageCount() - 1)));
         }
 
         if (isRtl()) {
@@ -569,40 +567,6 @@ public class WelcomeConfiguration {
         public Builder defaultBackgroundColor(BackgroundColor backgroundColor) {
             this.defaultBackgroundColor = backgroundColor;
             return this;
-        }
-
-        /**
-         * Adds a fragment, uses the default background color
-         *
-         * @param fragmentHolder FragmentHolder that creates the fragment to add
-         * @return this WelcomeScreenBuilder object to allow method calls to be chained
-         */
-        public Builder page(WelcomeFragmentHolder fragmentHolder) {
-            return page(new FragmentWelcomePage(fragmentHolder));
-        }
-
-        /**
-         * Adds a fragment
-         *
-         * @param fragmentHolder FragmentHolder that creates the fragment to add
-         * @param resId Color resource id to be used as the background color
-         *
-         * @return this Builder object to allow method calls to be chained
-         */
-        public Builder page(WelcomeFragmentHolder fragmentHolder, @ColorRes int resId) {
-            return page(new FragmentWelcomePage(fragmentHolder).background(resId));
-        }
-
-        /**
-         * Adds a fragment
-         *
-         * @param fragmentHolder FragmentHolder that creates the fragment to add
-         * @param backgroundColor Background color for this page
-         *
-         * @return this Builder object to allow method calls to be chained
-         */
-        public Builder page(WelcomeFragmentHolder fragmentHolder, BackgroundColor backgroundColor) {
-            return page(new FragmentWelcomePage(fragmentHolder).background(backgroundColor));
         }
 
         /**

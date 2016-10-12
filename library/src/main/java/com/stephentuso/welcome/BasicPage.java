@@ -19,8 +19,6 @@ public class BasicPage extends WelcomePage<BasicPage> {
     private String headerTypefacePath = null;
     private String descriptionTypefacePath = null;
 
-    private WelcomeBasicFragment fragment = null;
-
     /**
      * A page with a large image, header, and description
      *
@@ -88,14 +86,8 @@ public class BasicPage extends WelcomePage<BasicPage> {
     }
 
     @Override
-    public Fragment getFragment() {
-        return fragment;
-    }
-
-    @Override
-    public Fragment createFragment() {
-        this.fragment = WelcomeBasicFragment.newInstance(drawableResId, title, description, showParallax, headerTypefacePath, descriptionTypefacePath);
-        return fragment;
+    public Fragment fragment() {
+        return WelcomeBasicFragment.newInstance(drawableResId, title, description, showParallax, headerTypefacePath, descriptionTypefacePath);
     }
 
 }

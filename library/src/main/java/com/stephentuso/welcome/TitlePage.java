@@ -17,8 +17,6 @@ public class TitlePage extends WelcomePage<TitlePage> {
     private boolean showParallax = true;
     private String titleTypefacePath = null;
 
-    private WelcomeTitleFragment fragment;
-
     /**
      * A page with a large title and an image
      *
@@ -68,14 +66,8 @@ public class TitlePage extends WelcomePage<TitlePage> {
     }
 
     @Override
-    public Fragment getFragment() {
-        return fragment;
-    }
-
-    @Override
-    public Fragment createFragment() {
-        this.fragment = WelcomeTitleFragment.newInstance(drawableResId, title, showParallax, titleTypefacePath);
-        return fragment;
+    public Fragment fragment() {
+        return WelcomeTitleFragment.newInstance(drawableResId, title, showParallax, titleTypefacePath);
     }
 
 
