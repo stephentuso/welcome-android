@@ -12,7 +12,8 @@ public class BackExitWelcomeActivity extends WelcomeActivity {
 
     @Override
     protected WelcomeScreenConfiguration configuration() {
-        return new WelcomeScreenBuilder(getApplicationContext())
+        return new WelcomeScreenBuilder(this)
+                .defaultBackgroundColor(R.color.colorPrimary)
                 .theme(R.style.GeneralWelcomeScreenTheme)
                 .defaultTitleTypefacePath("Roboto-Bold.ttf")
                 .defaultHeaderTypefacePath("Roboto-Bold.ttf")

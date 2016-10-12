@@ -11,8 +11,9 @@ public class SampleWelcomeActivity extends WelcomeActivity {
 
     @Override
     protected WelcomeScreenConfiguration configuration() {
-        return new WelcomeScreenBuilder(getApplicationContext())
+        return new WelcomeScreenBuilder(this)
                 .theme(R.style.SampleWelcomeScreenTheme)
+                .defaultBackgroundColor(R.color.colorPrimary)
                 .defaultTitleTypefacePath("Montserrat-Bold.ttf")
                 .defaultHeaderTypefacePath("Montserrat-Bold.ttf")
                 .basicPage(R.drawable.ic_front_desk_white, "Welcome", "An Android library for onboarding, instructional screens, and more", R.color.orange_background)

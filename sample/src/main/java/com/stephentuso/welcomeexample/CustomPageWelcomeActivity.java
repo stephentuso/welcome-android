@@ -17,7 +17,8 @@ public class CustomPageWelcomeActivity extends WelcomeActivity {
 
     @Override
     protected WelcomeScreenConfiguration configuration() {
-        return new WelcomeScreenBuilder(getApplicationContext())
+        return new WelcomeScreenBuilder(this)
+                .defaultBackgroundColor(R.color.colorPrimary)
                 .theme(R.style.GeneralWelcomeScreenTheme)
                 .page(new WelcomeFragmentHolder() {
                     @Override

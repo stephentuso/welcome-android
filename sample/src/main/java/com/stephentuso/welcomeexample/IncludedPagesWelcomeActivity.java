@@ -12,7 +12,8 @@ public class IncludedPagesWelcomeActivity extends WelcomeActivity {
 
     @Override
     protected WelcomeScreenConfiguration configuration() {
-        return new WelcomeScreenBuilder(getApplicationContext())
+        return new WelcomeScreenBuilder(this)
+                .defaultBackgroundColor(R.color.colorPrimary)
                 .theme(R.style.GeneralWelcomeScreenTheme)
                 .swipeToDismiss(true)
                 .defaultTitleTypefacePath("Roboto-Bold.ttf")
