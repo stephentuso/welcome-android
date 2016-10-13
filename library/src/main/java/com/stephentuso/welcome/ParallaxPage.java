@@ -3,8 +3,6 @@ package com.stephentuso.welcome;
 import android.support.annotation.LayoutRes;
 import android.support.v4.app.Fragment;
 
-import com.stephentuso.welcome.ui.fragments.WelcomeParallaxFragment;
-
 /**
  * A page with a title and description that applies a parallax effect to the supplied layout.
  * The speed at which the children are moved is determined by their location in the layout,

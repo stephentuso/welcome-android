@@ -8,8 +8,8 @@ import android.os.Bundle;
 import android.support.test.InstrumentationRegistry;
 import android.support.test.runner.AndroidJUnit4;
 
-import com.stephentuso.welcome.SharedPreferencesHelper;
 import com.stephentuso.welcome.WelcomeHelper;
+import com.stephentuso.welcome.WelcomeSharedPreferencesHelper;
 import com.stephentuso.welcome.WelcomeUtils;
 
 import org.junit.After;
@@ -61,11 +61,11 @@ public class WelcomeScreenHelperAndroidTest {
 
         String key = WelcomeUtils.getKey(DefaultWelcomeActivity.class);
 
-        SharedPreferencesHelper.storeWelcomeCompleted(activity, key);
+        WelcomeSharedPreferencesHelper.storeWelcomeCompleted(activity, key);
         assertFalse(helper.show(null));
         assertFalse(helper.show(new Bundle()));
 
-        SharedPreferencesHelper.removeWelcomeCompleted(activity, key);
+        WelcomeSharedPreferencesHelper.removeWelcomeCompleted(activity, key);
 
         assertTrue(helper.show(null));
         assertFalse(helper.show(null));

@@ -6,7 +6,7 @@ import android.widget.TextView;
 /**
  * Created by stephentuso on 11/15/15.
  */
-public class SkipButton extends WelcomeViewWrapper {
+/* package */ class SkipButton extends WelcomeViewWrapper {
 
     private boolean enabled = true;
     private boolean onlyShowOnFirstPage = false;

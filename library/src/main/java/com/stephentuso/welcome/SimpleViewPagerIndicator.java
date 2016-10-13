@@ -13,7 +13,7 @@ import android.view.View;
  * Created by stephentuso on 11/16/15.
  * A quick and dirty ViewPager indicator.
  */
-public class SimpleViewPagerIndicator extends View implements ViewPager.OnPageChangeListener {
+/* package */ class SimpleViewPagerIndicator extends View implements ViewPager.OnPageChangeListener {
 
     private Paint paint;
 

@@ -1,4 +1,4 @@
-package com.stephentuso.welcome.ui.fragments;
+package com.stephentuso.welcome;
 
 
 import android.os.Build;
@@ -10,10 +10,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-
-import com.stephentuso.welcome.R;
-import com.stephentuso.welcome.WelcomePage;
-import com.stephentuso.welcome.WelcomeUtils;
 
 /**
  * A simple fragment that shows an image and a title.

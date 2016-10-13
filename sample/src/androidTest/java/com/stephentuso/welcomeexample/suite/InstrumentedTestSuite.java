@@ -1,7 +1,7 @@
 package com.stephentuso.welcomeexample.suite;
 
-import com.stephentuso.welcomeexample.SharedPreferencesHelperAndroidTest;
 import com.stephentuso.welcomeexample.WelcomeScreenHelperAndroidTest;
+import com.stephentuso.welcomeexample.WelcomeSharedPreferencesHelperAndroidTest;
 
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
@@ -13,6 +13,6 @@ import org.junit.runners.Suite;
 @RunWith(Suite.class)
 @Suite.SuiteClasses({
         WelcomeScreenHelperAndroidTest.class,
-        SharedPreferencesHelperAndroidTest.class
+        WelcomeSharedPreferencesHelperAndroidTest.class
 })
 public class InstrumentedTestSuite {}

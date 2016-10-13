@@ -6,7 +6,7 @@ import android.content.SharedPreferences;
 /**
  * Created by stephentuso on 11/15/15.
  */
-public class SharedPreferencesHelper {
+public class WelcomeSharedPreferencesHelper {
 
     private static final String KEY_SHARED_PREFS = "com.stephentuso.welcome";
     private static final String KEY_HAS_RUN = "welcome_screen_has_run";

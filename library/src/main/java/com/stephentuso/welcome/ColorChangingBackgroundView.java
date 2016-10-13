@@ -10,7 +10,7 @@ import android.view.View;
 /**
  * Created by stephentuso on 11/16/15.
  */
-public class ColorChangingBackgroundView extends View {
+/* package */ class ColorChangingBackgroundView extends View {
 
     private BackgroundColor[] mColors = new BackgroundColor[0];
 

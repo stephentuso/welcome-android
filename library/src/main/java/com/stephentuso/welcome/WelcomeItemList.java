@@ -6,7 +6,7 @@ import java.util.Arrays;
 /**
  * Created by stephentuso on 11/16/15.
  */
-/*package*/ class WelcomeItemList implements OnWelcomeScreenPageChangeListener {
+/* package */ class WelcomeItemList implements OnWelcomeScreenPageChangeListener {
 
     private ArrayList<OnWelcomeScreenPageChangeListener> mItems;
 

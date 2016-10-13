@@ -1,4 +1,4 @@
-package com.stephentuso.welcome.ui.fragments;
+package com.stephentuso.welcome;
 
 import android.os.Build;
 import android.os.Bundle;
@@ -9,10 +9,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
-
-import com.stephentuso.welcome.R;
-import com.stephentuso.welcome.WelcomePage;
-import com.stephentuso.welcome.WelcomeUtils;
 
 /**
  * Created by stephentuso on 1/24/16.

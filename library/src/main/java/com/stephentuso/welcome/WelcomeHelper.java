@@ -36,7 +36,7 @@ public class WelcomeHelper {
 
     private boolean shouldShow(Bundle savedInstanceState) {
         return !getWelcomeScreenStarted(savedInstanceState) &&
-                !SharedPreferencesHelper.welcomeScreenCompleted(mActivity, WelcomeUtils.getKey(mActivityClass));
+                !WelcomeSharedPreferencesHelper.welcomeScreenCompleted(mActivity, WelcomeUtils.getKey(mActivityClass));
     }
 
     /**

@@ -33,7 +33,7 @@ public class WelcomeUtils {
         return key;
     }
 
-    public static boolean setTypeface(TextView textView, String typefacePath, Context context) {
+    /* package */ static boolean setTypeface(TextView textView, String typefacePath, Context context) {
         if (typefacePath != null && !typefacePath.equals("")) {
             try {
                 textView.setTypeface(Typeface.createFromAsset(context.getAssets(), typefacePath));
@@ -45,7 +45,7 @@ public class WelcomeUtils {
         return false;
     }
 
-    public static int calculateParallaxLayers(View view, boolean recursive) {
+    /* package */ static int calculateParallaxLayers(View view, boolean recursive) {
         if (recursive)
             return calculateParallaxLayersRecursively(view, 0);
         else

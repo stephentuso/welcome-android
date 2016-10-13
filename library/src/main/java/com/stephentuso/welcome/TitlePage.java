@@ -3,8 +3,6 @@ package com.stephentuso.welcome;
 import android.support.annotation.DrawableRes;
 import android.support.v4.app.Fragment;
 
-import com.stephentuso.welcome.ui.fragments.WelcomeTitleFragment;
-
 /**
  * A page with a large title and an image
  *

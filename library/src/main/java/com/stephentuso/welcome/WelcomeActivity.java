@@ -144,7 +144,7 @@ public abstract class WelcomeActivity extends AppCompatActivity {
      * unless the key is changed.
      */
     protected void completeWelcomeScreen() {
-        SharedPreferencesHelper.storeWelcomeCompleted(this, getKey());
+        WelcomeSharedPreferencesHelper.storeWelcomeCompleted(this, getKey());
         setWelcomeScreenResult(RESULT_OK);
         super.finish();
         if (mConfiguration.getExitAnimation() != WelcomeConfiguration.NO_ANIMATION_SET)
