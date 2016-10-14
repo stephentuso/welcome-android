@@ -15,6 +15,10 @@ import android.view.View;
  */
 /* package */ class SimpleViewPagerIndicator extends View implements ViewPager.OnPageChangeListener {
 
+    private static final int ANIM_NONE = 0;
+    private static final int ANIM_SLIDE = 1;
+    private static final int ANIM_FADE = 2;
+
     private Paint paint;
 
     private int currentPageColor = 0x99ffffff;
@@ -31,7 +35,7 @@ import android.view.View;
     private int spacing = 16;
     private int size = 4;
 
-    private boolean animated = false;
+    private int animation = ANIM_FADE;
     private boolean isRtl = false;
 
     public SimpleViewPagerIndicator(Context context) {
@@ -50,7 +54,7 @@ import android.view.View;
 
             currentPageColor = a.getColor(R.styleable.SimpleViewPagerIndicator_currentPageColor, currentPageColor);
             otherPageColor = a.getColor(R.styleable.SimpleViewPagerIndicator_indicatorColor, otherPageColor);
-            animated = a.getBoolean(R.styleable.SimpleViewPagerIndicator_animated, animated);
+            animation = a.getInt(R.styleable.SimpleViewPagerIndicator_animation, animation);
 
             a.recycle();
         }
@@ -69,7 +73,7 @@ import android.view.View;
 
     @Override
     public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-        if (animated) {
+        if (animation != ANIM_NONE) {
             setPosition(position);
             currentPageOffset = canShowAnimation() ? 0 : positionOffset;
             invalidate();
@@ -78,7 +82,7 @@ import android.view.View;
 
     @Override
     public void onPageSelected(int position) {
-        if (!animated) {
+        if (animation == ANIM_NONE) {
             setPosition(position);
             currentPageOffset = 0;
             invalidate();
@@ -150,7 +154,18 @@ import android.view.View;
         }
 
         paint.setColor(currentPageColor);
-        canvas.drawCircle(startX + (spacing * (displayedPage + currentPageOffset)), center.y, size, paint);
+
+        if (animation == ANIM_NONE || animation == ANIM_SLIDE) {
+            canvas.drawCircle(startX + (spacing * (displayedPage + currentPageOffset)), center.y, size, paint);
+        }
+
+        else if (animation == ANIM_FADE) {
+            paint.setAlpha((int) (255f * (1f - currentPageOffset)));
+            canvas.drawCircle(startX + (spacing * displayedPage), center.y, size, paint);
+            paint.setAlpha((int) (255f * currentPageOffset));
+            canvas.drawCircle(startX + (spacing * displayedPage), center.y, size, paint);
+        }
+
     }
 
     private float getFirstDotPosition(float centerX) {

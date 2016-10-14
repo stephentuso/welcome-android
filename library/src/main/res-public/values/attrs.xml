@@ -5,7 +5,11 @@
     <declare-styleable name="SimpleViewPagerIndicator">
         <attr name="currentPageColor" format="color"/>
         <attr name="indicatorColor" format="color"/>
-        <attr name="animated" format="boolean"/>
+        <attr name="animation" format="enum">
+            <enum name="none" value="0"/>
+            <enum name="slide" value="1"/>
+            <enum name="fade" value="2"/>
+        </attr>
     </declare-styleable>
 
     <declare-styleable name="Theme">

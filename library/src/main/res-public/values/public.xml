@@ -2,7 +2,7 @@
 <resources>
   <public type="attr" name="currentPageColor"/>
   <public type="attr" name="indicatorColor"/>
-  <public type="attr" name="animated"/>
+  <public type="attr" name="animation"/>
   <public type="attr" name="welcomeButtonBackground"/>
   <public type="attr" name="welcomeButtonNextStyle"/>
   <public type="attr" name="welcomeButtonPrevStyle"/>

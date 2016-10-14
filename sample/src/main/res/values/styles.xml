@@ -24,11 +24,11 @@
 
     <!-- Animated indicators -->
     <style name="WelcomeScreenPageIndicator.Animated">
-        <item name="animated">true</item>
+        <item name="animation">slide</item>
     </style>
 
     <style name="WelcomeScreenPageIndicator.Light.Animated">
-        <item name="animated">true</item>
+        <item name="animation">slide</item>
     </style>
 
     <!-- Styles used by most of the welcome screens -->

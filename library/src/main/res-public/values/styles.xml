@@ -120,7 +120,7 @@
     <style name="WelcomeScreenPageIndicator">
         <item name="indicatorColor">@color/indicator_color_secondary_theme_dark</item>
         <item name="currentPageColor">@color/indicator_color_primary_theme_dark</item>
-        <item name="animated">false</item>
+        <item name="animation">fade</item>
     </style>
 
     <style name="WelcomeScreenPageIndicator.Light">
