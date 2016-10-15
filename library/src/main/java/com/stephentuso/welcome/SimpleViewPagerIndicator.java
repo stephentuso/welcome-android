@@ -3,6 +3,7 @@ package com.stephentuso.welcome;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Canvas;
+import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Point;
 import android.support.v4.view.ViewPager;
@@ -23,6 +24,9 @@ import android.view.View;
 
     private int currentPageColor = 0x99ffffff;
     private int otherPageColor = 0x22000000;
+
+    private float currentMaxAlpha;
+    private float otherMaxAlpha;
 
     private int totalPages = 0;
     private int currentPage = 0;
@@ -69,6 +73,9 @@ import android.view.View;
         float density = context.getResources().getDisplayMetrics().density;
         spacing *= density;
         size *= density;
+
+        currentMaxAlpha = Color.alpha(currentPageColor);
+        otherMaxAlpha = Color.alpha(otherPageColor);
     }
 
     @Override
@@ -160,10 +167,10 @@ import android.view.View;
         }
 
         else if (animation == ANIM_FADE) {
-            paint.setAlpha((int) (255f * (1f - currentPageOffset)));
+            paint.setAlpha((int) (currentMaxAlpha * (1f - currentPageOffset)));
             canvas.drawCircle(startX + (spacing * displayedPage), center.y, size, paint);
-            paint.setAlpha((int) (255f * currentPageOffset));
-            canvas.drawCircle(startX + (spacing * displayedPage), center.y, size, paint);
+            paint.setAlpha((int) (currentMaxAlpha * currentPageOffset));
+            canvas.drawCircle(startX + (spacing * (displayedPage + 1)), center.y, size, paint);
         }
 
     }
