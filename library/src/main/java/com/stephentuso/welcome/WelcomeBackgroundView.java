@@ -6,7 +6,7 @@ import android.util.AttributeSet;
 /**
  * Created by stephentuso on 11/16/15.
  */
-/* package */ class WelcomeBackgroundView extends ColorChangingBackgroundView implements OnWelcomeScreenPageChangeListener {
+public class WelcomeBackgroundView extends ColorChangingBackgroundView implements OnWelcomeScreenPageChangeListener {
 
     public WelcomeBackgroundView(Context context) {
         super(context);
