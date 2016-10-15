@@ -1,4 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <bool name="isRtl">false</bool>
+    <bool name="wel_is_rtl">false</bool>
 </resources>

@@ -1,4 +1,4 @@
 <resources>
-    <string name="skip">Skip</string>
-    <string name="done">Done</string>
+    <string name="wel_skip">Skip</string>
+    <string name="wel_done">Done</string>
 </resources>

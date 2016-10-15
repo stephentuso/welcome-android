@@ -2,13 +2,13 @@
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
     <item android:state_pressed="true" >
         <shape>
-            <solid android:color="@color/button_background_theme_light" />
+            <solid android:color="@color/wel_button_background_theme_dark" />
             <corners android:radius="2dp"/>
         </shape>
     </item>
     <item>
         <shape>
-            <solid android:color="#00000000" />
+            <solid android:color="#00ffffff" />
             <corners android:radius="2dp"/>
         </shape>
     </item>

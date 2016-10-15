@@ -204,7 +204,7 @@ public class WelcomeConfiguration {
      * @return true if RTL, false if not
      */
     public boolean isRtl() {
-        return builder.context.getResources().getBoolean(R.bool.isRtl);
+        return builder.context.getResources().getBoolean(R.bool.wel_is_rtl);
     }
 
     /**
@@ -335,7 +335,7 @@ public class WelcomeConfiguration {
 
         private void initDefaultBackgroundColor(Context context) {
             // Default background color
-            final int standardBackgroundColor = ColorHelper.getColor(context, R.color.default_background_color);
+            final int standardBackgroundColor = ColorHelper.getColor(context, R.color.wel_default_background_color);
 
             // AppCompat colorPrimary
             int defaultBackgroundColor = ColorHelper.resolveColorAttribute(context, R.attr.colorPrimary, standardBackgroundColor);

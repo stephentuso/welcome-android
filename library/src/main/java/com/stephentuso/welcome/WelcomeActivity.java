@@ -35,13 +35,13 @@ public abstract class WelcomeActivity extends AppCompatActivity {
            TODO: Look into this more
          */
         super.onCreate(null);
-        setContentView(R.layout.activity_welcome);
+        setContentView(R.layout.wel_activity_welcome);
 
         AppCompatDelegate.setCompatVectorFromResourcesEnabled(true);
 
         mAdapter = new WelcomeFragmentPagerAdapter(getSupportFragmentManager());
 
-        mViewPager = (ViewPager) findViewById(R.id.view_pager);
+        mViewPager = (ViewPager) findViewById(R.id.wel_view_pager);
         mViewPager.setAdapter(mAdapter);
 
         if (mConfiguration.getShowActionBarBackButton()) {
@@ -50,7 +50,7 @@ public abstract class WelcomeActivity extends AppCompatActivity {
                 actionBar.setDisplayHomeAsUpEnabled(true);
         }
 
-        SkipButton skip = new SkipButton(findViewById(R.id.button_skip), mConfiguration.getCanSkip());
+        SkipButton skip = new SkipButton(findViewById(R.id.wel_button_skip), mConfiguration.getCanSkip());
         skip.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -58,7 +58,7 @@ public abstract class WelcomeActivity extends AppCompatActivity {
             }
         });
 
-        PreviousButton prev = new PreviousButton(findViewById(R.id.button_prev));
+        PreviousButton prev = new PreviousButton(findViewById(R.id.wel_button_prev));
         prev.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -66,7 +66,7 @@ public abstract class WelcomeActivity extends AppCompatActivity {
             }
         });
 
-        NextButton next = new NextButton(findViewById(R.id.button_next));
+        NextButton next = new NextButton(findViewById(R.id.wel_button_next));
         next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -74,7 +74,7 @@ public abstract class WelcomeActivity extends AppCompatActivity {
             }
         });
 
-        DoneButton done = new DoneButton(findViewById(R.id.button_done));
+        DoneButton done = new DoneButton(findViewById(R.id.wel_button_done));
         done.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -82,10 +82,10 @@ public abstract class WelcomeActivity extends AppCompatActivity {
             }
         });
 
-        WelcomeViewPagerIndicator indicator = (WelcomeViewPagerIndicator) findViewById(R.id.pager_indicator);
-        WelcomeBackgroundView background = (WelcomeBackgroundView) findViewById(R.id.background_view);
+        WelcomeViewPagerIndicator indicator = (WelcomeViewPagerIndicator) findViewById(R.id.wel_pager_indicator);
+        WelcomeBackgroundView background = (WelcomeBackgroundView) findViewById(R.id.wel_background_view);
 
-        WelcomeViewHider hider = new WelcomeViewHider(findViewById(R.id.root));
+        WelcomeViewHider hider = new WelcomeViewHider(findViewById(R.id.wel_root));
         hider.setOnViewHiddenListener(new WelcomeViewHider.OnViewHiddenListener() {
             @Override
             public void onViewHidden() {
@@ -148,7 +148,7 @@ public abstract class WelcomeActivity extends AppCompatActivity {
         setWelcomeScreenResult(RESULT_OK);
         super.finish();
         if (mConfiguration.getExitAnimation() != WelcomeConfiguration.NO_ANIMATION_SET)
-            overridePendingTransition(R.anim.none, mConfiguration.getExitAnimation());
+            overridePendingTransition(R.anim.wel_none, mConfiguration.getExitAnimation());
     }
 
     /**

@@ -1,13 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+    <!-- PUBLIC STYLES -->
+
     <style name="WelcomeScreenButton.Next">
-        <item name="android:src">@drawable/ic_chevron_left_white_24dp</item>
+        <item name="android:src">@drawable/wel_ic_chevron_left_white_24dp</item>
         <item name="android:tint">?android:attr/textColorPrimary</item>
     </style>
 
     <style name="WelcomeScreenButton.Prev">
-        <item name="android:src">@drawable/ic_chevron_right_white_24dp</item>
+        <item name="android:src">@drawable/wel_ic_chevron_right_white_24dp</item>
         <item name="android:tint">?android:attr/textColorPrimary</item>
     </style>
 

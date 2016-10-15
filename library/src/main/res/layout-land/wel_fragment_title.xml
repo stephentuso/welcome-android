@@ -4,34 +4,34 @@
               android:layout_height="match_parent">
 
     <View
-        android:id="@+id/center_view"
+        android:id="@+id/wel_center_view"
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_centerHorizontal="true"/>
 
     <ImageView
-        android:id="@+id/image"
+        android:id="@+id/wel_image"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_alignRight="@id/center_view"
-        android:layout_alignEnd="@id/center_view"/>
+        android:layout_alignRight="@id/wel_center_view"
+        android:layout_alignEnd="@id/wel_center_view"/>
 
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        android:layout_alignLeft="@id/center_view"
-        android:layout_alignStart="@id/center_view"
+        android:layout_alignLeft="@id/wel_center_view"
+        android:layout_alignStart="@id/wel_center_view"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
         android:orientation="vertical"
         android:gravity="center"
-        style="@style/TextContainer">
+        style="@style/Wel_TextContainer">
 
         <TextView
             style="?attr/welcomeTitleTextStyle"
-            android:id="@+id/title"
+            android:id="@+id/wel_title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
 

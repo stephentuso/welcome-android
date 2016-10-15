@@ -42,11 +42,11 @@ public class WelcomeFullScreenParallaxFragment extends Fragment implements Welco
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_parallax_full_screen, container, false);
+        View view = inflater.inflate(R.layout.wel_fragment_parallax_full_screen, container, false);
 
         Bundle args = getArguments();
 
-        frameLayout = (FrameLayout) view.findViewById(R.id.parallax_frame);
+        frameLayout = (FrameLayout) view.findViewById(R.id.wel_parallax_frame);
 
         if (args == null)
             return view;

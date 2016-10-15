@@ -53,13 +53,13 @@ public class WelcomeParallaxFragment extends Fragment implements WelcomePage.OnC
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_parallax, container, false);
+        View view = inflater.inflate(R.layout.wel_fragment_parallax, container, false);
 
         Bundle args = getArguments();
 
-        frameLayout = (FrameLayout) view.findViewById(R.id.parallax_frame);
-        titleView = (TextView) view.findViewById(R.id.title);
-        descriptionView = (TextView) view.findViewById(R.id.description);
+        frameLayout = (FrameLayout) view.findViewById(R.id.wel_parallax_frame);
+        titleView = (TextView) view.findViewById(R.id.wel_title);
+        descriptionView = (TextView) view.findViewById(R.id.wel_description);
 
         if (args == null)
             return view;

@@ -43,8 +43,8 @@ public class WelcomeConfigurationTest {
     @Before
     public void setUp() {
 
-        when(resources.getColor(R.color.default_background_color)).thenReturn(DEFAULT_COLOR);
-        when(resources.getColor(R.color.white)).thenReturn(Color.WHITE);
+        when(resources.getColor(R.color.wel_default_background_color)).thenReturn(DEFAULT_COLOR);
+        when(resources.getColor(R.color.wel_white)).thenReturn(Color.WHITE);
         when(theme.resolveAttribute(R.attr.colorPrimary, new TypedValue(), true)).thenReturn(false);
         when(theme.resolveAttribute(android.R.attr.colorPrimary, new TypedValue(), true)).thenReturn(false);
         when(context.getResources()).thenReturn(resources);
@@ -68,7 +68,7 @@ public class WelcomeConfigurationTest {
     //Helper methods
 
     private void setRtl(boolean rtl) {
-        when(resources.getBoolean(R.bool.isRtl)).thenReturn(rtl);
+        when(resources.getBoolean(R.bool.wel_is_rtl)).thenReturn(rtl);
     }
 
     private void setApiLevel(int level) {
@@ -222,8 +222,8 @@ public class WelcomeConfigurationTest {
 
     @Test
     public void testExitAnimation() {
-        builder1.exitAnimation(R.anim.fade_out);
-        assertEquals(R.anim.fade_out, builder1.build().getExitAnimation());
+        builder1.exitAnimation(android.R.anim.fade_out);
+        assertEquals(android.R.anim.fade_out, builder1.build().getExitAnimation());
     }
 
     @Test
@@ -349,7 +349,7 @@ public class WelcomeConfigurationTest {
 
     @Test
     public void testDefaultBackgroundColor() {
-        builder2.defaultBackgroundColor(R.color.white)
+        builder2.defaultBackgroundColor(R.color.wel_white)
                 .page(newBlankPage());
 
         WelcomeConfiguration config = builder2.build();

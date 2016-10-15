@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <style name="WelcomeScreenBaseTheme" parent="Theme.AppCompat.NoActionBar">
+    <style name="Wel_WelcomeScreenBaseTheme" parent="Theme.AppCompat.NoActionBar">
         <!-- See v19 styles -->
     </style>
 
-    <style name="TextContainer">
-        <item name="android:paddingTop">@dimen/text_top_padding</item>
-        <item name="android:paddingBottom">@dimen/text_bottom_padding</item>
+    <style name="Wel_TextContainer">
+        <item name="android:paddingTop">@dimen/wel_text_top_padding</item>
+        <item name="android:paddingBottom">@dimen/wel_text_bottom_padding</item>
         <item name="android:fitsSystemWindows">true</item>
         <item name="android:gravity">center</item>
     </style>
 
-    <style name="TransparentActionBar" parent="Base.Widget.AppCompat.ActionBar">
-        <item name="android:background">@color/transparent</item>
+    <style name="Wel_TransparentActionBar" parent="Base.Widget.AppCompat.ActionBar">
+        <item name="android:background">@color/wel_transparent</item>
     </style>
 
 </resources>

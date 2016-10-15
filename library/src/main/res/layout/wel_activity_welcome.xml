@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout
-    android:id="@+id/root"
+    android:id="@+id/wel_root"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="com.stephentuso.welcome.WelcomeActivity"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="false"
-    android:background="@color/transparent">
+    android:background="@color/wel_transparent">
 
     <com.stephentuso.welcome.WelcomeBackgroundView
-        android:id="@+id/background_view"
+        android:id="@+id/wel_background_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="#2c809f"/>
@@ -22,7 +22,7 @@
         android:fitsSystemWindows="?attr/welcomeLayoutFitsSystemWindows">
 
         <android.support.v4.view.ViewPager
-            android:id="@+id/view_pager"
+            android:id="@+id/wel_view_pager"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"/>
@@ -43,14 +43,14 @@
 
                 <Button
                     style="?attr/welcomeButtonSkipStyle"
-                    android:id="@+id/button_skip"
+                    android:id="@+id/wel_button_skip"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="?attr/welcomeButtonSkipText"/>
 
                 <ImageButton
                     style="?attr/welcomeButtonPrevStyle"
-                    android:id="@+id/button_prev"
+                    android:id="@+id/wel_button_prev"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:visibility="invisible"/>
@@ -58,7 +58,7 @@
             </FrameLayout>
 
             <com.stephentuso.welcome.WelcomeViewPagerIndicator
-                android:id="@+id/pager_indicator"
+                android:id="@+id/wel_pager_indicator"
                 android:layout_width="0dp"
                 android:layout_height="20dp"
                 android:layout_weight="1"
@@ -70,14 +70,14 @@
 
                 <Button
                     style="?attr/welcomeButtonDoneStyle"
-                    android:id="@+id/button_done"
+                    android:id="@+id/wel_button_done"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="?attr/welcomeButtonDoneText"/>
 
                 <ImageButton
                     style="?attr/welcomeButtonNextStyle"
-                    android:id="@+id/button_next"
+                    android:id="@+id/wel_button_next"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"/>
 

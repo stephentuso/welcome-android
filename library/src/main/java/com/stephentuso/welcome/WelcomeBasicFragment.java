@@ -46,13 +46,13 @@ public class WelcomeBasicFragment extends Fragment implements WelcomePage.OnChan
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_basic, container, false);
+        View view = inflater.inflate(R.layout.wel_fragment_basic, container, false);
 
         Bundle args = getArguments();
 
-        imageView = (ImageView) view.findViewById(R.id.image);
-        titleView = (TextView) view.findViewById(R.id.title);
-        descriptionView = (TextView) view.findViewById(R.id.description);
+        imageView = (ImageView) view.findViewById(R.id.wel_image);
+        titleView = (TextView) view.findViewById(R.id.wel_title);
+        descriptionView = (TextView) view.findViewById(R.id.wel_description);
 
         if (args == null)
             return view;
