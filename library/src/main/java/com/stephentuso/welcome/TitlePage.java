@@ -53,6 +53,24 @@ public class TitlePage extends WelcomePage<TitlePage> {
         return this;
     }
 
+    /* Package local getters for testing */
+
+    int getDrawableResId() {
+        return drawableResId;
+    }
+
+    /* package */ String getTitle() {
+        return title;
+    }
+
+    /* package */ boolean getShowParallax() {
+        return showParallax;
+    }
+
+    /* package */ String getTitleTypefacePath() {
+        return titleTypefacePath;
+    }
+
     @Override
     public void setup(WelcomeConfiguration config) {
         super.setup(config);

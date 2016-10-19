@@ -1,0 +1,126 @@
+package com.stephentuso.welcome;
+
+import android.support.annotation.DrawableRes;
+import android.support.annotation.LayoutRes;
+
+import org.junit.Before;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.mockito.runners.MockitoJUnitRunner;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertTrue;
+
+/**
+ * Created by stephentuso on 10/19/16.
+ */
+
+@RunWith(MockitoJUnitRunner.class)
+public class PagesTest {
+
+    @DrawableRes
+    private static final int DRAWABLE_RES = 24;
+
+    @LayoutRes
+    private static final int LAYOUT_RES = 25;
+
+    @Before
+    public void setUp() {
+
+    }
+
+    //TODO: Test setup method of each page
+
+    @Test
+    public void titlePage() {
+
+        TitlePage page = new TitlePage(DRAWABLE_RES, "Title");
+
+        assertEquals(DRAWABLE_RES, page.getDrawableResId());
+        assertEquals("Title", page.getTitle());
+
+        //Defaults
+        assertTrue(page.getShowParallax());
+        assertNull(page.getTitleTypefacePath());
+
+        page.parallax(false).titleTypeface("title_typeface");
+        assertFalse(page.getShowParallax());
+        assertEquals("title_typeface", page.getTitleTypefacePath());
+    }
+
+    @Test
+    public void basicPage() {
+
+        BasicPage page = new BasicPage(DRAWABLE_RES, "Title", "Description");
+
+        assertEquals(DRAWABLE_RES, page.getDrawableResId());
+        assertEquals("Title", page.getTitle());
+        assertEquals("Description", page.getDescription());
+
+        //Defaults
+        assertTrue(page.getShowParallax());
+        assertNull(page.getHeaderTypefacePath());
+        assertNull(page.getDescriptionTypefacePath());
+
+        page.parallax(false)
+                .headerTypeface("header_typeface")
+                .descriptionTypeface("description_typeface");
+        assertFalse(page.getShowParallax());
+        assertEquals("header_typeface", page.getHeaderTypefacePath());
+        assertEquals("description_typeface", page.getDescriptionTypefacePath());
+    }
+
+    @Test
+    public void parallaxPage() {
+
+        ParallaxPage page = new ParallaxPage(LAYOUT_RES, "Title", "Description");
+
+        assertEquals(LAYOUT_RES, page.getLayoutResId());
+        assertEquals("Title", page.getTitle());
+        assertEquals("Description", page.getDescription());
+
+        //Defaults
+        assertEquals(0.2, page.getFirstParallaxFactor(), 0.001);
+        assertEquals(1.0, page.getLastParallaxFactor(), 0.001);
+        assertFalse(page.getParallaxRecursive());
+        assertNull(page.getHeaderTypefacePath());
+        assertNull(page.getDescriptionTyefacePath());
+
+        page.firstParallaxFactor(-0.4f)
+                .lastParallaxFactor(2.0f)
+                .recursive(true)
+                .headerTypeface("header_typeface")
+                .descriptionTypefacePath("description_typeface");
+
+        assertEquals(-0.4f, page.getFirstParallaxFactor(), 0.001);
+        assertEquals(2.0f, page.getLastParallaxFactor(), 0.001);
+        assertTrue(page.getParallaxRecursive());
+        assertEquals("header_typeface", page.getHeaderTypefacePath());
+        assertEquals("description_typeface", page.getDescriptionTyefacePath());
+    }
+
+    @Test
+    public void fullscreenParallaxPage() {
+
+        FullscreenParallaxPage page = new FullscreenParallaxPage(LAYOUT_RES);
+
+        assertEquals(LAYOUT_RES, page.getLayoutResId());
+
+        //Defaults
+        assertEquals(0.2, page.getFirstParallaxFactor(), 0.001);
+        assertEquals(1.0, page.getLastParallaxFactor(), 0.001);
+        assertFalse(page.getParallaxRecursive());
+
+        page.firstParallaxFactor(0.6f)
+                .lastParallaxFactor(1.8f)
+                .recursive(true);
+
+        assertEquals(0.6f, page.getFirstParallaxFactor(), 0.001);
+        assertEquals(1.8f, page.getLastParallaxFactor(), 0.001);
+        assertTrue(page.getParallaxRecursive());
+
+    }
+
+}

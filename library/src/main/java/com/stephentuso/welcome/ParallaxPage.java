@@ -127,6 +127,40 @@ public class ParallaxPage extends WelcomePage<ParallaxPage> {
         return this;
     }
 
+    /* Package local getters for testing */
+
+    /* package */ int getLayoutResId() {
+        return layoutResId;
+    }
+
+    /* package */ String getTitle() {
+        return title;
+    }
+
+    /* package */ String getDescription() {
+        return description;
+    }
+
+    /* package */ float getFirstParallaxFactor() {
+        return firstParallaxFactor;
+    }
+
+    /* package */ float getLastParallaxFactor() {
+        return lastParallaxFactor;
+    }
+
+    /* package */ boolean getParallaxRecursive() {
+        return parallaxRecursive;
+    }
+
+    /* package */ String getHeaderTypefacePath() {
+        return headerTypefacePath;
+    }
+
+    /* package */ String getDescriptionTyefacePath() {
+        return descriptionTyefacePath;
+    }
+
     @Override
     public void setup(WelcomeConfiguration config) {
         super.setup(config);

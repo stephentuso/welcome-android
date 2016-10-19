@@ -17,7 +17,7 @@ public class FullscreenParallaxPage extends WelcomePage<FullscreenParallaxPage> 
 
     private int layoutResId;
     private float firstParallaxFactor = 0.2f;
-    private float lastParallaxFactor = 2f;
+    private float lastParallaxFactor = 1f;
     private boolean parallaxRecursive = false;
 
     /**
@@ -90,6 +90,24 @@ public class FullscreenParallaxPage extends WelcomePage<FullscreenParallaxPage> 
     public FullscreenParallaxPage recursive(boolean recursive) {
         this.parallaxRecursive = recursive;
         return this;
+    }
+
+    /* Package local getters for testing */
+
+    /* package */ int getLayoutResId() {
+        return layoutResId;
+    }
+
+    /* package */ float getFirstParallaxFactor() {
+        return firstParallaxFactor;
+    }
+
+    /* package */ float getLastParallaxFactor() {
+        return lastParallaxFactor;
+    }
+
+    /* package */ boolean getParallaxRecursive() {
+        return parallaxRecursive;
     }
 
     @Override

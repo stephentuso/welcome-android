@@ -69,6 +69,32 @@ public class BasicPage extends WelcomePage<BasicPage> {
         return this;
     }
 
+    /* Package local getters for testing */
+
+    /* package */ int getDrawableResId() {
+        return this.drawableResId;
+    }
+
+    /* package */ String getTitle() {
+        return title;
+    }
+
+    /* package */ String getDescription() {
+        return description;
+    }
+
+    /* package */ boolean getShowParallax() {
+        return this.showParallax;
+    }
+
+    /* package */ String getHeaderTypefacePath() {
+        return this.headerTypefacePath;
+    }
+
+    /* package */ String getDescriptionTypefacePath() {
+        return this.descriptionTypefacePath;
+    }
+
     @Override
     public void setup(WelcomeConfiguration config) {
         super.setup(config);
