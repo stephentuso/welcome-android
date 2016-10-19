@@ -303,25 +303,25 @@ public class WelcomeConfiguration {
 
     public static class Builder {
 
-        protected WelcomePageList pages = new WelcomePageList();
-        protected boolean canSkip = true;
-        protected boolean backButtonSkips = true;
-        protected boolean backButtonNavigatesPages = true;
-        protected BackgroundColor defaultBackgroundColor;
-        protected Context context;
-        protected int themeResId = NO_THEME_SET;
-        protected boolean swipeToDismiss = false;
-        protected int exitAnimationResId = NO_ANIMATION_SET;
-        protected String skipButtonTypefacePath = null;
-        protected String doneButtonTypefacePath = null;
-        protected String defaultTitleTypefacePath = null;
-        protected String defaultHeaderTypefacePath = null;
-        protected String defaultDescriptionTypefacePath = null;
-        protected boolean animateButtons = true;
-        protected boolean useCustomDoneButton = false;
-        protected boolean showNextButton = true;
-        protected boolean showPrevButton = false;
-        protected boolean showActionBarBackButton = false;
+        private WelcomePageList pages = new WelcomePageList();
+        private boolean canSkip = true;
+        private boolean backButtonSkips = true;
+        private boolean backButtonNavigatesPages = true;
+        private BackgroundColor defaultBackgroundColor;
+        private Context context;
+        private int themeResId = NO_THEME_SET;
+        private boolean swipeToDismiss = false;
+        private int exitAnimationResId = NO_ANIMATION_SET;
+        private String skipButtonTypefacePath = null;
+        private String doneButtonTypefacePath = null;
+        private String defaultTitleTypefacePath = null;
+        private String defaultHeaderTypefacePath = null;
+        private String defaultDescriptionTypefacePath = null;
+        private boolean animateButtons = true;
+        private boolean useCustomDoneButton = false;
+        private boolean showNextButton = true;
+        private boolean showPrevButton = false;
+        private boolean showActionBarBackButton = false;
 
         /**
          * Creates a new Builder

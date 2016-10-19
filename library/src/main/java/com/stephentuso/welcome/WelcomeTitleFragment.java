@@ -4,6 +4,7 @@ package com.stephentuso.welcome;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.DrawableRes;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -35,8 +36,7 @@ public class WelcomeTitleFragment extends Fragment implements WelcomePage.OnChan
      *
      * @return A new instance of TitleFragment.
      */
-    // TODO: Rename and change types and number of parameters
-    public static WelcomeTitleFragment newInstance(@DrawableRes int resId, String title, boolean showParallaxAnim, String typefacePath) {
+    public static WelcomeTitleFragment newInstance(@DrawableRes int resId, String title, boolean showParallaxAnim, @Nullable String typefacePath) {
         WelcomeTitleFragment fragment = new WelcomeTitleFragment();
         Bundle args = new Bundle();
         args.putInt(ARG_DRAWABLE_ID, resId);

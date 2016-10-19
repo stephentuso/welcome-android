@@ -76,7 +76,7 @@ public class TitlePage extends WelcomePage<TitlePage> {
         super.setup(config);
 
         if (this.titleTypefacePath == null) {
-            titleTypeface(config.getDefaultHeaderTypefacePath());
+            titleTypeface(config.getDefaultTitleTypefacePath());
         }
 
     }

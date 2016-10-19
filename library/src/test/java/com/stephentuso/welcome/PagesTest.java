@@ -18,7 +18,7 @@ import static org.junit.Assert.assertTrue;
  */
 
 @RunWith(MockitoJUnitRunner.class)
-public class PagesTest {
+public class PagesTest extends ConfigurationTest {
 
     @DrawableRes
     private static final int DRAWABLE_RES = 24;
@@ -26,12 +26,21 @@ public class PagesTest {
     @LayoutRes
     private static final int LAYOUT_RES = 25;
 
+    private static final String DEFAULT_TITLE_TF = "default_title_typeface";
+    private static final String DEFAULT_HEADER_TF = "default_header_typeface";
+    private static final String DEFAULT_DESCRIPTION_TF = "default_description_typeface";
+
+    WelcomeConfiguration.Builder builder;
+
     @Before
     public void setUp() {
-
+        initContext();
+        builder = new WelcomeConfiguration.Builder(context);
+        builder.page(new BasicPage(DRAWABLE_RES, "", ""))
+                .defaultTitleTypefacePath(DEFAULT_TITLE_TF)
+                .defaultHeaderTypefacePath(DEFAULT_HEADER_TF)
+                .defaultDescriptionTypefacePath(DEFAULT_DESCRIPTION_TF);
     }
-
-    //TODO: Test setup method of each page
 
     @Test
     public void titlePage() {
@@ -44,6 +53,9 @@ public class PagesTest {
         //Defaults
         assertTrue(page.getShowParallax());
         assertNull(page.getTitleTypefacePath());
+
+        page.setup(builder.build());
+        assertEquals(DEFAULT_TITLE_TF, page.getTitleTypefacePath());
 
         page.parallax(false).titleTypeface("title_typeface");
         assertFalse(page.getShowParallax());
@@ -63,6 +75,10 @@ public class PagesTest {
         assertTrue(page.getShowParallax());
         assertNull(page.getHeaderTypefacePath());
         assertNull(page.getDescriptionTypefacePath());
+
+        page.setup(builder.build());
+        assertEquals(DEFAULT_HEADER_TF, page.getHeaderTypefacePath());
+        assertEquals(DEFAULT_DESCRIPTION_TF, page.getDescriptionTypefacePath());
 
         page.parallax(false)
                 .headerTypeface("header_typeface")
@@ -87,6 +103,11 @@ public class PagesTest {
         assertFalse(page.getParallaxRecursive());
         assertNull(page.getHeaderTypefacePath());
         assertNull(page.getDescriptionTyefacePath());
+
+        page.setup(builder.build());
+        assertEquals(DEFAULT_HEADER_TF, page.getHeaderTypefacePath());
+        assertEquals(DEFAULT_DESCRIPTION_TF, page.getDescriptionTyefacePath());
+
 
         page.firstParallaxFactor(-0.4f)
                 .lastParallaxFactor(2.0f)
@@ -120,7 +141,6 @@ public class PagesTest {
         assertEquals(0.6f, page.getFirstParallaxFactor(), 0.001);
         assertEquals(1.8f, page.getLastParallaxFactor(), 0.001);
         assertTrue(page.getParallaxRecursive());
-
     }
 
 }

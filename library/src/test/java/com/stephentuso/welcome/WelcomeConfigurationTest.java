@@ -1,17 +1,12 @@
 package com.stephentuso.welcome;
 
-import android.content.Context;
-import android.content.res.Resources;
-import android.content.res.Resources.Theme;
 import android.graphics.Color;
 import android.os.Build;
 import android.support.v4.app.Fragment;
-import android.util.TypedValue;
 
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
 
 import java.lang.reflect.Field;
@@ -29,26 +24,14 @@ import static org.mockito.Mockito.when;
  */
 
 @RunWith(MockitoJUnitRunner.class)
-public class WelcomeConfigurationTest {
-
-    @Mock private Resources resources;
-    @Mock private Theme theme;
-    @Mock private Context context;
+public class WelcomeConfigurationTest extends ConfigurationTest {
 
     private WelcomeConfiguration.Builder builder1; //Will be initialized with one page
     private WelcomeConfiguration.Builder builder2; //Will have no pages
 
-    private static int DEFAULT_COLOR = 0x1e88e5;
-
     @Before
     public void setUp() {
-
-        when(resources.getColor(R.color.wel_default_background_color)).thenReturn(DEFAULT_COLOR);
-        when(resources.getColor(R.color.wel_white)).thenReturn(Color.WHITE);
-        when(theme.resolveAttribute(R.attr.colorPrimary, new TypedValue(), true)).thenReturn(false);
-        when(theme.resolveAttribute(android.R.attr.colorPrimary, new TypedValue(), true)).thenReturn(false);
-        when(context.getResources()).thenReturn(resources);
-        when(context.getTheme()).thenReturn(theme);
+        initContext();
 
         builder1 = new WelcomeConfiguration.Builder(context);
         builder1.page(new FragmentWelcomePage() {
