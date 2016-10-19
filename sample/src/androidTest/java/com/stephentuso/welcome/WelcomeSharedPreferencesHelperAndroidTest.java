@@ -1,8 +1,6 @@
-package com.stephentuso.welcomeexample;
+package com.stephentuso.welcome;
 
 import android.support.test.runner.AndroidJUnit4;
-
-import com.stephentuso.welcome.WelcomeSharedPreferencesHelper;
 
 import org.junit.Before;
 import org.junit.Test;

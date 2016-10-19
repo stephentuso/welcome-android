@@ -1,13 +1,11 @@
-package com.stephentuso.welcomeexample;
+package com.stephentuso.welcome;
 
 import android.app.Activity;
 import android.app.Instrumentation.ActivityMonitor;
 import android.os.Bundle;
 import android.support.test.runner.AndroidJUnit4;
 
-import com.stephentuso.welcome.WelcomeHelper;
-import com.stephentuso.welcome.WelcomeSharedPreferencesHelper;
-import com.stephentuso.welcome.WelcomeUtils;
+import com.stephentuso.welcomeexample.DefaultWelcomeActivity;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

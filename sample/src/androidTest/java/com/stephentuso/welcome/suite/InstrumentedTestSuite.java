@@ -1,7 +1,7 @@
-package com.stephentuso.welcomeexample.suite;
+package com.stephentuso.welcome.suite;
 
-import com.stephentuso.welcomeexample.WelcomeScreenHelperAndroidTest;
-import com.stephentuso.welcomeexample.WelcomeSharedPreferencesHelperAndroidTest;
+import com.stephentuso.welcome.WelcomeScreenHelperAndroidTest;
+import com.stephentuso.welcome.WelcomeSharedPreferencesHelperAndroidTest;
 
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
