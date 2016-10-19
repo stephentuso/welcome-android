@@ -585,12 +585,6 @@ public class WelcomeConfiguration {
             return this;
         }
 
-        private Integer getColor(@ColorRes int resId) {
-            if (resId == 0)
-                return null;
-            return ColorHelper.getColor(context, resId);
-        }
-
     }
 
 }

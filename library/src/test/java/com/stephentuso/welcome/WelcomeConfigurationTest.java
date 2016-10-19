@@ -310,13 +310,13 @@ public class WelcomeConfigurationTest {
 
         // Test page count
 
-        assertEquals(3, builder2.build().viewablePageCount());
-
         builder2.swipeToDismiss(true);
+        assertEquals(3, builder2.build().viewablePageCount());
         assertEquals(4, builder2.build().pageCount());
         assertEquals(4, builder2.build().getPages().size());
 
         builder2.swipeToDismiss(false);
+        assertEquals(3, builder2.build().viewablePageCount());
         assertEquals(3, builder2.build().pageCount());
         assertEquals(3, builder2.build().getPages().size());
     }
