@@ -16,7 +16,7 @@ public abstract class WelcomeActivity extends AppCompatActivity {
 
     public static final String WELCOME_SCREEN_KEY = "welcome_screen_key";
 
-    private ViewPager viewPager;
+    protected ViewPager viewPager;
     private WelcomeFragmentPagerAdapter adapter;
     private WelcomeConfiguration configuration;
     private WelcomeItemList responsiveItems = new WelcomeItemList();

@@ -43,6 +43,20 @@ public class PagesTest extends ConfigurationTest {
     }
 
     @Test
+    public void testBackgroundColor() {
+        WelcomePage page = new BasicPage(DRAWABLE_RES, "Title", "Description");
+        assertFalse(page.backgroundIsSet());
+
+        page.background(R.color.wel_default_background_color);
+        assertTrue(page.backgroundIsSet());
+        assertEquals(new BackgroundColor(DEFAULT_COLOR), page.getBackground(context));
+
+        page.background(new BackgroundColor(DEFAULT_COLOR));
+        assertTrue(page.backgroundIsSet());
+        assertEquals(new BackgroundColor(DEFAULT_COLOR), page.getBackground(context));
+    }
+
+    @Test
     public void titlePage() {
 
         TitlePage page = new TitlePage(DRAWABLE_RES, "Title");

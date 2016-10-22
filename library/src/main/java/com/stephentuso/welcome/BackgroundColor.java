@@ -25,4 +25,18 @@ public class BackgroundColor {
         return this.color;
     }
 
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == this) {
+            return true;
+        }
+        if (obj instanceof BackgroundColor) {
+            BackgroundColor otherColor = (BackgroundColor) obj;
+            if (otherColor.value() == this.value()) {
+                return true;
+            }
+        }
+        return false;
+    }
+
 }

@@ -115,8 +115,9 @@ public class WelcomeUtils {
     }
 
     private static void translateViewForParallaxEffect(View view, int index, int offsetPixels, float startParallaxFactor, float parallaxInterval) {
-        if (Build.VERSION.SDK_INT > 11)
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
             view.setTranslationX(calculateParallaxOffsetAmount(index, offsetPixels, startParallaxFactor, parallaxInterval));
+        }
     }
 
     private static float calculateParallaxOffsetAmount(int index, int offsetPixels, float startParallaxFactor, float parallaxInterval) {
