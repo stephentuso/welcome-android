@@ -16,18 +16,17 @@ public abstract class WelcomeActivity extends AppCompatActivity {
 
     public static final String WELCOME_SCREEN_KEY = "welcome_screen_key";
 
-    private ViewPager mViewPager;
-    private WelcomeFragmentPagerAdapter mAdapter;
-    private WelcomeConfiguration mConfiguration;
-
-    private WelcomeItemList mItems = new WelcomeItemList();
+    private ViewPager viewPager;
+    private WelcomeFragmentPagerAdapter adapter;
+    private WelcomeConfiguration configuration;
+    private WelcomeItemList responsiveItems = new WelcomeItemList();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        mConfiguration = configuration();
+        configuration = configuration();
 
-        if (mConfiguration.getThemeResId() != WelcomeConfiguration.NO_THEME_SET) {
-            super.setTheme(mConfiguration.getThemeResId());
+        if (configuration.getThemeResId() != WelcomeConfiguration.NO_THEME_SET) {
+            super.setTheme(configuration.getThemeResId());
         }
 
         /* Passing null for savedInstanceState fixes issue with fragments in list not matching
@@ -39,18 +38,18 @@ public abstract class WelcomeActivity extends AppCompatActivity {
 
         AppCompatDelegate.setCompatVectorFromResourcesEnabled(true);
 
-        mAdapter = new WelcomeFragmentPagerAdapter(getSupportFragmentManager());
+        adapter = new WelcomeFragmentPagerAdapter(getSupportFragmentManager());
 
-        mViewPager = (ViewPager) findViewById(R.id.wel_view_pager);
-        mViewPager.setAdapter(mAdapter);
+        viewPager = (ViewPager) findViewById(R.id.wel_view_pager);
+        viewPager.setAdapter(adapter);
 
-        if (mConfiguration.getShowActionBarBackButton()) {
+        if (configuration.getShowActionBarBackButton()) {
             ActionBar actionBar = getSupportActionBar();
             if (actionBar != null)
                 actionBar.setDisplayHomeAsUpEnabled(true);
         }
 
-        SkipButton skip = new SkipButton(findViewById(R.id.wel_button_skip), mConfiguration.getCanSkip());
+        SkipButton skip = new SkipButton(findViewById(R.id.wel_button_skip), configuration.getCanSkip());
         skip.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -93,49 +92,51 @@ public abstract class WelcomeActivity extends AppCompatActivity {
             }
         });
 
-        mItems = new WelcomeItemList(background, indicator, skip, prev, next, done, hider, mConfiguration.getPages());
-        mItems.setup(mConfiguration);
-        mViewPager.addOnPageChangeListener(mItems);
-        mViewPager.setCurrentItem(mConfiguration.firstPageIndex());
-        mItems.onPageSelected(mViewPager.getCurrentItem());
+        responsiveItems = new WelcomeItemList(background, indicator, skip, prev, next, done, hider, configuration.getPages());
+        responsiveItems.setup(configuration);
+        viewPager.addOnPageChangeListener(responsiveItems);
+        viewPager.setCurrentItem(configuration.firstPageIndex());
+        responsiveItems.onPageSelected(viewPager.getCurrentItem());
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        if (mViewPager != null) {
-            mViewPager.clearOnPageChangeListeners();
+        if (viewPager != null) {
+            viewPager.clearOnPageChangeListeners();
         }
     }
 
-    private boolean scrollToNextPage() {
-        if (!canScrollToNextPage())
+    /* package */ boolean scrollToNextPage() {
+        if (!canScrollToNextPage()) {
             return false;
-        mViewPager.setCurrentItem(getNextPageIndex());
+        }
+        viewPager.setCurrentItem(getNextPageIndex());
         return true;
     }
 
-    private boolean scrollToPreviousPage() {
-        if (!canScrollToPreviousPage())
+    /* package */ boolean scrollToPreviousPage() {
+        if (!canScrollToPreviousPage()) {
             return false;
-        mViewPager.setCurrentItem(getPreviousPageIndex());
+        }
+        viewPager.setCurrentItem(getPreviousPageIndex());
         return true;
     }
 
-    private int getNextPageIndex() {
-        return mViewPager.getCurrentItem() + (mConfiguration.isRtl() ? -1 : 1);
+    protected int getNextPageIndex() {
+        return viewPager.getCurrentItem() + (configuration.isRtl() ? -1 : 1);
     }
 
-    private int getPreviousPageIndex() {
-        return mViewPager.getCurrentItem() + (mConfiguration.isRtl() ? 1 : -1);
+    protected int getPreviousPageIndex() {
+        return viewPager.getCurrentItem() + (configuration.isRtl() ? 1 : -1);
     }
 
-    private boolean canScrollToNextPage() {
-        return mConfiguration.isRtl() ? getNextPageIndex() >= mConfiguration.lastViewablePageIndex() : getNextPageIndex() <= mConfiguration.lastViewablePageIndex();
+    protected boolean canScrollToNextPage() {
+        return configuration.isRtl() ? getNextPageIndex() >= configuration.lastViewablePageIndex() : getNextPageIndex() <= configuration.lastViewablePageIndex();
     }
 
-    private boolean canScrollToPreviousPage() {
-        return mConfiguration.isRtl() ? getPreviousPageIndex() <= mConfiguration.firstPageIndex() : getPreviousPageIndex() >= mConfiguration.firstPageIndex();
+    protected boolean canScrollToPreviousPage() {
+        return configuration.isRtl() ? getPreviousPageIndex() <= configuration.firstPageIndex() : getPreviousPageIndex() >= configuration.firstPageIndex();
     }
 
     /**
@@ -146,9 +147,9 @@ public abstract class WelcomeActivity extends AppCompatActivity {
     protected void completeWelcomeScreen() {
         WelcomeSharedPreferencesHelper.storeWelcomeCompleted(this, getKey());
         setWelcomeScreenResult(RESULT_OK);
-        super.finish();
-        if (mConfiguration.getExitAnimation() != WelcomeConfiguration.NO_ANIMATION_SET)
-            overridePendingTransition(R.anim.wel_none, mConfiguration.getExitAnimation());
+        finish();
+        if (configuration.getExitAnimation() != WelcomeConfiguration.NO_ANIMATION_SET)
+            overridePendingTransition(R.anim.wel_none, configuration.getExitAnimation());
     }
 
     /**
@@ -157,25 +158,21 @@ public abstract class WelcomeActivity extends AppCompatActivity {
      */
     protected void cancelWelcomeScreen() {
         setWelcomeScreenResult(RESULT_CANCELED);
-        super.finish();
+        finish();
     }
 
     @Override
     public void onBackPressed() {
 
-        boolean scrolledBack = false;
-        if (mConfiguration.getBackButtonNavigatesPages()) {
-            scrolledBack = scrollToPreviousPage();
+        // Scroll to previous page and return if back button navigates
+        if (configuration.getBackButtonNavigatesPages() && scrollToPreviousPage()) {
+            return;
         }
 
-        if (!scrolledBack) {
-
-            if (mConfiguration.getCanSkip() && mConfiguration.getBackButtonSkips()) {
-                completeWelcomeScreen();
-            } else {
-                cancelWelcomeScreen();
-            }
-
+        if (configuration.getCanSkip() && configuration.getBackButtonSkips()) {
+            completeWelcomeScreen();
+        } else {
+            cancelWelcomeScreen();
         }
 
     }
@@ -183,8 +180,8 @@ public abstract class WelcomeActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
 
-        if (mConfiguration.getShowActionBarBackButton() && item.getItemId() == android.R.id.home) {
-            cancelWelcomeScreen();
+        if (configuration.getShowActionBarBackButton() && item.getItemId() == android.R.id.home) {
+            onBackPressed();
             return true;
         }
 
@@ -211,12 +208,12 @@ public abstract class WelcomeActivity extends AppCompatActivity {
 
         @Override
         public Fragment getItem(int position) {
-            return mConfiguration.createFragment(position);
+            return configuration.createFragment(position);
         }
 
         @Override
         public int getCount() {
-            return mConfiguration.pageCount();
+            return configuration.pageCount();
         }
     }
 }

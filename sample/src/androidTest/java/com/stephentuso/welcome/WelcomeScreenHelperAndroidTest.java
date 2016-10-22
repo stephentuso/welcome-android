@@ -24,8 +24,8 @@ public class WelcomeScreenHelperAndroidTest extends ActivityTest {
     private WelcomeHelper helper;
 
     @Override
-    public void getActivity() {
-        super.getActivity();
+    public void initActivity() {
+        super.initActivity();
         helper = new WelcomeHelper(activity, DefaultWelcomeActivity.class);
     }
 
@@ -48,8 +48,9 @@ public class WelcomeScreenHelperAndroidTest extends ActivityTest {
         Activity welcomeActivity = instrumentation.waitForMonitor(monitor);
         assertNotNull(welcomeActivity);
 
-        Bundle state = new Bundle();
+        WelcomeSharedPreferencesHelper.removeWelcomeCompleted(activity, key);
 
+        Bundle state = new Bundle();
         helper.onSaveInstanceState(state);
         assertFalse(helper.show(state));
     }

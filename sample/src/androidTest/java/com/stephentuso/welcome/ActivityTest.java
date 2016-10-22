@@ -25,7 +25,7 @@ public class ActivityTest {
     protected Instrumentation instrumentation;
 
     @Before
-    public void getActivity() {
+    public void initActivity() {
         instrumentation = InstrumentationRegistry.getInstrumentation();
         Instrumentation.ActivityMonitor monitor = new Instrumentation.ActivityMonitor(TestActivity.class.getName(), null, false);
         instrumentation.addMonitor(monitor);
