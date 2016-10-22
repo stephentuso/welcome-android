@@ -16,9 +16,9 @@ import android.view.View;
  */
 /* package */ class SimpleViewPagerIndicator extends View implements ViewPager.OnPageChangeListener {
 
-    private static final int ANIM_NONE = 0;
-    private static final int ANIM_SLIDE = 1;
-    private static final int ANIM_FADE = 2;
+    public enum Animation {
+        NONE, SLIDE, FADE
+    }
 
     private Paint paint;
 
@@ -39,7 +39,7 @@ import android.view.View;
     private int spacing = 16;
     private int size = 4;
 
-    private int animation = ANIM_FADE;
+    private Animation animation = Animation.FADE;
     private boolean isRtl = false;
 
     public SimpleViewPagerIndicator(Context context) {
@@ -58,7 +58,8 @@ import android.view.View;
 
             currentPageColor = a.getColor(R.styleable.SimpleViewPagerIndicator_currentPageColor, currentPageColor);
             otherPageColor = a.getColor(R.styleable.SimpleViewPagerIndicator_indicatorColor, otherPageColor);
-            animation = a.getInt(R.styleable.SimpleViewPagerIndicator_animation, animation);
+            int animationInt = a.getInt(R.styleable.SimpleViewPagerIndicator_animation, animation.ordinal());
+            animation = animationFromInt(animationInt, animation);
 
             a.recycle();
         }
@@ -80,7 +81,7 @@ import android.view.View;
 
     @Override
     public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-        if (animation != ANIM_NONE) {
+        if (animation != Animation.NONE) {
             setPosition(position);
             currentPageOffset = canShowAnimation() ? 0 : positionOffset;
             invalidate();
@@ -89,7 +90,7 @@ import android.view.View;
 
     @Override
     public void onPageSelected(int position) {
-        if (animation == ANIM_NONE) {
+        if (animation == Animation.NONE) {
             setPosition(position);
             currentPageOffset = 0;
             invalidate();
@@ -99,6 +100,19 @@ import android.view.View;
     @Override
     public void onPageScrollStateChanged(int state) {
         //Not used
+    }
+
+    private Animation animationFromInt(int i, Animation fallback) {
+        for (Animation animation : Animation.values()) {
+            if (animation.ordinal() == i) {
+                return animation;
+            }
+        }
+        return fallback;
+    }
+
+    private boolean canShowAnimation() {
+        return isRtl ? currentPage < 0 : currentPage == totalPages - 1;
     }
 
     private Point getCenter() {
@@ -144,8 +158,12 @@ import android.view.View;
         return pageIndexOffset;
     }
 
-    private boolean canShowAnimation() {
-        return isRtl ? currentPage < 0 : currentPage == totalPages - 1;
+    public void setIndicatorAnimation(Animation animation) {
+        this.animation = animation;
+    }
+
+    public Animation getIndicatorAnimation() {
+        return animation;
     }
 
     @Override
@@ -162,11 +180,11 @@ import android.view.View;
 
         paint.setColor(currentPageColor);
 
-        if (animation == ANIM_NONE || animation == ANIM_SLIDE) {
+        if (animation == Animation.NONE || animation == Animation.SLIDE) {
             canvas.drawCircle(startX + (spacing * (displayedPage + currentPageOffset)), center.y, size, paint);
         }
 
-        else if (animation == ANIM_FADE) {
+        else if (animation == Animation.FADE) {
             paint.setAlpha((int) (currentMaxAlpha * (1f - currentPageOffset)));
             canvas.drawCircle(startX + (spacing * displayedPage), center.y, size, paint);
             paint.setAlpha((int) (currentMaxAlpha * currentPageOffset));
