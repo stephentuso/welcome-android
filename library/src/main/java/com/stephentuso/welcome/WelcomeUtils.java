@@ -105,7 +105,7 @@ public class WelcomeUtils {
         if (view instanceof ViewGroup) {
             ViewGroup group = (ViewGroup) view;
             for (int i = 0; i < group.getChildCount(); i++) {
-                nextIndex = applyParallaxEffectRecursively(group.getChildAt(i), offsetPixels, startParallaxFactor, parallaxInterval, index);
+                nextIndex = applyParallaxEffectRecursively(group.getChildAt(i), offsetPixels, startParallaxFactor, parallaxInterval, nextIndex);
             }
         } else {
             translateViewForParallaxEffect(view, index, offsetPixels, startParallaxFactor, parallaxInterval);
