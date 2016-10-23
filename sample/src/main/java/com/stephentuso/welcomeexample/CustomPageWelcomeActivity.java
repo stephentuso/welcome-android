@@ -17,6 +17,7 @@ public class CustomPageWelcomeActivity extends WelcomeActivity {
     @Override
     protected WelcomeConfiguration configuration() {
         return new WelcomeConfiguration.Builder(this)
+                .defaultBackgroundColor(R.color.colorPrimary)
                 .page(new FragmentWelcomePage() {
                     @Override
                     protected Fragment fragment() {

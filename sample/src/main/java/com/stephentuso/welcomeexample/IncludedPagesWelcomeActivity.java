@@ -1,9 +1,11 @@
 package com.stephentuso.welcomeexample;
 
-import com.stephentuso.welcome.WelcomeScreenBuilder;
-import com.stephentuso.welcome.ui.WelcomeActivity;
-import com.stephentuso.welcome.util.WelcomeScreenConfiguration;
-
+import com.stephentuso.welcome.BasicPage;
+import com.stephentuso.welcome.FullscreenParallaxPage;
+import com.stephentuso.welcome.ParallaxPage;
+import com.stephentuso.welcome.TitlePage;
+import com.stephentuso.welcome.WelcomeActivity;
+import com.stephentuso.welcome.WelcomeConfiguration;
 /**
  * Created by stephentuso on 10/10/16.
  */
@@ -11,19 +13,17 @@ import com.stephentuso.welcome.util.WelcomeScreenConfiguration;
 public class IncludedPagesWelcomeActivity extends WelcomeActivity {
 
     @Override
-    protected WelcomeScreenConfiguration configuration() {
-        return new WelcomeScreenBuilder(this)
+    protected WelcomeConfiguration configuration() {
+        return new WelcomeConfiguration.Builder(this)
                 .defaultBackgroundColor(R.color.colorPrimary)
-                .theme(R.style.GeneralWelcomeScreenTheme)
                 .swipeToDismiss(true)
                 .defaultTitleTypefacePath("Roboto-Bold.ttf")
                 .defaultHeaderTypefacePath("Roboto-Bold.ttf")
-                .titlePage(R.drawable.ic_image_white, "Title Page")
-                .basicPage(R.drawable.ic_image_white, "Basic Page", "A page with a title and description", R.color.purple_background)
-                .parallaxPage(R.layout.parallax_example_two, "Parallax page", "Applies a parallax effect and has a title and description", R.color.red_background)
-                .fullScreenParallaxPage(R.layout.parallax_example_fullscreen, R.color.orange_background)
+                .page(new TitlePage(R.drawable.ic_image_white, "Title Page"))
+                .page(new BasicPage(R.drawable.ic_image_white, "Basic Page", "A page with a title and description").background(R.color.purple_background))
+                .page(new ParallaxPage(R.layout.parallax_example_two, "Parallax page", "Applies a parallax effect and has a title and description").background(R.color.red_background))
+                .page(new FullscreenParallaxPage(R.layout.parallax_example_fullscreen).background(R.color.orange_background))
                 .build();
-
     }
 
 }

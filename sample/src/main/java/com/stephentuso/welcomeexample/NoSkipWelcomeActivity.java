@@ -13,6 +13,7 @@ public class NoSkipWelcomeActivity extends WelcomeActivity {
     @Override
     protected WelcomeConfiguration configuration() {
         return new WelcomeConfiguration.Builder(this)
+                .defaultBackgroundColor(R.color.colorPrimary)
                 .defaultTitleTypefacePath("Roboto-Bold.ttf")
                 .defaultHeaderTypefacePath("Roboto-Bold.ttf")
                 .page(new BasicPage(R.drawable.ic_image_white,
