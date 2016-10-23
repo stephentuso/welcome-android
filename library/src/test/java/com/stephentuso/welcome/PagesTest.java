@@ -74,6 +74,9 @@ public class PagesTest extends ConfigurationTest {
         page.parallax(false).titleTypeface("title_typeface");
         assertFalse(page.getShowParallax());
         assertEquals("title_typeface", page.getTitleTypefacePath());
+
+        page.setup(builder.build());
+        assertEquals("title_typeface", page.getTitleTypefacePath());
     }
 
     @Test
@@ -98,6 +101,10 @@ public class PagesTest extends ConfigurationTest {
                 .headerTypeface("header_typeface")
                 .descriptionTypeface("description_typeface");
         assertFalse(page.getShowParallax());
+        assertEquals("header_typeface", page.getHeaderTypefacePath());
+        assertEquals("description_typeface", page.getDescriptionTypefacePath());
+
+        page.setup(builder.build());
         assertEquals("header_typeface", page.getHeaderTypefacePath());
         assertEquals("description_typeface", page.getDescriptionTypefacePath());
     }
@@ -132,6 +139,10 @@ public class PagesTest extends ConfigurationTest {
         assertEquals(-0.4f, page.getFirstParallaxFactor(), 0.001);
         assertEquals(2.0f, page.getLastParallaxFactor(), 0.001);
         assertTrue(page.getParallaxRecursive());
+        assertEquals("header_typeface", page.getHeaderTypefacePath());
+        assertEquals("description_typeface", page.getDescriptionTyefacePath());
+
+        page.setup(builder.build());
         assertEquals("header_typeface", page.getHeaderTypefacePath());
         assertEquals("description_typeface", page.getDescriptionTyefacePath());
     }
