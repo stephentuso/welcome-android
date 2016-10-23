@@ -19,12 +19,14 @@ import android.widget.TextView;
     public void setup(WelcomeConfiguration config) {
         super.setup(config);
         shouldShow = !config.getUseCustomDoneButton();
-        WelcomeUtils.setTypeface((TextView) this.getView(), config.getDoneButtonTypefacePath(), config.getContext());
+        if (this.getView() instanceof TextView) {
+            WelcomeUtils.setTypeface((TextView) this.getView(), config.getDoneButtonTypefacePath(), config.getContext());
+        }
     }
 
     @Override
     public void onPageSelected(int pageIndex, int firstPageIndex, int lastPageIndex) {
-        setVisibility(shouldShow && pageIndex == lastPageIndex);
+        setVisibility(shouldShow && !WelcomeUtils.isIndexBeforeLastPage(pageIndex, lastPageIndex, isRtl));
     }
 
 

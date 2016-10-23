@@ -22,7 +22,7 @@
             android:theme="@style/SampleWelcomeScreenTheme"/>
 
         <activity android:name=".DefaultWelcomeActivity"
-                  android:theme="@style/GeneralWelcomeScreenTheme"/>
+                  android:theme="@style/WelcomeScreenTheme"/>
 
         <activity android:name=".LightWelcomeActivity"
                   android:theme="@style/LightWelcomeScreenTheme"/>

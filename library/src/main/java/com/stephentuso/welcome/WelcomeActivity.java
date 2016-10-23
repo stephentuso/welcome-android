@@ -46,7 +46,7 @@ public abstract class WelcomeActivity extends AppCompatActivity {
                 actionBar.setDisplayHomeAsUpEnabled(true);
         }
 
-        SkipButton skip = new SkipButton(findViewById(R.id.wel_button_skip), configuration.getCanSkip());
+        SkipButton skip = new SkipButton(findViewById(R.id.wel_button_skip));
         skip.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

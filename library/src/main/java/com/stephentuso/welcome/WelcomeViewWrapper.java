@@ -10,13 +10,14 @@ import android.view.View;
  */
 /* package */ abstract class WelcomeViewWrapper implements OnWelcomeScreenPageChangeListener {
 
-    private View mView;
-    private int mFirstPageIndex = 0;
-    private int mLastPageIndex = 0;
-    private boolean mAnimate = true;
+    private View view;
+    private int firstPageIndex = 0;
+    private int lastPageIndex = 0;
+    private boolean animated = true;
+    protected boolean isRtl = false;
 
     /* package */ WelcomeViewWrapper(View view) {
-        mView = view;
+        this.view = view;
     }
 
     public abstract void onPageSelected(int pageIndex, int firstPageIndex, int lastPageIndex);
@@ -28,7 +29,7 @@ import android.view.View;
 
     @Override
     public void onPageSelected(int position) {
-        onPageSelected(position, mFirstPageIndex, mLastPageIndex);
+        onPageSelected(position, firstPageIndex, lastPageIndex);
     }
 
     @Override
@@ -38,21 +39,22 @@ import android.view.View;
 
     @Override
     public void setup(WelcomeConfiguration config) {
-        mFirstPageIndex = config.firstPageIndex();
-        mLastPageIndex = config.lastViewablePageIndex();
-        mAnimate = config.getAnimateButtons();
+        firstPageIndex = config.firstPageIndex();
+        lastPageIndex = config.lastViewablePageIndex();
+        animated = config.getAnimateButtons();
+        isRtl = config.isRtl();
     }
 
     protected View getView() {
-        return this.mView;
+        return this.view;
     }
 
     protected void setVisibility(boolean visible) {
-        setVisibility(visible, mAnimate);
+        setVisibility(visible, animated);
     }
 
     protected void setVisibility(boolean visible, boolean animate) {
-        mView.setEnabled(visible);
+        view.setEnabled(visible);
         if (visible) {
             show(animate);
         } else {
@@ -77,12 +79,12 @@ import android.view.View;
     }
 
     protected void hideImmediately() {
-        mView.setVisibility(View.INVISIBLE);
+        view.setVisibility(View.INVISIBLE);
     }
 
     protected void showImmediately() {
         setAlpha(1f);
-        mView.setVisibility(View.VISIBLE);
+        view.setVisibility(View.VISIBLE);
     }
 
     protected void hideWithAnimation() {
@@ -96,17 +98,17 @@ import android.view.View;
             @Override
             public void onAnimationEnd(View view) {
                 setAlpha(0f);
-                mView.setVisibility(View.INVISIBLE);
+                WelcomeViewWrapper.this.view.setVisibility(View.INVISIBLE);
             }
 
             @Override
             public void onAnimationCancel(View view) {
                 setAlpha(0f);
-                mView.setVisibility(View.INVISIBLE);
+                WelcomeViewWrapper.this.view.setVisibility(View.INVISIBLE);
             }
         };
 
-        ViewCompat.animate(mView).alpha(0f).setListener(listener).start();
+        ViewCompat.animate(view).alpha(0f).setListener(listener).start();
     }
 
     protected void showWithAnimation() {
@@ -115,7 +117,7 @@ import android.view.View;
 
             @Override
             public void onAnimationStart(View view) {
-                mView.setVisibility(View.VISIBLE);
+                WelcomeViewWrapper.this.view.setVisibility(View.VISIBLE);
             }
 
             @Override
@@ -129,16 +131,16 @@ import android.view.View;
             }
         };
 
-        ViewCompat.animate(mView).alpha(1f).setListener(listener).start();
+        ViewCompat.animate(view).alpha(1f).setListener(listener).start();
     }
 
-    /*package*/ void setOnClickListener(View.OnClickListener listener) {
-        mView.setOnClickListener(listener);
+    /* package */ void setOnClickListener(View.OnClickListener listener) {
+        view.setOnClickListener(listener);
     }
 
     private void setAlpha(float alpha) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB)
-            mView.setAlpha(alpha);
+            view.setAlpha(alpha);
     }
 
 }

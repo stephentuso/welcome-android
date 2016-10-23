@@ -21,6 +21,6 @@ import android.view.View;
 
     @Override
     public void onPageSelected(int pageIndex, int firstPageIndex, int lastPageIndex) {
-        setVisibility(shouldShow && pageIndex != lastPageIndex);
+        setVisibility(shouldShow && WelcomeUtils.isIndexBeforeLastPage(pageIndex, lastPageIndex, isRtl));
     }
 }

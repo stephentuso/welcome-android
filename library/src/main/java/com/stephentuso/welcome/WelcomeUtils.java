@@ -45,6 +45,10 @@ public class WelcomeUtils {
         return false;
     }
 
+    /* package */ static boolean isIndexBeforeLastPage(int index, int lastPageIndex, boolean isRtl) {
+        return isRtl ? index > lastPageIndex : index < lastPageIndex;
+    }
+
     /* package */ static int calculateParallaxLayers(View view, boolean recursive) {
         if (recursive)
             return calculateParallaxLayersRecursively(view, 0);

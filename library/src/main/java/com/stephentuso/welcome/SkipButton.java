@@ -11,18 +11,19 @@ import android.widget.TextView;
     private boolean enabled = true;
     private boolean onlyShowOnFirstPage = false;
 
-    public SkipButton(View button, boolean enabled) {
+    public SkipButton(View button) {
         super(button);
-        this.enabled = enabled;
-        if (!enabled)
-            button.setVisibility(View.INVISIBLE);
     }
 
     @Override
     public void setup(WelcomeConfiguration config) {
         super.setup(config);
         onlyShowOnFirstPage = config.getShowPrevButton();
-        WelcomeUtils.setTypeface((TextView) this.getView(), config.getSkipButtonTypefacePath(), config.getContext());
+        this.enabled = config.getCanSkip();
+        setVisibility(enabled, false);
+        if (getView() instanceof TextView) {
+            WelcomeUtils.setTypeface((TextView) this.getView(), config.getSkipButtonTypefacePath(), config.getContext());
+        }
     }
 
     @Override
@@ -30,7 +31,7 @@ import android.widget.TextView;
         if (onlyShowOnFirstPage)
             setVisibility(enabled && pageIndex == firstPageIndex);
         else
-            setVisibility(enabled && pageIndex != lastPageIndex);
+            setVisibility(enabled && WelcomeUtils.isIndexBeforeLastPage(pageIndex, lastPageIndex, isRtl));
     }
 
 }

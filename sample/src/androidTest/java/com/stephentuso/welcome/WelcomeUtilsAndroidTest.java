@@ -28,7 +28,8 @@ public class WelcomeUtilsAndroidTest extends ActivityTest {
     @Test
     public void testParallaxFunctions() {
         ViewGroup parent = getLayoutWithChildren(3);
-        parent.addView(getLayoutWithChildren(3));
+        ViewGroup subParent = getLayoutWithChildren(3);
+        parent.addView(subParent);
 
         assertEquals(4, WelcomeUtils.calculateParallaxLayers(parent, false));
         assertEquals(6, WelcomeUtils.calculateParallaxLayers(parent, true));
@@ -43,13 +44,15 @@ public class WelcomeUtilsAndroidTest extends ActivityTest {
         assertEquals(-100, parent.getChildAt(1).getTranslationX(), 0.001);
         assertEquals(-150, parent.getChildAt(2).getTranslationX(), 0.001);
         assertEquals(-200, parent.getChildAt(3).getTranslationX(), 0.001);
+        assertEquals(0, subParent.getChildAt(0).getTranslationX(), 0.001);
+        assertEquals(0, subParent.getChildAt(1).getTranslationX(), 0.001);
+        assertEquals(0, subParent.getChildAt(2).getTranslationX(), 0.001);
 
         //Recursive
         WelcomeUtils.applyParallaxEffect(parent, true, 50, 1, 1);
         assertEquals(-50, parent.getChildAt(0).getTranslationX(), 0.001);
         assertEquals(-100, parent.getChildAt(1).getTranslationX(), 0.001);
         assertEquals(-150, parent.getChildAt(2).getTranslationX(), 0.001);
-        ViewGroup subParent = (ViewGroup) parent.getChildAt(3);
         assertEquals(-200, subParent.getChildAt(0).getTranslationX(), 0.001);
         assertEquals(-250, subParent.getChildAt(1).getTranslationX(), 0.001);
         assertEquals(-300, subParent.getChildAt(2).getTranslationX(), 0.001);
