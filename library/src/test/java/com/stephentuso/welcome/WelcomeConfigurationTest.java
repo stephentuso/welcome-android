@@ -210,12 +210,6 @@ public class WelcomeConfigurationTest extends ConfigurationTest {
     }
 
     @Test
-    public void testTheme() {
-        builder1.theme(R.style.WelcomeScreenTheme_Light);
-        assertEquals(R.style.WelcomeScreenTheme_Light, builder1.build().getThemeResId());
-    }
-
-    @Test
     public void testPageIndexFunctions() {
         builder2.page(newBlankPage()).page(newBlankPage()).page(newBlankPage()).swipeToDismiss(false);
 

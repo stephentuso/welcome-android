@@ -24,10 +24,6 @@ public abstract class WelcomeActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         configuration = configuration();
 
-        if (configuration.getThemeResId() != WelcomeConfiguration.NO_THEME_SET) {
-            super.setTheme(configuration.getThemeResId());
-        }
-
         /* Passing null for savedInstanceState fixes issue with fragments in list not matching
            the displayed ones after the screen was rotated. (Parallax animations would stop working)
            TODO: Look into this more

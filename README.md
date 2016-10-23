@@ -93,19 +93,27 @@ To create a welcome screen, add a class to your project that extends `WelcomeAct
     android:theme="@style/WelcomeScreenTheme"/>
 ```
 
-*You must set the theme in the manifest as shown above if you want swipeToDismiss to show the activity beneath. Note that the manifest theme will be overridden and have no effect on the other styles of the welcome screen (that will probably change in 1.0).*
+*The theme must be a child theme of WelcomeScreenTheme*
 
-Override the Activity's `configuration()` method. You can use `WelcomeScreenBuilder` to easily set it up, for example:
+Override the Activity's `configuration()` method. Use `WelcomeConfiguration.Builder` to set it up:
 
 ```java
 @Override
-protected WelcomeScreenConfiguration configuration() {
-    return new WelcomeScreenBuilder(this)
-            .theme(R.style.WelcomeScreenTheme_Light)
+protected WelcomeConfiguration configuration() {
+    return new WelcomeConfiguration.Builder(this)
             .defaultBackgroundColor(R.color.background)
-            .titlePage(R.drawable.logo, "Title")
-            .basicPage(R.drawable.photo1, "Header", "More text.", R.color.red)
-            .basicPage(R.drawable.photo2, "Lorem ipsum", "dolor sit amet.")
+			.page(new TitlePage(R.drawable.logo,
+					"Title")
+			)
+			.page(new BasicPage(R.drawable.image,
+					"Header",
+					"More text.")
+					.background(R.color.red_background)
+			)
+			.page(new BasicPage(R.drawable.image,
+					"Lorem ipsum",
+					"dolor sit amet.")
+			)
             .swipeToDismiss(true)
             .build();
 }
@@ -113,20 +121,20 @@ protected WelcomeScreenConfiguration configuration() {
 
 You do not need to override `onCreate` or call `setContentView`.
 
-*Note: Default typeface methods and defaultBackgroundColor() need to be called before adding pages.*
+*Note: defaultBackgroundColor() need to be called before adding pages for now.*
 
 Show the welcome screen
 -----------------------
 
-Welcome screens are started with `WelcomeScreenHelper`. `onSaveInstanceState` is needed to be sure only one instance of the welcome screen is started. Add the following to the Activity you want to show the welcome screen before (probably your launcher activity):
+Welcome screens are started with `WelcomeHelper`. `onSaveInstanceState` is needed to be sure only one instance of the welcome screen is started. Add the following to the Activity you want to show the welcome screen before (probably your launcher activity):
 
 ```java
-WelcomeScreenHelper welcomeScreen;
+WelcomeHelper welcomeScreen;
 
 @Override
 protected void onCreate(Bundle savedInstanceState) {
     ...
-    welcomeScreen = new WelcomeScreenHelper(this, MyWelcomeActivity.class);
+    welcomeScreen = new WelcomeHelper(this, MyWelcomeActivity.class);
     welcomeScreen.show(savedInstanceState);
     ...
 }
@@ -140,12 +148,12 @@ protected void onSaveInstanceState(Bundle outState) {
 
 If you have issues with the buttons/indicator being covered by the nav bar, use one of the .SolidNavigation welcome screen themes.
 
-To force the welcome screen to be shown, for example, to let the user view it again when a button is pressed, create a `WelcomeScreenHelper` as shown above and call `.forceShow()`.
+To force the welcome screen to be shown, for example, to let the user view it again when a button is pressed, create a `WelcomeHelper` as shown above and call `.forceShow()`.
 
 Skipping/Back button behavior
 =============================
 
-By default, the welcome screen can be skipped, and pressing the back button will navigate to the previous page or close (skip) the welcome screen if on the first page. This can be changed with `WelcomeScreenBuilder.canSkip()`, `backButtonSkips()` (only applies if `canSkip` is true), and `backButtonNavigatesPages()`. If you disable skipping, the welcome screen will not be stored as completed when it closes.
+By default, the welcome screen can be skipped, and pressing the back button will navigate to the previous page or close (skip) the welcome screen if on the first page. This can be changed with `Builder.canSkip()`, `backButtonSkips()` (only applies if `canSkip` is true), and `backButtonNavigatesPages()`. If you disable skipping, the welcome screen will not be stored as completed when it closes.
 
 If you want to require users to navigate through the welcome screen before using the app, call `canSkip(false)` and close your app if the welcome screen's result is `RESULT_CANCELED`.
 
@@ -154,82 +162,42 @@ See [Results](https://github.com/stephentuso/welcome-android#results) below for 
 Included pages
 ==============
 
-All methods shown in this section are part of `WelcomeScreenBuilder`. See the [javadoc](http://stephentuso.github.io/welcome-android/javadoc/com/stephentuso/welcome/WelcomeScreenBuilder.html) for more info on each.
-
 Title page
 ----------
 
 A page with an image and a title. A parallax effect can be applied to the image.
-
-[Javadoc](http://stephentuso.github.io/welcome-android/javadoc/com/stephentuso/welcome/WelcomeScreenBuilder.html#titlePage-int-java.lang.String-)
-
-```java
-titlePage(int resId, String title)
-titlePage(int resId, String title, int colorResId)
-titlePage(int resId, String title, int colorResId, boolean showParallaxAnim)
-titlePage(int resId, String title, int colorResId, boolean showParallaxAnim, String titleTypefacePath)
-```
 
 Basic page
 ----------
 
 A page with an image, heading, and description. A parallax effect can be applied to the image.
 
-[Javadoc](http://stephentuso.github.io/welcome-android/javadoc/com/stephentuso/welcome/WelcomeScreenBuilder.html#basicPage-int-java.lang.String-java.lang.String-)
-
-```java
-basicPage(int resId, String title, String description)
-basicPage(int resId, String title, String description, int colorResId)
-basicPage(int drawableId, String title, String description, int colorResId, boolean showParallaxAnim)
-basicPage(int drawableId, String title, String description, int colorResId, boolean showParallaxAnim,
-    String headerTypefacePath, String descriptionTypefacePath)
-```
-
 Parallax page
 -------------
 
 Similar to the basic page, but instead of an image you can supply a layout that will have a parallax effect applied to it. The speed at which the layout's children move is determined by their position in the layout, the first will move the slowest and the last will move the fastest.
-
-[Javadoc](http://stephentuso.github.io/welcome-android/javadoc/com/stephentuso/welcome/WelcomeScreenBuilder.html#parallaxPage-int-java.lang.String-java.lang.String-)
-
-```java
-parallaxPage(int resId, String title, String description)
-parallaxPage(int resId, String title, String description, int colorResId)
-parallaxPage(int resId, String title, String description, int colorResId, float startParallaxFactor,
-    float endParallaxFactor)
-parallaxPage(int resId, String title, String description, int colorResId, float startParallaxFactor,
-    float endParallaxFactor, String headerTypefacePath, String descriptionTypefacePath)
-```
 
 Full screen parallax page
 -------------------------
 
 Applies a parallax effect in the same way the normal parallax page does, but the layout you provide fills the whole fragment, and there isn't a header or description.
 
-[Javadoc](http://stephentuso.github.io/welcome-android/javadoc/com/stephentuso/welcome/WelcomeScreenBuilder.html#fullScreenParallaxPage-int-)
-
-```java
-fullScreenParallaxPage(int resId)
-fullScreenParallaxPage(int resId, int colorResId)
-fullScreenParallaxPage(int resId, int colorResId, float startParallaxFactor, float endParallaxFactor)
-```
-
 Custom pages
 ============
 
-You can add your own fragments to the welcome screen with `WelcomeScreenBuilder.page()`:
+You can add your own fragments to the welcome screen with `Builder.page()`:
 
 ```java
 @Override
-protected WelcomeScreenConfiguration configuration() {
-    return new WelcomeScreenBuilder(this)
+protected WelcomeConfiguration configuration() {
+    return new WelcomeConfiguration.Builder(this)
             ...
-            .page(new WelcomeFragmentHolder() {
-                @Override
-                protected Fragment fragment() {
-                    return new YourFragmentHere();
-                }
-            }, R.color.background-color)
+			.page(new FragmentWelcomePage() {
+                    @Override
+                    protected Fragment fragment() {
+                        return new ExampleFragment();
+                    }
+                }.background(R.color.red_background))
             ...
 }
 ```
@@ -238,7 +206,7 @@ See [animations](https://github.com/stephentuso/welcome-android#animations) belo
 
 ### Custom Done Button
 
-If you want to use a button in a custom fragment instead of the default done button, call `useCustomDoneButton(true)` on the builder and `new WelcomeScreenFinisher(MyFragment.this).finish()` in the button's `OnClickListener`.
+If you want to use a button in a custom fragment instead of the default done button, call `useCustomDoneButton(true)` on the builder and `new WelcomeFinisher(MyFragment.this).finish()` in the button's `OnClickListener`.
 
 Styling
 =======
@@ -266,9 +234,9 @@ Transparent status bar, solid navigation bar on API 19+. Content flows under sta
 Styles
 ------
 
-Typefaces and a few other things (animations, button visibility) have to be set with `WelcomeScreenBuilder`, but everything else that is customizable can be changed with styles.
+Typefaces and a few other things (animations, button visibility) have to be set with `WelcomeConfiguration.Builder`, but everything else that is customizable can be changed with styles.
 
-You can add styles as shown below. Optional items are in square brackets. Apply your theme to a welcome screen with `WelcomeScreenBuilder.theme(R.style.YourThemeNameHere)`.
+You can add styles as shown below. Optional items are in square brackets.
 
 ```xml
 <style name="CustomWelcomeScreenTheme" parent="SEE THEMES ABOVE">
@@ -303,7 +271,7 @@ You can add styles as shown below. Optional items are in square brackets. Apply 
     <item name="welcomeTitleTextStyle">@style/MyTitleText</item>
 
     <!-- Add the following if you want to show the action bar.
-        Use WelcomeScreenBuilder.showActionBarBackButton(true) to show
+        Use Builder.showActionBarBackButton(true) to show
         the back button. -->
     <item name="windowActionBar">true</item>
     <item name="windowNoTitle">false</item>
@@ -364,7 +332,7 @@ protected void onActivityResult(int requestCode, int resultCode, Intent data) {
     super.onActivityResult(requestCode, resultCode, data);
 
 
-    if (requestCode == WelcomeScreenHelper.DEFAULT_WELCOME_SCREEN_REQUEST) {
+    if (requestCode == WelcomeHelper.DEFAULT_WELCOME_SCREEN_REQUEST) {
         // The key of the welcome screen is in the Intent
         String welcomeKey = data.getStringExtra(WelcomeActivity.WELCOME_SCREEN_KEY);
 
@@ -385,7 +353,7 @@ One use for this is making sure users see the whole welcome screen before using 
 Animations
 ==========
 
-Animations that play as pages are scrolled can be added to your custom fragments by implementing [WelcomeScreenPage.OnChangeListener](http://stephentuso.github.io/welcome-android/javadoc/com/stephentuso/welcome/ui/WelcomeScreenPage.OnChangeListener.html). As an example, a fade effect is shown below.
+Animations that play as pages are scrolled can be added to your custom fragments by implementing [WelcomePage.OnChangeListener](http://stephentuso.github.io/welcome-android/javadoc/com/stephentuso/welcome/WelcomePage.OnChangeListener.html). As an example, a fade effect is shown below.
 
 ```java
 @Override

@@ -4,7 +4,6 @@ import android.content.Context;
 import android.os.Build;
 import android.support.annotation.AnimRes;
 import android.support.annotation.ColorRes;
-import android.support.annotation.StyleRes;
 import android.support.v4.app.Fragment;
 
 /**
@@ -14,7 +13,6 @@ import android.support.v4.app.Fragment;
 public class WelcomeConfiguration {
 
     public static final int NO_ANIMATION_SET = -1;
-    public static final int NO_THEME_SET = -1;
 
     private Builder builder;
 
@@ -238,15 +236,6 @@ public class WelcomeConfiguration {
     }
 
     /**
-     * Get the resource id of the theme
-     *
-     * @return theme resource id
-     */
-    public int getThemeResId() {
-        return builder.themeResId;
-    }
-
-    /**
      * Get the resource id of the exit animation
      *
      * @return animation resource id
@@ -309,7 +298,6 @@ public class WelcomeConfiguration {
         private boolean backButtonNavigatesPages = true;
         private BackgroundColor defaultBackgroundColor;
         private Context context;
-        private int themeResId = NO_THEME_SET;
         private boolean swipeToDismiss = false;
         private int exitAnimationResId = NO_ANIMATION_SET;
         private String skipButtonTypefacePath = null;
@@ -527,21 +515,6 @@ public class WelcomeConfiguration {
          */
         public Builder exitAnimation(@AnimRes int exitAnimationResId) {
             this.exitAnimationResId = exitAnimationResId;
-            return this;
-        }
-
-        /**
-         * @deprecated Set the theme in the android manifest
-         *
-         * Sets the resource id of the theme used by the welcome screen.
-         * This will override the theme set in the manifest.
-         *
-         * @param resId The style resource id of the theme to be used
-         * @return this Builder object to allow method calls to be chained
-         */
-        @Deprecated
-        public Builder theme(@StyleRes int resId) {
-            this.themeResId = resId;
             return this;
         }
 
