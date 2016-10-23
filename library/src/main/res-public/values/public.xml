@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <resources>
-  <public type="style" name="WelcomeScreenButton.Next"/>
-  <public type="style" name="WelcomeScreenButton.Prev"/>
   <public type="style" name="WelcomeScreenTheme.SolidNavigation"/>
   <public type="style" name="WelcomeScreenTheme.Light.SolidNavigation"/>
   <public type="style" name="WelcomeScreenTheme.SolidNavigation.UnderStatusBar"/>
   <public type="style" name="WelcomeScreenTheme.Light.SolidNavigation.UnderStatusBar"/>
+  <public type="style" name="WelcomeScreenButton.Next"/>
+  <public type="style" name="WelcomeScreenButton.Prev"/>
   <public type="attr" name="currentPageColor"/>
   <public type="attr" name="indicatorColor"/>
   <public type="attr" name="animation"/>
