@@ -5,6 +5,7 @@ import android.app.Instrumentation;
 import android.content.Intent;
 import android.support.test.rule.UiThreadTestRule;
 import android.support.test.runner.AndroidJUnit4;
+import android.view.View;
 
 import com.stephentuso.welcomeexample.DefaultWelcomeActivity;
 
@@ -113,6 +114,55 @@ public class WelcomeActivityAndroidTest extends ActivityTest {
                 welcomeActivity.onBackPressed();
                 assertFalse(welcomeActivity.scrollToPreviousPage());
                 welcomeActivity.onBackPressed();
+                assertResultEquals(Activity.RESULT_OK);
+            }
+        });
+    }
+
+    @Test
+    public void testNavButtonClicks() throws Throwable {
+        uiThreadTestRule.runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+
+                // Previous button
+                View prevButton = welcomeActivity.findViewById(R.id.wel_button_prev);
+                welcomeActivity.scrollToNextPage();
+                prevButton.performClick();
+                assertFalse(welcomeActivity.scrollToPreviousPage());
+
+                // Next button
+                View nextButton = welcomeActivity.findViewById(R.id.wel_button_next);
+                for (int i = 0; i < pageCount - 1; i++) {
+                    welcomeActivity.scrollToNextPage();
+                }
+                nextButton.performClick();
+                assertFalse(welcomeActivity.scrollToNextPage());
+
+
+            }
+        });
+    }
+
+    @Test
+    public void testDoneButtonClick() throws Throwable {
+        uiThreadTestRule.runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                View doneButton = welcomeActivity.findViewById(R.id.wel_button_done);
+                doneButton.performClick();
+                assertResultEquals(Activity.RESULT_OK);
+            }
+        });
+    }
+
+    @Test
+    public void testSkipButtonClick() throws Throwable {
+        uiThreadTestRule.runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                View skipButton = welcomeActivity.findViewById(R.id.wel_button_skip);
+                skipButton.performClick();
                 assertResultEquals(Activity.RESULT_OK);
             }
         });
