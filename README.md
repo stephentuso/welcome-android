@@ -1,7 +1,7 @@
 Welcome
 =======
 
-[![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-Welcome-blue.svg?style=flat)](http://android-arsenal.com/details/1/3610) [![Download](https://api.bintray.com/packages/stephentuso/maven/welcome/images/download.svg)](https://bintray.com/stephentuso/maven/welcome/_latestVersion) [![Build Status](https://travis-ci.org/stephentuso/welcome-android.svg?branch=master)](https://travis-ci.org/stephentuso/welcome-android) [![Codacy Badge](https://api.codacy.com/project/badge/Grade/f88fea4256a24130959e16d5c30578ce)](https://www.codacy.com/app/tusodev/welcome-android?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=stephentuso/welcome-android&amp;utm_campaign=Badge_Grade)
+[![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-Welcome-blue.svg?style=flat)](http://android-arsenal.com/details/1/3610) [![Download](https://api.bintray.com/packages/stephentuso/maven/welcome/images/download.svg)](https://bintray.com/stephentuso/maven/welcome/_latestVersion) [![Build Status](https://travis-ci.org/stephentuso/welcome-android.svg?branch=master)](https://travis-ci.org/stephentuso/welcome-android) [![codecov](https://codecov.io/gh/stephentuso/welcome-android/branch/master/graph/badge.svg)](https://codecov.io/gh/stephentuso/welcome-android) [![Codacy Badge](https://api.codacy.com/project/badge/Grade/f88fea4256a24130959e16d5c30578ce)](https://www.codacy.com/app/tusodev/welcome-android?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=stephentuso/welcome-android&amp;utm_campaign=Badge_Grade)
 
 An easy to use and customizable welcome screen for Android apps.
 
@@ -21,6 +21,10 @@ Please open a new [issue](https://github.com/stephentuso/welcome-android/issues)
 [Javadoc](http://stephentuso.github.io/welcome-android/javadoc/)
 
 [Changelog/Releases](https://github.com/stephentuso/welcome-android/releases)
+
+**Major Changes in 1.0.0**
+
+If you used the library prior to version 1.0, read [1.0.0.md](https://github.com/stephentuso/welcome-android/blob/master/1.0.0.md) for details on all breaking changes.
 
 Demo
 ====
@@ -69,7 +73,7 @@ This library is available through jCenter.
 Gradle:
 
 ```groovy
-compile 'com.stephentuso:welcome:0.7.3'
+compile 'com.stephentuso:welcome:1.0.0'
 ```
 
 If you use proguard, add the following to your proguard rules
@@ -162,30 +166,56 @@ See [Results](https://github.com/stephentuso/welcome-android#results) below for 
 Included pages
 ==============
 
-Title page
-----------
+The classes listed below are subclasses of `WelcomePage` and can be used with the `page` method of `WelcomeConfiguration.Builder`
+
+TitlePage
+---------
 
 A page with an image and a title. A parallax effect can be applied to the image.
 
-Basic page
-----------
+Constructor:
+
+```java
+TitlePage(@DrawableRes int drawableResId, String title)
+```
+
+BasicPage
+---------
 
 A page with an image, heading, and description. A parallax effect can be applied to the image.
 
-Parallax page
--------------
+Constructor:
+
+```java
+BasicPage(@DrawableRes int drawableResId, String title, String description)
+```
+
+ParallaxPage
+------------
 
 Similar to the basic page, but instead of an image you can supply a layout that will have a parallax effect applied to it. The speed at which the layout's children move is determined by their position in the layout, the first will move the slowest and the last will move the fastest.
 
-Full screen parallax page
--------------------------
+Constructor:
+
+```java
+ParallaxPage(@LayoutRes int layoutResId, String title, String description)
+```
+
+FullscreenParallaxPage
+----------------------
 
 Applies a parallax effect in the same way the normal parallax page does, but the layout you provide fills the whole fragment, and there isn't a header or description.
+
+Constructor:
+
+```java
+FullscreenParallaxPage(@LayoutRes int layoutResId)
+```
 
 Custom pages
 ============
 
-You can add your own fragments to the welcome screen with `Builder.page()`:
+You can add your own fragments to the welcome screen with `FragmentWelcomePage`:
 
 ```java
 @Override
