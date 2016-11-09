@@ -310,7 +310,7 @@ You can add styles as shown below. Optional items are in square brackets.
 <style name="MyWelcomeIndicator" parent="WelcomeScreenPageIndicator[.Light]">
     <item name="indicatorColor">color</item>
     <item name="currentPageColor">color</item>
-    <item name="animated">true|false</item>
+    <item name="animation">fade|slide|none</item>
 </style>
 
 <!-- Use this to change the next button's image/color
