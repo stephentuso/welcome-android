@@ -15,9 +15,33 @@ public class WelcomeConfiguration {
 
     public enum BottomLayout {
 
+        /**
+         * The standard layout, has skip/previous buttons,
+         * page indicator, and next/done buttons
+         */
         STANDARD(R.layout.wel_bottom_standard),
+
+        /**
+         * The same as the standard layout, but the done button
+         * uses an image instead of text
+         */
         STANDARD_DONE_IMAGE(R.layout.wel_bottom_done_image),
+
+        /**
+         * Has two buttons side by side, with an indicator above.
+         * The default button text is "Log In" and "Sign Up"
+         */
         BUTTON_BAR(R.layout.wel_bottom_button_bar),
+
+        /**
+         * Has a single button with an indicator above.
+         * The default button text is "Log In"
+         */
+        BUTTON_BAR_SINGLE(R.layout.wel_bottom_single_button),
+
+        /**
+         * No buttons, just the current page indicator
+         */
         INDICATOR_ONLY(R.layout.wel_bottom_indicator);
 
         @LayoutRes
@@ -336,7 +360,7 @@ public class WelcomeConfiguration {
         private boolean showNextButton = true;
         private boolean showPrevButton = false;
         private boolean showActionBarBackButton = false;
-        private int bottomLayoutRes = BottomLayout.STANDARD_DONE_IMAGE.resId;
+        private int bottomLayoutRes = BottomLayout.STANDARD.resId;
 
         /**
          * Creates a new Builder

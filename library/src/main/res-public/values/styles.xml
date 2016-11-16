@@ -45,6 +45,7 @@
         <item name="android:textColorSecondary">@color/wel_text_primary_theme_light</item>
         <item name="welcomeIndicatorStyle">@style/WelcomeScreenPageIndicator.Light</item>
         <item name="welcomeButtonBackground">@drawable/wel_button_borderless_background_theme_light</item>
+        <item name="welcomeButtonDoneStyle">@style/WelcomeScreenButton.Done.Light</item>
         <item name="welcomeButtonBarBackground">@color/wel_button_bar_background_light</item>
     </style>
 
@@ -119,7 +120,11 @@
     <style name="WelcomeScreenButton.Done">
         <item name="android:textColor">?android:attr/textColorPrimary</item>
         <item name="android:tint">?android:attr/textColorPrimary</item>
-        <item name="android:src">@drawable/wel_ic_done_white_36dp</item>
+        <item name="android:src">@drawable/wel_ic_done_white</item>
+    </style>
+
+    <style name="WelcomeScreenButton.Done.Light">
+        <item name="android:src">@drawable/wel_ic_done_black</item>
     </style>
 
     <style name="WelcomeScreenButton.Next">

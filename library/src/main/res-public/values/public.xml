@@ -37,6 +37,7 @@
   <public type="style" name="WelcomeScreenButton.Borderless"/>
   <public type="style" name="WelcomeScreenButton.Skip"/>
   <public type="style" name="WelcomeScreenButton.Done"/>
+  <public type="style" name="WelcomeScreenButton.Done.Light"/>
   <public type="style" name="WelcomeScreenButton.LogIn"/>
   <public type="style" name="WelcomeScreenButton.SignUp"/>
   <public type="style" name="WelcomeScreenPageIndicator"/>

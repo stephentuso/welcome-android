@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+             android:orientation="vertical"
+             android:layout_width="match_parent"
+             android:layout_height="match_parent">
+
+    <com.stephentuso.welcome.WelcomeViewPagerIndicator
+        android:id="@+id/wel_pager_indicator"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        style="?attr/welcomeIndicatorStyle"/>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?attr/welcomeButtonBarBackground">
+
+        <Button
+            android:id="@+id/wel_button_bar_first"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="?attr/welcomeButtonBarFirstStyle"/>
+
+    </FrameLayout>
+
+</LinearLayout>
