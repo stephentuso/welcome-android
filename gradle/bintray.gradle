@@ -72,9 +72,10 @@ publishing {
             artifact javadocJar
             artifact sourcesJar
 
-            pom{
+            pom {
                 packaging 'aar'
             }
+
             pom.withXml {
                 def root = asNode()
                 root.appendNode('description', LIBRARY_DESCRIPTION)
@@ -115,7 +116,7 @@ bintray {
         desc = LIBRARY_DESCRIPTION
         websiteUrl = LIBRARY_URL
         vcsUrl = LIBRARY_VCS_URL
-        licenses = [BINTRAY_LICENSE]
+        licenses = [LIBRARY_LICENSE]
         publicDownloadNumbers = true
     }
 }
