@@ -40,11 +40,15 @@ public class MainActivity extends AppCompatActivity {
 
         //List of welcome screens
         welcomeScreens.add(new ScreenItem(R.string.title_sample, R.string.description_sample, sampleWelcomeScreen, null));
+        welcomeScreens.add(new ScreenItem(R.string.title_button_bar, R.string.description_button_bar, ButtonBarWelcomeActivity.class, REQUEST_WELCOME_SCREEN_RESULT));
         welcomeScreens.add(new ScreenItem(R.string.title_included_pages, R.string.description_included_pages, IncludedPagesWelcomeActivity.class));
         welcomeScreens.add(new ScreenItem(R.string.title_custom_page, R.string.description_custom_page, CustomPageWelcomeActivity.class));
         welcomeScreens.add(new ScreenItem(R.string.title_light, R.string.description_light, LightWelcomeActivity.class));
         welcomeScreens.add(new ScreenItem(R.string.title_no_skip, R.string.description_no_skip, NoSkipWelcomeActivity.class, REQUEST_WELCOME_SCREEN_RESULT));
         welcomeScreens.add(new ScreenItem(R.string.title_back_exit, R.string.description_back_exit, BackExitWelcomeActivity.class));
+        welcomeScreens.add(new ScreenItem(R.string.title_single_button, R.string.description_single_button, ButtonBarSingleWelcomeActivity.class));
+        welcomeScreens.add(new ScreenItem(R.string.title_indicator_only, R.string.description_indicator_only, IndicatorOnlyWelcomeActivity.class));
+        welcomeScreens.add(new ScreenItem(R.string.title_previous_button, R.string.description_previous_button, PreviousButtonWelcomeActivity.class));
         welcomeScreens.add(new ScreenItem(R.string.title_default, R.string.description_default, DefaultWelcomeActivity.class));
 
         recyclerView.setLayoutManager(new GridLayoutManager(this, 1));

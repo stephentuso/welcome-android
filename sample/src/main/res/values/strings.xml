@@ -4,6 +4,9 @@
     <string name="website">Website</string>
     <string name="source">Source</string>
 
+    <string name="example_action_button">Done</string>
+    <string name="example_action_description">%1$s content would go here. Press the button below to simulate completion.</string>
+
     <!-- Strings for list of welcome screens -->
     <string name="title_sample">Sample</string>
     <string name="description_sample">The welcome screen for this sample app</string>
@@ -21,9 +24,21 @@
     <string name="description_back_exit">Pressing back will exit rather than navigating through pages</string>
 
     <string name="title_included_pages">Included Pages</string>
-    <string name="description_included_pages">Shows examples of all the pages built in to the library</string>
+    <string name="description_included_pages">Shows examples of all the pages built in to the library. Uses STANDARD_DONE_IMAGE bottom layout.</string>
 
     <string name="title_custom_page">Custom pages</string>
     <string name="description_custom_page">A welcome screen with custom fragments</string>
+
+    <string name="title_button_bar">Log In/Sign Up</string>
+    <string name="description_button_bar">Has log in and sign up buttons rather than the standard navigation buttons. Uses BUTTON_BAR bottom layout.</string>
+
+    <string name="title_single_button">Single button</string>
+    <string name="description_single_button">Has a single button, rather than the standard navigation buttons. Uses BUTTON_BAR_SINGLE bottom layout.</string>
+
+    <string name="title_indicator_only">Indicator only</string>
+    <string name="description_indicator_only">Uses INDICATOR_ONLY bottom layout. No buttons, just the current page indicator.</string>
+
+    <string name="title_previous_button">Previous Button/Action Bar</string>
+    <string name="description_previous_button">Shows a previous button on all but the first page. Back button exits.</string>
 
 </resources>

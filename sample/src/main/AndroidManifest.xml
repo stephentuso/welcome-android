@@ -18,6 +18,8 @@
 
         <activity android:name=".TestActivity"/>
 
+        <activity android:name=".ExampleActionActivity"/>
+
         <activity android:name=".SampleWelcomeActivity"
             android:theme="@style/SampleWelcomeScreenTheme"/>
 
@@ -38,6 +40,19 @@
 
         <activity android:name=".IncludedPagesWelcomeActivity"
                   android:theme="@style/GeneralWelcomeScreenTheme"/>
+
+        <activity android:name=".ButtonBarWelcomeActivity"
+                  android:theme="@style/ButtonBarWelcomeScreenTheme"/>
+
+        <activity android:name=".ButtonBarSingleWelcomeActivity"
+                  android:theme="@style/ButtonBarWelcomeScreenTheme.Single"/>
+
+        <activity android:name=".IndicatorOnlyWelcomeActivity"
+                  android:theme="@style/GeneralWelcomeScreenTheme"/>
+
+        <activity android:name=".PreviousButtonWelcomeActivity"
+                  android:theme="@style/ActionBarWelcomeScreenTheme"
+                  android:label="Title"/>
 
     </application>
 

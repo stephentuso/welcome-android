@@ -19,9 +19,10 @@
 
     <!-- Styles used by most of the welcome screens -->
     <style name="GeneralWelcomeScreenTheme" parent="WelcomeScreenTheme">
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorAccent">@color/colorAccent</item>
         <item name="welcomeIndicatorStyle">@style/WelcomeScreenPageIndicator.Animated</item>
         <item name="welcomeTitleTextStyle">@style/WelcomeScreenText.Title.Centered</item>
-        <item name="colorAccent">@color/colorAccent</item>
     </style>
 
     <!-- Styles for SampleWelcomeActivity -->
@@ -46,5 +47,25 @@
         <item name="animation">fade</item>
     </style>
 
+    <!-- Styles for button bar activities -->
+    <style name="ButtonBarWelcomeScreenTheme" parent="WelcomeScreenTheme.SolidNavigation">
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <style name="ButtonBarWelcomeScreenTheme.Single">
+        <item name="welcomeButtonBarFirstStyle">@style/SingleButtonStyle</item>
+    </style>
+
+    <style name="SingleButtonStyle" parent="WelcomeScreenButton.Borderless">
+        <item name="android:text">Get Started</item>
+    </style>
+
+    <!-- Styles to show action bar -->
+    <style name="ActionBarWelcomeScreenTheme" parent="WelcomeScreenTheme">
+        <item name="windowActionBar">true</item>
+        <item name="windowNoTitle">false</item>
+    </style>
 
 </resources>
