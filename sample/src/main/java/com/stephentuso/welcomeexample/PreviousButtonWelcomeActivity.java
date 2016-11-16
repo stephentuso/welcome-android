@@ -21,7 +21,6 @@ public class PreviousButtonWelcomeActivity extends WelcomeActivity {
                 .backButtonNavigatesPages(false)
                 .defaultTitleTypefacePath("Roboto-Bold.ttf")
                 .defaultHeaderTypefacePath("Roboto-Bold.ttf")
-                .skip
                 .showActionBarBackButton(true)
                 .page(new TitlePage(R.drawable.ic_image_white, "Title Page"))
                 .page(new BasicPage(R.drawable.ic_image_white, "Basic Page", "A page with a title and description").background(R.color.purple_background))
