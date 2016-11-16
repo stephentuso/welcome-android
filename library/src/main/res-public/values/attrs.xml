@@ -21,12 +21,15 @@
         <attr name="welcomeButtonDoneStyle" format="reference"/>
         <attr name="welcomeButtonDoneText" format="string"/>
         <attr name="welcomeButtonSkipText" format="string"/>
+        <attr name="welcomeButtonBarFirstStyle" format="reference"/>
+        <attr name="welcomeButtonBarSecondStyle" format="reference"/>
         <attr name="welcomeIndicatorStyle" format="reference"/>
         <attr name="welcomeDividerStyle" format="reference"/>
         <attr name="welcomeNormalTextStyle" format="reference"/>
         <attr name="welcomeLargeTextStyle" format="reference"/>
         <attr name="welcomeTitleTextStyle" format="reference"/>
         <attr name="welcomeLayoutFitsSystemWindows" format="boolean"/>
+        <attr name="welcomeButtonBarBackground" format="color"/>
     </declare-styleable>
 
 </resources>

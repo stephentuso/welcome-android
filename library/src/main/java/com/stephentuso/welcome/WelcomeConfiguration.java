@@ -4,6 +4,7 @@ import android.content.Context;
 import android.os.Build;
 import android.support.annotation.AnimRes;
 import android.support.annotation.ColorRes;
+import android.support.annotation.LayoutRes;
 import android.support.v4.app.Fragment;
 
 /**
@@ -11,6 +12,20 @@ import android.support.v4.app.Fragment;
  * All getters are in WelcomeConfiguration, all setters are in Builder
  */
 public class WelcomeConfiguration {
+
+    public enum BottomLayout {
+
+        STANDARD(R.layout.wel_bottom_standard),
+        BUTTON_BAR(R.layout.wel_bottom_button_bar);
+
+        @LayoutRes
+        private final int resId;
+
+        BottomLayout(@LayoutRes int resId) {
+            this.resId = resId;
+        }
+
+    }
 
     public static final int NO_ANIMATION_SET = -1;
 
@@ -290,6 +305,15 @@ public class WelcomeConfiguration {
         return builder.showActionBarBackButton;
     }
 
+    /**
+     * Get the layout res to be used for bottom of the welcome screen
+     *
+     * @return layout resource id
+     */
+    public @LayoutRes int getBottomLayoutResId() {
+        return builder.bottomLayoutRes;
+    }
+
     public static class Builder {
 
         private WelcomePageList pages = new WelcomePageList();
@@ -310,6 +334,7 @@ public class WelcomeConfiguration {
         private boolean showNextButton = true;
         private boolean showPrevButton = false;
         private boolean showActionBarBackButton = false;
+        private int bottomLayoutRes = BottomLayout.STANDARD.resId;
 
         /**
          * Creates a new Builder
@@ -539,6 +564,17 @@ public class WelcomeConfiguration {
          */
         public Builder defaultBackgroundColor(BackgroundColor backgroundColor) {
             this.defaultBackgroundColor = backgroundColor;
+            return this;
+        }
+
+        /**
+         * Set the bottom layout to be used
+         *
+         * @param layout Bottom layout
+         * @return this Builder object to allow method calls to be chained
+         */
+        public Builder bottomLayout(BottomLayout layout) {
+            this.bottomLayoutRes = layout.resId;
             return this;
         }
 

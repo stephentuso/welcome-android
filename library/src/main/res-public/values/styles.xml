@@ -17,6 +17,10 @@
         <item name="welcomeButtonDoneStyle">@style/WelcomeScreenButton.Done</item>
         <item name="welcomeButtonDoneText">@string/wel_done</item>
         <item name="welcomeButtonSkipText">@string/wel_skip</item>
+        <item name="welcomeButtonBarFirstStyle">@style/WelcomeScreenButton.LogIn</item>
+        <item name="welcomeButtonBarSecondStyle">@style/WelcomeScreenButton.SignUp</item>
+
+        <item name="welcomeButtonBarBackground">@color/wel_button_bar_background_dark</item>
 
         <item name="welcomeDividerStyle">@style/WelcomeScreenDivider</item>
         <item name="welcomeIndicatorStyle">@style/WelcomeScreenPageIndicator</item>
@@ -41,6 +45,7 @@
         <item name="android:textColorSecondary">@color/wel_text_primary_theme_light</item>
         <item name="welcomeIndicatorStyle">@style/WelcomeScreenPageIndicator.Light</item>
         <item name="welcomeButtonBackground">@drawable/wel_button_borderless_background_theme_light</item>
+        <item name="welcomeButtonBarBackground">@color/wel_button_bar_background_light</item>
     </style>
 
     <style name="WelcomeScreenTheme.SolidNavigation">
@@ -100,6 +105,13 @@
         <item name="android:padding">4dp</item>
     </style>
 
+    <style name="WelcomeScreenButton.Borderless" parent="Base.Widget.AppCompat.Button.Borderless">
+        <item name="android:singleLine">true</item>
+        <item name="android:layout_margin">0dp</item>
+        <item name="android:textColor">?android:attr/textColorPrimary</item>
+        <item name="android:background">?attr/welcomeButtonBackground</item>
+    </style>
+
     <style name="WelcomeScreenButton.Skip">
         <item name="android:textColor">?android:attr/textColorSecondary</item>
     </style>
@@ -116,6 +128,14 @@
     <style name="WelcomeScreenButton.Prev">
         <item name="android:src">@drawable/wel_ic_chevron_left_white_24dp</item>
         <item name="android:tint">?android:attr/textColorPrimary</item>
+    </style>
+
+    <style name="WelcomeScreenButton.LogIn" parent="WelcomeScreenButton.Borderless">
+        <item name="android:text">@string/wel_log_in</item>
+    </style>
+    |
+    <style name="WelcomeScreenButton.SignUp" parent="WelcomeScreenButton.Borderless">
+        <item name="android:text">@string/wel_sign_up</item>
     </style>
 
     <style name="WelcomeScreenPageIndicator">

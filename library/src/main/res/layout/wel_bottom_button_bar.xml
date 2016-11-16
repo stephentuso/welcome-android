@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent">
+
+    <com.stephentuso.welcome.WelcomeViewPagerIndicator
+        android:id="@+id/wel_pager_indicator"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        style="?attr/welcomeIndicatorStyle"/>
+
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?attr/welcomeButtonBarBackground">
+
+        <Button
+            android:id="@+id/wel_button_bar_first"
+            android:layout_weight="1"
+            style="?attr/welcomeButtonBarFirstStyle"/>
+
+        <Button
+            android:id="@+id/wel_button_bar_second"
+            android:layout_weight="1"
+            style="?attr/welcomeButtonBarSecondStyle"/>
+
+    </TableRow>
+
+</TableLayout>

@@ -12,7 +12,7 @@ import android.widget.TextView;
 
     public DoneButton(View button) {
         super(button);
-        hideImmediately();
+        if (button != null) hideImmediately();
     }
 
     @Override

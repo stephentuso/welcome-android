@@ -13,6 +13,8 @@
     <color name="wel_button_background_theme_light">#33000000</color>
     <color name="wel_overscroll_color_theme_dark">#55ffffff</color>
     <color name="wel_overscroll_color_theme_light">#33000000</color>
+    <color name="wel_button_bar_background_dark">#33000000</color>
+    <color name="wel_button_bar_background_light">#14000000</color>
 
     <color name="wel_transparent">#00000000</color>
     <color name="wel_white">#FFFFFF</color>

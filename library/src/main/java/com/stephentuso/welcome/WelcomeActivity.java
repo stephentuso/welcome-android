@@ -10,6 +10,7 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.FrameLayout;
 
 public abstract class WelcomeActivity extends AppCompatActivity {
 
@@ -36,14 +37,24 @@ public abstract class WelcomeActivity extends AppCompatActivity {
         viewPager = (ViewPager) findViewById(R.id.wel_view_pager);
         viewPager.setAdapter(adapter);
 
+        responsiveItems = new WelcomeItemList();
+
+        // -- Inflate the bottom layout -- //
+
+        FrameLayout bottomFrame = (FrameLayout) findViewById(R.id.wel_bottom_frame);
+        View.inflate(this, configuration.getBottomLayoutResId(), bottomFrame);
+
         if (configuration.getShowActionBarBackButton()) {
             ActionBar actionBar = getSupportActionBar();
             if (actionBar != null)
                 actionBar.setDisplayHomeAsUpEnabled(true);
         }
 
+        // -- Add buttons to responsiveItems -- //
+        // addViewWrapper() will filter out any that aren't in the current layout
+
         SkipButton skip = new SkipButton(findViewById(R.id.wel_button_skip));
-        skip.setOnClickListener(new View.OnClickListener() {
+        addViewWrapper(skip, new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 completeWelcomeScreen();
@@ -51,15 +62,15 @@ public abstract class WelcomeActivity extends AppCompatActivity {
         });
 
         PreviousButton prev = new PreviousButton(findViewById(R.id.wel_button_prev));
-        prev.setOnClickListener(new View.OnClickListener() {
+        addViewWrapper(prev, new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
+            public void onClick(View v) {
                 scrollToPreviousPage();
             }
         });
 
         NextButton next = new NextButton(findViewById(R.id.wel_button_next));
-        next.setOnClickListener(new View.OnClickListener() {
+        addViewWrapper(next, new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 scrollToNextPage();
@@ -67,14 +78,38 @@ public abstract class WelcomeActivity extends AppCompatActivity {
         });
 
         DoneButton done = new DoneButton(findViewById(R.id.wel_button_done));
-        done.setOnClickListener(new View.OnClickListener() {
+        addViewWrapper(done, new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 completeWelcomeScreen();
             }
         });
 
+        View firstBarButton = findViewById(R.id.wel_button_bar_first);
+        if (firstBarButton != null) {
+            firstBarButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    onButtonBarFirstPressed();
+                }
+            });
+        }
+
+        View secondBarButton = findViewById(R.id.wel_button_bar_second);
+        if (secondBarButton != null) {
+            secondBarButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    onButtonBarSecondPressed();
+                }
+            });
+        }
+
         WelcomeViewPagerIndicator indicator = (WelcomeViewPagerIndicator) findViewById(R.id.wel_pager_indicator);
+        if (indicator != null) {
+            responsiveItems.add(indicator);
+        }
+
         WelcomeBackgroundView background = (WelcomeBackgroundView) findViewById(R.id.wel_background_view);
 
         WelcomeViewHider hider = new WelcomeViewHider(findViewById(R.id.wel_root));
@@ -85,10 +120,13 @@ public abstract class WelcomeActivity extends AppCompatActivity {
             }
         });
 
-        responsiveItems = new WelcomeItemList(background, indicator, skip, prev, next, done, hider, configuration.getPages());
+        responsiveItems.addAll(background, hider, configuration.getPages());
+
         responsiveItems.setup(configuration);
+
         viewPager.addOnPageChangeListener(responsiveItems);
         viewPager.setCurrentItem(configuration.firstPageIndex());
+
         responsiveItems.onPageSelected(viewPager.getCurrentItem());
     }
 
@@ -97,6 +135,17 @@ public abstract class WelcomeActivity extends AppCompatActivity {
         super.onDestroy();
         if (viewPager != null) {
             viewPager.clearOnPageChangeListeners();
+        }
+    }
+
+    /**
+     * Helper method to add button to list,
+     * checks for null first
+     */
+    private void addViewWrapper(WelcomeViewWrapper wrapper, View.OnClickListener onClickListener) {
+        if (wrapper.getView() != null) {
+            wrapper.setOnClickListener(onClickListener);
+            responsiveItems.add(wrapper);
         }
     }
 
@@ -130,6 +179,22 @@ public abstract class WelcomeActivity extends AppCompatActivity {
 
     protected boolean canScrollToPreviousPage() {
         return configuration.isRtl() ? getPreviousPageIndex() <= configuration.firstPageIndex() : getPreviousPageIndex() >= configuration.firstPageIndex();
+    }
+
+    /**
+     * Called when the first (left in LTR layout direction) button
+     * is pressed when using the button bar bottom layout
+     */
+    protected void onButtonBarFirstPressed() {
+
+    }
+
+    /**
+     * Called when the second (right in LTR layout direction) button
+     * is pressed when using the button bar bottom layout
+     */
+    protected void onButtonBarSecondPressed() {
+
     }
 
     /**
