@@ -317,6 +317,13 @@ public class WelcomeConfigurationTest extends ConfigurationTest {
     }
 
     @Test
+    public void testBottomLayout() {
+        assertEquals(WelcomeConfiguration.BottomLayout.STANDARD.resId, builder1.build().getBottomLayoutResId());
+        builder1.bottomLayout(WelcomeConfiguration.BottomLayout.BUTTON_BAR);
+        assertEquals(WelcomeConfiguration.BottomLayout.BUTTON_BAR.resId, builder1.build().getBottomLayoutResId());
+    }
+
+    @Test
     public void testInitDefaultBackgroundColor() {
         //TODO: Improve this
         assertEquals(DEFAULT_COLOR, builder1.build().getDefaultBackgroundColor().value());

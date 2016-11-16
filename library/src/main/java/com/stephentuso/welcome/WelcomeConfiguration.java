@@ -16,10 +16,12 @@ public class WelcomeConfiguration {
     public enum BottomLayout {
 
         STANDARD(R.layout.wel_bottom_standard),
-        BUTTON_BAR(R.layout.wel_bottom_button_bar);
+        STANDARD_DONE_IMAGE(R.layout.wel_bottom_done_image),
+        BUTTON_BAR(R.layout.wel_bottom_button_bar),
+        INDICATOR_ONLY(R.layout.wel_bottom_indicator);
 
         @LayoutRes
-        private final int resId;
+        /* package */ final int resId;
 
         BottomLayout(@LayoutRes int resId) {
             this.resId = resId;
@@ -334,7 +336,7 @@ public class WelcomeConfiguration {
         private boolean showNextButton = true;
         private boolean showPrevButton = false;
         private boolean showActionBarBackButton = false;
-        private int bottomLayoutRes = BottomLayout.STANDARD.resId;
+        private int bottomLayoutRes = BottomLayout.STANDARD_DONE_IMAGE.resId;
 
         /**
          * Creates a new Builder

@@ -118,6 +118,8 @@
 
     <style name="WelcomeScreenButton.Done">
         <item name="android:textColor">?android:attr/textColorPrimary</item>
+        <item name="android:tint">?android:attr/textColorPrimary</item>
+        <item name="android:src">@drawable/wel_ic_done_white_36dp</item>
     </style>
 
     <style name="WelcomeScreenButton.Next">

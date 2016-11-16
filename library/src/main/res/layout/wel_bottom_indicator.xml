@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.stephentuso.welcome.WelcomeViewPagerIndicator
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/wel_pager_indicator"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="30dp"
+    style="?attr/welcomeIndicatorStyle"/>
