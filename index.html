@@ -82,13 +82,13 @@
 <li>  <a href="#included-pages">Included pages</a>
 
 <ul>
-<li>  <a href="#title-page">Title page</a>
+<li>  <a href="#titlepage">TitlePage</a>
 </li>
-<li>  <a href="#basic-page">Basic page</a>
+<li>  <a href="#basicpage">BasicPage</a>
 </li>
-<li>  <a href="#parallax-page">Parallax page</a>
+<li>  <a href="#parallaxpage">ParallaxPage</a>
 </li>
-<li>  <a href="#full-screen-parallax-page">Full screen parallax page</a>
+<li>  <a href="#fullscreenparallaxpage">FullscreenParallaxPage</a>
 </li>
 </ul>
 </li>
@@ -96,6 +96,21 @@
 
 <ul>
 <li>  <a href="#custom-done-button">Custom Done Button</a>
+</li>
+</ul>
+</li>
+<li>  <a href="#bottom-layouts">Bottom Layouts</a>
+
+<ul>
+<li>  <a href="#standard">STANDARD</a>
+</li>
+<li>  <a href="#standard_done_image">STANDARD_DONE_IMAGE</a>
+</li>
+<li>  <a href="#button_bar">BUTTON_BAR</a>
+</li>
+<li>  <a href="#button_bar_single">BUTTON_BAR_SINGLE</a>
+</li>
+<li>  <a href="#indicator_only">INDICATOR_ONLY</a>
 </li>
 </ul>
 </li>
@@ -125,7 +140,7 @@
 
 <p>Gradle:</p>
 
-<div class="highlight highlight-source-groovy"><pre>compile <span class="pl-s"><span class="pl-pds">'</span>com.stephentuso:welcome:1.0.0<span class="pl-pds">'</span></span></pre></div>
+<div class="highlight highlight-source-groovy"><pre>compile <span class="pl-s"><span class="pl-pds">'</span>com.stephentuso:welcome:1.1.0<span class="pl-pds">'</span></span></pre></div>
 
 <p>If you use proguard, add the following to your proguard rules</p>
 
@@ -274,6 +289,41 @@
 <p>If you want to use a button in a custom fragment instead of the default done button, call <code>useCustomDoneButton(true)</code> on the builder and <code>new WelcomeFinisher(MyFragment.this).finish()</code> in the button's <code>OnClickListener</code>.</p>
 
 <h1>
+<a id="bottom-layouts" class="anchor" href="#bottom-layouts" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Bottom Layouts</h1>
+
+<p>The layout shown beneath the pages can be changed with the <code>bottomLayout</code> Builder method, which uses the <code>WelcomeConfiguration.BottomLayout</code> enum. The possible values are explained below.</p>
+
+<h3>
+<a id="standard" class="anchor" href="#standard" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a><code>STANDARD</code>
+</h3>
+
+<p>The default layout, can have skip/previous buttons, the current page indicator, and next/done buttons.</p>
+
+<h3>
+<a id="standard_done_image" class="anchor" href="#standard_done_image" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a><code>STANDARD_DONE_IMAGE</code>
+</h3>
+
+<p>Same as <code>STANDARD</code>, but the done button is an <code>ImageButton</code> rather than a <code>Button</code>. Uses a check mark as the image by default (that can be changed with styles).</p>
+
+<h3>
+<a id="button_bar" class="anchor" href="#button_bar" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a><code>BUTTON_BAR</code>
+</h3>
+
+<p>Has two buttons side by side at the bottom with the current page indicator above them. By default the text is "Log In" and "Sign Up", but can be changed with styles. In your <code>WelcomeActivity</code> subclass, override <code>onButtonBarFirstPressed</code> and <code>onButtonBarSecondPressed</code> to handle clicks. More documentation will be added later, see <code>ButtonBarWelcomeActivity</code> in the sample for an example.</p>
+
+<h3>
+<a id="button_bar_single" class="anchor" href="#button_bar_single" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a><code>BUTTON_BAR_SINGLE</code>
+</h3>
+
+<p>Same as <code>BUTTON_BAR</code>, but with just one button (uses <code>onButtonBarFirstPressed</code> for clicks).</p>
+
+<h3>
+<a id="indicator_only" class="anchor" href="#indicator_only" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a><code>INDICATOR_ONLY</code>
+</h3>
+
+<p>Just the current page indicator, no buttons.</p>
+
+<h1>
 <a id="styling" class="anchor" href="#styling" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Styling</h1>
 
 <h2>
@@ -315,34 +365,54 @@
 
 <div class="highlight highlight-text-xml"><pre>&lt;<span class="pl-ent">style</span> <span class="pl-e">name</span>=<span class="pl-s"><span class="pl-pds">"</span>CustomWelcomeScreenTheme<span class="pl-pds">"</span></span> <span class="pl-e">parent</span>=<span class="pl-s"><span class="pl-pds">"</span>SEE THEMES ABOVE<span class="pl-pds">"</span></span>&gt;
 
+    <span class="pl-c">&lt;!---- TEXT STYLES ----&gt;</span>
+
     <span class="pl-c">&lt;!-- Color of button text and titles/headings (in built in fragments)</span>
 <span class="pl-c">        By default, this is also the color of the done/next button --&gt;</span>
     &lt;<span class="pl-ent">item</span> <span class="pl-e">name</span>=<span class="pl-s"><span class="pl-pds">"</span>android:textColorPrimary<span class="pl-pds">"</span></span>&gt;color&lt;/<span class="pl-ent">item</span>&gt;
+
     <span class="pl-c">&lt;!-- Color of other text</span>
 <span class="pl-c">        By default, this is used for the skip button text color --&gt;</span>
     &lt;<span class="pl-ent">item</span> <span class="pl-e">name</span>=<span class="pl-s"><span class="pl-pds">"</span>android:textColorSecondary<span class="pl-pds">"</span></span>&gt;color&lt;/<span class="pl-ent">item</span>&gt;
 
-    <span class="pl-c">&lt;!-- ** Button styles ** --&gt;</span>
+    <span class="pl-c">&lt;!-- Descriptions/other text --&gt;</span>
+    &lt;<span class="pl-ent">item</span> <span class="pl-e">name</span>=<span class="pl-s"><span class="pl-pds">"</span>welcomeNormalTextStyle<span class="pl-pds">"</span></span>&gt;@style/MyNormalText&lt;/<span class="pl-ent">item</span>&gt;
+    <span class="pl-c">&lt;!-- Headings --&gt;</span>
+    &lt;<span class="pl-ent">item</span> <span class="pl-e">name</span>=<span class="pl-s"><span class="pl-pds">"</span>welcomeLargeTextStyle<span class="pl-pds">"</span></span>&gt;@style/MyLargeText&lt;/<span class="pl-ent">item</span>&gt;
+    <span class="pl-c">&lt;!-- Titles --&gt;</span>
+    &lt;<span class="pl-ent">item</span> <span class="pl-e">name</span>=<span class="pl-s"><span class="pl-pds">"</span>welcomeTitleTextStyle<span class="pl-pds">"</span></span>&gt;@style/MyTitleText&lt;/<span class="pl-ent">item</span>&gt;
+
+
+    <span class="pl-c">&lt;!---- BUTTON STYLES ----&gt;</span>
+
     <span class="pl-c">&lt;!-- Background is applied to all buttons,</span>
 <span class="pl-c">        to change a specific button background use the individual button styles --&gt;</span>
     &lt;<span class="pl-ent">item</span> <span class="pl-e">name</span>=<span class="pl-s"><span class="pl-pds">"</span>welcomeButtonBackground<span class="pl-pds">"</span></span>&gt;drawable&lt;/<span class="pl-ent">item</span>&gt;
+
     <span class="pl-c">&lt;!-- Done/skip button text --&gt;</span>
     &lt;<span class="pl-ent">item</span> <span class="pl-e">name</span>=<span class="pl-s"><span class="pl-pds">"</span>welcomeButtonSkipText<span class="pl-pds">"</span></span>&gt;string&lt;/<span class="pl-ent">item</span>&gt;
     &lt;<span class="pl-ent">item</span> <span class="pl-e">name</span>=<span class="pl-s"><span class="pl-pds">"</span>welcomeButtonDoneText<span class="pl-pds">"</span></span>&gt;string&lt;/<span class="pl-ent">item</span>&gt;
-    <span class="pl-c">&lt;!-- Individual button styles --&gt;</span>
+
+    <span class="pl-c">&lt;!-- Button styles for STANDARD and STANDARD_DONE_IMAGE --&gt;</span>
     &lt;<span class="pl-ent">item</span> <span class="pl-e">name</span>=<span class="pl-s"><span class="pl-pds">"</span>welcomeButtonSkipStyle<span class="pl-pds">"</span></span>&gt;@style/MyButtonSkip&lt;/<span class="pl-ent">item</span>&gt;
     &lt;<span class="pl-ent">item</span> <span class="pl-e">name</span>=<span class="pl-s"><span class="pl-pds">"</span>welcomeButtonNextStyle<span class="pl-pds">"</span></span>&gt;@style/MyButtonNext&lt;/<span class="pl-ent">item</span>&gt;
     &lt;<span class="pl-ent">item</span> <span class="pl-e">name</span>=<span class="pl-s"><span class="pl-pds">"</span>welcomeButtonDoneStyle<span class="pl-pds">"</span></span>&gt;@style/MyButtonDone&lt;/<span class="pl-ent">item</span>&gt;
 
-    <span class="pl-c">&lt;!-- The drawable or color to fade to if swipeToDismiss is enabled --&gt;</span>
-    &lt;<span class="pl-ent">item</span> <span class="pl-e">name</span>=<span class="pl-s"><span class="pl-pds">"</span>android:windowBackground<span class="pl-pds">"</span></span>&gt;drawable|color&lt;/<span class="pl-ent">item</span>&gt;
+    <span class="pl-c">&lt;!-- Button styles for BUTTON_BAR --&gt;</span>
+    &lt;<span class="pl-ent">item</span> <span class="pl-e">name</span>=<span class="pl-s"><span class="pl-pds">"</span>welcomeButtonBarFirstStyle<span class="pl-pds">"</span></span>&gt;@style/MyButtonFirst&lt;/<span class="pl-ent">item</span>&gt;
+    &lt;<span class="pl-ent">item</span> <span class="pl-e">name</span>=<span class="pl-s"><span class="pl-pds">"</span>welcomeButtonBarSecondStyle<span class="pl-pds">"</span></span>&gt;@style/MyButtonSecond&lt;/<span class="pl-ent">item</span>&gt;
 
+
+    <span class="pl-c">&lt;!---- OTHER STYLES ----&gt;</span>
+
+    <span class="pl-c">&lt;!-- Current page indicator --&gt;</span>
     &lt;<span class="pl-ent">item</span> <span class="pl-e">name</span>=<span class="pl-s"><span class="pl-pds">"</span>welcomeIndicatorStyle<span class="pl-pds">"</span></span>&gt;@style/MyWelcomeIndicator&lt;/<span class="pl-ent">item</span>&gt;
+
+    <span class="pl-c">&lt;!-- Divider between bottom layout and pages --&gt;</span>
     &lt;<span class="pl-ent">item</span> <span class="pl-e">name</span>=<span class="pl-s"><span class="pl-pds">"</span>welcomeDividerStyle<span class="pl-pds">"</span></span>&gt;@style/MyWelcomeScreenDivider&lt;/<span class="pl-ent">item</span>&gt;
 
-    &lt;<span class="pl-ent">item</span> <span class="pl-e">name</span>=<span class="pl-s"><span class="pl-pds">"</span>welcomeNormalTextStyle<span class="pl-pds">"</span></span>&gt;@style/MyNormalText&lt;/<span class="pl-ent">item</span>&gt;
-    &lt;<span class="pl-ent">item</span> <span class="pl-e">name</span>=<span class="pl-s"><span class="pl-pds">"</span>welcomeLargeTextStyle<span class="pl-pds">"</span></span>&gt;@style/MyLargeText&lt;/<span class="pl-ent">item</span>&gt;
-    &lt;<span class="pl-ent">item</span> <span class="pl-e">name</span>=<span class="pl-s"><span class="pl-pds">"</span>welcomeTitleTextStyle<span class="pl-pds">"</span></span>&gt;@style/MyTitleText&lt;/<span class="pl-ent">item</span>&gt;
+    <span class="pl-c">&lt;!-- The drawable or color to fade to if swipeToDismiss is enabled --&gt;</span>
+    &lt;<span class="pl-ent">item</span> <span class="pl-e">name</span>=<span class="pl-s"><span class="pl-pds">"</span>android:windowBackground<span class="pl-pds">"</span></span>&gt;drawable|color&lt;/<span class="pl-ent">item</span>&gt;
 
     <span class="pl-c">&lt;!-- Add the following if you want to show the action bar.</span>
 <span class="pl-c">        Use Builder.showActionBarBackButton(true) to show</span>
@@ -364,8 +434,16 @@
     &lt;<span class="pl-ent">item</span> <span class="pl-e">name</span>=<span class="pl-s"><span class="pl-pds">"</span>android:tint<span class="pl-pds">"</span></span>&gt;color&lt;/<span class="pl-ent">item</span>&gt;
 &lt;/<span class="pl-ent">style</span>&gt;
 
-&lt;<span class="pl-ent">style</span> <span class="pl-e">name</span>=<span class="pl-s"><span class="pl-pds">"</span>MyButtonSkip|MyButtonDone<span class="pl-pds">"</span></span> <span class="pl-e">parent</span>=<span class="pl-s"><span class="pl-pds">"</span>WelcomeScreenButton(.Skip|.Done)<span class="pl-pds">"</span></span>&gt;
+&lt;<span class="pl-ent">style</span> <span class="pl-e">name</span>=<span class="pl-s"><span class="pl-pds">"</span>MyButtonSkip<span class="pl-pds">"</span></span> <span class="pl-e">parent</span>=<span class="pl-s"><span class="pl-pds">"</span>WelcomeScreenButton.Skip<span class="pl-pds">"</span></span>&gt;
     &lt;<span class="pl-ent">item</span> <span class="pl-e">name</span>=<span class="pl-s"><span class="pl-pds">"</span>android:textColor<span class="pl-pds">"</span></span>&gt;color&lt;/<span class="pl-ent">item</span>&gt;
+&lt;/<span class="pl-ent">style</span>&gt;
+
+&lt;<span class="pl-ent">style</span> <span class="pl-e">name</span>=<span class="pl-s"><span class="pl-pds">"</span>MyButtonDone<span class="pl-pds">"</span></span> <span class="pl-e">parent</span>=<span class="pl-s"><span class="pl-pds">"</span>WelcomeScreenButton.Done<span class="pl-pds">"</span></span>&gt;
+    <span class="pl-c">&lt;!-- If using BottomLayuout.STANDARD --&gt;</span>
+    &lt;<span class="pl-ent">item</span> <span class="pl-e">name</span>=<span class="pl-s"><span class="pl-pds">"</span>android:textColor<span class="pl-pds">"</span></span>&gt;color&lt;/<span class="pl-ent">item</span>&gt;
+    <span class="pl-c">&lt;!-- If using BottomLayout.STANDARD_DONE_IMAGE --&gt;</span>
+    &lt;<span class="pl-ent">item</span> <span class="pl-e">name</span>=<span class="pl-s"><span class="pl-pds">"</span>android:tint<span class="pl-pds">"</span></span>&gt;color&lt;/<span class="pl-ent">item</span>&gt;
+    &lt;<span class="pl-ent">item</span> <span class="pl-e">name</span>=<span class="pl-s"><span class="pl-pds">"</span>android:src<span class="pl-pds">"</span></span>&gt;drawable&lt;/<span class="pl-ent">item</span>&gt;
 &lt;/<span class="pl-ent">style</span>&gt;
 
 <span class="pl-c">&lt;!-- A divider that is directly above the buttons/indicator.</span>
