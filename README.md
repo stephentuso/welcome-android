@@ -51,12 +51,18 @@ Table of Contents
 	-	[Show the welcome screen](#show-the-welcome-screen)
 -	[Skipping/Back button behavior](#skippingback-button-behavior)
 -	[Included pages](#included-pages)
-	-	[Title page](#title-page)
-	-	[Basic page](#basic-page)
-	-	[Parallax page](#parallax-page)
-	-	[Full screen parallax page](#full-screen-parallax-page)
+	-	[TitlePage](#titlepage)
+	-	[BasicPage](#basicpage)
+	-	[ParallaxPage](#parallaxpage)
+	-	[FullscreenParallaxPage](#fullscreenparallaxpage)
 -	[Custom pages](#custom-pages)
 	-	[Custom Done Button](#custom-done-button)
+-	[Bottom Layouts](#bottom-layouts)
+	-	[STANDARD](#standard)
+	-	[STANDARD_DONE_IMAGE](#standard_done_image)
+	-	[BUTTON_BAR](#button_bar)
+	-	[BUTTON_BAR_SINGLE](#button_bar_single)
+	-	[INDICATOR_ONLY](#indicator_only)
 -	[Styling](#styling)
 	-	[Themes](#themes)
 	-	[Styles](#styles)
@@ -238,6 +244,31 @@ See [animations](https://github.com/stephentuso/welcome-android#animations) belo
 
 If you want to use a button in a custom fragment instead of the default done button, call `useCustomDoneButton(true)` on the builder and `new WelcomeFinisher(MyFragment.this).finish()` in the button's `OnClickListener`.
 
+Bottom Layouts
+==============
+
+The layout shown beneath the pages can be changed with the `bottomLayout` Builder method, which uses the `WelcomeConfiguration.BottomLayout` enum. The possible values are explained below.
+
+### `STANDARD`
+
+The default layout, can have skip/previous buttons, the current page indicator, and next/done buttons.
+
+### `STANDARD_DONE_IMAGE`
+
+Same as `STANDARD`, but the done button is an `ImageButton` rather than a `Button`. Uses a check mark as the image by default (that can be changed with styles).
+
+### `BUTTON_BAR`
+
+Has two buttons side by side at the bottom with the current page indicator above them. By default the text is "Log In" and "Sign Up", but can be changed with styles. In your `WelcomeActivity` subclass, override `onButtonBarFirstPressed` and `onButtonBarSecondPressed` to handle clicks. More documentation will be added later, see `ButtonBarWelcomeActivity` in the sample for an example.
+
+### `BUTTON_BAR_SINGLE`
+
+Same as `BUTTON_BAR`, but with just one button (uses `onButtonBarFirstPressed` for clicks).
+
+### `INDICATOR_ONLY`
+
+Just the current page indicator, no buttons.
+
 Styling
 =======
 
@@ -271,34 +302,54 @@ You can add styles as shown below. Optional items are in square brackets.
 ```xml
 <style name="CustomWelcomeScreenTheme" parent="SEE THEMES ABOVE">
 
+    <!---- TEXT STYLES ---->
+
     <!-- Color of button text and titles/headings (in built in fragments)
         By default, this is also the color of the done/next button -->
     <item name="android:textColorPrimary">color</item>
+
     <!-- Color of other text
         By default, this is used for the skip button text color -->
     <item name="android:textColorSecondary">color</item>
 
-    <!-- ** Button styles ** -->
+    <!-- Descriptions/other text -->
+    <item name="welcomeNormalTextStyle">@style/MyNormalText</item>
+    <!-- Headings -->
+    <item name="welcomeLargeTextStyle">@style/MyLargeText</item>
+    <!-- Titles -->
+    <item name="welcomeTitleTextStyle">@style/MyTitleText</item>
+
+
+    <!---- BUTTON STYLES ---->
+
     <!-- Background is applied to all buttons,
         to change a specific button background use the individual button styles -->
     <item name="welcomeButtonBackground">drawable</item>
+
     <!-- Done/skip button text -->
     <item name="welcomeButtonSkipText">string</item>
     <item name="welcomeButtonDoneText">string</item>
-    <!-- Individual button styles -->
+
+    <!-- Button styles for STANDARD and STANDARD_DONE_IMAGE -->
     <item name="welcomeButtonSkipStyle">@style/MyButtonSkip</item>
     <item name="welcomeButtonNextStyle">@style/MyButtonNext</item>
     <item name="welcomeButtonDoneStyle">@style/MyButtonDone</item>
 
-    <!-- The drawable or color to fade to if swipeToDismiss is enabled -->
-    <item name="android:windowBackground">drawable|color</item>
+    <!-- Button styles for BUTTON_BAR -->
+    <item name="welcomeButtonBarFirstStyle">@style/MyButtonFirst</item>
+    <item name="welcomeButtonBarSecondStyle">@style/MyButtonSecond</item>
 
+
+    <!---- OTHER STYLES ---->
+
+    <!-- Current page indicator -->
     <item name="welcomeIndicatorStyle">@style/MyWelcomeIndicator</item>
+
+    <!-- Divider between bottom layout and pages -->
     <item name="welcomeDividerStyle">@style/MyWelcomeScreenDivider</item>
 
-    <item name="welcomeNormalTextStyle">@style/MyNormalText</item>
-    <item name="welcomeLargeTextStyle">@style/MyLargeText</item>
-    <item name="welcomeTitleTextStyle">@style/MyTitleText</item>
+    <!-- The drawable or color to fade to if swipeToDismiss is enabled -->
+    <item name="android:windowBackground">drawable|color</item>
 
     <!-- Add the following if you want to show the action bar.
         Use Builder.showActionBarBackButton(true) to show
@@ -320,8 +371,16 @@ You can add styles as shown below. Optional items are in square brackets.
     <item name="android:tint">color</item>
 </style>
 
-<style name="MyButtonSkip|MyButtonDone" parent="WelcomeScreenButton(.Skip|.Done)">
+<style name="MyButtonSkip" parent="WelcomeScreenButton.Skip">
     <item name="android:textColor">color</item>
+</style>
+
+<style name="MyButtonDone" parent="WelcomeScreenButton.Done">
+    <!-- If using BottomLayuout.STANDARD -->
+    <item name="android:textColor">color</item>
+    <!-- If using BottomLayout.STANDARD_DONE_IMAGE -->
+    <item name="android:tint">color</item>
+    <item name="android:src">drawable</item>
 </style>
 
 <!-- A divider that is directly above the buttons/indicator.
