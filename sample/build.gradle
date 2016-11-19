@@ -9,8 +9,8 @@ android {
         applicationId "com.stephentuso.welcomeexample"
         minSdkVersion 9
         targetSdkVersion 24
-        versionCode 3
-        versionName VERSION_NAME
+        versionCode 4
+        versionName VERSION_NAME + ".0"
 
         vectorDrawables.useSupportLibrary = true
 
