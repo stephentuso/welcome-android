@@ -23,8 +23,8 @@
     <string name="title_back_exit">Back button behaviour</string>
     <string name="description_back_exit">Pressing back will exit rather than navigating through pages</string>
 
-    <string name="title_included_pages">Included Pages</string>
-    <string name="description_included_pages">Shows examples of all the pages built in to the library. Uses STANDARD_DONE_IMAGE bottom layout.</string>
+    <string name="title_included_pages">Done Image Button</string>
+    <string name="description_included_pages">The done button has an image instead of text. Uses STANDARD_DONE_IMAGE bottom layout.</string>
 
     <string name="title_custom_page">Custom pages</string>
     <string name="description_custom_page">A welcome screen with custom fragments</string>
