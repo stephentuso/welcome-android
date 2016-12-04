@@ -47,4 +47,8 @@ task generatePublicXml(type: Exec) {
     commandLine 'bash', '-c', 'export PATH="$PATH:/usr/local/bin"; pubxml'
     ignoreExitValue true
 }
-preBuild.dependsOn generatePublicXml
+
+//Don't run pubxml task on Windows
+if (! System.getProperty('os.name').toLowerCase().contains('windows')) {
+    preBuild.dependsOn generatePublicXml
+}
