@@ -18,11 +18,15 @@ import android.widget.TextView;
  * create an instance of this fragment.
  */
 public class WelcomeTitleFragment extends Fragment implements WelcomePage.OnChangeListener {
+
+    public static final int NO_COLOR_SET = -1;
+
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_DRAWABLE_ID = "drawable_id";
     private static final String ARG_TITLE = "title";
     private static final String ARG_SHOW_ANIM = "show_anim";
     private static final String ARG_TYPEFACE_PATH = "typeface_path";
+    private static final String ARG_TITLE_COLOR = "title_color";
 
     private int drawableId;
     private String title = "";
@@ -34,9 +38,13 @@ public class WelcomeTitleFragment extends Fragment implements WelcomePage.OnChan
      * Use this factory method to create a new instance of
      * this fragment using the provided parameters.
      *
-     * @return A new instance of TitleFragment.
+     * @return A new instance of WelcomeTitleFragment.
      */
-    public static WelcomeTitleFragment newInstance(@DrawableRes int resId, String title, boolean showParallaxAnim, @Nullable String typefacePath) {
+    public static WelcomeTitleFragment newInstance(@DrawableRes int resId,
+                                                   String title,
+                                                   boolean showParallaxAnim,
+                                                   @Nullable String typefacePath,
+                                                   int titleColor) {
         WelcomeTitleFragment fragment = new WelcomeTitleFragment();
         Bundle args = new Bundle();
         args.putInt(ARG_DRAWABLE_ID, resId);
@@ -66,8 +74,13 @@ public class WelcomeTitleFragment extends Fragment implements WelcomePage.OnChan
 
         drawableId = args.getInt(ARG_DRAWABLE_ID);
         title = args.getString(ARG_TITLE);
+        int titleColor = args.getInt(ARG_TITLE_COLOR, NO_COLOR_SET);
+
         imageView.setImageResource(drawableId);
         titleView.setText(title);
+        if (titleColor != NO_COLOR_SET)
+            titleView.setTextColor(titleColor);
+
         showParallaxAnim = args.getBoolean(ARG_SHOW_ANIM, showParallaxAnim);
 
         WelcomeUtils.setTypeface(titleView, args.getString(ARG_TYPEFACE_PATH), getActivity());

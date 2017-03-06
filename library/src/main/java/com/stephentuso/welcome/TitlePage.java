@@ -1,7 +1,11 @@
 package com.stephentuso.welcome;
 
+import android.content.Context;
+import android.support.annotation.ColorInt;
+import android.support.annotation.ColorRes;
 import android.support.annotation.DrawableRes;
 import android.support.v4.app.Fragment;
+import android.support.v4.content.ContextCompat;
 
 /**
  * A page with a large title and an image
@@ -14,6 +18,7 @@ public class TitlePage extends WelcomePage<TitlePage> {
     private String title;
     private boolean showParallax = true;
     private String titleTypefacePath = null;
+    private int titleColor = WelcomeTitleFragment.NO_COLOR_SET;
 
     /**
      * A page with a large title and an image
@@ -53,9 +58,35 @@ public class TitlePage extends WelcomePage<TitlePage> {
         return this;
     }
 
+    /**
+     * Set the color of the title
+     *
+     * @param color Color int
+     *
+     * @return This TitlePage object to allow method calls to be chained
+     */
+    public TitlePage titleColor(@ColorInt int color) {
+        this.titleColor = color;
+        return this;
+    }
+
+    /**
+     * Set the color of the title from a color resource id
+     *
+     * @param context Context used to resolve color
+     *
+     * @param colorRes Resource id of color to set
+     *
+     * @return This TitlePage object to allow method calls to be chained
+     */
+    public TitlePage titleColorResource(Context context, @ColorRes int colorRes) {
+        this.titleColor = ContextCompat.getColor(context, colorRes);
+        return this;
+    }
+
     /* Package local getters for testing */
 
-    int getDrawableResId() {
+    /* package */ int getDrawableResId() {
         return drawableResId;
     }
 
@@ -71,6 +102,10 @@ public class TitlePage extends WelcomePage<TitlePage> {
         return titleTypefacePath;
     }
 
+    /* package */ Integer getTitleColor() {
+        return titleColor;
+    }
+
     @Override
     public void setup(WelcomeConfiguration config) {
         super.setup(config);
@@ -83,7 +118,7 @@ public class TitlePage extends WelcomePage<TitlePage> {
 
     @Override
     public Fragment fragment() {
-        return WelcomeTitleFragment.newInstance(drawableResId, title, showParallax, titleTypefacePath);
+        return WelcomeTitleFragment.newInstance(drawableResId, title, showParallax, titleTypefacePath, titleColor);
     }
 
 
