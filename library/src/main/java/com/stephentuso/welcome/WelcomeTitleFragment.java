@@ -51,6 +51,7 @@ public class WelcomeTitleFragment extends Fragment implements WelcomePage.OnChan
         args.putString(ARG_TITLE, title);
         args.putBoolean(ARG_SHOW_ANIM, showParallaxAnim);
         args.putString(ARG_TYPEFACE_PATH, typefacePath);
+        args.putInt(ARG_TITLE_COLOR, titleColor);
         fragment.setArguments(args);
         return fragment;
     }

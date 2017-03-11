@@ -20,8 +20,10 @@ public class LightWelcomeActivity extends WelcomeActivity {
                 .defaultBackgroundColor(new BackgroundColor(Color.WHITE))
                 .defaultTitleTypefacePath("Roboto-Bold.ttf")
                 .defaultHeaderTypefacePath("Roboto-Bold.ttf")
-                .page(new TitlePage(R.drawable.ic_style_blue, "Light Theme"))
-                .page(new BasicPage(R.drawable.ic_brush_blue, "Easy styling", "All colors can be customized with styles"))
+                .page(new TitlePage(R.drawable.ic_style_blue, "Light Theme")
+                        .titleColorResource(this, R.color.colorAccent))
+                .page(new BasicPage(R.drawable.ic_brush_blue, "Easy styling",
+                        "All colors can be customized with styles"))
                 .swipeToDismiss(true)
                 .exitAnimation(android.R.anim.fade_out)
                 .build();
