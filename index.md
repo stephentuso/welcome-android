@@ -76,7 +76,7 @@ This library is available through jCenter.
 Gradle:
 
 ```groovy
-compile 'com.stephentuso:welcome:1.1.1'
+compile 'com.stephentuso:welcome:1.2.1'
 ```
 
 If you use proguard, add the following to your proguard rules
