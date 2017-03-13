@@ -2,6 +2,7 @@ package com.stephentuso.welcome;
 
 import android.os.Build;
 import android.os.Bundle;
+import android.support.annotation.ColorInt;
 import android.support.annotation.LayoutRes;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -24,6 +25,7 @@ public class WelcomeParallaxFragment extends Fragment implements WelcomePage.OnC
     public static final String KEY_PARALLAX_RECURSIVE = "parallax_recursive";
     public static final String KEY_HEADER_TYPEFACE_PATH = "header_typeface";
     public static final String KEY_DESCRIPTION_TYPEFACE_PATH = "description_typeface";
+    public static final String KEY_HEADER_COLOR = "header_color";
 
     private FrameLayout frameLayout = null;
     private TextView titleView = null;
@@ -34,8 +36,16 @@ public class WelcomeParallaxFragment extends Fragment implements WelcomePage.OnC
     private float parallaxInterval = 0f;
     private boolean parallaxRecursive = false;
 
-    public static WelcomeParallaxFragment newInstance(@LayoutRes int layoutId, String title, String description, float startParallaxFactor, float endParallaxFactor,
-                                                      boolean parallaxRecursive, String headerTypefacePath, String descriptionTypefacePath) {
+    public static WelcomeParallaxFragment newInstance(@LayoutRes int layoutId,
+                                                      String title,
+                                                      String description,
+                                                      float startParallaxFactor,
+                                                      float endParallaxFactor,
+                                                      boolean parallaxRecursive,
+                                                      String headerTypefacePath,
+                                                      String descriptionTypefacePath,
+                                                      @ColorInt int headerColor)
+    {
         Bundle args = new Bundle();
         args.putInt(KEY_LAYOUT_ID, layoutId);
         args.putString(KEY_TITLE, title);
@@ -45,6 +55,7 @@ public class WelcomeParallaxFragment extends Fragment implements WelcomePage.OnC
         args.putBoolean(KEY_PARALLAX_RECURSIVE, parallaxRecursive);
         args.putString(KEY_HEADER_TYPEFACE_PATH, headerTypefacePath);
         args.putString(KEY_DESCRIPTION_TYPEFACE_PATH, descriptionTypefacePath);
+        args.putInt(KEY_HEADER_COLOR, headerColor);
         WelcomeParallaxFragment fragment = new WelcomeParallaxFragment();
         fragment.setArguments(args);
         return fragment;
@@ -75,6 +86,10 @@ public class WelcomeParallaxFragment extends Fragment implements WelcomePage.OnC
 
         if (args.getString(KEY_DESCRIPTION) != null)
             descriptionView.setText(args.getString(KEY_DESCRIPTION));
+
+        int headerColor = args.getInt(KEY_HEADER_COLOR, WelcomeUtils.NO_COLOR_SET);
+        if (headerColor != WelcomeUtils.NO_COLOR_SET)
+            titleView.setTextColor(headerColor);
 
         WelcomeUtils.setTypeface(titleView, args.getString(KEY_HEADER_TYPEFACE_PATH), getActivity());
         WelcomeUtils.setTypeface(descriptionView, args.getString(KEY_DESCRIPTION_TYPEFACE_PATH), getActivity());

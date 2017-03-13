@@ -3,6 +3,7 @@ package com.stephentuso.welcome;
 
 import android.os.Build;
 import android.os.Bundle;
+import android.support.annotation.ColorInt;
 import android.support.annotation.DrawableRes;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -18,8 +19,6 @@ import android.widget.TextView;
  * create an instance of this fragment.
  */
 public class WelcomeTitleFragment extends Fragment implements WelcomePage.OnChangeListener {
-
-    public static final int NO_COLOR_SET = -1;
 
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_DRAWABLE_ID = "drawable_id";
@@ -44,7 +43,8 @@ public class WelcomeTitleFragment extends Fragment implements WelcomePage.OnChan
                                                    String title,
                                                    boolean showParallaxAnim,
                                                    @Nullable String typefacePath,
-                                                   int titleColor) {
+                                                   @ColorInt int titleColor)
+    {
         WelcomeTitleFragment fragment = new WelcomeTitleFragment();
         Bundle args = new Bundle();
         args.putInt(ARG_DRAWABLE_ID, resId);
@@ -75,11 +75,12 @@ public class WelcomeTitleFragment extends Fragment implements WelcomePage.OnChan
 
         drawableId = args.getInt(ARG_DRAWABLE_ID);
         title = args.getString(ARG_TITLE);
-        int titleColor = args.getInt(ARG_TITLE_COLOR, NO_COLOR_SET);
 
         imageView.setImageResource(drawableId);
         titleView.setText(title);
-        if (titleColor != NO_COLOR_SET)
+
+        int titleColor = args.getInt(ARG_TITLE_COLOR, WelcomeUtils.NO_COLOR_SET);
+        if (titleColor != WelcomeUtils.NO_COLOR_SET)
             titleView.setTextColor(titleColor);
 
         showParallaxAnim = args.getBoolean(ARG_SHOW_ANIM, showParallaxAnim);

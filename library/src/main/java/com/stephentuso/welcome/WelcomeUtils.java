@@ -13,6 +13,8 @@ import android.widget.TextView;
  */
 public class WelcomeUtils {
 
+    /* package */ static final int NO_COLOR_SET = -1;
+
     private static final String TAG = WelcomeUtils.class.getName();
 
     public static String getKey(Class<? extends WelcomeActivity> activityClass) {

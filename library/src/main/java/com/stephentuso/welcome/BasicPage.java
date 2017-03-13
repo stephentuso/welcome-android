@@ -1,7 +1,11 @@
 package com.stephentuso.welcome;
 
+import android.content.Context;
+import android.support.annotation.ColorInt;
+import android.support.annotation.ColorRes;
 import android.support.annotation.DrawableRes;
 import android.support.v4.app.Fragment;
+import android.support.v4.content.ContextCompat;
 
 /**
  * A page with a large image, header, and description
@@ -16,6 +20,7 @@ public class BasicPage extends WelcomePage<BasicPage> {
     private boolean showParallax = true;
     private String headerTypefacePath = null;
     private String descriptionTypefacePath = null;
+    private int headerColor = WelcomeUtils.NO_COLOR_SET;
 
     /**
      * A page with a large image, header, and description
@@ -69,10 +74,36 @@ public class BasicPage extends WelcomePage<BasicPage> {
         return this;
     }
 
+    /**
+     * Set the color of the header
+     *
+     * @param color Color int
+     *
+     * @return This BasicPage object to allow method calls to be chained
+     */
+    public BasicPage headerColor(@ColorInt int color) {
+        this.headerColor = color;
+        return this;
+    }
+
+    /**
+     * Set the color of the header from a color resource id
+     *
+     * @param context Context used to resolve color
+     *
+     * @param colorRes Resource id of color to set
+     *
+     * @return This BasicPage object to allow method calls to be chained
+     */
+    public BasicPage headerColorResource(Context context, @ColorRes int colorRes) {
+        this.headerColor = ContextCompat.getColor(context, colorRes);
+        return this;
+    }
+
     /* Package local getters for testing */
 
     /* package */ int getDrawableResId() {
-        return this.drawableResId;
+        return drawableResId;
     }
 
     /* package */ String getTitle() {
@@ -84,15 +115,19 @@ public class BasicPage extends WelcomePage<BasicPage> {
     }
 
     /* package */ boolean getShowParallax() {
-        return this.showParallax;
+        return showParallax;
     }
 
     /* package */ String getHeaderTypefacePath() {
-        return this.headerTypefacePath;
+        return headerTypefacePath;
     }
 
     /* package */ String getDescriptionTypefacePath() {
-        return this.descriptionTypefacePath;
+        return descriptionTypefacePath;
+    }
+
+    /* package */ int getHeaderColor() {
+        return headerColor;
     }
 
     @Override
@@ -111,7 +146,7 @@ public class BasicPage extends WelcomePage<BasicPage> {
 
     @Override
     public Fragment fragment() {
-        return WelcomeBasicFragment.newInstance(drawableResId, title, description, showParallax, headerTypefacePath, descriptionTypefacePath);
+        return WelcomeBasicFragment.newInstance(drawableResId, title, description, showParallax, headerTypefacePath, descriptionTypefacePath, headerColor);
     }
 
 }

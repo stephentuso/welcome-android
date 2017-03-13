@@ -1,5 +1,6 @@
 package com.stephentuso.welcome;
 
+import android.graphics.Color;
 import android.support.annotation.DrawableRes;
 import android.support.annotation.LayoutRes;
 
@@ -67,6 +68,7 @@ public class PagesTest extends ConfigurationTest {
         //Defaults
         assertTrue(page.getShowParallax());
         assertNull(page.getTitleTypefacePath());
+        assertEquals(WelcomeUtils.NO_COLOR_SET, page.getTitleColor());
 
         page.setup(builder.build());
         assertEquals(DEFAULT_TITLE_TF, page.getTitleTypefacePath());
@@ -74,6 +76,11 @@ public class PagesTest extends ConfigurationTest {
         page.parallax(false).titleTypeface("title_typeface");
         assertFalse(page.getShowParallax());
         assertEquals("title_typeface", page.getTitleTypefacePath());
+
+        page.titleColor(Color.RED);
+        assertEquals(Color.RED, page.getTitleColor());
+        page.titleColorResource(context, R.color.wel_default_background_color);
+        assertEquals(DEFAULT_COLOR, page.getTitleColor());
 
         page.setup(builder.build());
         assertEquals("title_typeface", page.getTitleTypefacePath());
@@ -92,6 +99,7 @@ public class PagesTest extends ConfigurationTest {
         assertTrue(page.getShowParallax());
         assertNull(page.getHeaderTypefacePath());
         assertNull(page.getDescriptionTypefacePath());
+        assertEquals(WelcomeUtils.NO_COLOR_SET, page.getHeaderColor());
 
         page.setup(builder.build());
         assertEquals(DEFAULT_HEADER_TF, page.getHeaderTypefacePath());
@@ -103,6 +111,11 @@ public class PagesTest extends ConfigurationTest {
         assertFalse(page.getShowParallax());
         assertEquals("header_typeface", page.getHeaderTypefacePath());
         assertEquals("description_typeface", page.getDescriptionTypefacePath());
+
+        page.headerColor(Color.RED);
+        assertEquals(Color.RED, page.getHeaderColor());
+        page.headerColorResource(context, R.color.wel_default_background_color);
+        assertEquals(DEFAULT_COLOR, page.getHeaderColor());
 
         page.setup(builder.build());
         assertEquals("header_typeface", page.getHeaderTypefacePath());
@@ -124,6 +137,7 @@ public class PagesTest extends ConfigurationTest {
         assertFalse(page.getParallaxRecursive());
         assertNull(page.getHeaderTypefacePath());
         assertNull(page.getDescriptionTyefacePath());
+        assertEquals(WelcomeUtils.NO_COLOR_SET, page.getHeaderColor());
 
         page.setup(builder.build());
         assertEquals(DEFAULT_HEADER_TF, page.getHeaderTypefacePath());
@@ -141,6 +155,11 @@ public class PagesTest extends ConfigurationTest {
         assertTrue(page.getParallaxRecursive());
         assertEquals("header_typeface", page.getHeaderTypefacePath());
         assertEquals("description_typeface", page.getDescriptionTyefacePath());
+
+        page.headerColor(Color.RED);
+        assertEquals(Color.RED, page.getHeaderColor());
+        page.headerColorResource(context, R.color.wel_default_background_color);
+        assertEquals(DEFAULT_COLOR, page.getHeaderColor());
 
         page.setup(builder.build());
         assertEquals("header_typeface", page.getHeaderTypefacePath());

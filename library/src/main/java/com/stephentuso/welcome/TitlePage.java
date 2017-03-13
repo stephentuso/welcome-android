@@ -18,7 +18,7 @@ public class TitlePage extends WelcomePage<TitlePage> {
     private String title;
     private boolean showParallax = true;
     private String titleTypefacePath = null;
-    private int titleColor = WelcomeTitleFragment.NO_COLOR_SET;
+    private int titleColor = WelcomeUtils.NO_COLOR_SET;
 
     /**
      * A page with a large title and an image
@@ -102,7 +102,7 @@ public class TitlePage extends WelcomePage<TitlePage> {
         return titleTypefacePath;
     }
 
-    /* package */ Integer getTitleColor() {
+    /* package */ int getTitleColor() {
         return titleColor;
     }
 
@@ -120,6 +120,5 @@ public class TitlePage extends WelcomePage<TitlePage> {
     public Fragment fragment() {
         return WelcomeTitleFragment.newInstance(drawableResId, title, showParallax, titleTypefacePath, titleColor);
     }
-
 
 }

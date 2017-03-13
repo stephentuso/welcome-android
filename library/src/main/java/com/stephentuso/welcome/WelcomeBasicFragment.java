@@ -2,6 +2,7 @@ package com.stephentuso.welcome;
 
 import android.os.Build;
 import android.os.Bundle;
+import android.support.annotation.ColorInt;
 import android.support.annotation.DrawableRes;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -23,14 +24,21 @@ public class WelcomeBasicFragment extends Fragment implements WelcomePage.OnChan
     public static final String KEY_SHOW_ANIM = "show_anim";
     public static final String KEY_HEADER_TYPEFACE_PATH = "header_typeface";
     public static final String KEY_DESCRIPTION_TYPEFACE_PATH = "description_typeface";
+    public static final String KEY_HEADER_COLOR = "header_color";
 
     private ImageView imageView = null;
     private TextView titleView = null;
     private TextView descriptionView = null;
     private boolean showParallaxAnim = true;
 
-    public static WelcomeBasicFragment newInstance(@DrawableRes int drawableId, String title, String description, boolean showParallaxAnim,
-                                                   String headerTypefacePath, String descriptionTypefacePath) {
+    public static WelcomeBasicFragment newInstance(@DrawableRes int drawableId,
+                                                   String title,
+                                                   String description,
+                                                   boolean showParallaxAnim,
+                                                   String headerTypefacePath,
+                                                   String descriptionTypefacePath,
+                                                   @ColorInt int headerColor)
+    {
         Bundle args = new Bundle();
         args.putInt(KEY_DRAWABLE_ID, drawableId);
         args.putString(KEY_TITLE, title);
@@ -38,6 +46,7 @@ public class WelcomeBasicFragment extends Fragment implements WelcomePage.OnChan
         args.putBoolean(KEY_SHOW_ANIM, showParallaxAnim);
         args.putString(KEY_HEADER_TYPEFACE_PATH, headerTypefacePath);
         args.putString(KEY_DESCRIPTION_TYPEFACE_PATH, descriptionTypefacePath);
+        args.putInt(KEY_HEADER_COLOR, headerColor);
         WelcomeBasicFragment fragment = new WelcomeBasicFragment();
         fragment.setArguments(args);
         return fragment;
@@ -66,6 +75,10 @@ public class WelcomeBasicFragment extends Fragment implements WelcomePage.OnChan
 
         if (args.getString(KEY_DESCRIPTION) != null)
             descriptionView.setText(args.getString(KEY_DESCRIPTION));
+
+        int headerColor = args.getInt(KEY_HEADER_COLOR, WelcomeUtils.NO_COLOR_SET);
+        if (headerColor != WelcomeUtils.NO_COLOR_SET)
+            titleView.setTextColor(headerColor);
 
         WelcomeUtils.setTypeface(titleView, args.getString(KEY_HEADER_TYPEFACE_PATH), getActivity());
         WelcomeUtils.setTypeface(descriptionView, args.getString(KEY_DESCRIPTION_TYPEFACE_PATH), getActivity());
