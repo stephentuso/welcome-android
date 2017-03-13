@@ -23,7 +23,8 @@ public class LightWelcomeActivity extends WelcomeActivity {
                 .page(new TitlePage(R.drawable.ic_style_blue, "Light Theme")
                         .titleColorResource(this, R.color.colorAccent))
                 .page(new BasicPage(R.drawable.ic_brush_blue, "Easy styling",
-                        "All colors can be customized with styles"))
+                        "All colors can be customized with styles")
+                        .headerColorResource(this, R.color.colorAccent))
                 .swipeToDismiss(true)
                 .exitAnimation(android.R.anim.fade_out)
                 .build();
