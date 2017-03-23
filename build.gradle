@@ -12,6 +12,22 @@ buildscript {
     }
 }
 
+ext {
+    sdkVersion = [
+            compile: 25,
+            min: 9,
+            target: 25
+    ]
+    buildToolsVer = '25.0.2'
+    supportVersion = '25.3.0'
+    support = [
+            annotations: "com.android.support:support-annotations:$supportVersion",
+            v4: "com.android.support:support-v4:$supportVersion",
+            appcompat: "com.android.support:appcompat-v7:$supportVersion",
+            preference: "com.android.support:preference-v7:$supportVersion"
+    ]
+}
+
 allprojects {
     repositories {
         jcenter()

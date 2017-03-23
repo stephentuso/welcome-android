@@ -2,13 +2,13 @@ apply plugin: 'com.android.application'
 apply plugin: 'jacoco'
 
 android {
-    compileSdkVersion 25
-    buildToolsVersion "25.0.2"
+    compileSdkVersion sdkVersion.compile
+    buildToolsVersion buildToolsVer
 
     defaultConfig {
         applicationId "com.stephentuso.welcomeexample"
-        minSdkVersion 9
-        targetSdkVersion 25
+        minSdkVersion sdkVersion.min
+        targetSdkVersion sdkVersion.target
         versionCode 4
         versionName VERSION_NAME + ".0"
 
@@ -22,7 +22,7 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
         debug {
-            testCoverageEnabled = true
+            testCoverageEnabled true
         }
     }
     applicationVariants.all { variant ->
@@ -35,12 +35,13 @@ dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     debugCompile project(path: ":library", configuration: "debug")
     releaseCompile project(path: ':library', configuration: "release")
+    compile support.annotations
+    compile support.v4
+    compile support.appcompat
     testCompile 'junit:junit:4.12'
-    androidTestCompile 'com.android.support:support-annotations:25.2.0'
     androidTestCompile 'com.android.support.test:runner:0.5'
     androidTestCompile 'com.android.support.test:rules:0.5'
-    compile 'com.android.support:appcompat-v7:25.2.0'
-    compile 'com.android.support:support-v4:25.2.0'
+    androidTestCompile support.annotations
 }
 
 //adapted from https://code.google.com/p/android/issues/detail?id=76373
