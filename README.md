@@ -40,7 +40,7 @@ Contributing
 
 Feel free to open a PR to add a feature or fix a bug, all contributions are welcome. Please read the [contribution notes](https://github.com/stephentuso/welcome-android/CONTRIBUTING.md).
 
-All new development takes place on the [dev branch](https://github.com/stephentuso/welcome-android/tree/dev).
+All development takes place on the [dev branch](https://github.com/stephentuso/welcome-android/tree/dev).
 
 Table of Contents
 =================
@@ -131,7 +131,7 @@ protected WelcomeConfiguration configuration() {
 
 You do not need to override `onCreate` or call `setContentView`.
 
-*Note: defaultBackgroundColor() need to be called before adding pages for now.*
+*Note: For now, defaultBackgroundColor() needs to be called before adding pages.*
 
 Show the welcome screen
 -----------------------
