@@ -79,7 +79,7 @@ This library is available through jCenter.
 Gradle:
 
 ```groovy
-compile 'com.stephentuso:welcome:1.2.1'
+compile 'com.stephentuso:welcome:1.3.1'
 ```
 
 If you use proguard, add the following to your proguard rules
@@ -268,6 +268,10 @@ Same as `BUTTON_BAR`, but with just one button (uses `onButtonBarFirstPressed` f
 ### `INDICATOR_ONLY`
 
 Just the current page indicator, no buttons.
+
+### `NONE`
+
+No layout; no buttons, no indicator
 
 Styling
 =======
