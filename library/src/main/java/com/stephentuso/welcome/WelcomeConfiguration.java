@@ -42,7 +42,12 @@ public class WelcomeConfiguration {
         /**
          * No buttons, just the current page indicator
          */
-        INDICATOR_ONLY(R.layout.wel_bottom_indicator);
+        INDICATOR_ONLY(R.layout.wel_bottom_indicator),
+        
+        /**
+         * No bottom layout; no buttons, no indicator
+         */
+        NONE(R.layout.wel_bottom_none);
 
         @LayoutRes
         /* package */ final int resId;
