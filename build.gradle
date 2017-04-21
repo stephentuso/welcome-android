@@ -5,7 +5,7 @@ buildscript {
         jcenter()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:2.3.0'
+        classpath 'com.android.tools.build:gradle:2.3.1'
         classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.7.2'
         classpath "org.jfrog.buildinfo:build-info-extractor-gradle:4.4.5"
         classpath 'com.dicedmelon.gradle:jacoco-android:0.1.1'
@@ -19,7 +19,7 @@ ext {
             target: 25
     ]
     buildToolsVer = '25.0.2'
-    supportVersion = '25.3.0'
+    supportVersion = '25.3.1'
     support = [
             annotations: "com.android.support:support-annotations:$supportVersion",
             v4: "com.android.support:support-v4:$supportVersion",
