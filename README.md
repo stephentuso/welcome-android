@@ -63,6 +63,7 @@ Table of Contents
 	-	[BUTTON_BAR](#button_bar)
 	-	[BUTTON_BAR_SINGLE](#button_bar_single)
 	-	[INDICATOR_ONLY](#indicator_only)
+	-	[NONE](#none)
 -	[Styling](#styling)
 	-	[Themes](#themes)
 	-	[Styles](#styles)
