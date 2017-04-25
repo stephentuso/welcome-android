@@ -37,7 +37,7 @@ Contributing
 
 Feel free to open a PR to add a feature or fix a bug, all contributions are welcome. Please read the [contribution notes](https://github.com/stephentuso/welcome-android/CONTRIBUTING.md).
 
-All new development takes place on the [dev branch](https://github.com/stephentuso/welcome-android/tree/dev).
+All development takes place on the [dev branch](https://github.com/stephentuso/welcome-android/tree/dev).
 
 Table of Contents
 =================
@@ -60,6 +60,7 @@ Table of Contents
 	-	[BUTTON_BAR](#button_bar)
 	-	[BUTTON_BAR_SINGLE](#button_bar_single)
 	-	[INDICATOR_ONLY](#indicator_only)
+	-	[NONE](#none)
 -	[Styling](#styling)
 	-	[Themes](#themes)
 	-	[Styles](#styles)
@@ -76,7 +77,7 @@ This library is available through jCenter.
 Gradle:
 
 ```groovy
-compile 'com.stephentuso:welcome:1.2.1'
+compile 'com.stephentuso:welcome:1.4.1'
 ```
 
 If you use proguard, add the following to your proguard rules
@@ -128,7 +129,7 @@ protected WelcomeConfiguration configuration() {
 
 You do not need to override `onCreate` or call `setContentView`.
 
-*Note: defaultBackgroundColor() need to be called before adding pages for now.*
+*Note: For now, defaultBackgroundColor() needs to be called before adding pages.*
 
 Show the welcome screen
 -----------------------
@@ -265,6 +266,10 @@ Same as `BUTTON_BAR`, but with just one button (uses `onButtonBarFirstPressed` f
 ### `INDICATOR_ONLY`
 
 Just the current page indicator, no buttons.
+
+### `NONE`
+
+No layout; no buttons, no indicator
 
 Styling
 =======
@@ -464,7 +469,7 @@ License
 =======
 
 ```
-Copyright 2015-2016 Stephen Tuso
+Copyright 2015-2017 Stephen Tuso
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
