@@ -80,7 +80,7 @@ This library is available through jCenter.
 Gradle:
 
 ```groovy
-compile 'com.stephentuso:welcome:1.3.1'
+compile 'com.stephentuso:welcome:1.4.1'
 ```
 
 If you use proguard, add the following to your proguard rules
