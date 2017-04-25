@@ -18,7 +18,7 @@ android {
     }
     buildTypes {
         release {
-            minifyEnabled false
+            minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
         debug {
@@ -33,8 +33,12 @@ android {
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
-    debugCompile project(path: ":library", configuration: "debug")
-    releaseCompile project(path: ':library', configuration: "release")
+    if (deploying) {
+        compile project(path: ":library")
+    } else {
+        debugCompile project(path: ":library", configuration: "debug")
+        releaseCompile project(path: ':library', configuration: "release")
+    }
     compile support.annotations
     compile support.v4
     compile support.appcompat

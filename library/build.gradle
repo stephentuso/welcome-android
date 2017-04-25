@@ -5,7 +5,9 @@ android {
     compileSdkVersion sdkVersion.compile
     buildToolsVersion buildToolsVer
 
-    publishNonDefault true
+    if (!deploying) {
+        publishNonDefault true
+    }
 
     defaultConfig {
         minSdkVersion sdkVersion.min
@@ -17,7 +19,6 @@ android {
     buildTypes {
         release {
             minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
         debug {
             testCoverageEnabled true
@@ -42,13 +43,24 @@ dependencies {
 
 apply from: '../gradle/bintray.gradle'
 
+task welcomeBintrayUpload(type: GradleBuild) {
+    tasks = ['compileDebugSources', 'generatePomFileForMavenJavaPublication', 'publishToMavenLocal', 'bintrayUpload']
+    startParameter.projectProperties = [deploying: true]
+}
+preBuild.mustRunAfter welcomeBintrayUpload
+
+configure(welcomeBintrayUpload) {
+    group = 'Publishing'
+    description = 'Upload task for welcome-android'
+}
+
 task generatePublicXml(type: Exec) {
     workingDir 'src/main/res-public'
     commandLine 'bash', '-c', 'export PATH="$PATH:/usr/local/bin"; pubxml'
     ignoreExitValue true
 }
 
-//Don't run pubxml task on Windows
+// Don't run pubxml task on Windows
 if (! System.getProperty('os.name').toLowerCase().contains('windows')) {
     preBuild.dependsOn generatePublicXml
 }

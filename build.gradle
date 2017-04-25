@@ -13,6 +13,7 @@ buildscript {
 }
 
 ext {
+    deploying = project.properties.get('deploying', false)
     sdkVersion = [
             compile: 25,
             min: 9,

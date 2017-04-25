@@ -24,12 +24,8 @@ task javadocJar(type: Jar, dependsOn: javadoc) {
 }
 
 task publishJavadoc(type: Exec, dependsOn: javadoc) {
-    // This is kinda weird, but I couldn't get it to work any other way
     commandLine "sh", "-c", "bash -l $rootDir/.utility/local-gh-pages-javadoc-push.sh $buildDir"
-
-    //commandLine "bash", "-l", "$rootDir/.utility/local-gh-pages-javadoc-push.sh $buildDir"
 }
-//publishJavadoc.shouldRunAfter(bintrayUpload)
 
 configure(publishJavadoc) {
     group = 'Publishing'
