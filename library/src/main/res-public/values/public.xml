@@ -1,48 +1,48 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <resources>
-  <public type="style" name="WelcomeScreenTheme.SolidNavigation"/>
-  <public type="style" name="WelcomeScreenTheme.Light.SolidNavigation"/>
-  <public type="style" name="WelcomeScreenTheme.SolidNavigation.UnderStatusBar"/>
-  <public type="style" name="WelcomeScreenTheme.Light.SolidNavigation.UnderStatusBar"/>
-  <public type="style" name="WelcomeScreenButton.Next"/>
-  <public type="style" name="WelcomeScreenButton.Prev"/>
+  <public type="attr" name="animation"/>
   <public type="attr" name="currentPageColor"/>
   <public type="attr" name="indicatorColor"/>
-  <public type="attr" name="animation"/>
   <public type="attr" name="welcomeButtonBackground"/>
+  <public type="attr" name="welcomeButtonBarBackground"/>
+  <public type="attr" name="welcomeButtonBarFirstStyle"/>
+  <public type="attr" name="welcomeButtonBarSecondStyle"/>
+  <public type="attr" name="welcomeButtonDoneStyle"/>
+  <public type="attr" name="welcomeButtonDoneText"/>
   <public type="attr" name="welcomeButtonNextStyle"/>
   <public type="attr" name="welcomeButtonPrevStyle"/>
   <public type="attr" name="welcomeButtonSkipStyle"/>
-  <public type="attr" name="welcomeButtonDoneStyle"/>
-  <public type="attr" name="welcomeButtonDoneText"/>
   <public type="attr" name="welcomeButtonSkipText"/>
-  <public type="attr" name="welcomeButtonBarFirstStyle"/>
-  <public type="attr" name="welcomeButtonBarSecondStyle"/>
-  <public type="attr" name="welcomeIndicatorStyle"/>
   <public type="attr" name="welcomeDividerStyle"/>
-  <public type="attr" name="welcomeNormalTextStyle"/>
+  <public type="attr" name="welcomeIndicatorStyle"/>
   <public type="attr" name="welcomeLargeTextStyle"/>
-  <public type="attr" name="welcomeTitleTextStyle"/>
   <public type="attr" name="welcomeLayoutFitsSystemWindows"/>
-  <public type="attr" name="welcomeButtonBarBackground"/>
-  <public type="style" name="WelcomeScreenTheme"/>
-  <public type="style" name="WelcomeScreenTheme.Light"/>
-  <public type="style" name="WelcomeScreenText"/>
-  <public type="style" name="WelcomeScreenText.Large"/>
-  <public type="style" name="WelcomeScreenText.Title"/>
-  <public type="style" name="WelcomeScreenText.Centered"/>
-  <public type="style" name="WelcomeScreenText.Large.Centered"/>
-  <public type="style" name="WelcomeScreenText.Title.Centered"/>
+  <public type="attr" name="welcomeNormalTextStyle"/>
+  <public type="attr" name="welcomeTitleTextStyle"/>
   <public type="style" name="WelcomeScreenButton"/>
   <public type="style" name="WelcomeScreenButton.Borderless"/>
-  <public type="style" name="WelcomeScreenButton.Skip"/>
   <public type="style" name="WelcomeScreenButton.Done"/>
   <public type="style" name="WelcomeScreenButton.Done.Light"/>
   <public type="style" name="WelcomeScreenButton.LogIn"/>
+  <public type="style" name="WelcomeScreenButton.Next"/>
+  <public type="style" name="WelcomeScreenButton.Prev"/>
   <public type="style" name="WelcomeScreenButton.SignUp"/>
+  <public type="style" name="WelcomeScreenButton.Skip"/>
+  <public type="style" name="WelcomeScreenDivider"/>
+  <public type="style" name="WelcomeScreenDivider.Dark"/>
+  <public type="style" name="WelcomeScreenDivider.Light"/>
   <public type="style" name="WelcomeScreenPageIndicator"/>
   <public type="style" name="WelcomeScreenPageIndicator.Light"/>
-  <public type="style" name="WelcomeScreenDivider"/>
-  <public type="style" name="WelcomeScreenDivider.Light"/>
-  <public type="style" name="WelcomeScreenDivider.Dark"/>
+  <public type="style" name="WelcomeScreenText"/>
+  <public type="style" name="WelcomeScreenText.Centered"/>
+  <public type="style" name="WelcomeScreenText.Large"/>
+  <public type="style" name="WelcomeScreenText.Large.Centered"/>
+  <public type="style" name="WelcomeScreenText.Title"/>
+  <public type="style" name="WelcomeScreenText.Title.Centered"/>
+  <public type="style" name="WelcomeScreenTheme"/>
+  <public type="style" name="WelcomeScreenTheme.Light"/>
+  <public type="style" name="WelcomeScreenTheme.Light.SolidNavigation"/>
+  <public type="style" name="WelcomeScreenTheme.Light.SolidNavigation.UnderStatusBar"/>
+  <public type="style" name="WelcomeScreenTheme.SolidNavigation"/>
+  <public type="style" name="WelcomeScreenTheme.SolidNavigation.UnderStatusBar"/>
 </resources>
