@@ -117,6 +117,11 @@ public class PagesTest extends ConfigurationTest {
         page.headerColorResource(context, R.color.wel_default_background_color);
         assertEquals(DEFAULT_COLOR, page.getHeaderColor());
 
+        page.descriptionColor(Color.BLUE);
+        assertEquals(Color.BLUE, page.getDescriptionColor());
+        page.descriptionColorResource(context, R.color.wel_default_background_color);
+        assertEquals(DEFAULT_COLOR, page.getDescriptionColor());
+
         page.setup(builder.build());
         assertEquals("header_typeface", page.getHeaderTypefacePath());
         assertEquals("description_typeface", page.getDescriptionTypefacePath());
@@ -160,6 +165,11 @@ public class PagesTest extends ConfigurationTest {
         assertEquals(Color.RED, page.getHeaderColor());
         page.headerColorResource(context, R.color.wel_default_background_color);
         assertEquals(DEFAULT_COLOR, page.getHeaderColor());
+
+        page.descriptionColor(Color.BLUE);
+        assertEquals(Color.BLUE, page.getDescriptionColor());
+        page.descriptionColorResource(context, R.color.wel_default_background_color);
+        assertEquals(DEFAULT_COLOR, page.getDescriptionColor());
 
         page.setup(builder.build());
         assertEquals("header_typeface", page.getHeaderTypefacePath());

@@ -28,6 +28,7 @@ public class ParallaxPage extends WelcomePage<ParallaxPage> {
     private String headerTypefacePath = null;
     private String descriptionTyefacePath = null;
     private int headerColor = WelcomeUtils.NO_COLOR_SET;
+    private int descriptionColor = WelcomeUtils.NO_COLOR_SET;
 
     /**
      * A page with a title and description that applies a parallax effect to the supplied layout.
@@ -158,6 +159,32 @@ public class ParallaxPage extends WelcomePage<ParallaxPage> {
         return this;
     }
 
+    /**
+     * Set the color of the header
+     *
+     * @param color Color int
+     *
+     * @return This ParallaxPage object to allow method calls to be chained
+     */
+    public ParallaxPage descriptionColor(@ColorInt int color) {
+        this.descriptionColor = color;
+        return this;
+    }
+
+    /**
+     * Set the color of the description from a color resource id
+     *
+     * @param context Context used to resolve color
+     *
+     * @param colorRes Resource id of color to set
+     *
+     * @return This ParallaxPage object to allow method calls to be chained
+     */
+    public ParallaxPage descriptionColorResource(Context context, @ColorRes int colorRes) {
+        this.descriptionColor = ContextCompat.getColor(context, colorRes);
+        return this;
+    }
+
     /* Package local getters for testing */
 
     /* package */ int getLayoutResId() {
@@ -196,6 +223,10 @@ public class ParallaxPage extends WelcomePage<ParallaxPage> {
         return headerColor;
     }
 
+    /* package */ int getDescriptionColor() {
+        return descriptionColor;
+    }
+
     @Override
     public void setup(WelcomeConfiguration config) {
         super.setup(config);
@@ -211,8 +242,15 @@ public class ParallaxPage extends WelcomePage<ParallaxPage> {
 
     @Override
     public Fragment fragment() {
-        return WelcomeParallaxFragment.newInstance(layoutResId, title, description,
-                firstParallaxFactor, lastParallaxFactor, parallaxRecursive,
-                headerTypefacePath, descriptionTyefacePath, headerColor);
+        return WelcomeParallaxFragment.newInstance(layoutResId,
+                title,
+                description,
+                firstParallaxFactor,
+                lastParallaxFactor,
+                parallaxRecursive,
+                headerTypefacePath,
+                descriptionTyefacePath,
+                headerColor,
+                descriptionColor);
     }
 }
