@@ -25,6 +25,7 @@ public class WelcomeBasicFragment extends Fragment implements WelcomePage.OnChan
     public static final String KEY_HEADER_TYPEFACE_PATH = "header_typeface";
     public static final String KEY_DESCRIPTION_TYPEFACE_PATH = "description_typeface";
     public static final String KEY_HEADER_COLOR = "header_color";
+    public static final String KEY_DESCRIPTION_COLOR = "description_color";
 
     private ImageView imageView = null;
     private TextView titleView = null;
@@ -37,7 +38,8 @@ public class WelcomeBasicFragment extends Fragment implements WelcomePage.OnChan
                                                    boolean showParallaxAnim,
                                                    String headerTypefacePath,
                                                    String descriptionTypefacePath,
-                                                   @ColorInt int headerColor)
+                                                   @ColorInt int headerColor,
+                                                   @ColorInt int descriptionColor)
     {
         Bundle args = new Bundle();
         args.putInt(KEY_DRAWABLE_ID, drawableId);
@@ -47,6 +49,7 @@ public class WelcomeBasicFragment extends Fragment implements WelcomePage.OnChan
         args.putString(KEY_HEADER_TYPEFACE_PATH, headerTypefacePath);
         args.putString(KEY_DESCRIPTION_TYPEFACE_PATH, descriptionTypefacePath);
         args.putInt(KEY_HEADER_COLOR, headerColor);
+        args.putInt(KEY_DESCRIPTION_COLOR, descriptionColor);
         WelcomeBasicFragment fragment = new WelcomeBasicFragment();
         fragment.setArguments(args);
         return fragment;
@@ -79,6 +82,10 @@ public class WelcomeBasicFragment extends Fragment implements WelcomePage.OnChan
         int headerColor = args.getInt(KEY_HEADER_COLOR, WelcomeUtils.NO_COLOR_SET);
         if (headerColor != WelcomeUtils.NO_COLOR_SET)
             titleView.setTextColor(headerColor);
+
+        int descriptionColor = args.getInt(KEY_DESCRIPTION_COLOR, WelcomeUtils.NO_COLOR_SET);
+        if (descriptionColor != WelcomeUtils.NO_COLOR_SET)
+            descriptionView.setTextColor(descriptionColor);
 
         WelcomeUtils.setTypeface(titleView, args.getString(KEY_HEADER_TYPEFACE_PATH), getActivity());
         WelcomeUtils.setTypeface(descriptionView, args.getString(KEY_DESCRIPTION_TYPEFACE_PATH), getActivity());

@@ -21,6 +21,7 @@ public class BasicPage extends WelcomePage<BasicPage> {
     private String headerTypefacePath = null;
     private String descriptionTypefacePath = null;
     private int headerColor = WelcomeUtils.NO_COLOR_SET;
+    private int descriptionColor = WelcomeUtils.NO_COLOR_SET;
 
     /**
      * A page with a large image, header, and description
@@ -100,6 +101,32 @@ public class BasicPage extends WelcomePage<BasicPage> {
         return this;
     }
 
+    /**
+     * Set the color of the header
+     *
+     * @param color Color int
+     *
+     * @return This BasicPage object to allow method calls to be chained
+     */
+    public BasicPage descriptionColor(@ColorInt int color) {
+        this.descriptionColor = color;
+        return this;
+    }
+
+    /**
+     * Set the color of the description from a color resource id
+     *
+     * @param context Context used to resolve color
+     *
+     * @param colorRes Resource id of color to set
+     *
+     * @return This BasicPage object to allow method calls to be chained
+     */
+    public BasicPage descriptionColorResource(Context context, @ColorRes int colorRes) {
+        this.descriptionColor = ContextCompat.getColor(context, colorRes);
+        return this;
+    }
+
     /* Package local getters for testing */
 
     /* package */ int getDrawableResId() {
@@ -130,6 +157,10 @@ public class BasicPage extends WelcomePage<BasicPage> {
         return headerColor;
     }
 
+    /* package */ int getDescriptionColor() {
+        return descriptionColor;
+    }
+
     @Override
     public void setup(WelcomeConfiguration config) {
         super.setup(config);
@@ -146,7 +177,15 @@ public class BasicPage extends WelcomePage<BasicPage> {
 
     @Override
     public Fragment fragment() {
-        return WelcomeBasicFragment.newInstance(drawableResId, title, description, showParallax, headerTypefacePath, descriptionTypefacePath, headerColor);
+        // TODO: So many arguments...refactor?
+        return WelcomeBasicFragment.newInstance(drawableResId,
+                title,
+                description,
+                showParallax,
+                headerTypefacePath,
+                descriptionTypefacePath,
+                headerColor,
+                descriptionColor);
     }
 
 }
