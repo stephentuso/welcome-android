@@ -229,7 +229,7 @@ You can add your own fragments to the welcome screen with `FragmentWelcomePage`:
 protected WelcomeConfiguration configuration() {
     return new WelcomeConfiguration.Builder(this)
             ...
-			.page(new FragmentWelcomePage() {
+            .page(new FragmentWelcomePage() {
                     @Override
                     protected Fragment fragment() {
                         return new ExampleFragment();
