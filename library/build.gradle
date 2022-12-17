@@ -39,6 +39,7 @@ dependencies {
     compile support.v4
     compile support.appcompat
     compile support.preference
+    implementation 'com.github.bumptech.glide:glide:3.7.0'
 }
 
 apply from: '../gradle/bintray.gradle'
