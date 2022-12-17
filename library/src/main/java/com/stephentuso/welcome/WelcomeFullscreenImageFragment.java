@@ -31,7 +31,7 @@ public class WelcomeFullscreenImageFragment extends Fragment implements WelcomeP
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.page_image, container, false);
+        View view = inflater.inflate(R.layout.wel_fragment_image, container, false);
         imageView = (ImageView) view.findViewById(R.id.wel_image);
         return view;
     }
