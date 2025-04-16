@@ -1,11 +1,11 @@
 package com.stephentuso.welcome;
 
 import android.content.Context;
-import android.support.annotation.ColorInt;
-import android.support.annotation.ColorRes;
-import android.support.annotation.LayoutRes;
-import android.support.v4.app.Fragment;
-import android.support.v4.content.ContextCompat;
+import androidx.annotation.ColorInt;
+import androidx.annotation.ColorRes;
+import androidx.annotation.LayoutRes;
+import androidx.fragment.app.Fragment;
+import androidx.core.content.ContextCompat;
 
 /**
  * A page with a title and description that applies a parallax effect to the supplied layout.

@@ -1,1 +1,15 @@
-include ':sample', ':library'
+pluginManagement {
+    repositories {
+        google()
+        mavenCentral()
+    }
+}
+dependencyResolutionManagement {
+    repositories {
+        google()
+        mavenCentral()
+    }
+}
+
+rootProject.name = 'welcome-android'
+include 'library', 'sample'

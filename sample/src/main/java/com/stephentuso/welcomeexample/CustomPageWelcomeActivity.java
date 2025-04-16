@@ -1,6 +1,6 @@
 package com.stephentuso.welcomeexample;
 
-import android.support.v4.app.Fragment;
+import androidx.fragment.app.Fragment;
 
 import com.stephentuso.welcome.FragmentWelcomePage;
 import com.stephentuso.welcome.WelcomeActivity;

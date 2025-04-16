@@ -3,8 +3,8 @@ package com.stephentuso.welcome;
 import android.app.Activity;
 import android.app.Instrumentation;
 import android.content.Intent;
-import android.support.test.rule.UiThreadTestRule;
-import android.support.test.runner.AndroidJUnit4;
+import androidx.test.rule.UiThreadTestRule;
+import androidx.test.runner.AndroidJUnit4;
 import android.view.View;
 
 import com.stephentuso.welcomeexample.DefaultWelcomeActivity;

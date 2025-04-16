@@ -27,7 +27,7 @@ import static org.mockito.Mockito.when;
     protected void initContext() {
         when(resources.getColor(R.color.wel_default_background_color)).thenReturn(DEFAULT_COLOR);
         when(resources.getColor(R.color.wel_white)).thenReturn(Color.WHITE);
-        when(theme.resolveAttribute(R.attr.colorPrimary, new TypedValue(), true)).thenReturn(false);
+        when(theme.resolveAttribute(androidx.appcompat.R.attr.colorPrimary, new TypedValue(), true)).thenReturn(false);
         when(theme.resolveAttribute(android.R.attr.colorPrimary, new TypedValue(), true)).thenReturn(false);
         when(context.getResources()).thenReturn(resources);
         when(context.getTheme()).thenReturn(theme);

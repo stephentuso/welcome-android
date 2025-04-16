@@ -1,0 +1,21 @@
+[versions]
+agp = "8.9.1"
+androidx-preference = "1.2.1"
+androidx-test-rules = "1.6.1"
+androidx-test-runner = "1.6.2"
+junit = "4.13.2"
+jupiter = "5.12.2"
+mockito = "5.17.0"
+
+[plugins]
+agp-app = { id = "com.android.application", version.ref = "agp" }
+agp-lib = { id = "com.android.library", version.ref = "agp" }
+
+[libraries]
+androidx-preference = { group = "androidx.preference", name = "preference", version.ref = "androidx.preference" }
+androidx-test-rules = { group = "androidx.test", name = "rules", version.ref = "androidx.test.rules" }
+androidx-test-runner = { group = "androidx.test", name = "runner", version.ref = "androidx.test.runner" }
+junit = { group = "junit", name = "junit", version.ref = "junit" }
+junit-jupiter = { group = "org.junit.jupiter", name = "junit-jupiter-api", version.ref = "jupiter" }
+mockito-core = { group = "org.mockito", name = "mockito-core", version.ref = "mockito" }
+mockito-junit-jupiter = { group = "org.mockito", name = "mockito-junit-jupiter", version.ref = "mockito" }

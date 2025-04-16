@@ -1,7 +1,7 @@
 package com.stephentuso.welcome;
 
 import android.os.Bundle;
-import android.support.v7.preference.PreferenceFragmentCompat;
+import androidx.preference.PreferenceFragmentCompat;
 
 /**
  * Created by stephentuso on 11/16/15.

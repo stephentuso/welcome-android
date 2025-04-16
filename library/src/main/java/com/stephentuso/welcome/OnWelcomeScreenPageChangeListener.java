@@ -1,6 +1,6 @@
 package com.stephentuso.welcome;
 
-import android.support.v4.view.ViewPager;
+import androidx.viewpager.widget.ViewPager;
 
 /**
  * Implemented by library components to respond to page scroll events

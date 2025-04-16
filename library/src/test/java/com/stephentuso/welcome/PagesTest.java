@@ -1,13 +1,13 @@
 package com.stephentuso.welcome;
 
 import android.graphics.Color;
-import android.support.annotation.DrawableRes;
-import android.support.annotation.LayoutRes;
+import androidx.annotation.DrawableRes;
+import androidx.annotation.LayoutRes;
 
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.mockito.runners.MockitoJUnitRunner;
+import org.mockito.junit.MockitoJUnitRunner;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;

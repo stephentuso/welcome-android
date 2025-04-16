@@ -1,8 +1,8 @@
 package com.stephentuso.welcome;
 
 import android.content.Context;
-import android.support.annotation.ColorRes;
-import android.support.v4.app.Fragment;
+import androidx.annotation.ColorRes;
+import androidx.fragment.app.Fragment;
 
 /**
  * Created by stephentuso on 11/15/15.

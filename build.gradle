@@ -1,40 +1,4 @@
-// Top-level build file where you can add configuration options common to all sub-projects/modules.
-
-buildscript {
-    repositories {
-        jcenter()
-    }
-    dependencies {
-        classpath 'com.android.tools.build:gradle:2.3.1'
-        classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.7.2'
-        classpath "org.jfrog.buildinfo:build-info-extractor-gradle:4.4.5"
-        classpath 'com.dicedmelon.gradle:jacoco-android:0.1.1'
-    }
-}
-
-ext {
-    deploying = project.properties.get('deploying', false)
-    sdkVersion = [
-            compile: 25,
-            min: 9,
-            target: 25
-    ]
-    buildToolsVer = '25.0.2'
-    supportVersion = '25.3.1'
-    support = [
-            annotations: "com.android.support:support-annotations:$supportVersion",
-            v4: "com.android.support:support-v4:$supportVersion",
-            appcompat: "com.android.support:appcompat-v7:$supportVersion",
-            preference: "com.android.support:preference-v7:$supportVersion"
-    ]
-}
-
-allprojects {
-    repositories {
-        jcenter()
-    }
-}
-
-task clean(type: Delete) {
-    delete rootProject.buildDir
+plugins {
+    alias(libs.plugins.agp.app) apply false
+    alias(libs.plugins.agp.lib) apply false
 }

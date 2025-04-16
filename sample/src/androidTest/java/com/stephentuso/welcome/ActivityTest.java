@@ -3,7 +3,7 @@ package com.stephentuso.welcome;
 import android.app.Activity;
 import android.app.Instrumentation;
 import android.content.Intent;
-import android.support.test.InstrumentationRegistry;
+import androidx.test.InstrumentationRegistry;
 
 import com.stephentuso.welcomeexample.TestActivity;
 

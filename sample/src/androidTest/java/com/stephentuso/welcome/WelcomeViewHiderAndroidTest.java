@@ -1,8 +1,8 @@
 package com.stephentuso.welcome;
 
 import android.os.Build;
-import android.support.test.runner.AndroidJUnit4;
-import android.support.v4.app.Fragment;
+import androidx.test.runner.AndroidJUnit4;
+import androidx.flagment.app.Fragment;
 import android.view.View;
 
 import org.junit.Test;

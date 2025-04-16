@@ -3,7 +3,7 @@ package com.stephentuso.welcome;
 import android.app.Activity;
 import android.app.Instrumentation.ActivityMonitor;
 import android.os.Bundle;
-import android.support.test.runner.AndroidJUnit4;
+import androidx.test.runner.AndroidJUnit4;
 
 import com.stephentuso.welcomeexample.DefaultWelcomeActivity;
 

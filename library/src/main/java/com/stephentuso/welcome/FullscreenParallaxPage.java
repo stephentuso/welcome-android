@@ -1,7 +1,7 @@
 package com.stephentuso.welcome;
 
-import android.support.annotation.LayoutRes;
-import android.support.v4.app.Fragment;
+import androidx.annotation.LayoutRes;
+import androidx.fragment.app.Fragment;
 
 /**
  * A page that applies a parallax effect to the supplied layout.
