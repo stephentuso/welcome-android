@@ -31,6 +31,12 @@ android {
         main.res.srcDirs += 'src/main/res-public'
     }
 
+    publishing {
+        singleVariant("release") {
+            withSourcesJar()
+        }
+    }
+
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_21
         targetCompatibility JavaVersion.VERSION_21
@@ -80,7 +86,7 @@ publishing {
                 }
             }
             afterEvaluate {
-                from components.findByName('release')
+                from components.release
             }
         }
     }
