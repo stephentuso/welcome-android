@@ -7,7 +7,7 @@ Welcome
 
 An easy to use and customizable welcome screen for Android apps.
 
-![Sample animnation](https://raw.githubusercontent.com/stephentuso/welcome-android/master/docs/sample-anim.gif)
+![Sample animnation](sample-anim.gif)
 
 Look in the [sample](https://github.com/stephentuso/welcome-android/blob/master/sample/src/main/java/com/stephentuso/welcomeexample/SampleWelcomeActivity.java) to see how the above welcome screen is created.
 
