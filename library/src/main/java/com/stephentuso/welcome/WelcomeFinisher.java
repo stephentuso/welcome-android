@@ -1,6 +1,6 @@
 package com.stephentuso.welcome;
 
-import android.support.v4.app.Fragment;
+import androidx.fragment.app.Fragment;
 
 /**
  * Created by stephentuso on 1/22/16.

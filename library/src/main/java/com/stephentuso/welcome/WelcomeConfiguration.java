@@ -2,10 +2,10 @@ package com.stephentuso.welcome;
 
 import android.content.Context;
 import android.os.Build;
-import android.support.annotation.AnimRes;
-import android.support.annotation.ColorRes;
-import android.support.annotation.LayoutRes;
-import android.support.v4.app.Fragment;
+import androidx.annotation.AnimRes;
+import androidx.annotation.ColorRes;
+import androidx.annotation.LayoutRes;
+import androidx.fragment.app.Fragment;
 
 /**
  * Created by stephentuso on 11/15/15.
@@ -43,7 +43,7 @@ public class WelcomeConfiguration {
          * No buttons, just the current page indicator
          */
         INDICATOR_ONLY(R.layout.wel_bottom_indicator),
-        
+
         /**
          * No bottom layout; no buttons, no indicator
          */
@@ -382,7 +382,7 @@ public class WelcomeConfiguration {
             final int standardBackgroundColor = ColorHelper.getColor(context, R.color.wel_default_background_color);
 
             // AppCompat colorPrimary
-            int defaultBackgroundColor = ColorHelper.resolveColorAttribute(context, R.attr.colorPrimary, standardBackgroundColor);
+            int defaultBackgroundColor = ColorHelper.resolveColorAttribute(context, androidx.appcompat.R.attr.colorPrimary, standardBackgroundColor);
 
             // Android system colorPrimary
             if (defaultBackgroundColor == standardBackgroundColor && Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP)

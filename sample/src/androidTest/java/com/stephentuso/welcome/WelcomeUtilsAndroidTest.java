@@ -1,7 +1,7 @@
 package com.stephentuso.welcome;
 
 import android.os.Build;
-import android.support.test.runner.AndroidJUnit4;
+import androidx.test.runner.AndroidJUnit4;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;

@@ -1,58 +1,84 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.stephentuso.welcomeexample" >
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
 
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme" >
-        <activity android:name="com.stephentuso.welcomeexample.MainActivity" >
+        android:theme="@style/AppTheme">
+        <activity
+            android:name="com.stephentuso.welcomeexample.MainActivity"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
 
-        <activity android:name=".TestActivity"/>
+        <activity
+            android:name=".TestActivity"
+            android:exported="false" />
 
-        <activity android:name=".ExampleActionActivity"/>
+        <activity
+            android:name=".ExampleActionActivity"
+            android:exported="false" />
 
-        <activity android:name=".SampleWelcomeActivity"
-            android:theme="@style/SampleWelcomeScreenTheme"/>
+        <activity
+            android:name=".SampleWelcomeActivity"
+            android:exported="false"
+            android:theme="@style/SampleWelcomeScreenTheme" />
 
-        <activity android:name=".DefaultWelcomeActivity"
-                  android:theme="@style/WelcomeScreenTheme"/>
+        <activity
+            android:name=".DefaultWelcomeActivity"
+            android:exported="false"
+            android:theme="@style/WelcomeScreenTheme" />
 
-        <activity android:name=".LightWelcomeActivity"
-                  android:theme="@style/LightWelcomeScreenTheme"/>
+        <activity
+            android:name=".LightWelcomeActivity"
+            android:exported="false"
+            android:theme="@style/LightWelcomeScreenTheme" />
 
-        <activity android:name=".NoSkipWelcomeActivity"
-                  android:theme="@style/GeneralWelcomeScreenTheme"/>
+        <activity
+            android:name=".NoSkipWelcomeActivity"
+            android:exported="false"
+            android:theme="@style/GeneralWelcomeScreenTheme" />
 
-        <activity android:name=".BackExitWelcomeActivity"
-                  android:theme="@style/GeneralWelcomeScreenTheme"/>
+        <activity
+            android:name=".BackExitWelcomeActivity"
+            android:exported="false"
+            android:theme="@style/GeneralWelcomeScreenTheme" />
 
-        <activity android:name=".CustomPageWelcomeActivity"
-                  android:theme="@style/GeneralWelcomeScreenTheme"/>
+        <activity
+            android:name=".CustomPageWelcomeActivity"
+            android:exported="false"
+            android:theme="@style/GeneralWelcomeScreenTheme" />
 
-        <activity android:name=".IncludedPagesWelcomeActivity"
-                  android:theme="@style/GeneralWelcomeScreenTheme"/>
+        <activity
+            android:name=".IncludedPagesWelcomeActivity"
+            android:exported="false"
+            android:theme="@style/GeneralWelcomeScreenTheme" />
 
-        <activity android:name=".ButtonBarWelcomeActivity"
-                  android:theme="@style/ButtonBarWelcomeScreenTheme"/>
+        <activity
+            android:name=".ButtonBarWelcomeActivity"
+            android:exported="false"
+            android:theme="@style/ButtonBarWelcomeScreenTheme" />
 
-        <activity android:name=".ButtonBarSingleWelcomeActivity"
-                  android:theme="@style/ButtonBarWelcomeScreenTheme.Single"/>
+        <activity
+            android:name=".ButtonBarSingleWelcomeActivity"
+            android:exported="false"
+            android:theme="@style/ButtonBarWelcomeScreenTheme.Single" />
 
-        <activity android:name=".IndicatorOnlyWelcomeActivity"
-                  android:theme="@style/GeneralWelcomeScreenTheme"/>
+        <activity
+            android:name=".IndicatorOnlyWelcomeActivity"
+            android:exported="false"
+            android:theme="@style/GeneralWelcomeScreenTheme" />
 
-        <activity android:name=".PreviousButtonWelcomeActivity"
-                  android:theme="@style/ActionBarWelcomeScreenTheme"
-                  android:label="Title"/>
+        <activity
+            android:name=".PreviousButtonWelcomeActivity"
+            android:exported="false"
+            android:label="Title"
+            android:theme="@style/ActionBarWelcomeScreenTheme" />
 
     </application>
 

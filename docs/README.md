@@ -1,11 +1,13 @@
 Welcome
 =======
 
-[![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-Welcome-blue.svg?style=flat)](http://android-arsenal.com/details/1/3610) [![Download](https://api.bintray.com/packages/stephentuso/maven/welcome/images/download.svg)](https://bintray.com/stephentuso/maven/welcome/_latestVersion) [![Build Status](https://travis-ci.org/stephentuso/welcome-android.svg?branch=master)](https://travis-ci.org/stephentuso/welcome-android) [![codecov](https://codecov.io/gh/stephentuso/welcome-android/branch/master/graph/badge.svg)](https://codecov.io/gh/stephentuso/welcome-android) [![Codacy Badge](https://api.codacy.com/project/badge/Grade/f88fea4256a24130959e16d5c30578ce)](https://www.codacy.com/app/tusodev/welcome-android?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=stephentuso/welcome-android&amp;utm_campaign=Badge_Grade)
+[![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-Welcome-brightgreen.svg?style=flat)](https://android-arsenal.com/details/1/3610)
+[![Latest](https://img.shields.io/github/v/release/stephentuso/welcome-android?label=Lastest)](https://github.com/stephentuso/welcome-android/releases/latest)
+[![Build](https://github.com/stimgephentuso/welcome-android/actions/workflows/build.yml/badge.svg?branch=master)](https://github.com/stephentuso/welcome-android/actions/workflows/build.yml)
 
 An easy to use and customizable welcome screen for Android apps.
 
-![Sample video](https://raw.githubusercontent.com/stephentuso/welcome-android/master/media/sample-video.gif)
+![Sample animnation](sample-anim.gif)
 
 Look in the [sample](https://github.com/stephentuso/welcome-android/blob/master/sample/src/main/java/com/stephentuso/welcomeexample/SampleWelcomeActivity.java) to see how the above welcome screen is created.
 
@@ -80,7 +82,7 @@ This library is available through jCenter.
 Gradle:
 
 ```groovy
-compile 'com.stephentuso:welcome:1.4.1'
+implementation 'com.stephentuso:welcome:1.4.1'
 ```
 
 If you use proguard, add the following to your proguard rules
@@ -100,8 +102,9 @@ Extend WelcomeActivity
 To create a welcome screen, add a class to your project that extends `WelcomeActivity` and add it to AndroidManifest:
 
 ```xml
-<activity android:name=".MyWelcomeActivity"
-    android:theme="@style/WelcomeScreenTheme"/>
+<activity
+    android:name=".MyWelcomeActivity"
+    android:theme="@style/WelcomeScreenTheme" />
 ```
 
 *The theme must be a child theme of WelcomeScreenTheme*
@@ -424,7 +427,6 @@ You can listen for the result of a welcome screen in the Activity that started i
 @Override
 protected void onActivityResult(int requestCode, int resultCode, Intent data) {
     super.onActivityResult(requestCode, resultCode, data);
-
 
     if (requestCode == WelcomeHelper.DEFAULT_WELCOME_SCREEN_REQUEST) {
         // The key of the welcome screen is in the Intent
