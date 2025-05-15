@@ -1,5 +1,8 @@
+## ⚠️ I am archiving this as it is outdated, I won't be maintaining it, and I'm sure there are more modern libraries for this
+
 Welcome
 =======
+
 
 [![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-Welcome-blue.svg?style=flat)](http://android-arsenal.com/details/1/3610) [![Download](https://api.bintray.com/packages/stephentuso/maven/welcome/images/download.svg)](https://bintray.com/stephentuso/maven/welcome/_latestVersion) [![Build Status](https://travis-ci.org/stephentuso/welcome-android.svg?branch=master)](https://travis-ci.org/stephentuso/welcome-android) [![codecov](https://codecov.io/gh/stephentuso/welcome-android/branch/master/graph/badge.svg)](https://codecov.io/gh/stephentuso/welcome-android) [![Codacy Badge](https://api.codacy.com/project/badge/Grade/f88fea4256a24130959e16d5c30578ce)](https://www.codacy.com/app/tusodev/welcome-android?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=stephentuso/welcome-android&amp;utm_campaign=Badge_Grade)
 
